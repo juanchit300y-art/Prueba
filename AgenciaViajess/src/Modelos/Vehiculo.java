@@ -9,6 +9,14 @@ package Modelos;
  *
  * @author Juan Guerrero
  */
-public class Vehiculo {
+public abstract class Vehiculo {
+    private Integer id;
+
+    public Vehiculo() {
+    }
+
+    public Vehiculo(Integer id) {
+        this.id = id;
+    }
     
 }
