@@ -5,19 +5,36 @@
  */
 package Presentacion;
 
+import java.util.Scanner;
+
 /**
  *
  * @author DELL
  */
 public class MenuPrincipal {
-    int id;
-
+    //Atributos
+    private Integer id;
+    Scanner scanner;
+    //Constructores
     public MenuPrincipal() {
     }
 
-    public MenuPrincipal(int id) {
+    public MenuPrincipal(Integer id, Scanner scanner) {
+        this.id = id;
+        this.scanner=scanner;
+    }
+    //Getters y Setters
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Integer id) {
         this.id = id;
     }
+    //Metodos
     public void verMenu(){
         
         int inicio=0;
@@ -43,6 +60,7 @@ public class MenuPrincipal {
             }
         
         }
+        
     }
     
 }
