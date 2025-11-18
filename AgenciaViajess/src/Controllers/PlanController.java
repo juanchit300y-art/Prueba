@@ -9,6 +9,6 @@ package Controllers;
  *
  * @author DELL
  */
-public class Plan {
+public class PlanController {
     
 }
