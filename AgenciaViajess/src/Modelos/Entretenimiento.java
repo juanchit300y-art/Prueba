@@ -10,5 +10,27 @@ package Modelos;
  * @author Juan Guerrero
  */
 public class Entretenimiento {
+    private Integer id;
+
+    public Entretenimiento() {
+    }
+
+    public Entretenimiento(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
     
 }

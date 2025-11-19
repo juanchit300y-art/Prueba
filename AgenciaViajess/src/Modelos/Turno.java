@@ -10,5 +10,27 @@ package Modelos;
  * @author Juan Guerrero
  */
 public class Turno {
+    private Integer id;
+
+    public Turno() {
+    }
+
+    public Turno(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
     
 }

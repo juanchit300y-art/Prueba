@@ -10,5 +10,6 @@ package Modelos;
  * @author Juan Guerrero
  */
 public class TipoViaje {
-    //N
+    private Integer id;
+    //Pendiente
 }

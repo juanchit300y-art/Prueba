@@ -11,12 +11,43 @@ package Modelos;
  */
 public abstract class Vehiculo {
     private Integer id;
+    private String marca;
 
     public Vehiculo() {
     }
 
-    public Vehiculo(Integer id) {
+    public Vehiculo(Integer id, String marca) {
+        this.id = id;
+        this.marca = marca;
+    }
+
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Integer id) {
         this.id = id;
     }
+
+    /**
+     * @return the marca
+     */
+    public String getMarca() {
+        return marca;
+    }
+
+    /**
+     * @param marca the marca to set
+     */
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+    
     
 }

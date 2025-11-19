@@ -10,5 +10,27 @@ package Modelos;
  * @author Juan Guerrero
  */
 public class Viaje {
-    
+   private Integer id;
+
+    public Viaje() {
+    }
+
+    public Viaje(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+   
 }

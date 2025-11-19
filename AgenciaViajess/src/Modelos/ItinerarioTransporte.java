@@ -10,5 +10,43 @@ package Modelos;
  * @author Juan Guerrero
  */
 public class ItinerarioTransporte {
+    private Integer id;
+    private int orden;
+
+    public ItinerarioTransporte() {
+    }
+
+    public ItinerarioTransporte(Integer id, int orden) {
+        this.id = id;
+        this.orden = orden;
+    }
+
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the orden
+     */
+    public int getOrden() {
+        return orden;
+    }
+
+    /**
+     * @param orden the orden to set
+     */
+    public void setOrden(int orden) {
+        this.orden = orden;
+    }
     
 }

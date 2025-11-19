@@ -10,5 +10,43 @@ package Modelos;
  * @author Juan Guerrero
  */
 public class Cuota {
+    private Integer id;
+    private int monto;
+
+    public Cuota() {
+    }
+
+    public Cuota(Integer id, int monto) {
+        this.id = id;
+        this.monto = monto;
+    }
+
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the monto
+     */
+    public int getMonto() {
+        return monto;
+    }
+
+    /**
+     * @param monto the monto to set
+     */
+    public void setMonto(int monto) {
+        this.monto = monto;
+    }
     
 }

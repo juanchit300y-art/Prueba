@@ -9,6 +9,11 @@ package Modelos;
  *
  * @author Juan Guerrero
  */
-public class Carro {
-    //holaaaaaaaa
+public class Carro extends Vehiculo {
+
+    public Carro() {
+    }
+    public Carro( int id, String marca) {
+    super(id, marca);
+    }
 }
