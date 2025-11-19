@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/ElementoPlanController.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/HotelController.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/TipoViaje.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuAeronave.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuUsuario.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/ItinerarioTransporteController.java</file>
@@ -17,15 +18,18 @@
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuPlan.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuReserva.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/ViajeController.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Plan.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/ActividadTuristicaController.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/MunicipioController.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuCarro.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/VehiculoController.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/TrayectoController.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuTurno.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Trayecto.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/PlanController.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/AeronaveController.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Guia.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Viaje.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuViaje.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/ElementoPlan.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/EntretenimientoController.java</file>
@@ -34,6 +38,7 @@
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuElementoPlan.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/ActividadTuristica.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Persistencia/CarroRepositorio.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/ServicioTransporte.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Aeronave.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuEntretenimiento.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Cliente.java</file>
@@ -41,6 +46,7 @@
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/ReservaController.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/nbproject/private/private.xml</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/TipoViajeController.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Turno.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Carro.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuGuia.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuTrayecto.java</file>
@@ -50,15 +56,19 @@
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/ClienteController.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/ServicioTransporteController.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/MenuPrincipal.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Municipio.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuTipoViaje.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/AerolineaController.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuHabitacion.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuServicioTransporte.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/agenciaviajess/main.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Reserva.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Usuario.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/CarroController.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Cuota.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Hotel.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuMunicipio.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/ItinerarioTransporte.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/HabitacionController.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Aerolinea.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuCuota.java</file>
