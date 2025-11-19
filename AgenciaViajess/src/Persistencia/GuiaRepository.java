@@ -7,8 +7,8 @@ package Persistencia;
 
 /**
  *
- * @author DELL
+ * @author Juan Guerrero
  */
-public class CarroRepositorio {
+public class GuiaRepository {
     
 }
