@@ -10,5 +10,28 @@ package Modelos;
  * @author Juan Guerrero
  */
 public class Trayecto {
+    private Integer id;
+
+    public Trayecto() {
+    }
+
+    public Trayecto(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     
 }
