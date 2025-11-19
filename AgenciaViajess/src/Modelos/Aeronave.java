@@ -13,6 +13,7 @@ public class Aeronave extends Vehiculo{
 
     public Aeronave() {
     }
-    
-   
+    public Aeronave( int id, String marca) {
+    super(id, marca);
+    }
 }
