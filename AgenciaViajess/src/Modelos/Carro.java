@@ -9,6 +9,6 @@ package Modelos;
  *
  * @author Juan Guerrero
  */
-public class Carro {
-    //holaaaaaaaa
+public class Carro extends Vehiculo {
+    
 }

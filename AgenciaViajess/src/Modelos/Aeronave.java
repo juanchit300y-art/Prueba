@@ -9,6 +9,10 @@ package Modelos;
  *
  * @author Juan Guerrero
  */
-public class Aeronave {
+public class Aeronave extends Vehiculo{
+
+    public Aeronave() {
+    }
     
+   
 }
