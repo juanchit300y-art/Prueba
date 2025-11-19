@@ -32,9 +32,11 @@
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/GuiaController.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Vehiculo.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuElementoPlan.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/ActividadTuristica.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Persistencia/CarroRepositorio.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Aeronave.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuEntretenimiento.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Cliente.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/UsuarioController.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/ReservaController.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/nbproject/private/private.xml</file>
@@ -58,6 +60,7 @@
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Cuota.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuMunicipio.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Controllers/HabitacionController.java</file>
+            <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Modelos/Aerolinea.java</file>
             <file>file:/C:/Users/DELL/OneDrive/Documentos/GitHub/Prueba/AgenciaViajess/src/Presentacion/SubMenuCuota.java</file>
         </group>
     </open-files>
