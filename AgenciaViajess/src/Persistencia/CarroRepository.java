@@ -7,14 +7,12 @@ package Persistencia;
 
 
 import Modelos.Carro;
-import java.util.List;
-import java.util.ArrayList;
 
-public class CarroRepository {
-    private IDataAccess<Carro> dataAccess;
-    
+public class CarroRepository extends GeneralRepository <Carro>{    
     public CarroRepository() {
         this.dataAccess = new JsonRepository<>("carroa.json", Carro.class);
     }
-    
+    public CarroRepository(IDataAccess<Carro> dataAccess) {
+        this.dataAccess = dataAccess;
+    }
 }
