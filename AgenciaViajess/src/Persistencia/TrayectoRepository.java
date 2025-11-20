@@ -5,10 +5,16 @@
  */
 package Persistencia;
 
-/**
- *
- * @author Juan Guerrero
- */
-public class TrayectoRepository {
+
+import Modelos.Trayecto;
+
+public class TrayectoRepository extends GeneralRepository<Trayecto>{
     
+    
+    public TrayectoRepository() {
+        this.dataAccess = new JsonRepository<>("Trayectos.json", Trayecto.class);
+    }
+    public TrayectoRepository(IDataAccess<Trayecto> dataAccess) {
+        this.dataAccess = dataAccess;
+    }
 }

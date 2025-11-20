@@ -5,10 +5,16 @@
  */
 package Persistencia;
 
-/**
- *
- * @author Juan Guerrero
- */
-public class TurnoRepository {
+
+import Modelos.Turno;
+
+public class TurnoRepository extends GeneralRepository<Turno>{
     
+    
+    public TurnoRepository() {
+        this.dataAccess = new JsonRepository<>("Turnos.json", Turno.class);
+    }
+    public TurnoRepository(IDataAccess<Turno> dataAccess) {
+        this.dataAccess = dataAccess;
+    }
 }
