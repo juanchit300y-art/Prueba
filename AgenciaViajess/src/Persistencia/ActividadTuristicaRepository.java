@@ -20,9 +20,9 @@ public class ActividadTuristicaRepository extends GeneralRepository<ActividadTur
         this.dataAccess = dataAccess;
     }
     public List<ActividadTuristica> findActividadesTuristicasByMunicipioId(Integer municipioId) {
-        List<ActividadTuristica> ActividadesTuristicas = getAllT();
+        List<ActividadTuristica> actividadesTuristicas = getAllT();
         List<ActividadTuristica> result = new ArrayList<>();
-        for (ActividadTuristica actividadTuristica : ActividadesTuristicas) {
+        for (ActividadTuristica actividadTuristica : actividadesTuristicas) {
             if (actividadTuristica.getIdMunicipio() != null && actividadTuristica.getIdMunicipio().equals(municipioId)) {
                 result.add(actividadTuristica);
             }

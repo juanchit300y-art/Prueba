@@ -11,8 +11,8 @@ package Modelos;
  */
 public class Trayecto {
     private Integer id;
-    private Integer municipioInicio;
-    private Integer municipioDestino;
+    private Integer municipioInicioId;
+    private Integer municipioDestinoId;
 
     public Trayecto() {
     }
@@ -38,29 +38,29 @@ public class Trayecto {
     /**
      * @return the municipioInicio
      */
-    public Integer getMunicipioInicio() {
-        return municipioInicio;
+    public Integer getMunicipioInicioId() {
+        return municipioInicioId;
     }
 
     /**
      * @param municipioInicio the municipioInicio to set
      */
-    public void setMunicipioInicio(Integer municipioInicio) {
-        this.municipioInicio = municipioInicio;
+    public void setMunicipioInicioId(Integer municipioInicio) {
+        this.municipioInicioId = municipioInicio;
     }
 
     /**
      * @return the municipioDestino
      */
-    public Integer getMunicipioDestino() {
-        return municipioDestino;
+    public Integer getMunicipioDestinoId() {
+        return municipioDestinoId;
     }
 
     /**
      * @param municipioDestino the municipioDestino to set
      */
-    public void setMunicipioDestino(Integer municipioDestino) {
-        this.municipioDestino = municipioDestino;
+    public void setMunicipioDestinoId(Integer municipioDestino) {
+        this.municipioDestinoId = municipioDestino;
     }
     
     
