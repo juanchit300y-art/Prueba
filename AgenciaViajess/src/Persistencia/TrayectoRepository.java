@@ -18,11 +18,21 @@ public class TrayectoRepository extends GeneralRepository<Trayecto>{
     public TrayectoRepository(IDataAccess<Trayecto> dataAccess) {
         this.dataAccess = dataAccess;
     }
-    public List<Trayecto> findTrayectosByMunicipioId(Integer municipioId) {
+    public List<Trayecto> findTrayectosByMunicipioInicioId(Integer municipioInicioId) {
         List<Trayecto> trayectos = getAllT();
         List<Trayecto> result = new ArrayList<>();
         for (Trayecto trayecto : trayectos) {
-            if (trayecto.get() != null && trayecto.getMunicipioId().equals(municipioId)) {
+            if (trayecto.getMunicipioInicioId() != null && trayecto.getMunicipioInicioId().equals(municipioInicioId)) {
+                result.add(trayecto);
+            }
+        }
+        return result;
+    }
+    public List<Trayecto> findTrayectosByMunicipioDestinoId(Integer municipioDestinoId) {
+        List<Trayecto> trayectos = getAllT();
+        List<Trayecto> result = new ArrayList<>();
+        for (Trayecto trayecto : trayectos) {
+            if (trayecto.getMunicipioDestinoId() != null && trayecto.getMunicipioDestinoId().equals(municipioDestinoId)) {
                 result.add(trayecto);
             }
         }
