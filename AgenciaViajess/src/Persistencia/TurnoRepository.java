@@ -7,6 +7,8 @@ package Persistencia;
 
 
 import Modelos.Turno;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TurnoRepository extends GeneralRepository<Turno>{
     
@@ -17,4 +19,16 @@ public class TurnoRepository extends GeneralRepository<Turno>{
     public TurnoRepository(IDataAccess<Turno> dataAccess) {
         this.dataAccess = dataAccess;
     }
+    
+    public List<Turno> findActividadesTuristicasByMunicipioId(Integer guiaId) {
+        List<Turno> turnos = getAllT();
+        List<Turno> result = new ArrayList<>();
+        for (Turno actividadTuristica : turnos) {
+            if (actividadTuristica.getIdGuia() != null && actividadTuristica.getIdGuia().equals(guiaId)) {
+                result.add(actividadTuristica);
+            }
+        }
+        return result;
+    }
+    
 }
