@@ -62,5 +62,5 @@ public class Turno {
     public void setIdGuia(Integer idGuia) {
         this.idGuia = idGuia;
     }
-    
+    //uwu
 }
