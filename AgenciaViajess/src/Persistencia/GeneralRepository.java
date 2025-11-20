@@ -17,11 +17,6 @@ public abstract class GeneralRepository<T> {
     public GeneralRepository() {
     }
    
-    public GeneralRepository(IDataAccess<T> dataAccess) {
-        this.dataAccess = dataAccess;
-    }
-    
-
     public List<T> getAllT() {
         return dataAccess.findAll();
     }

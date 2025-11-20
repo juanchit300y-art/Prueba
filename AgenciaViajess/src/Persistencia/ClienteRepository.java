@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,10 +6,36 @@
  */
 package Persistencia;
 
-/**
- *
- * @author Juan Guerrero
- */
+
+import Modelos.Cliente;
+import java.util.List;
+import java.util.ArrayList;
+
 public class ClienteRepository {
+    private IDataAccess<Cliente> dataAccess;
     
+    public ClienteRepository() {
+        this.dataAccess = new JsonRepository<>("cliente.json", Cliente.class);
+    }
+    
+    // Constructor for dependency injection
+    public AeronaveRepository(IDataAccess<Aeronave> dataAccess) {
+        this.dataAccess = dataAccess;
+    }
+    
+    public List<Aeronave> getAllAeronaves() {
+        return dataAccess.findAll();
+    }
+    
+    public Aeronave findAeronaveById(Integer id) {
+        return dataAccess.findById(id);
+    }
+    
+    public void saveAeronave(Aeronave aeronave) {
+        dataAccess.save(aeronave);
+    }
+    
+    public void deleteAeronave(Integer id) {
+        dataAccess.delete(id);
+    }
 }
