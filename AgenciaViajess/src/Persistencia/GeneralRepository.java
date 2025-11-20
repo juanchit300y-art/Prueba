@@ -4,11 +4,38 @@
  * and open the template in the editor.
  */
 package Persistencia;
-
+import java.util.List;
+import java.util.ArrayList;
 /**
  *
  * @author DELL
  */
-public class GeneralRepository {
+public abstract class GeneralRepository<T> {
     
+    protected IDataAccess<T> dataAccess;
+
+    public GeneralRepository() {
+    }
+   
+    public GeneralRepository(IDataAccess<T> dataAccess) {
+        this.dataAccess = dataAccess;
+    }
+    
+
+    public List<T> getAllT() {
+        return dataAccess.findAll();
+    }
+    
+    public T findATById(Integer id) {
+        return dataAccess.findById(id);
+    }
+    
+    public void saveT(T objeto) {
+        dataAccess.save(objeto);
+    }
+    
+    public void deleteT(Integer id) {
+        dataAccess.delete(id);
+    }
 }
+
