@@ -21,7 +21,7 @@ public class AeronaveRepository extends GeneralRepository<Aeronave> {
         List<Aeronave> aeronaves = getAllT();
         List<Aeronave> result = new ArrayList<>();
         for (Aeronave aeronave : aeronaves) {
-            if (aeronave.getIdAerolinea() != null && aeronave.getIdAerolinea().equals(AerolineaId)) {
+            if (aeronave.getAerolineaId() != null && aeronave.getAerolineaId().equals(AerolineaId)) {
                 result.add(aeronave);
             }
         }

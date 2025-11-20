@@ -13,7 +13,7 @@ public class Hotel {
     private Integer id;
     private String nombre;
     private String correo;
-    private Integer idMunicipio;
+    private Integer MunicipioId;
     
 
     public Hotel() {
@@ -68,17 +68,19 @@ public class Hotel {
     }
 
     /**
-     * @return the idMunicipio
+     * @return the MunicipioId
      */
-    public Integer getIdMunicipio() {
-        return idMunicipio;
+    public Integer getMunicipioId() {
+        return MunicipioId;
     }
 
     /**
-     * @param idMunicipio the idMunicipio to set
+     * @param MunicipioId the MunicipioId to set
      */
-    public void setIdMunicipio(Integer idMunicipio) {
-        this.idMunicipio = idMunicipio;
+    public void setMunicipioId(Integer MunicipioId) {
+        this.MunicipioId = MunicipioId;
     }
+
+
     
 }

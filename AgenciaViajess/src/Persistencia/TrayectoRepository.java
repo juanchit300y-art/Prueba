@@ -22,7 +22,7 @@ public class TrayectoRepository extends GeneralRepository<Trayecto>{
         List<Trayecto> trayectos = getAllT();
         List<Trayecto> result = new ArrayList<>();
         for (Trayecto trayecto : trayectos) {
-            if (trayecto.getIdMunicipio() != null && trayecto.getIdMunicipio().equals(municipioId)) {
+            if (trayecto.get() != null && trayecto.getMunicipioId().equals(municipioId)) {
                 result.add(trayecto);
             }
         }

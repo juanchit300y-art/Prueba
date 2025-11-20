@@ -10,7 +10,7 @@ package Modelos;
  * @author Juan Guerrero
  */
 public class Aeronave extends Vehiculo{
-    private Integer idAerolinea;
+    private Integer AerolineaId;
     public Aeronave() {
     }
     public Aeronave( int id, String marca) {
@@ -20,14 +20,14 @@ public class Aeronave extends Vehiculo{
     /**
      * @return the idAerolinea
      */
-    public Integer getIdAerolinea() {
-        return idAerolinea;
+    public Integer getAerolineaId() {
+        return AerolineaId;
     }
 
     /**
      * @param idAerolinea the idAerolinea to set
      */
-    public void setIdAerolinea(Integer idAerolinea) {
-        this.idAerolinea = idAerolinea;
+    public void setAerolineaId(Integer idAerolinea) {
+        this.AerolineaId = idAerolinea;
     }
 }

@@ -20,12 +20,23 @@ public class TurnoRepository extends GeneralRepository<Turno>{
         this.dataAccess = dataAccess;
     }
     
-    public List<Turno> findActividadesTuristicasByMunicipioId(Integer guiaId) {
+    public List<Turno> findTurnosByGuiaId(Integer guiaId) {
         List<Turno> turnos = getAllT();
         List<Turno> result = new ArrayList<>();
-        for (Turno actividadTuristica : turnos) {
-            if (actividadTuristica.getIdGuia() != null && actividadTuristica.getIdGuia().equals(guiaId)) {
-                result.add(actividadTuristica);
+        for (Turno turno : turnos) {
+            if (turno.getIdGuia() != null && turno.getIdGuia().equals(guiaId)) {
+                result.add(turno);
+            }
+        }
+        return result;
+    }
+    
+    public List<Turno> findTurnosByActividadTuristicaId(Integer actividadTuristicaId) {
+        List<Turno> turnos = getAllT();
+        List<Turno> result = new ArrayList<>();
+        for (Turno turno : turnos) {
+            if (turno.getIdActividadTuristica() != null && turno.getIdActividadTuristica().equals(actividadTuristicaId)) {
+                result.add(turno);
             }
         }
         return result;

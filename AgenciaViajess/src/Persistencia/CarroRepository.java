@@ -20,7 +20,7 @@ public class CarroRepository extends GeneralRepository <Carro>{
         List<Carro> carros = getAllT();
         List<Carro> result = new ArrayList<>();
         for (Carro carro : carros) {
-            if (carro.getIdHotel() != null && carro.getIdHotel().equals(hotelId)) {
+            if (carro.getHotelId() != null && carro.getHotelId().equals(hotelId)) {
                 result.add(carro);
             }
         }

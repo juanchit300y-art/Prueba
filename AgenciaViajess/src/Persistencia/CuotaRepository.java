@@ -22,7 +22,7 @@ public class CuotaRepository extends GeneralRepository<Cuota> {
         List<Cuota> cuotas = getAllT();
         List<Cuota> result = new ArrayList<>();
         for (Cuota cuota : cuotas) {
-            if (cuota.getIdViaje() != null && cuota.getIdViaje().equals(viajeId)) {
+            if (cuota.getViajeId() != null && cuota.getViajeId().equals(viajeId)) {
                 result.add(cuota);
             }
         }

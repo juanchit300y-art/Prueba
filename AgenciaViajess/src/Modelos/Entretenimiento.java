@@ -11,8 +11,8 @@ package Modelos;
  */
 public class Entretenimiento {
     private Integer id;
-    private Integer idPlan;
-    private Integer idViaje;
+    private Integer PlanId;
+    private Integer ViajeId;
 
     public Entretenimiento() {
     }
@@ -36,31 +36,32 @@ public class Entretenimiento {
     }
 
     /**
-     * @return the idPlan
+     * @return the PlanId
      */
-    public Integer getIdPlan() {
-        return idPlan;
+    public Integer getPlanId() {
+        return PlanId;
     }
 
     /**
-     * @param idPlan the idPlan to set
+     * @param PlanId the PlanId to set
      */
-    public void setIdPlan(Integer idPlan) {
-        this.idPlan = idPlan;
+    public void setPlanId(Integer PlanId) {
+        this.PlanId = PlanId;
     }
 
     /**
-     * @return the idViaje
+     * @return the ViajeId
      */
-    public Integer getIdViaje() {
-        return idViaje;
+    public Integer getViajeId() {
+        return ViajeId;
     }
 
     /**
-     * @param idViaje the idViaje to set
+     * @param ViajeId the ViajeId to set
      */
-    public void setIdViaje(Integer idViaje) {
-        this.idViaje = idViaje;
+    public void setViajeId(Integer ViajeId) {
+        this.ViajeId = ViajeId;
     }
-    
+
+
 }

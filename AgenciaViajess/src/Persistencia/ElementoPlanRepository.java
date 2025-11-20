@@ -8,6 +8,8 @@ package Persistencia;
 
 
 import Modelos.ElementoPlan;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ElementoPlanRepository extends GeneralRepository<ElementoPlan> {
     
@@ -17,5 +19,17 @@ public class ElementoPlanRepository extends GeneralRepository<ElementoPlan> {
     public ElementoPlanRepository(IDataAccess<ElementoPlan> dataAccess) {
         this.dataAccess = dataAccess;
     }
+    
+   public List<ElementoPlan> findElementoPLanByActividadTuristiaId(Integer actividadTuristicaId) {
+        List<ElementoPlan> elementosDelPlan = getAllT();
+        List<ElementoPlan> result = new ArrayList<>();
+        for (ElementoPlan elementoPlan : elementosDelPlan) {
+            if (elementoPlan.getActividadTuristicaId() != null && elementoPlan.getActividadTuristicaId().equals(actividadTuristicaId)) {
+                result.add(elementoPlan);
+            }
+        }
+        return result;
+    }
+   
    
 }

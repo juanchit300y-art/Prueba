@@ -11,8 +11,8 @@ package Modelos;
  */
 public class Factura {
     private Integer id;
-    private Integer idViaje;
-    private Integer idUsuario;
+    private Integer ViajeId;
+    private Integer UsuarioId;
     
     
     public Factura() {
@@ -37,32 +37,33 @@ public class Factura {
     }
 
     /**
-     * @return the idViaje
+     * @return the ViajeId
      */
-    public Integer getIdViaje() {
-        return idViaje;
+    public Integer getViajeId() {
+        return ViajeId;
     }
 
     /**
-     * @param idViaje the idViaje to set
+     * @param ViajeId the ViajeId to set
      */
-    public void setIdViaje(Integer idViaje) {
-        this.idViaje = idViaje;
+    public void setViajeId(Integer ViajeId) {
+        this.ViajeId = ViajeId;
     }
 
     /**
-     * @return the idUsuario
+     * @return the UsuarioId
      */
-    public Integer getIdUsuario() {
-        return idUsuario;
+    public Integer getUsuarioId() {
+        return UsuarioId;
     }
 
     /**
-     * @param idUsuario the idUsuario to set
+     * @param UsuarioId the UsuarioId to set
      */
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUsuarioId(Integer UsuarioId) {
+        this.UsuarioId = UsuarioId;
     }
-    
+
+   
 
 }

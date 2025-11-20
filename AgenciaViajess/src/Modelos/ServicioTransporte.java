@@ -15,8 +15,8 @@ public class ServicioTransporte {
     private String fecha_fin;
     private Double costo;
     //relaciones
-    private Integer idVehiculo;
-    private Integer idTrayecto;
+    private Integer VehiculoId;
+    private Integer TrayectoId;
 
     public ServicioTransporte() {
     }
@@ -85,31 +85,33 @@ public class ServicioTransporte {
     }
 
     /**
-     * @return the idVehiculo
+     * @return the VehiculoId
      */
-    public Integer getIdVehiculo() {
-        return idVehiculo;
+    public Integer getVehiculoId() {
+        return VehiculoId;
     }
 
     /**
-     * @param idVehiculo the idVehiculo to set
+     * @param VehiculoId the VehiculoId to set
      */
-    public void setIdVehiculo(Integer idVehiculo) {
-        this.idVehiculo = idVehiculo;
+    public void setVehiculoId(Integer VehiculoId) {
+        this.VehiculoId = VehiculoId;
     }
 
     /**
-     * @return the idTrayecto
+     * @return the TrayectoId
      */
-    public Integer getIdTrayecto() {
-        return idTrayecto;
+    public Integer getTrayectoId() {
+        return TrayectoId;
     }
 
     /**
-     * @param idTrayecto the idTrayecto to set
+     * @param TrayectoId the TrayectoId to set
      */
-    public void setIdTrayecto(Integer idTrayecto) {
-        this.idTrayecto = idTrayecto;
+    public void setTrayectoId(Integer TrayectoId) {
+        this.TrayectoId = TrayectoId;
     }
+
+
     
 }

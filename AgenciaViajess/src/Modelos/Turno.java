@@ -11,8 +11,8 @@ package Modelos;
  */
 public class Turno {
     private Integer id;
-    private Integer idActividadTuristica;
-    private Integer idGuia;
+    private Integer ActividadTuristicaId;
+    private Integer GuiaId;
 
     public Turno() {
     }
@@ -36,31 +36,32 @@ public class Turno {
     }
 
     /**
-     * @return the idActividadTuristica
+     * @return the ActividadTuristicaId
      */
-    public Integer getIdActividadTuristica() {
-        return idActividadTuristica;
+    public Integer getActividadTuristicaId() {
+        return ActividadTuristicaId;
     }
 
     /**
-     * @param idActividadTuristica the idActividadTuristica to set
+     * @param ActividadTuristicaId the ActividadTuristicaId to set
      */
-    public void setIdActividadTuristica(Integer idActividadTuristica) {
-        this.idActividadTuristica = idActividadTuristica;
+    public void setActividadTuristicaId(Integer ActividadTuristicaId) {
+        this.ActividadTuristicaId = ActividadTuristicaId;
     }
 
     /**
-     * @return the idGuia
+     * @return the GuiaId
      */
-    public Integer getIdGuia() {
-        return idGuia;
+    public Integer getGuiaId() {
+        return GuiaId;
     }
 
     /**
-     * @param idGuia the idGuia to set
+     * @param GuiaId the GuiaId to set
      */
-    public void setIdGuia(Integer idGuia) {
-        this.idGuia = idGuia;
+    public void setGuiaId(Integer GuiaId) {
+        this.GuiaId = GuiaId;
     }
-    //uwu
+
+    
 }

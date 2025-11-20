@@ -12,8 +12,8 @@ package Modelos;
 public class ItinerarioTransporte {
     private Integer id;
     private int orden;
-    private Integer idTrayecto;
-    private Integer idViaje;
+    private Integer TrayectoId;
+    private Integer ViajeId;
 
     public ItinerarioTransporte() {
     }
@@ -52,31 +52,33 @@ public class ItinerarioTransporte {
     }
 
     /**
-     * @return the idTrayecto
+     * @return the TrayectoId
      */
-    public Integer getIdTrayecto() {
-        return idTrayecto;
+    public Integer getTrayectoId() {
+        return TrayectoId;
     }
 
     /**
-     * @param idTrayecto the idTrayecto to set
+     * @param TrayectoId the TrayectoId to set
      */
-    public void setIdTrayecto(Integer idTrayecto) {
-        this.idTrayecto = idTrayecto;
+    public void setTrayectoId(Integer TrayectoId) {
+        this.TrayectoId = TrayectoId;
     }
 
     /**
-     * @return the idViaje
+     * @return the ViajeId
      */
-    public Integer getIdViaje() {
-        return idViaje;
+    public Integer getViajeId() {
+        return ViajeId;
     }
 
     /**
-     * @param idViaje the idViaje to set
+     * @param ViajeId the ViajeId to set
      */
-    public void setIdViaje(Integer idViaje) {
-        this.idViaje = idViaje;
+    public void setViajeId(Integer ViajeId) {
+        this.ViajeId = ViajeId;
     }
+
+
     
 }

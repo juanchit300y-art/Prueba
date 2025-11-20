@@ -11,8 +11,8 @@ package Modelos;
  */
 public class ElementoPlan {
     private Integer id;
-    private Integer idActividadTuristica;
-    private Integer idPlan;
+    private Integer ActividadTuristicaId;
+    private Integer PlanId;
     public ElementoPlan() {
     }
 
@@ -37,29 +37,29 @@ public class ElementoPlan {
     /**
      * @return the idActividadTuristica
      */
-    public Integer getIdActividadTuristica() {
-        return idActividadTuristica;
+    public Integer getActividadTuristicaId() {
+        return ActividadTuristicaId;
     }
 
     /**
      * @param idActividadTuristica the idActividadTuristica to set
      */
-    public void setIdActividadTuristica(Integer idActividadTuristica) {
-        this.idActividadTuristica = idActividadTuristica;
+    public void setActividadTuristicaId(Integer idActividadTuristica) {
+        this.ActividadTuristicaId = idActividadTuristica;
     }
 
     /**
      * @return the idPlan
      */
-    public Integer getIdPlan() {
-        return idPlan;
+    public Integer getPlanId() {
+        return PlanId;
     }
 
     /**
      * @param idPlan the idPlan to set
      */
-    public void setIdPlan(Integer idPlan) {
-        this.idPlan = idPlan;
+    public void setPlanId(Integer idPlan) {
+        this.PlanId = idPlan;
     }
     
 }

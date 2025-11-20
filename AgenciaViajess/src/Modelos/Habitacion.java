@@ -12,7 +12,7 @@ package Modelos;
 public class Habitacion {
     private Integer Id;
     private int capacidad;
-    private Integer idHotel;
+    private Integer HotelId;
     public Habitacion() {
     }
 
@@ -50,17 +50,19 @@ public class Habitacion {
     }
 
     /**
-     * @return the idHotel
+     * @return the HotelId
      */
-    public Integer getIdHotel() {
-        return idHotel;
+    public Integer getHotelId() {
+        return HotelId;
     }
 
     /**
-     * @param idHotel the idHotel to set
+     * @param HotelId the HotelId to set
      */
-    public void setIdHotel(Integer idHotel) {
-        this.idHotel = idHotel;
+    public void setHotelId(Integer HotelId) {
+        this.HotelId = HotelId;
     }
+
+
     
 }

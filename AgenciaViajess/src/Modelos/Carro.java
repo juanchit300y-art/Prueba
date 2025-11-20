@@ -10,7 +10,7 @@ package Modelos;
  * @author Juan Guerrero
  */
 public class Carro extends Vehiculo {
-    private Integer idHotel;
+    private Integer HotelId;
     
     public Carro() {
     }
@@ -21,14 +21,14 @@ public class Carro extends Vehiculo {
     /**
      * @return the idHotel
      */
-    public Integer getIdHotel() {
-        return idHotel;
+    public Integer getHotelId() {
+        return HotelId;
     }
 
     /**
      * @param idHotel the idHotel to set
      */
-    public void setIdHotel(Integer idHotel) {
-        this.idHotel = idHotel;
+    public void setHotelId(Integer idHotel) {
+        this.HotelId = idHotel;
     }
 }
