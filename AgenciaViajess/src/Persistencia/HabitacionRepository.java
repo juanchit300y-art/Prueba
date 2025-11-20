@@ -12,7 +12,7 @@ import Modelos.Habitacion;
 public class HabitacionRepository extends GeneralRepository<Habitacion> {
     
     public HabitacionRepository() {
-        this.dataAccess = new JsonRepository<>("habitacion.json", Habitacion.class);
+        this.dataAccess = new JsonRepository<>("habitaciones.json", Habitacion.class);
     }
     public HabitacionRepository(IDataAccess<Habitacion> dataAccess) {
         this.dataAccess = dataAccess;

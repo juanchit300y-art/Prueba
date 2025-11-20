@@ -12,7 +12,7 @@ import Modelos.Entretenimiento;
 public class EntretenimientoRepository extends GeneralRepository<Entretenimiento> {
     
     public EntretenimientoRepository() {
-        this.dataAccess = new JsonRepository<>("entretenimiento.json", Entretenimiento.class);
+        this.dataAccess = new JsonRepository<>("entretenimientos.json", Entretenimiento.class);
     }
     public EntretenimientoRepository(IDataAccess<Entretenimiento> dataAccess) {
         this.dataAccess = dataAccess;

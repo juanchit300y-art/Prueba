@@ -12,7 +12,7 @@ import Modelos.ElementoPlan;
 public class ElementoPlanRepository extends GeneralRepository<ElementoPlan> {
     
     public ElementoPlanRepository() {
-        this.dataAccess = new JsonRepository<>("elementoPlan.json", ElementoPlan.class);
+        this.dataAccess = new JsonRepository<>("elementosDePlan.json", ElementoPlan.class);
     }
     public ElementoPlanRepository(IDataAccess<ElementoPlan> dataAccess) {
         this.dataAccess = dataAccess;

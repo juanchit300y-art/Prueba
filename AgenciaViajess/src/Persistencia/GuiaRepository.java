@@ -12,7 +12,7 @@ import Modelos.Guia;
 public class GuiaRepository extends GeneralRepository<Guia> {
     
     public GuiaRepository() {
-        this.dataAccess = new JsonRepository<>("guia.json", Guia.class);
+        this.dataAccess = new JsonRepository<>("guias.json", Guia.class);
     }
     public GuiaRepository(IDataAccess<Guia> dataAccess) {
         this.dataAccess = dataAccess;

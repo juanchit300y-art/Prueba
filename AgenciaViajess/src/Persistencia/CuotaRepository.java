@@ -12,7 +12,7 @@ import Modelos.Cuota;
 public class CuotaRepository extends GeneralRepository<Cuota> {
     
     public CuotaRepository() {
-        this.dataAccess = new JsonRepository<>("cuota.json", Cuota.class);
+        this.dataAccess = new JsonRepository<>("cuotas.json", Cuota.class);
     }
     public CuotaRepository(IDataAccess<Cuota> dataAccess) {
         this.dataAccess = dataAccess;

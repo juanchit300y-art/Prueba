@@ -12,7 +12,7 @@ import Modelos.Cliente;
 public class ClienteRepository extends GeneralRepository<Cliente> {
     
     public ClienteRepository() {
-        this.dataAccess = new JsonRepository<>("cliente.json", Cliente.class);
+        this.dataAccess = new JsonRepository<>("clientes.json", Cliente.class);
     }
     public ClienteRepository(IDataAccess<Cliente> dataAccess) {
         this.dataAccess = dataAccess;
