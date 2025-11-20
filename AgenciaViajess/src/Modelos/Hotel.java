@@ -13,6 +13,8 @@ public class Hotel {
     private Integer id;
     private String nombre;
     private String correo;
+    private Integer idMunicipio;
+    
 
     public Hotel() {
     }
@@ -63,6 +65,20 @@ public class Hotel {
      */
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    /**
+     * @return the idMunicipio
+     */
+    public Integer getIdMunicipio() {
+        return idMunicipio;
+    }
+
+    /**
+     * @param idMunicipio the idMunicipio to set
+     */
+    public void setIdMunicipio(Integer idMunicipio) {
+        this.idMunicipio = idMunicipio;
     }
     
 }

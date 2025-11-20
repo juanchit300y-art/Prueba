@@ -12,6 +12,7 @@ package Modelos;
 public class ActividadTuristica {
    private Integer id;
    private String nombre;
+   private Integer idMunicipio;
 
     public ActividadTuristica() {
     }
@@ -47,6 +48,20 @@ public class ActividadTuristica {
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    /**
+     * @return the idMunicipio
+     */
+    public Integer getIdMunicipio() {
+        return idMunicipio;
+    }
+
+    /**
+     * @param idMunicipio the idMunicipio to set
+     */
+    public void setIdMunicipio(Integer idMunicipio) {
+        this.idMunicipio = idMunicipio;
     }
    
 }

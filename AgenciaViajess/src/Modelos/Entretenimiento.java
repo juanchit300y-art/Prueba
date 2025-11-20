@@ -11,6 +11,8 @@ package Modelos;
  */
 public class Entretenimiento {
     private Integer id;
+    private Integer idPlan;
+    private Integer idViaje;
 
     public Entretenimiento() {
     }
@@ -31,6 +33,34 @@ public class Entretenimiento {
      */
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    /**
+     * @return the idPlan
+     */
+    public Integer getIdPlan() {
+        return idPlan;
+    }
+
+    /**
+     * @param idPlan the idPlan to set
+     */
+    public void setIdPlan(Integer idPlan) {
+        this.idPlan = idPlan;
+    }
+
+    /**
+     * @return the idViaje
+     */
+    public Integer getIdViaje() {
+        return idViaje;
+    }
+
+    /**
+     * @param idViaje the idViaje to set
+     */
+    public void setIdViaje(Integer idViaje) {
+        this.idViaje = idViaje;
     }
     
 }

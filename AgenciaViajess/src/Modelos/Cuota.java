@@ -12,6 +12,7 @@ package Modelos;
 public class Cuota {
     private Integer id;
     private int monto;
+    private Integer idViaje;
 
     public Cuota() {
     }
@@ -47,6 +48,20 @@ public class Cuota {
      */
     public void setMonto(int monto) {
         this.monto = monto;
+    }
+
+    /**
+     * @return the idViaje
+     */
+    public Integer getIdViaje() {
+        return idViaje;
+    }
+
+    /**
+     * @param idViaje the idViaje to set
+     */
+    public void setIdViaje(Integer idViaje) {
+        this.idViaje = idViaje;
     }
     
 }
