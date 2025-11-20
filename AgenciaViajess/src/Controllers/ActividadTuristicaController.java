@@ -5,16 +5,28 @@
  */
 package Controllers;
 import Persistencia.ActividadTuristicaRepository;
+import Modelos.ActividadTuristica;
 /**
  *
  * @author DELL
  */
-public class ActividadTuristicaController extends GeneralController {
+public class ActividadTuristicaController extends GeneralController<ActividadTuristica> {
 
     public ActividadTuristicaController() {
     }
     public ActividadTuristicaController(ActividadTuristicaRepository classData) {
         this.classData= new ActividadTuristicaRepository();
     }
+
+    @Override
+    public boolean actualizarObjeto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean añadirObjeto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     
 }
