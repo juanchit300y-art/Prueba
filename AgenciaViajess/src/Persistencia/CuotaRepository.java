@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,10 +6,16 @@
  */
 package Persistencia;
 
-/**
- *
- * @author Juan Guerrero
- */
-public class CuotaRepository {
+
+import Modelos.Cuota;
+
+public class CuotaRepository extends GeneralRepository<Cuota> {
     
+    public CuotaRepository() {
+        this.dataAccess = new JsonRepository<>("cuota.json", Cuota.class);
+    }
+    public CuotaRepository(IDataAccess<Cuota> dataAccess) {
+        this.dataAccess = dataAccess;
+    }
+   
 }
