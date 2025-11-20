@@ -12,7 +12,7 @@ package Modelos;
 public class Factura {
     private Integer id;
     private Integer ViajeId;
-    private Integer UsuarioId;
+    private Integer ClienteId;
     
     
     public Factura() {
@@ -51,18 +51,20 @@ public class Factura {
     }
 
     /**
-     * @return the UsuarioId
+     * @return the ClienteId
      */
-    public Integer getUsuarioId() {
-        return UsuarioId;
+    public Integer getClienteId() {
+        return ClienteId;
     }
 
     /**
-     * @param UsuarioId the UsuarioId to set
+     * @param ClienteId the ClienteId to set
      */
-    public void setUsuarioId(Integer UsuarioId) {
-        this.UsuarioId = UsuarioId;
+    public void setClienteId(Integer ClienteId) {
+        this.ClienteId = ClienteId;
     }
+
+
 
    
 

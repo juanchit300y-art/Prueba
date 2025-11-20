@@ -8,6 +8,8 @@ package Persistencia;
 
 
 import Modelos.Habitacion;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HabitacionRepository extends GeneralRepository<Habitacion> {
     
@@ -17,5 +19,15 @@ public class HabitacionRepository extends GeneralRepository<Habitacion> {
     public HabitacionRepository(IDataAccess<Habitacion> dataAccess) {
         this.dataAccess = dataAccess;
     }
-   
+    
+    public List<Habitacion> findHabitacionesByMunicipioId(Integer planId) {
+        List<Habitacion> habitaciones = getAllT();
+        List<Habitacion> result = new ArrayList<>();
+        for (Habitacion habitacion : habitaciones) {
+            if (habitacion.getHotelId() != null && habitacion.getHotelId().equals(planId)) {
+                result.add(habitacion);
+            }
+        }
+        return result;
+    }
 }

@@ -8,6 +8,8 @@ package Persistencia;
 
 
 import Modelos.Factura;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FacturasRepository extends GeneralRepository<Factura> {
     
@@ -17,5 +19,26 @@ public class FacturasRepository extends GeneralRepository<Factura> {
     public FacturasRepository(IDataAccess<Factura> dataAccess) {
         this.dataAccess = dataAccess;
     }
+    
+   public List<Factura> findFacturasByViajeId(Integer viajeId) {
+        List<Factura> facturas = getAllT();
+        List<Factura> result = new ArrayList<>();
+        for (Factura factura : facturas) {
+            if (factura.getViajeId() != null && factura.getViajeId().equals(viajeId)) {
+                result.add(factura);
+            }
+        }
+        return result;
+    }
    
+    public List<Factura> findFacturasByClienteId(Integer clienteId) {
+        List<Factura> facturas = getAllT();
+        List<Factura> result = new ArrayList<>();
+        for (Factura factura : facturas) {
+            if (factura.getClienteId() != null && factura.getClienteId().equals(clienteId)) {
+                result.add(factura);
+            }
+        }
+        return result;
+    }
 }
