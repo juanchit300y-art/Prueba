@@ -5,10 +5,36 @@
  */
 package Persistencia;
 
-/**
- *
- * @author Juan Guerrero
- */
+
+import Modelos.Plan;
+import java.util.List;
+import java.util.ArrayList;
+
 public class PlanRepository {
+    private IDataAccess<Plan> dataAccess;
     
+    public PlanRepository() {
+        this.dataAccess = new JsonRepository<>("Planes.json", Plan.class);
+    }
+    
+    // Constructor for dependency injection
+    public PlanRepository(IDataAccess<Plan> dataAccess) {
+        this.dataAccess = dataAccess;
+    }
+    
+    public List<Plan> getAllPlanes() {
+        return dataAccess.findAll();
+    }
+    
+    public Plan findPlanById(Integer id) {
+        return dataAccess.findById(id);
+    }
+    
+    public void savePlan(Plan plan) {
+        dataAccess.save(plan);
+    }
+    
+    public void deletePlan(Integer id) {
+        dataAccess.delete(id);
+    }
 }
