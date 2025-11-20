@@ -11,6 +11,8 @@ package Modelos;
  */
 public class Turno {
     private Integer id;
+    private Integer idActividadTuristica;
+    private Integer idGuia;
 
     public Turno() {
     }
@@ -31,6 +33,34 @@ public class Turno {
      */
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    /**
+     * @return the idActividadTuristica
+     */
+    public Integer getIdActividadTuristica() {
+        return idActividadTuristica;
+    }
+
+    /**
+     * @param idActividadTuristica the idActividadTuristica to set
+     */
+    public void setIdActividadTuristica(Integer idActividadTuristica) {
+        this.idActividadTuristica = idActividadTuristica;
+    }
+
+    /**
+     * @return the idGuia
+     */
+    public Integer getIdGuia() {
+        return idGuia;
+    }
+
+    /**
+     * @param idGuia the idGuia to set
+     */
+    public void setIdGuia(Integer idGuia) {
+        this.idGuia = idGuia;
     }
     
 }
