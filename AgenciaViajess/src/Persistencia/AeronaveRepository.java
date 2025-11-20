@@ -17,7 +17,7 @@ public class AeronaveRepository extends GeneralRepository<Aeronave> {
     public AeronaveRepository(IDataAccess<Aeronave> dataAccess) {
         this.dataAccess = dataAccess;
     }
-    public List<Aeronave> findActividadesTuristicasByAerolineaId(Integer AerolineaId) {
+    public List<Aeronave> findAAeronavesByAerolineaId(Integer AerolineaId) {
         List<Aeronave> aeronaves = getAllT();
         List<Aeronave> result = new ArrayList<>();
         for (Aeronave aeronave : aeronaves) {

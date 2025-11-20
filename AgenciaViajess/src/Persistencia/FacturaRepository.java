@@ -11,12 +11,12 @@ import Modelos.Factura;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FacturasRepository extends GeneralRepository<Factura> {
+public class FacturaRepository extends GeneralRepository<Factura> {
     
-    public FacturasRepository() {
+    public FacturaRepository() {
         this.dataAccess = new JsonRepository<>("facturas.json", Factura.class);
     }
-    public FacturasRepository(IDataAccess<Factura> dataAccess) {
+    public FacturaRepository(IDataAccess<Factura> dataAccess) {
         this.dataAccess = dataAccess;
     }
     
