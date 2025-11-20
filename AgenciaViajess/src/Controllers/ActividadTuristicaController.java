@@ -6,6 +6,7 @@
 package Controllers;
 import Persistencia.*;
 import Modelos.*;
+import java.util.List;
 
 
 /**
@@ -14,13 +15,31 @@ import Modelos.*;
  */
 public class ActividadTuristicaController extends GeneralController<ActividadTuristica> {
     MunicipioRepository municipioData;
+    TurnoRepository turnoData;
+    ElementoPlanRepository elementoPlanData;
     
     public ActividadTuristicaController() {
     }
     public ActividadTuristicaController(ActividadTuristicaRepository classData) {
         this.classData= new ActividadTuristicaRepository();
         this.municipioData= new MunicipioRepository();
+        this.turnoData= new TurnoRepository();
+        this.elementoPlanData= new ElementoPlanRepository();
     }
+    @Override
+    public boolean eliminarObjeto(Integer id) {
+        List<ElementoPlan> elementosPlanActividadTuristica= elementoPlanData.findElementosPLanByActividadTuristicaId(id);
+        List<Turno> turnosActividadTuristica= turnoData.findTurnosByActividadTuristicaId(id);        
+        if (!elementosPlanActividadTuristica.isEmpty()) {
+            return false; 
+        }
+        if (!turnosActividadTuristica.isEmpty()) {
+            return false; 
+        }
+        classData.deleteT(id);
+        return true;
+    }    
+    
     public boolean actualizarActividadTuristica(Integer id, String nombre, Integer municipioId) {
         ActividadTuristica actividadTuristica = classData.findATById(id);
         if (actividadTuristica == null) {
@@ -59,19 +78,4 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
         classData.saveT(actividadTuristica);
         return true;
     }
-
-    @Override
-    public boolean eliminarObjeto() {
-        
-        List<Course> professorCourses = courseRepository.findCoursesByProfessorId(id);
-        if (!professorCourses.isEmpty()) {
-            return false; // Cannot delete professor with assigned courses
-        }
-        
-        professorRepository.deleteProfessor(id);
-        return true;
-    }
-    }
-    
-    
 }

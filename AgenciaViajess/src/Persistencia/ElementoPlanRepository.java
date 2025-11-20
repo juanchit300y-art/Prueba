@@ -20,7 +20,7 @@ public class ElementoPlanRepository extends GeneralRepository<ElementoPlan> {
         this.dataAccess = dataAccess;
     }
     
-    public List<ElementoPlan> findElementoPLanByActividadTuristiaId(Integer actividadTuristicaId) {
+    public List<ElementoPlan> findElementosPLanByActividadTuristicaId(Integer actividadTuristicaId) {
         List<ElementoPlan> elementosDelPlan = getAllT();
         List<ElementoPlan> result = new ArrayList<>();
         for (ElementoPlan elementoPlan : elementosDelPlan) {
@@ -31,7 +31,7 @@ public class ElementoPlanRepository extends GeneralRepository<ElementoPlan> {
         return result;
     }
    
-    public List<ElementoPlan> findElementoPLanByPlanId(Integer planId) {
+    public List<ElementoPlan> findElementosPLanByPlanId(Integer planId) {
         List<ElementoPlan> elementosDelPlan = getAllT();
         List<ElementoPlan> result = new ArrayList<>();
         for (ElementoPlan elementoPlan : elementosDelPlan) {
