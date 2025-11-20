@@ -5,10 +5,16 @@
  */
 package Persistencia;
 
-/**
- *
- * @author Juan Guerrero
- */
-public class ViajeRepository {
+
+import Modelos.Viaje;
+
+public class ViajeRepository extends GeneralRepository<Viaje>{
     
+    
+    public ViajeRepository() {
+        this.dataAccess = new JsonRepository<>("Viajes.json", Viaje.class);
+    }
+    public ViajeRepository(IDataAccess<Viaje> dataAccess) {
+        this.dataAccess = dataAccess;
+    }
 }

@@ -7,34 +7,14 @@ package Persistencia;
 
 
 import Modelos.ServicioTransporte;
-import java.util.List;
-import java.util.ArrayList;
 
-public class ServicioTransporteRepository {
-    private IDataAccess<ServicioTransporte> dataAccess;
+public class ServicioTransporteRepository extends GeneralRepository<ServicioTransporte>{
+    
     
     public ServicioTransporteRepository() {
         this.dataAccess = new JsonRepository<>("ServiciosDeTransporte.json", ServicioTransporte.class);
     }
-    
-    // Constructor for dependency injection
     public ServicioTransporteRepository(IDataAccess<ServicioTransporte> dataAccess) {
         this.dataAccess = dataAccess;
-    }
-    
-    public List<ServicioTransporte> getAllServiciosDeTransporte() {
-        return dataAccess.findAll();
-    }
-    
-    public ServicioTransporte findServicioTransporteById(Integer id) {
-        return dataAccess.findById(id);
-    }
-    
-    public void ServicioTransporteCourse(ServicioTransporte servicioTransporte) {
-        dataAccess.save(servicioTransporte);
-    }
-    
-    public void deleteServicioTransporte(Integer id) {
-        dataAccess.delete(id);
     }
 }

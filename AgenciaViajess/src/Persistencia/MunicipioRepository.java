@@ -5,10 +5,16 @@
  */
 package Persistencia;
 
-/**
- *
- * @author Juan Guerrero
- */
-public class MunicipioRepository {
+
+import Modelos.Municipio;
+
+public class MunicipioRepository extends GeneralRepository<Municipio>{
     
+    
+    public MunicipioRepository() {
+        this.dataAccess = new JsonRepository<>("Municipios.json", Municipio.class);
+    }
+    public MunicipioRepository(IDataAccess<Municipio> dataAccess) {
+        this.dataAccess = dataAccess;
+    }
 }
