@@ -6,15 +6,15 @@
 package Persistencia;
 
 
-import Modelos.Plan;
+import Modelos.Hotel;
 
-public class PlanRepository extends GeneralRepository<Plan>{
+public class FacturaRepository extends GeneralRepository<Hotel>{
     
     
-    public PlanRepository() {
-        this.dataAccess = new JsonRepository<>("Planes.json", Plan.class);
+    public FacturaRepository() {
+        this.dataAccess = new JsonRepository<>("Hoteles.json", Hotel.class);
     }
-    public PlanRepository(IDataAccess<Plan> dataAccess) {
+    public FacturaRepository(IDataAccess<Hotel> dataAccess) {
         this.dataAccess = dataAccess;
     }
 }

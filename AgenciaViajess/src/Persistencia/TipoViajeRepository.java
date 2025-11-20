@@ -5,10 +5,16 @@
  */
 package Persistencia;
 
-/**
- *
- * @author Juan Guerrero
- */
-public class TipoViajeRepository {
+
+import Modelos.Factura;
+
+public class FacturaRepository extends GeneralRepository<Factura>{
     
+    
+    public HotelRepository() {
+        this.dataAccess = new JsonRepository<>("Hoteles.json", Hotel.class);
+    }
+    public HotelRepository(IDataAccess<Hotel> dataAccess) {
+        this.dataAccess = dataAccess;
+    }
 }
