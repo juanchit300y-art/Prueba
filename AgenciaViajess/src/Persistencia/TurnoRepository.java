@@ -24,7 +24,7 @@ public class TurnoRepository extends GeneralRepository<Turno>{
         List<Turno> turnos = getAllT();
         List<Turno> result = new ArrayList<>();
         for (Turno turno : turnos) {
-            if (turno.getIdGuia() != null && turno.getIdGuia().equals(guiaId)) {
+            if (turno.getGuiaId() != null && turno.getGuiaId().equals(guiaId)) {
                 result.add(turno);
             }
         }
@@ -35,7 +35,7 @@ public class TurnoRepository extends GeneralRepository<Turno>{
         List<Turno> turnos = getAllT();
         List<Turno> result = new ArrayList<>();
         for (Turno turno : turnos) {
-            if (turno.getIdActividadTuristica() != null && turno.getIdActividadTuristica().equals(actividadTuristicaId)) {
+            if (turno.getActividadTuristicaId() != null && turno.getActividadTuristicaId().equals(actividadTuristicaId)) {
                 result.add(turno);
             }
         }
