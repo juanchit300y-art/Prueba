@@ -7,8 +7,8 @@ package Persistencia;
 
 /**
  *
- * @author Juan Guerrero
+ * @author DELL
  */
-public class TipoViajeRepository {
+public class FacturaRepository {
     
 }
