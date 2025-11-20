@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataAccess;
+package Persistencia;
 
 
 import Persistencia.IDataAccess;
@@ -35,7 +35,7 @@ public class JsonRepository<T> implements IDataAccess<T>{
         } catch (FileNotFoundException e) {
             return new ArrayList<T>();
         } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
+            System.err.println("Horror leyendo archivo: " + e.getMessage());
             return new ArrayList<T>();
         }
     }
@@ -44,7 +44,7 @@ public class JsonRepository<T> implements IDataAccess<T>{
         try (Writer writer = new FileWriter(filename)) {
             gson.toJson(items, writer);
         } catch (IOException e) {
-            System.err.println("Error writing file: " + e.getMessage());
+            System.err.println("Horror escribiendo archivo: " + e.getMessage());
         }
     }
     
@@ -58,7 +58,7 @@ public class JsonRepository<T> implements IDataAccess<T>{
                     maxId = currentId;
                 }
             } catch (Exception e) {
-                System.err.println("Error getting ID: " + e.getMessage());
+                System.err.println("Horror obteniendo ID: " + e.getMessage());
             }
         }
         return maxId + 1;
@@ -75,7 +75,7 @@ public class JsonRepository<T> implements IDataAccess<T>{
                     return item;
                 }
             } catch (Exception e) {
-                System.err.println("Error finding item: " + e.getMessage());
+                System.err.println("Horror encontrando objeto: " + e.getMessage());
             }
         }
         return null;
@@ -117,7 +117,7 @@ public class JsonRepository<T> implements IDataAccess<T>{
             }
             writeToFile(items);
         } catch (Exception e) {
-            System.err.println("Error saving item: " + e.getMessage());
+            System.err.println("Horror guardando objeto: " + e.getMessage());
         }
     }
     
@@ -136,7 +136,7 @@ public class JsonRepository<T> implements IDataAccess<T>{
             }
             writeToFile(items);
         } catch (Exception e) {
-            System.err.println("Error deleting item: " + e.getMessage());
+            System.err.println("Horror eliminando objeto: " + e.getMessage());
         }
     }
 }
