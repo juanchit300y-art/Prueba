@@ -4,11 +4,17 @@
  * and open the template in the editor.
  */
 package Controllers;
-
+import Persistencia.ActividadTuristicaRepository;
 /**
  *
  * @author DELL
  */
-public class ActividadTuristicaController {
+public class ActividadTuristicaController extends GeneralController {
+
+    public ActividadTuristicaController() {
+    }
+    public ActividadTuristicaController(ActividadTuristicaRepository classData) {
+        this.classData= new ActividadTuristicaRepository();
+    }
     
 }
