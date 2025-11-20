@@ -39,5 +39,4 @@ public class ServicioTransporteRepository extends GeneralRepository<ServicioTran
         }
         return result;
     }
-    //algo
 }
