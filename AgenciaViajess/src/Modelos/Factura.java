@@ -11,6 +11,7 @@ package Modelos;
  */
 public class Factura {
     private Integer id;
+    private Integer costo;
     private Integer ViajeId;
     private Integer ClienteId;
     
@@ -18,8 +19,9 @@ public class Factura {
     public Factura() {
     }
     
-    public Factura(Integer id) {
+    public Factura(Integer id, Integer costo) {
         this.id = id;
+        this.costo= costo;
     }
 
     /**
@@ -62,6 +64,20 @@ public class Factura {
      */
     public void setClienteId(Integer ClienteId) {
         this.ClienteId = ClienteId;
+    }
+
+    /**
+     * @return the costo
+     */
+    public Integer getCosto() {
+        return costo;
+    }
+
+    /**
+     * @param costo the costo to set
+     */
+    public void setCosto(Integer costo) {
+        this.costo = costo;
     }
 
 

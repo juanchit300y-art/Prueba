@@ -4,11 +4,64 @@
  * and open the template in the editor.
  */
 package Controllers;
+import Persistencia.*;
+import Modelos.*;
+import java.util.List;
+
 
 /**
  *
  * @author DELL
  */
-public class CuotaController {
+public class CuotaController extends GeneralController<Cuota> {
+    ViajeRepository viajeData;
     
+    public CuotaController() {
+    }
+    public CuotaController(CuotaRepository classData) {
+        this.classData= new CuotaRepository();
+        this.viajeData= new ViajeRepository();
+    }
+    @Override
+    public boolean eliminarObjeto(Integer id) {
+        classData.deleteT(id);
+        return true;
+    }    
+    
+    public boolean actualizarCuota(Integer id, Integer monto, Integer viajeId) {
+        Cuota cuota = classData.findATById(id);
+        if (cuota == null) {
+            return false;
+        }
+        if (monto != null && monto >0 ) {
+            cuota.setMonto(monto);
+        }
+        if (viajeId != null) {
+            
+            Viaje viaje = viajeData.findATById(viajeId);
+            if (viaje == null) {
+                return false;
+            }
+            cuota.setViajeId(viajeId);
+        }
+
+        classData.saveT(cuota);
+        return true;
+    }
+
+    public boolean añadirCuota( Integer monto, Integer viajeId) {
+        if (monto == null || monto < 0) {
+            return false;
+        }
+        Viaje viaje = viajeData.findATById(viajeId);
+        if (viaje == null) {
+            return false;
+        }
+        Cuota couta = new Cuota();
+        couta.setMonto(monto);
+        couta.setViajeId(viajeId);
+        
+        classData.saveT(couta);
+        return true;
+    }
 }

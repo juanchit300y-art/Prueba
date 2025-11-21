@@ -10,12 +10,12 @@ package Modelos;
  * @author Juan Guerrero
  */
 public class Guia extends Usuario {
-    private int añosExperiencia;
+    private Integer añosExperiencia;
 
     public Guia() {
     }
 
-    public Guia(int añosExperiencia, Integer id, String nombre, String contraseña, String correo) {
+    public Guia( Integer id, String nombre, String contraseña, String correo, Integer añosExperiencia) {
         super(id, nombre, contraseña, correo);
         this.añosExperiencia = añosExperiencia;
     }
@@ -23,14 +23,14 @@ public class Guia extends Usuario {
     /**
      * @return the añosExperiencia
      */
-    public int getAñosExperiencia() {
+    public Integer getAñosExperiencia() {
         return añosExperiencia;
     }
 
     /**
      * @param añosExperiencia the añosExperiencia to set
      */
-    public void setAñosExperiencia(int añosExperiencia) {
+    public void setAñosExperiencia(Integer añosExperiencia) {
         this.añosExperiencia = añosExperiencia;
     }
     
