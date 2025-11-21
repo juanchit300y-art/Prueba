@@ -19,8 +19,9 @@ public class Factura {
     public Factura() {
     }
     
-    public Factura(Integer id) {
+    public Factura(Integer id, Integer costo) {
         this.id = id;
+        this.costo= costo;
     }
 
     /**

@@ -29,10 +29,13 @@ public class FacturaController extends GeneralController<Factura> {
         return true;
     }    
     
-    public boolean actualizarFactura(Integer id, Integer viajeId, Integer clienteId) {
+    public boolean actualizarFactura(Integer id,Integer costo,  Integer viajeId, Integer clienteId) {
         Factura factura = classData.findATById(id);
         if (factura == null) {
             return false;
+        }
+        if (costo != null && costo<0) {
+            factura.setCosto(costo);
         }
         if (viajeId != null) {
             Viaje viaje = viajeData.findATById(viajeId);
@@ -52,7 +55,10 @@ public class FacturaController extends GeneralController<Factura> {
         return true;
     }
 
-    public boolean añadirFactura(Integer viajeId, Integer clienteId) {
+    public boolean añadirFactura(Integer costo, Integer viajeId, Integer clienteId) {
+        if (costo == null || costo<1) {
+            return false;
+        }
         Viaje viaje = viajeData.findATById(viajeId);
         if (viaje == null) {
             return false;
@@ -62,6 +68,7 @@ public class FacturaController extends GeneralController<Factura> {
             return false;
         }
         Factura factura = new Factura();
+        factura.setCosto(costo);
         factura.setViajeId(viajeId);
         factura.setClienteId(clienteId);
         
