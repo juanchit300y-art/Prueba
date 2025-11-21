@@ -12,7 +12,7 @@ package Modelos;
 public class Cuota {
     private Integer id;
     private int monto;
-    private Integer ViajeId;
+    private Integer viajeId;
 
     public Cuota() {
     }
