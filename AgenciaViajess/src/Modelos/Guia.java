@@ -10,7 +10,7 @@ package Modelos;
  * @author Juan Guerrero
  */
 public class Guia extends Usuario {
-    private int añosExperiencia;
+    private Integer añosExperiencia;
 
     public Guia() {
     }

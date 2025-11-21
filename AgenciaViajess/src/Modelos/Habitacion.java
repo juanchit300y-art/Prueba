@@ -11,7 +11,7 @@ package Modelos;
  */
 public class Habitacion {
     private Integer Id;
-    private int capacidad;
+    private Integer capacidad;
     private Integer HotelId;
     public Habitacion() {
     }
@@ -38,14 +38,14 @@ public class Habitacion {
     /**
      * @return the capacidad
      */
-    public int getCapacidad() {
+    public Integer getCapacidad() {
         return capacidad;
     }
 
     /**
      * @param capacidad the capacidad to set
      */
-    public void setCapacidad(int capacidad) {
+    public void setCapacidad(Integer capacidad) {
         this.capacidad = capacidad;
     }
 

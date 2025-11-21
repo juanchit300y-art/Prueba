@@ -39,14 +39,14 @@ public class Cuota {
     /**
      * @return the monto
      */
-    public int getMonto() {
+    public Integer getMonto() {
         return monto;
     }
 
     /**
      * @param monto the monto to set
      */
-    public void setMonto(int monto) {
+    public void setMonto(Integer monto) {
         this.monto = monto;
     }
 
