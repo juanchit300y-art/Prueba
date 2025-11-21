@@ -15,7 +15,7 @@ public class Cliente extends Usuario{
     public Cliente() {
     }
 
-    public Cliente(String medioDePago, Integer id, String nombre, String contraseña, String correo) {
+    public Cliente(Integer id, String nombre, String contraseña, String correo, String medioDePago) {
         super(id, nombre, contraseña, correo);
         this.medioDePago = medioDePago;
     }

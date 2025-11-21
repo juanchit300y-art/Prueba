@@ -15,7 +15,7 @@ public class Guia extends Usuario {
     public Guia() {
     }
 
-    public Guia(int añosExperiencia, Integer id, String nombre, String contraseña, String correo) {
+    public Guia( Integer id, String nombre, String contraseña, String correo, int añosExperiencia) {
         super(id, nombre, contraseña, correo);
         this.añosExperiencia = añosExperiencia;
     }
