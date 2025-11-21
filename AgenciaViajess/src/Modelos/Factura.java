@@ -65,6 +65,20 @@ public class Factura {
         this.ClienteId = ClienteId;
     }
 
+    /**
+     * @return the costo
+     */
+    public Integer getCosto() {
+        return costo;
+    }
+
+    /**
+     * @param costo the costo to set
+     */
+    public void setCosto(Integer costo) {
+        this.costo = costo;
+    }
+
 
 
    
