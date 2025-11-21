@@ -14,6 +14,7 @@
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/Guia.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/ActividadTuristicaRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/Aerolinea.java</file>
+            <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/CarroController.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Presentacion/SubMenuActividadTuristica.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/ReservaRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/TurnoRepository.java</file>
@@ -27,6 +28,7 @@
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/HabitacionController.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/ItinerarioTransporte.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/ElementoPlanController.java</file>
+            <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/MunicipioController.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/PlanRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/IDataAccess.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/ItinerarioTransporteController.java</file>
@@ -39,7 +41,6 @@
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/ElementoPlan.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/AeronaveController.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/Usuario.java</file>
-            <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/FacturasRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/EntretenimientoRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/ServicioTransporteRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Presentacion/SubMenuAeronave.java</file>
