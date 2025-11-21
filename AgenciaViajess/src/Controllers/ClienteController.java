@@ -14,52 +14,66 @@ import java.util.List;
  * @author DELL
  */
 public class ClienteController extends GeneralController<Cliente> {
-    FacturasRepository hotelData;
+    FacturaRepository facturaData;
     
     public ClienteController() {
     }
-    public ClienteController(CarroRepository classData) {
-        this.classData= new CarroRepository();
-        this.hotelData= new HotelRepository();
+    public ClienteController(ClienteRepository classData) {
+        this.classData= new ClienteRepository();
+        this.facturaData= new FacturaRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
+        List<Factura> facturasCliente= facturaData.findFacturasByClienteId(id);        
+        if (!facturasCliente.isEmpty()) {
+            return false; 
+        }
         classData.deleteT(id);
         return true;
     }    
     
-    public boolean actualizarCarro(Integer id, String marca, Integer hotelId) {
-        Carro carro = classData.findATById(id);
-        if (carro == null) {
+    public boolean actualizarCliente(Integer id, String nombre, String contraseña,String correo,  String medioDePago) {
+        Cliente cliente = classData.findATById(id);
+        if (cliente == null) {
             return false;
         }
-        if (marca != null && !marca.trim().isEmpty()) {
-            carro.setMarca(marca.trim());
+        if (nombre != null && !nombre.trim().isEmpty()) {
+            cliente.setNombre(nombre.trim());
         }
-        if (hotelId != null) {
-            Hotel hotel = hotelData.findATById(hotelId);
-            if (hotel == null) {
-                return false;
-            }
-            carro.setHotelId(hotelId);
+        if (contraseña != null && !contraseña.trim().isEmpty()) {
+            cliente.setContraseña(contraseña.trim());
         }
-        classData.saveT(carro);
+        if (correo != null && !correo.trim().isEmpty()) {
+            cliente.setCorreo(correo.trim());
+        }
+        if (medioDePago != null && !medioDePago.trim().isEmpty()) {
+            cliente.setMedioDePago(medioDePago.trim());
+        }      
+
+        classData.saveT(cliente);
         return true;
     }
 
-    public boolean añadirCarro(String marca, Integer hotelId) {
-        if (marca == null || marca.trim().isEmpty()) {
+    public boolean añadirCliente(String nombre, String contraseña,String correo,  String medioDePago) {
+        if (nombre == null || nombre.trim().isEmpty()) {
             return false;
         }
-        Hotel hotel = hotelData.findATById(hotelId);
-        if (hotel == null) {
+        if (contraseña == null ||  contraseña.trim().isEmpty()) {
             return false;
         }
-        Carro carro = new Carro();
-        carro.setMarca(marca.trim());
-        carro.setHotelId(hotelId);
+        if (correo == null  || correo.trim().isEmpty()) {
+            return false;
+        }
+        if (medioDePago == null  || medioDePago.trim().isEmpty()) {
+            return false;
+        }  
+        Cliente cliente = new Cliente();
+        cliente.setNombre(nombre.trim());
+        cliente.setContraseña(contraseña);
+        cliente.setCorreo(correo);
+        cliente.setMedioDePago(medioDePago);
         
-        classData.saveT(carro);
+        classData.saveT(cliente);
         return true;
     }
 }
