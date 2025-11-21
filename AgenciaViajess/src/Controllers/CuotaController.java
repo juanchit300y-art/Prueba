@@ -28,12 +28,12 @@ public class CuotaController extends GeneralController<Cuota> {
         return true;
     }    
     
-    public boolean actualizarCuota(Integer id, int monto, Integer viajeId) {
-        Cliente cliente = classData.findATById(id);
-        if (cliente == null) {
+    public boolean actualizarCuota(Integer id, Integer monto, Integer viajeId) {
+        Cuota cuota = classData.findATById(id);
+        if (cuota == null) {
             return false;
         }
-        if (nombre != null && !nombre.trim().isEmpty()) {
+        if (monto != null && monto >0 ) {
             cliente.setNombre(nombre.trim());
         }
         if (contraseña != null && !contraseña.trim().isEmpty()) {

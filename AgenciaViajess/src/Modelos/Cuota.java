@@ -11,7 +11,7 @@ package Modelos;
  */
 public class Cuota {
     private Integer id;
-    private int monto;
+    private Integer monto;
     private Integer viajeId;
 
     public Cuota() {
@@ -54,14 +54,14 @@ public class Cuota {
      * @return the idViaje
      */
     public Integer getViajeId() {
-        return ViajeId;
+        return viajeId;
     }
 
     /**
      * @param idViaje the idViaje to set
      */
     public void setViajeId(Integer idViaje) {
-        this.ViajeId = idViaje;
+        this.viajeId = idViaje;
     }
     
 }
