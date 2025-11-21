@@ -49,7 +49,7 @@ public class CuotaController extends GeneralController<Cuota> {
         return true;
     }
 
-    public boolean añadirCuota(Integer id, Integer monto, Integer viajeId) {
+    public boolean añadirCuota( Integer monto, Integer viajeId) {
         if (monto == null || monto < 0) {
             return false;
         }
