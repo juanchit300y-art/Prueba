@@ -34,42 +34,34 @@ public class CuotaController extends GeneralController<Cuota> {
             return false;
         }
         if (monto != null && monto >0 ) {
-            cliente.setNombre(nombre.trim());
+            cuota.setMonto(monto);
         }
-        if (contraseña != null && !contraseña.trim().isEmpty()) {
-            cliente.setContraseña(contraseña.trim());
+        if (viajeId != null) {
+            
+            Viaje viaje = viajeData.findATById(viajeId);
+            if (viaje == null) {
+                return false;
+            }
+            cuota.setViajeId(viajeId);
         }
-        if (correo != null && !correo.trim().isEmpty()) {
-            cliente.setCorreo(correo.trim());
-        }
-        if (medioDePago != null && !medioDePago.trim().isEmpty()) {
-            cliente.setMedioDePago(medioDePago.trim());
-        }      
 
-        classData.saveT(cliente);
+        classData.saveT(cuota);
         return true;
     }
 
-    public boolean añadirCliente(String nombre, String contraseña,String correo,  String medioDePago) {
-        if (nombre == null || nombre.trim().isEmpty()) {
+    public boolean añadirCuota(Integer id, Integer monto, Integer viajeId) {
+        if (monto == null || monto < 0) {
             return false;
         }
-        if (contraseña == null ||  contraseña.trim().isEmpty()) {
+        Viaje viaje = viajeData.findATById(viajeId);
+        if (viaje == null) {
             return false;
         }
-        if (correo == null  || correo.trim().isEmpty()) {
-            return false;
-        }
-        if (medioDePago == null  || medioDePago.trim().isEmpty()) {
-            return false;
-        }  
-        Cliente cliente = new Cliente();
-        cliente.setNombre(nombre.trim());
-        cliente.setContraseña(contraseña);
-        cliente.setCorreo(correo);
-        cliente.setMedioDePago(medioDePago);
+        Cuota couta = new Cuota();
+        couta.setMonto(monto);
+        couta.setViajeId(viajeId);
         
-        classData.saveT(cliente);
+        classData.saveT(couta);
         return true;
     }
 }
