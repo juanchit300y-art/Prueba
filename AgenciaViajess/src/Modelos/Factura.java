@@ -11,6 +11,7 @@ package Modelos;
  */
 public class Factura {
     private Integer id;
+    private Integer costo;
     private Integer ViajeId;
     private Integer ClienteId;
     
