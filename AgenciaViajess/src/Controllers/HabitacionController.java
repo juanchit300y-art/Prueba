@@ -34,47 +34,38 @@ public class HabitacionController extends GeneralController<Habitacion> {
     }    
     
     public boolean actualizarHabitacion(Integer id, Integer capacidad, Integer hotelId) {
-        Guia guia = classData.findATById(id);
-        if (guia == null) {
+        Habitacion habitacion = classData.findATById(id);
+        if (habitacion == null) {
             return false;
         }
-        if (nombre != null && !nombre.trim().isEmpty()) {
-            guia.setNombre(nombre.trim());
+        if (capacidad != null && capacidad >0) {
+            habitacion.setCapacidad(capacidad);
         }
-        if (contraseña != null && !contraseña.trim().isEmpty()) {
-            guia.setContraseña(contraseña.trim());
+        if (hotelId != null) {
+            Hotel hotel = hotelData.findATById(hotelId);
+            if (hotel == null) {
+                return false;
+            }
+            habitacion.setHotelId(hotelId);
         }
-        if (correo != null && !correo.trim().isEmpty()) {
-            guia.setCorreo(correo.trim());
-        }
-        if (añosExperiencia != null && añosExperiencia > -1) {
-            guia.setAñosExperiencia(añosExperiencia);
-        }      
 
-        classData.saveT(guia);
+        classData.saveT(habitacion);
         return true;
     }
 
-    public boolean añadirGuia(String nombre, String contraseña,String correo,  Integer añosExperiencia) {
-        if (nombre == null || nombre.trim().isEmpty()) {
+    public boolean añadirHabitacion(Integer id, Integer capacidad, Integer hotelId) {
+        if (capacidad == null || capacidad>=0 ) {
             return false;
         }
-        if (contraseña == null ||  contraseña.trim().isEmpty()) {
+        Hotel hotel = hotelData.findATById(hotelId);
+        if (hotel == null) {
             return false;
         }
-        if (correo == null  || correo.trim().isEmpty()) {
-            return false;
-        }
-        if (añosExperiencia == null  || añosExperiencia<0) {
-            return false;
-        }  
-        Guia guia = new Guia();
-        guia.setNombre(nombre.trim());
-        guia.setContraseña(contraseña);
-        guia.setCorreo(correo);
-        guia.setAñosExperiencia(añosExperiencia);
         
-        classData.saveT(guia);
+        Habitacion habitacion = new Habitacion();
+        habitacion.setCapacidad(capacidad);
+        habitacion.setHotelId(hotelId);
+        classData.saveT(habitacion);
         return true;
     }
 }
