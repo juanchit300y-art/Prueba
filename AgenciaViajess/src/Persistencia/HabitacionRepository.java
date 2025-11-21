@@ -20,7 +20,7 @@ public class HabitacionRepository extends GeneralRepository<Habitacion> {
         this.dataAccess = dataAccess;
     }
     
-    public List<Habitacion> findHabitacionesByMunicipioId(Integer planId) {
+    public List<Habitacion> findHabitacionesByHotelId(Integer planId) {
         List<Habitacion> habitaciones = getAllT();
         List<Habitacion> result = new ArrayList<>();
         for (Habitacion habitacion : habitaciones) {

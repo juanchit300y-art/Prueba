@@ -53,7 +53,7 @@ public class HabitacionController extends GeneralController<Habitacion> {
         return true;
     }
 
-    public boolean añadirHabitacion(Integer id, Integer capacidad, Integer hotelId) {
+    public boolean añadirHabitacion( Integer capacidad, Integer hotelId) {
         if (capacidad == null || capacidad>=0 ) {
             return false;
         }

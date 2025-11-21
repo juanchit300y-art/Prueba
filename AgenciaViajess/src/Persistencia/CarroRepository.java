@@ -16,7 +16,7 @@ public class CarroRepository extends GeneralRepository <Carro>{
     public CarroRepository(IDataAccess<Carro> dataAccess) {
         this.dataAccess = dataAccess;
     }
-    public List<Carro> findCarrosByAerolineaId(Integer hotelId) {
+    public List<Carro> findCarrosByHotel(Integer hotelId) {
         List<Carro> carros = getAllT();
         List<Carro> result = new ArrayList<>();
         for (Carro carro : carros) {
