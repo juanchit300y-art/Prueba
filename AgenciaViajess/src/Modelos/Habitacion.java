@@ -16,7 +16,7 @@ public class Habitacion {
     public Habitacion() {
     }
 
-    public Habitacion(Integer Id, int capacidad) {
+    public Habitacion(Integer Id, Integer capacidad) {
         this.Id = Id;
         this.capacidad = capacidad;
     }

@@ -17,7 +17,7 @@ public class Cuota {
     public Cuota() {
     }
 //nn
-    public Cuota(Integer id, int monto) {
+    public Cuota(Integer id, Integer monto) {
         this.id = id;
         this.monto = monto;
     }
