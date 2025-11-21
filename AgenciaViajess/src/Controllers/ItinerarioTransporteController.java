@@ -36,12 +36,12 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         return true;
     }    
     
-    public boolean actualizarItinerarioTransporte(Integer id, int orden, Integer trayectoId, Integer viajeId) {
+    public boolean actualizarItinerarioTransporte(Integer id, Integer orden, Integer trayectoId, Integer viajeId) {
         ItinerarioTransporte itinerarioTransporte = classData.findATById(id);
         if (itinerarioTransporte == null) {
             return false;
         }
-        if (orden>0) {
+        if (orden != null && orden > 0) {
             itinerarioTransporte.setOrden(orden);
         }
         
@@ -64,7 +64,7 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         return true;
     }
 
-    public boolean añadirItinerarioTransporte(int orden, Integer trayectoId, Integer viajeId) {
+    public boolean añadirItinerarioTransporte(Integer orden, Integer trayectoId, Integer viajeId) {
         if (orden < 0) {
             return false;
         }

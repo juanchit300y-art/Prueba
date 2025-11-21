@@ -11,14 +11,14 @@ package Modelos;
  */
 public class ItinerarioTransporte {
     private Integer id;
-    private int orden;
+    private Integer orden;
     private Integer TrayectoId;
     private Integer ViajeId;
 
     public ItinerarioTransporte() {
     }
 
-    public ItinerarioTransporte(Integer id, int orden) {
+    public ItinerarioTransporte(Integer id, Integer orden) {
         this.id = id;
         this.orden = orden;
     }
@@ -40,14 +40,14 @@ public class ItinerarioTransporte {
     /**
      * @return the orden
      */
-    public int getOrden() {
+    public Integer getOrden() {
         return orden;
     }
 
     /**
      * @param orden the orden to set
      */
-    public void setOrden(int orden) {
+    public void setOrden(Integer orden) {
         this.orden = orden;
     }
 
