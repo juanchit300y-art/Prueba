@@ -76,4 +76,20 @@ public class ClienteController extends GeneralController<Cliente> {
         classData.saveT(cliente);
         return true;
     }
+    //Relacion Factura (caso profesor)
+    public List<Factura> getFacturasDeCliente(Integer clienteId){ 
+        return facturaData.findFacturasByClienteId(clienteId);
+    }
+    public boolean assignFacturaToCliente(Integer clienteId, Integer facturaId) {
+        Cliente cliente = classData.findATById(clienteId);
+        Factura factura = facturaData.findATById(facturaId);
+        
+        if (cliente == null || factura == null) {
+            return false;
+        }
+        
+        factura.setClienteId(clienteId);
+        facturaData.saveT(factura);
+        return true;
+    }
 }

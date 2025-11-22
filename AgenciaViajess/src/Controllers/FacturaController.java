@@ -16,12 +16,14 @@ import java.util.List;
 public class FacturaController extends GeneralController<Factura> {
     ViajeRepository viajeData;
     ClienteRepository clienteData;
+    FacturaRepository facturaData;
     public FacturaController() {
     }
     public FacturaController(FacturaRepository classData) {
         this.classData= new FacturaRepository();
         this.viajeData= new ViajeRepository();
         this.clienteData= new ClienteRepository();
+        this.facturaData= new FacturaRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -74,5 +76,27 @@ public class FacturaController extends GeneralController<Factura> {
         
         classData.saveT(factura);
         return true;
+    }
+    //Cliente relacion (caso curso)
+    public List<Factura> getFacturasByCliente(Integer clienteId) {
+        return facturaData.findFacturasByClienteId(clienteId);
+    }
+    public Cliente getClienteDeFactura(Integer facturaId) {
+        Factura factura = classData.findATById(facturaId);
+        if (factura == null) {
+            return null;
+        }
+        return clienteData.findATById(factura.getClienteId());
+    }
+    //Viaje relacion (caso curso)    
+    public List<Factura> getFacturasByViaje(Integer viajeId) {
+        return facturaData.findFacturasByViajeId(viajeId);
+    }
+    public Viaje getViajeDeFactura(Integer facturaId) {
+        Factura factura = classData.findATById(facturaId);
+        if (factura == null) {
+            return null;
+        }
+        return viajeData.findATById(factura.getViajeId());
     }
 }

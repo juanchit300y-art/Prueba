@@ -16,12 +16,14 @@ import java.util.List;
 public class EntretenimientoController extends GeneralController<Entretenimiento> {
     ViajeRepository viajeData;
     PlanRepository planData;
+    EntretenimientoRepository entretenimientoData;
     public EntretenimientoController() {
     }
     public EntretenimientoController(EntretenimientoRepository classData) {
         this.classData= new EntretenimientoRepository();
         this.viajeData= new ViajeRepository();
         this.planData= new PlanRepository();
+        this.entretenimientoData= new EntretenimientoRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -67,5 +69,27 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
         
         classData.saveT(entretenimiento);
         return true;
+    }
+    //Relacion Plan (caso curso)
+    public List<Entretenimiento> getEntrenimientosByPlan(Integer planId) {
+        return entretenimientoData.findEntretenimientosByPlanId(planId);
+    }
+    public Plan getPlanDeEntretenimiento(Integer entretenimientoId) {
+        Entretenimiento entretenimiento = classData.findATById(entretenimientoId);
+        if (entretenimiento == null) {
+            return null;
+        }
+        return planData.findATById(entretenimiento.getPlanId());
+    }
+    //Relacion Viaje (caso curso)
+    public List<Entretenimiento> getEntrenimientosByViaje(Integer viajeId) {
+        return entretenimientoData.findEntretenimientosByViajeId(viajeId);
+    }
+    public Viaje getViajeDeEntretenimiento(Integer entretenimientoId) {
+        Entretenimiento entretenimiento = classData.findATById(entretenimientoId);
+        if (entretenimiento == null) {
+            return null;
+        }
+        return viajeData.findATById(entretenimiento.getViajeId());
     }
 }

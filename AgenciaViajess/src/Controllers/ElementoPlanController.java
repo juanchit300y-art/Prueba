@@ -16,12 +16,14 @@ import java.util.List;
 public class ElementoPlanController extends GeneralController<ElementoPlan> {
     ActividadTuristicaRepository actividadTuristicaData;
     PlanRepository planData;
+    ElementoPlanRepository elementoPlanData;
     public ElementoPlanController() {
     }
     public ElementoPlanController(ElementoPlanRepository classData) {
         this.classData= new ElementoPlanRepository();
         this.actividadTuristicaData= new ActividadTuristicaRepository();
         this.planData= new PlanRepository();
+        this.elementoPlanData= new ElementoPlanRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -67,5 +69,27 @@ public class ElementoPlanController extends GeneralController<ElementoPlan> {
         
         classData.saveT(elementoPlan);
         return true;
+    }
+    //Relacion Plan (caso curso)
+    public List<ElementoPlan> getElementosPlanByPlan(Integer planId) {
+        return elementoPlanData.findElementosPLanByPlanId(planId);
+    }
+    public Plan getPlanDeElementoPlan(Integer elementoPlanId) {
+        ElementoPlan elementoPlan = classData.findATById(elementoPlanId);
+        if (elementoPlan == null) {
+            return null;
+        }
+        return planData.findATById(elementoPlan.getPlanId());
+    }
+    //Relacion ActividadTuristica (caso curso)
+    public List<ElementoPlan> getElementosPlanByActividadTuristica(Integer actividadTuristicaId) {
+        return elementoPlanData.findElementosPLanByActividadTuristicaId(actividadTuristicaId);
+    }
+    public ActividadTuristica getActividadTuristicaDeElementoPlan(Integer elementoPlanId) {
+        ElementoPlan elementoPlan = classData.findATById(elementoPlanId);
+        if (elementoPlan == null) {
+            return null;
+        }
+        return actividadTuristicaData.findATById(elementoPlan.getActividadTuristicaId());
     }
 }

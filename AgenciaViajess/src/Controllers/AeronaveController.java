@@ -16,12 +16,14 @@ import java.util.List;
 public class AeronaveController extends GeneralController<Aeronave> {
     AerolineaRepository aerolineaData;
     ServicioTransporteRepository servicioTransporteData;
+    AeronaveRepository aeronaveData;
     
     public AeronaveController() {
     }
     public AeronaveController(AeronaveRepository classData) {
         this.classData= new AeronaveRepository();
         this.aerolineaData= new AerolineaRepository();
+        this.aeronaveData= new AeronaveRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -65,6 +67,33 @@ public class AeronaveController extends GeneralController<Aeronave> {
         aeronave.setAerolineaId(aerolineaId);
         
         classData.saveT(aeronave);
+        return true;
+    }
+    //Aerolinea Relacion (caso curso)
+    public List<Aeronave> getAeronavesByAerolinea(Integer aerolineaId) {
+        return aeronaveData.findAAeronavesByAerolineaId(aerolineaId);
+    }
+    public Aerolinea getAerolineaDeAeronave(Integer aeronaveId) {
+        Aeronave aeronave = classData.findATById(aeronaveId);
+        if (aeronave == null) {
+            return null;
+        }
+        return aerolineaData.findATById(aeronave.getAerolineaId());
+    }
+    //ServicioTransporte Relacion (caso profesor)
+    public List<ServicioTransporte> getServiciosTrasportesDeAeronave(Integer aeronaveId){ 
+        return servicioTransporteData.findServicioTransporteByVehiculoId(aeronaveId);
+    }
+    public boolean assignServicioTransporteToAeronave(Integer aeronaveId, Integer servicioTransporteId) {
+        Aeronave aeronave = classData.findATById(aeronaveId);
+        ServicioTransporte servicioTransporte = servicioTransporteData.findATById(servicioTransporteId);
+        
+        if (aeronave == null || servicioTransporte == null) {
+            return false;
+        }
+        
+        servicioTransporte.setVehiculoId(aeronaveId);
+        servicioTransporteData.saveT(servicioTransporte);
         return true;
     }
 }

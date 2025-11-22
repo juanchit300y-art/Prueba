@@ -17,6 +17,7 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
     MunicipioRepository municipioData;
     TurnoRepository turnoData;
     ElementoPlanRepository elementoPlanData;
+    ActividadTuristicaRepository actividadTuristicaData;
     
     public ActividadTuristicaController() {
     }
@@ -25,6 +26,7 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
         this.municipioData= new MunicipioRepository();
         this.turnoData= new TurnoRepository();
         this.elementoPlanData= new ElementoPlanRepository();
+        this.actividadTuristicaData= new ActividadTuristicaRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -78,4 +80,52 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
         classData.saveT(actividadTuristica);
         return true;
     }
+    //Elemento Plan Relacion
+    //En caso de Profesor
+    public List<ElementoPlan> getElementosPlanActividadTuristica(Integer actividadTuristicaId){ 
+        return elementoPlanData.findElementosPLanByActividadTuristicaId(actividadTuristicaId);
+    }
+    public boolean assignElementoPlanToActividadTuristica(Integer actividadTuristicaId, Integer elementoPlanId) {
+        ActividadTuristica actividadTuristica = classData.findATById(actividadTuristicaId);
+        ElementoPlan elementoPlan = elementoPlanData.findATById(elementoPlanId);
+        
+        if (actividadTuristica == null || elementoPlan == null) {
+            return false;
+        }
+        
+        elementoPlan.setActividadTuristicaId(actividadTuristicaId);
+        elementoPlanData.saveT(elementoPlan);
+        return true;
+    }
+    //Turno Relacion
+    //En caso Profesor (La clase tiene un listado de objetos
+    public List<Turno> getTurnosDeActividadTuristica(Integer actividadTuristicaId){ 
+        return turnoData.findTurnosByActividadTuristicaId(actividadTuristicaId);
+    }
+    public boolean assignTurnoToActividadTuristica(Integer actividadTuristicaId, Integer turnoId) {
+        ActividadTuristica actividadTuristica = classData.findATById(actividadTuristicaId);
+        Turno turno = turnoData.findATById(turnoId);
+        
+        if (actividadTuristica == null || turno == null) {
+            return false;
+        }
+        
+        turno.setActividadTuristicaId(actividadTuristicaId);
+        turnoData.saveT(turno);
+        return true;
+    }
+    // Municipio Relacion
+    // En caso curso (Un objeto de clase clase hace parte de la lista de otro)
+    //Toca inicializar un nuevo Repository de la misma clase (diferente al classData por conlficto)
+    public List<ActividadTuristica> getActividadesTuristicasByMunicipio(Integer municipioId) {
+        return actividadTuristicaData.findActividadesTuristicasByMunicipioId(municipioId);
+    }
+    public Municipio getMunicipioDeActividadTuristica(Integer actividadTuristicaId) {
+        ActividadTuristica actividadTuristica = classData.findATById(actividadTuristicaId);
+        if (actividadTuristica == null) {
+            return null;
+        }
+        return municipioData.findATById(actividadTuristica.getMunicipioId());
+    }
+
 }

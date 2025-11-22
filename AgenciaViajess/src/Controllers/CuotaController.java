@@ -15,12 +15,14 @@ import java.util.List;
  */
 public class CuotaController extends GeneralController<Cuota> {
     ViajeRepository viajeData;
+    CuotaRepository cuotaData;
     
     public CuotaController() {
     }
     public CuotaController(CuotaRepository classData) {
         this.classData= new CuotaRepository();
         this.viajeData= new ViajeRepository();
+        this.cuotaData= new CuotaRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -63,5 +65,16 @@ public class CuotaController extends GeneralController<Cuota> {
         
         classData.saveT(couta);
         return true;
+    }
+    // Viaje Relacion (caso curso)
+    public List<Cuota> getCuotasByViaje(Integer viajeId) {
+        return cuotaData.findCuotasByViajeId(viajeId);
+    }
+    public Viaje getViajeDeCuota(Integer cuotaId) {
+        Cuota cuota = classData.findATById(cuotaId);
+        if (cuota == null) {
+            return null;
+        }
+        return viajeData.findATById(cuota.getViajeId());
     }
 }
