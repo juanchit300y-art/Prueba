@@ -121,7 +121,7 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
         return actividadTuristicaData.findActividadesTuristicasByMunicipioId(municipioId);
     }
     public Municipio getMunicipioDeActividadTuristica(Integer actividadTuristicaId) {
-        ActividadTuristica actividadTuristica = actividadTuristicaData.findATById(actividadTuristicaId);
+        ActividadTuristica actividadTuristica = classData.findATById(actividadTuristicaId);
         if (actividadTuristica == null) {
             return null;
         }

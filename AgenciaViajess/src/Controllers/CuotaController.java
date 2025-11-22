@@ -66,12 +66,12 @@ public class CuotaController extends GeneralController<Cuota> {
         classData.saveT(couta);
         return true;
     }
-    // Viaje Relacion
+    // Viaje Relacion (caso curso)
     public List<Cuota> getCuotasByViaje(Integer viajeId) {
         return cuotaData.findCuotasByViajeId(viajeId);
     }
     public Viaje getViajeDeCuota(Integer cuotaId) {
-        Cuota cuota = cuotaData.findATById(cuotaId);
+        Cuota cuota = classData.findATById(cuotaId);
         if (cuota == null) {
             return null;
         }

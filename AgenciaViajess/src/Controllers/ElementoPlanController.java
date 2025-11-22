@@ -75,7 +75,7 @@ public class ElementoPlanController extends GeneralController<ElementoPlan> {
         return elementoPlanData.findElementosPLanByPlanId(planId);
     }
     public Plan getPlanDeElementoPlan(Integer elementoPlanId) {
-        ElementoPlan elementoPlan = elementoPlanData.findATById(elementoPlanId);
+        ElementoPlan elementoPlan = classData.findATById(elementoPlanId);
         if (elementoPlan == null) {
             return null;
         }
@@ -86,7 +86,7 @@ public class ElementoPlanController extends GeneralController<ElementoPlan> {
         return elementoPlanData.findElementosPLanByActividadTuristicaId(actividadTuristicaId);
     }
     public ActividadTuristica getActividadTuristicaDeElementoPlan(Integer elementoPlanId) {
-        ElementoPlan elementoPlan = elementoPlanData.findATById(elementoPlanId);
+        ElementoPlan elementoPlan = classData.findATById(elementoPlanId);
         if (elementoPlan == null) {
             return null;
         }

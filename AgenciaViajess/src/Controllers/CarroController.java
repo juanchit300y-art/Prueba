@@ -74,7 +74,7 @@ public class CarroController extends GeneralController<Carro> {
         return carroData.findCarrosByHotel(hotelId);
     }
     public Hotel getHotelDeCarro(Integer carroId) {
-        Carro carro = carroData.findATById(carroId);
+        Carro carro = classData.findATById(carroId);
         if (carro == null) {
             return null;
         }

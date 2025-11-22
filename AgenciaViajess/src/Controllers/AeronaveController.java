@@ -74,7 +74,7 @@ public class AeronaveController extends GeneralController<Aeronave> {
         return aeronaveData.findAAeronavesByAerolineaId(aerolineaId);
     }
     public Aerolinea getAerolineaDeAeronave(Integer aeronaveId) {
-        Aeronave aeronave = aeronaveData.findATById(aeronaveId);
+        Aeronave aeronave = classData.findATById(aeronaveId);
         if (aeronave == null) {
             return null;
         }
