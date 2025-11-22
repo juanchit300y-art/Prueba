@@ -61,4 +61,5 @@ public class AerolineaController extends GeneralController<Aerolinea> {
         classData.saveT(aerolinea);
         return true;
     }
+
 }
