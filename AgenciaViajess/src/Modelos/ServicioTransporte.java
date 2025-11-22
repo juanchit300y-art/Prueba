@@ -52,7 +52,7 @@ public class ServicioTransporte {
         /**
      * @param fecha_inicio the fecha_inicio to set
      */
-    public void setFecha_Inicio(String fecha_inicio) {
+    public void setFecha_inicio(String fecha_inicio) {
         this.fecha_inicio= fecha_inicio;
     }
 
