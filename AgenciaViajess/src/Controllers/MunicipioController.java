@@ -29,14 +29,14 @@ public class MunicipioController extends GeneralController<Municipio> {
     @Override
     public boolean eliminarObjeto(Integer id) {
         List<Hotel> hotelesMunicipio = hotelData.findHotelByMunicipioId(id);
-        List<ActividadTuristica> acitivdadesTuristicaMunicipio = actividadTuristicaData.findActividadesTuristicasByMunicipioId(id);        
+        List<ActividadTuristica> acitividadesTuristicaMunicipio = actividadTuristicaData.findActividadesTuristicasByMunicipioId(id);        
         List<Trayecto> trayectosMunicipioDestino= trayectoData.findTrayectosByMunicipioDestinoId(id);  
         List<Trayecto> trayectosMunicipioInicio= trayectoData.findTrayectosByMunicipioInicioId(id); 
         
         if (!hotelesMunicipio.isEmpty()) {
             return false; 
         }
-        if (!acitivdadesTuristicaMunicipio.isEmpty()) {
+        if (!acitividadesTuristicaMunicipio.isEmpty()) {
             return false; 
         }
         if (!trayectosMunicipioDestino.isEmpty()) {
