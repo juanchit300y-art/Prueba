@@ -6,7 +6,7 @@
 package Presentacion;
 
 import java.util.Scanner;
-import Presentacion.*;
+import Presentacion.
 /**
  *
  * @author DELL
@@ -15,7 +15,7 @@ public class MenuPrincipal {
     //Atributos
     private Integer id;
     Scanner scanner;
-    MenuAdministrador asdasd;
+    private M
     //Constructores
     public MenuPrincipal() {
     }
@@ -23,7 +23,6 @@ public class MenuPrincipal {
     public MenuPrincipal(Integer id, Scanner scanner) {
         this.id = id;
         this.scanner=scanner;
-        this.menuAdministrador= new MenuAdministrador();
     }
     //Getters y Setters
     public Integer getId() {
