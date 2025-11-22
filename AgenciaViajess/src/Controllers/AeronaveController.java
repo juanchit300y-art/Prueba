@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class AeronaveController extends GeneralController<Aeronave> {
     AerolineaRepository aerolineaData;
+    ServicioTransporteRepository servicioTransporteData;
     
     public AeronaveController() {
     }
@@ -24,9 +25,13 @@ public class AeronaveController extends GeneralController<Aeronave> {
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
+        List<ServicioTransporte> servicioTransporteAeronave= servicioTransporteData.findServicioTransporteByVehiculoId(id);
+        if (!servicioTransporteAeronave.isEmpty()) {
+            return false; 
+        }
         classData.deleteT(id);
         return true;
-    }    
+    }     
     
     public boolean actualizarAeronave(Integer id, String marca, Integer aerolineaId) {
         Aeronave aeronave = classData.findATById(id);

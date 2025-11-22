@@ -41,7 +41,7 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
             return false;
         }
         if (fecha_inicio != null && !fecha_inicio.trim().isEmpty()) {
-            servicioTransporte.setFecha_iniciio(fecha_inicio.trim());
+            servicioTransporte.setFecha_inicio(fecha_inicio.trim());
         }
         
         if (fecha_fin != null && !fecha_fin.trim().isEmpty()) {
@@ -102,7 +102,7 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
             return false;
         }
         ServicioTransporte servicioTransporte = new ServicioTransporte();
-        servicioTransporte.setFecha_iniciio(fecha_inicio);
+        servicioTransporte.setFecha_inicio(fecha_inicio);
         servicioTransporte.setFecha_fin(fecha_fin);
         servicioTransporte.setVehiculoId(vehiculoId);
         servicioTransporte.setTrayectoId(trayectoId);

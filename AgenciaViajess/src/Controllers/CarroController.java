@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class CarroController extends GeneralController<Carro> {
     HotelRepository hotelData;
+    ServicioTransporteRepository servicioTransporteData;
     
     public CarroController() {
     }
@@ -24,9 +25,13 @@ public class CarroController extends GeneralController<Carro> {
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
+        List<ServicioTransporte> servicioTransporteCarro= servicioTransporteData.findServicioTransporteByVehiculoId(id);
+        if (!servicioTransporteCarro.isEmpty()) {
+            return false; 
+        }
         classData.deleteT(id);
         return true;
-    }    
+    }     
     
     public boolean actualizarCarro(Integer id, String marca, Integer hotelId) {
         Carro carro = classData.findATById(id);
