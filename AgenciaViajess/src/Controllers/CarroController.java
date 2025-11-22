@@ -16,12 +16,14 @@ import java.util.List;
 public class CarroController extends GeneralController<Carro> {
     HotelRepository hotelData;
     ServicioTransporteRepository servicioTransporteData;
+    CarroRepository carroData;
     
     public CarroController() {
     }
     public CarroController(CarroRepository classData) {
         this.classData= new CarroRepository();
         this.hotelData= new HotelRepository();
+        this.carroData= new CarroRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -65,6 +67,33 @@ public class CarroController extends GeneralController<Carro> {
         carro.setHotelId(hotelId);
         
         classData.saveT(carro);
+        return true;
+    }
+    //Relacion Hotel (caso curso)
+    public List<Carro> getCarrosByHotel(Integer hotelId) {
+        return carroData.findCarrosByHotel(hotelId);
+    }
+    public Hotel getHotelDeCarro(Integer carroId) {
+        Carro carro = carroData.findATById(carroId);
+        if (carro == null) {
+            return null;
+        }
+        return hotelData.findATById(carro.getHotelId());
+    }
+    //Relacion Servicio Transporte (Caso profesor)
+    public List<ServicioTransporte> getServiciosTransporteDeCarro(Integer carroId){ 
+        return servicioTransporteData.findServicioTransporteByVehiculoId(carroId);
+    }
+    public boolean assignServicioTransporteToCarro(Integer carroId, Integer servicioTransporteId) {
+        Carro carro = classData.findATById(carroId);
+        ServicioTransporte servicioTransporte = servicioTransporteData.findATById(servicioTransporteId);
+        
+        if (carro == null || servicioTransporte == null) {
+            return false;
+        }
+        
+        servicioTransporte.setVehiculoId(carroId);
+        servicioTransporteData.saveT(servicioTransporte);
         return true;
     }
 }
