@@ -69,3 +69,21 @@ public class HabitacionController extends GeneralController<Habitacion> {
         return true;
     }
 }
+
+//Turno relacion (caso profesor)
+    public List<Reserva> getReservasDeHabitacion(Integer habitacionId){ 
+        return reservaData.findTurnosByGuiaId(guiaId);
+    }
+    public boolean assignTurnoToGuia(Integer guiaId, Integer turnoId) {
+        Guia guia = classData.findATById(guiaId);
+        Turno turno = turnoData.findATById(turnoId);
+        
+        if (guia == null || turno == null) {
+            return false;
+        }
+        
+        turno.setGuiaId(guiaId);
+        turnoData.saveT(turno);
+        return true;
+    }
+}
