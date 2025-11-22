@@ -71,4 +71,72 @@ public class ViajeController extends GeneralController<Viaje> {
         classData.saveT(viaje);
         return true;
     }
+    
+    //Relacion lista Entretenimiento (caso profesor)
+    public List<Entretenimiento> getEntretenimientosDeViaje(Integer viajeId){ 
+        return entretenimientoData.findEntretenimientosByViajeId(viajeId);
+    }
+    public boolean assignEntretenimientoToViaje(Integer viajeId, Integer entretenimientoId) {
+        Viaje viaje = classData.findATById(viajeId);
+        Entretenimiento entretenimiento = entretenimientoData.findATById(entretenimientoId);
+        
+        if (viaje == null || entretenimiento == null) {
+            return false;
+        }
+        
+        entretenimiento.setViajeId(viajeId);
+        entretenimientoData.saveT(entretenimiento);
+        return true;
+    }
+    
+    //Relacion lista Factura (caso profesor)
+    public List<Factura> getFacturasDeViaje(Integer viajeId){ 
+        return facturaData.findFacturasByViajeId(viajeId);
+    }
+    public boolean assignFacturatoToViaje(Integer viajeId, Integer facturaId) {
+        Viaje viaje = classData.findATById(viajeId);
+        Factura factura = facturaData.findATById(facturaId);
+        
+        if (viaje == null || factura == null) {
+            return false;
+        }
+        
+        factura.setViajeId(viajeId);
+        facturaData.saveT(factura);
+        return true;
+    }
+    
+    //Relacion lista Cuota (caso profesor)
+    public List<Cuota> getCuotasDeViaje(Integer viajeId){ 
+        return cuotaData.findCuotasByViajeId(viajeId);
+    }
+    public boolean assignCuotaToViaje(Integer viajeId, Integer cuotaId) {
+        Viaje viaje = classData.findATById(viajeId);
+        Cuota cuota = cuotaData.findATById(cuotaId);
+        
+        if (viaje == null || cuota == null) {
+            return false;
+        }
+        
+        cuota.setViajeId(viajeId);
+        cuotaData.saveT(cuota);
+        return true;
+    }
+    
+    //Relacion lista ItinerarioTransporte (caso profesor)
+    public List<ItinerarioTransporte> getItinerariosTransporteDeViaje(Integer viajeId){ 
+        return itinerarioTransporteData.findItinerarioTransportByViajeId(viajeId);
+    }
+    public boolean assignItinerarioTransporteToViaje(Integer viajeId, Integer itinerarioTransporteId) {
+        Viaje viaje = classData.findATById(viajeId);
+        ItinerarioTransporte itinerarioTransporte = itinerarioTransporteData.findATById(itinerarioTransporteId);
+        
+        if (viaje == null || itinerarioTransporte == null) {
+            return false;
+        }
+        
+        itinerarioTransporte.setViajeId(viajeId);
+        itinerarioTransporteData.saveT(itinerarioTransporte);
+        return true;
+    }
 }

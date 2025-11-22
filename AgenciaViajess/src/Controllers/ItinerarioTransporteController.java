@@ -17,6 +17,7 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
     TrayectoRepository trayectoData;
     ViajeRepository viajeData;
     ReservaRepository reservaData;
+    ItinerarioTransporteRepository itinerarioTransporteData;
     
     public ItinerarioTransporteController() {
     }
@@ -25,6 +26,7 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         this.trayectoData= new TrayectoRepository();
         this.viajeData= new ViajeRepository();
         this.reservaData= new ReservaRepository();
+        this.itinerarioTransporteData= new ItinerarioTransporteRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -87,4 +89,46 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         classData.saveT(itinerarioTransporte);
         return true;
     }
+
+    //Relacion a Trayecto (caso curso)
+    public List<ItinerarioTransporte> getItinerariosTransporteByTrayecto(Integer itinerarioTransporteId) {
+        return itinerarioTransporteData.findItinerarioTransportByTrayectoId(itinerarioTransporteId);
+    }
+    public Trayecto getTrayectoDeItinerarioTransporte(Integer itinerarioTransporteId) {
+        ItinerarioTransporte itinerarioTransporte = classData.findATById(itinerarioTransporteId);
+        if (itinerarioTransporte == null) {
+            return null;
+        }
+        return trayectoData.findATById(itinerarioTransporte.getTrayectoId());
+    }
+    
+    //Relacion a Viaje (caso curso)
+    public List<ItinerarioTransporte> getItinerariosTransporteByViaje(Integer itinerarioTransporteId) {
+        return itinerarioTransporteData.findItinerarioTransportByViajeId(itinerarioTransporteId);
+    }
+    public Viaje getViajeDeItinerarioTransporte(Integer itinerarioTransporteId) {
+        ItinerarioTransporte itinerarioTransporte = classData.findATById(itinerarioTransporteId);
+        if (itinerarioTransporte == null) {
+            return null;
+        }
+        return viajeData.findATById(itinerarioTransporte.getViajeId());
+    }
+    
+    //Relacion lista reservas (caso profesor)
+    public List<Reserva> getReservasDeItinerarioTransporte(Integer itinerarioTransporteId){ 
+        return reservaData.findReservaByItinerarioTransporteId(itinerarioTransporteId);
+    }
+    public boolean assignReservaToItinerarioTransporte(Integer itinerarioTransporteId, Integer reservaId) {
+        ItinerarioTransporte itinerarioTransporte = classData.findATById(itinerarioTransporteId);
+        Reserva reserva = reservaData.findATById(reservaId);
+        
+        if (itinerarioTransporte == null || reserva == null) {
+            return false;
+        }
+        
+        reserva.setItinerarioTransporteId(itinerarioTransporteId);
+        reservaData.saveT(reserva);
+        return true;
+    }
+    
 }

@@ -18,7 +18,7 @@ public class TrayectoController extends GeneralController<Trayecto> {
     MunicipioRepository municipioDestinoData;
     ItinerarioTransporteRepository itinerarioTransporteData;
     ServicioTransporteRepository servicioTransporteData;
-    
+    TrayectoRepository trayectoData;
     public TrayectoController() {
     }
     public TrayectoController(TrayectoRepository classData) {
@@ -27,6 +27,7 @@ public class TrayectoController extends GeneralController<Trayecto> {
         this.municipioDestinoData= new MunicipioRepository();
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
         this.servicioTransporteData= new ServicioTransporteRepository();
+        this.trayectoData = new TrayectoRepository();
     }
     
     @Override
@@ -88,6 +89,63 @@ public class TrayectoController extends GeneralController<Trayecto> {
         trayecto.setMunicipioDestinoId(municipioDestinoId);
         
         classData.saveT(trayecto);
+        return true;
+    }
+    //Relacion a MunicipioInicio (caso curso)
+    public List<Trayecto> getTrayectosByMunicipioInicio(Integer municipioInicioId) {
+        return trayectoData.findTrayectosByMunicipioInicioId(municipioInicioId);
+    }
+    public Trayecto getMunicipioInicioDeTrayecto(Integer trayectoId) {
+        Trayecto trayecto = classData.findATById(trayectoId);
+        if (trayecto == null) {
+            return null;
+        }
+        return trayectoData.findATById(trayecto.getMunicipioInicioId());
+    }
+
+    //Relacion a MunicipioDestino (caso curso)
+    public List<Trayecto> getTrayectosByMunicipioDestino(Integer municipioDestinoId) {
+        return trayectoData.findTrayectosByMunicipioDestinoId(municipioDestinoId);
+    }
+    public Trayecto getMunicipioDestinoDeTrayecto(Integer trayectoId) {
+        Trayecto trayecto = classData.findATById(trayectoId);
+        if (trayecto == null) {
+            return null;
+        }
+        return trayectoData.findATById(trayecto.getMunicipioDestinoId());
+    }
+    
+    //Relacion lista ItinerarioTransporte (caso profesor)
+    public List<ItinerarioTransporte> getItinerariosTransporteDeTrayecto(Integer trayectoId){ 
+        return itinerarioTransporteData.findItinerarioTransportByTrayectoId(trayectoId);
+    }
+    public boolean assignItinerarioTransporteToTrayecto(Integer trayectoId, Integer itinerarioTransporteId) {
+        Trayecto trayecto = classData.findATById(trayectoId);
+        ItinerarioTransporte itinerarioTransporte = itinerarioTransporteData.findATById(itinerarioTransporteId);
+        
+        if (trayecto == null || itinerarioTransporte == null) {
+            return false;
+        }
+        
+        itinerarioTransporte.setTrayectoId(trayectoId);
+        itinerarioTransporteData.saveT(itinerarioTransporte);
+        return true;
+    }
+    
+    //Relacion lista ServicioTransporte (caso profesor)
+    public List<ServicioTransporte> getServiciosTransporteDeTrayecto(Integer trayectoId){ 
+        return servicioTransporteData.findServicioTransporteByTrayectoId(trayectoId);
+    }
+    public boolean assignServicioTransporteToTrayecto(Integer trayectoId, Integer servicioTransporteId) {
+        Trayecto trayecto = classData.findATById(trayectoId);
+        ServicioTransporte servicioTransporte = servicioTransporteData.findATById(servicioTransporteId);
+        
+        if (trayecto == null || servicioTransporte == null) {
+            return false;
+        }
+        
+        servicioTransporte.setTrayectoId(trayectoId);
+        servicioTransporteData.saveT(servicioTransporte);
         return true;
     }
 }

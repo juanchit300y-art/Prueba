@@ -18,7 +18,7 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
     CarroRepository carroData;
     AeronaveRepository aeronaveData;
     TrayectoRepository trayectoData;
-   
+    ServicioTransporteRepository servicioTransporteData;
     public ServicioTransporteController() {
     }
     public ServicioTransporteController(ServicioTransporteRepository classData) {
@@ -26,7 +26,7 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
         this.carroData= new CarroRepository();
         this.aeronaveData= new AeronaveRepository();
         this.trayectoData= new TrayectoRepository();
-    
+        this.servicioTransporteData = new ServicioTransporteRepository();
     }
    
     @Override
@@ -109,5 +109,37 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
         
         classData.saveT(servicioTransporte);
         return true;
+    }
+    
+    
+    //Relacion a Trayecto (caso curso)
+    public List<ServicioTransporte> getServiciosTransporteByTrayecto(Integer trayectoId) {
+        return servicioTransporteData.findServicioTransporteByTrayectoId(trayectoId);
+    }
+    public Trayecto getTrayectoDeServicioTransporte(Integer servicioTransporteId) {
+        ServicioTransporte servicioTransporte = classData.findATById(servicioTransporteId);
+        if (servicioTransporte == null) {
+            return null;
+        }
+        return trayectoData.findATById(servicioTransporte.getTrayectoId());
+    }
+    
+    //Relacion a Vehiculo (caso curso)
+    public List<ServicioTransporte> getServiciosTransporteByVehiculo(Integer vehiculoId) {
+        return servicioTransporteData.findServicioTransporteByVehiculoId(vehiculoId);
+    }
+    public Vehiculo getVehiculoDeServicioTransporte(Integer servicioTransporteId) {
+        ServicioTransporte servicioTransporte = classData.findATById(servicioTransporteId);
+        if (servicioTransporte == null) {
+            return null;
+        }
+        if(carroData.findATById(servicioTransporte.getVehiculoId())!= null){
+            return carroData.findATById(servicioTransporte.getVehiculoId());
+        }
+        
+        if(aeronaveData.findATById(servicioTransporte.getVehiculoId())!= null){
+            return aeronaveData.findATById(servicioTransporte.getVehiculoId());
+        }
+        return null;
     }
 }

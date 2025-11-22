@@ -17,6 +17,8 @@ public class HotelController extends GeneralController<Hotel> {
     CarroRepository carroData;
     HabitacionRepository habitacionData;
     MunicipioRepository municipioData;
+    HotelRepository hotelData;
+    
     public HotelController() {
     }
     public HotelController(HotelRepository classData) {
@@ -24,6 +26,7 @@ public class HotelController extends GeneralController<Hotel> {
         this.habitacionData= new HabitacionRepository();
         this.carroData= new CarroRepository();
         this.municipioData= new MunicipioRepository();
+        this.hotelData = new HotelRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -80,5 +83,52 @@ public class HotelController extends GeneralController<Hotel> {
         hotel.setMunicipioId(municipioId);
         classData.saveT(hotel);
         return true;
+    }
+    
+    
+    
+    //Relacion lista Habitaciones (caso profesor)
+    public List<Habitacion> getHabitacionesDeHotel(Integer hotelId){ 
+        return habitacionData.findHabitacionesByHotelId(hotelId);
+    }
+    public boolean assignHabitacionToHotel(Integer hotelId, Integer habitacionId) {
+        Hotel hotel = classData.findATById(hotelId);
+        Habitacion habitacion = habitacionData.findATById(habitacionId);
+        
+        if (hotel == null || habitacion == null) {
+            return false;
+        }
+        
+        habitacion.setHotelId(hotelId);
+        habitacionData.saveT(habitacion);
+        return true;
+    }
+    //lista carros (caso profesor)
+    public List<Carro> getCarrosDeHotel(Integer hotelId){ 
+    return carroData.findCarrosByHotel(hotelId);
+    }
+    public boolean assignCarroToHotel(Integer hotelId, Integer carroId) {
+        Hotel hotel = classData.findATById(hotelId);
+        Carro carro = carroData.findATById(carroId);
+        
+        if (hotel == null || carro == null) {
+            return false;
+        }
+        
+        carro.setHotelId(hotelId);
+        carroData.saveT(carro);
+        return true;
+    }
+    
+    //Relacion a Municipio (caso curso)
+    public List<Hotel> getHotelesByMunicipio(Integer municipioId) {
+        return hotelData.findHotelByMunicipioId(municipioId);
+    }
+    public Municipio getMunicipioDeHotel(Integer hotelId) {
+        Hotel hotel = classData.findATById(hotelId);
+        if (hotel == null) {
+            return null;
+        }
+        return municipioData.findATById(hotel.getMunicipioId());
     }
 }
