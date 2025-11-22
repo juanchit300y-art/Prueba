@@ -21,9 +21,9 @@ public class ServicioTransporte {
     public ServicioTransporte() {
     }
 
-    public ServicioTransporte(Integer id, String fecha_iniciio, String fecha_fin, Double costo) {
+    public ServicioTransporte(Integer id, String fecha_inicio, String fecha_fin, Double costo) {
         this.id = id;
-        this.fecha_inicio = fecha_iniciio;
+        this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
         this.costo = costo;
     }
@@ -43,17 +43,17 @@ public class ServicioTransporte {
     }
 
     /**
-     * @return the fecha_iniciio
+     * @return the fecha_inicio
      */
     public String getFecha_inicio() {
         return fecha_inicio;
     }
 
-    /**
-     * @param fecha_iniciio the fecha_iniciio to set
+        /**
+     * @param fecha_inicio the fecha_inicio to set
      */
-    public void setFecha_inicio(String fecha_iniciio) {
-        this.fecha_inicio = fecha_iniciio;
+    public void setFecha_inicio(String fecha_inicio) {
+        this.fecha_inicio= fecha_inicio;
     }
 
     /**
