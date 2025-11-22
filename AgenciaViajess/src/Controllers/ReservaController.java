@@ -16,13 +16,14 @@ import java.util.List;
 public class ReservaController extends GeneralController<Reserva> {
     HabitacionRepository habitacionData;
     ItinerarioTransporteRepository itinerarioTransporteData;
-    
+    ReservaRepository reservaData;
     public ReservaController() {
     }
     public ReservaController(ReservaRepository classData) {
         this.classData= new ReservaRepository();
         this.habitacionData= new HabitacionRepository();
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
+        this.reservaData= new ReservaRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -76,5 +77,31 @@ public class ReservaController extends GeneralController<Reserva> {
         
         classData.saveT(reserva);
         return true;
+    }
+    
+    
+    
+    //Relacion a Habitacion (caso curso)
+    public List<Reserva> getReservasByHabitacion(Integer habitacionId) {
+        return reservaData.findReservaByHabitacionId(habitacionId);
+    }
+    public Habitacion getHabitacionDeReserva(Integer reservaId) {
+        Reserva reserva = classData.findATById(reservaId);
+        if (reserva == null) {
+            return null;
+        }
+        return habitacionData.findATById(reserva.getHabitacionId());
+    }
+    
+    //Relacion a ItinerarioTransporte (caso curso)
+    public List<Reserva> getReservasByItinerarioTransporte(Integer itinerarioTransporteId) {
+        return reservaData.findReservaByHabitacionId(itinerarioTransporteId);
+    }
+    public ItinerarioTransporte getItinerarioTransporteDeReserva(Integer reservaId) {
+        Reserva reserva = classData.findATById(reservaId);
+        if (reserva == null) {
+            return null;
+        }
+        return itinerarioTransporteData.findATById(reserva.getItinerarioTransporteId());
     }
 }

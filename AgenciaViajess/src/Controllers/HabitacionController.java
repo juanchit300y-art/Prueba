@@ -16,12 +16,15 @@ import java.util.List;
 public class HabitacionController extends GeneralController<Habitacion> {
     ReservaRepository reservaData;
     HotelRepository hotelData;
+    HabitacionRepository habitacionData;
+    
     public HabitacionController() {
     }
     public HabitacionController(HabitacionRepository classData) {
         this.classData= new HabitacionRepository();
         this.reservaData= new ReservaRepository();
         this.hotelData= new HotelRepository();
+        this.habitacionData = new HabitacionRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -68,4 +71,33 @@ public class HabitacionController extends GeneralController<Habitacion> {
         classData.saveT(habitacion);
         return true;
     }
+    //Relacion lista reservas (caso profesor)
+    public List<Reserva> getReservasDeHabitacion(Integer habitacionId){ 
+        return reservaData.findReservaByHabitacionId(habitacionId);
+    }
+    public boolean assignReservaToHabitacion(Integer habitacionId, Integer reservaId) {
+        Habitacion habitacion = classData.findATById(habitacionId);
+        Reserva reserva = reservaData.findATById(reservaId);
+        
+        if (habitacion == null || reserva == null) {
+            return false;
+        }
+        
+        reserva.setHabitacionId(habitacionId);
+        reservaData.saveT(reserva);
+        return true;
+    }
+
+    //Relacion a Hotel (caso curso)
+    public List<Habitacion> getHabitacionesByHotel(Integer hotelId) {
+        return habitacionData.findHabitacionesByHotelId(hotelId);
+    }
+    public Hotel getHotelDeHabitacion(Integer habitacionId) {
+        Habitacion habitacion = classData.findATById(habitacionId);
+        if (habitacion == null) {
+            return null;
+        }
+        return hotelData.findATById(habitacion.getHotelId());
+    }
 }
+

@@ -66,4 +66,38 @@ public class PlanController extends GeneralController<Plan> {
         classData.saveT(plan);
         return true;
     }
+    
+    //Relacion lista ElementosPlan (caso profesor)
+    public List<ElementoPlan> getElementosPlanDePlan(Integer planId){ 
+        return elementoPlanData.findElementosPLanByPlanId(planId);
+    }
+    public boolean assignElementosPlanToPlan(Integer planId, Integer elementoPlanId) {
+        Plan plan = classData.findATById(planId);
+        ElementoPlan elementoPlan = elementoPlanData.findATById(elementoPlanId);
+        
+        if (plan == null || elementoPlan == null) {
+            return false;
+        }
+        
+        elementoPlan.setPlanId(planId);
+        elementoPlanData.saveT(elementoPlan);
+        return true;
+    }
+    
+    //Relacion lista Entretenimiento (caso profesor)
+    public List<Entretenimiento> getEntretenimientosDePlan(Integer planId){ 
+        return entretenimientoData.findEntretenimientosByPlanId(planId);
+    }
+    public boolean assignEntretenimientoToPlan(Integer planId, Integer entretenimientoId) {
+        Plan plan = classData.findATById(planId);
+        Entretenimiento entretenimiento = entretenimientoData.findATById(entretenimientoId);
+        
+        if (plan == null || entretenimiento == null) {
+            return false;
+        }
+        
+        entretenimiento.setPlanId(planId);
+        entretenimientoData.saveT(entretenimiento);
+        return true;
+    }
 }
