@@ -11,7 +11,7 @@ package Modelos;
  */
 public class ServicioTransporte {
     private Integer id;
-    private String fecha_iniciio;
+    private String fecha_inicio;
     private String fecha_fin;
     private Double costo;
     //relaciones
@@ -23,7 +23,7 @@ public class ServicioTransporte {
 
     public ServicioTransporte(Integer id, String fecha_iniciio, String fecha_fin, Double costo) {
         this.id = id;
-        this.fecha_iniciio = fecha_iniciio;
+        this.fecha_inicio = fecha_iniciio;
         this.fecha_fin = fecha_fin;
         this.costo = costo;
     }
@@ -45,15 +45,15 @@ public class ServicioTransporte {
     /**
      * @return the fecha_iniciio
      */
-    public String getFecha_iniciio() {
-        return fecha_iniciio;
+    public String getFecha_inicio() {
+        return fecha_inicio;
     }
 
     /**
      * @param fecha_iniciio the fecha_iniciio to set
      */
-    public void setFecha_iniciio(String fecha_iniciio) {
-        this.fecha_iniciio = fecha_iniciio;
+    public void setFecha_inicio(String fecha_iniciio) {
+        this.fecha_inicio = fecha_iniciio;
     }
 
     /**

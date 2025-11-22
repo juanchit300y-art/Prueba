@@ -4,11 +4,90 @@
  * and open the template in the editor.
  */
 package Controllers;
+import Persistencia.*;
+import Modelos.*;
+import java.util.List;
+
 
 /**
  *
  * @author DELL
  */
-public class TrayectoController {
+public class TrayectoController extends GeneralController<Trayecto> {
+    MunicipioRepository municipioInicioData;
+    MunicipioRepository municipioDestinoData;
+    ItinerarioTransporteRepository itinerarioTransporteData;
+    ServicioTransporteRepository servicioTransporteData;
     
+    public TrayectoController() {
+    }
+    public TrayectoController(TrayectoRepository classData) {
+        this.classData= new TrayectoRepository();
+        this.municipioInicioData= new MunicipioRepository();
+        this.municipioDestinoData= new MunicipioRepository();
+        this.itinerarioTransporteData= new ItinerarioTransporteRepository();
+        this.servicioTransporteData= new ServicioTransporteRepository();
+    }
+    
+    @Override
+    public boolean eliminarObjeto(Integer id) {
+        List<ItinerarioTransporte> itinerariosTransporteTrayecto = itinerarioTransporteData.findItinerarioTransportByTrayectoId(id);
+        List<ServicioTransporte> servicioTransporteTrayecto = servicioTransporteData.findServicioTransporteByTrayectoId(id);
+        
+        if (!itinerariosTransporteTrayecto.isEmpty()) {
+            return false; 
+        }
+        if (!servicioTransporteTrayecto.isEmpty()) {
+            return false; 
+        }
+        
+        classData.deleteT(id);
+        return true;
+    }      
+    
+    public boolean actualizarTrayecto(Integer id, Integer municipioInicioId, Integer municipioDestinoId) {
+        Trayecto trayecto = classData.findATById(id);
+        if (trayecto == null) {
+            return false;
+        }
+        
+        if (municipioInicioId != null) {
+            Municipio municipio = municipioInicioData.findATById(municipioInicioId);
+            if (municipio == null) {
+                return false;
+            }
+            trayecto.setMunicipioInicioId(municipioInicioId);
+        }
+        
+        if (municipioDestinoId != null) {
+            Municipio municipio = municipioDestinoData.findATById(municipioDestinoId);
+            if (municipio == null) {
+                return false;
+            }
+            trayecto.setMunicipioDestinoId(municipioDestinoId);
+        }
+        classData.saveT(trayecto);
+        return true;
+    }
+
+    public boolean añadirTrayecto(Integer municipioInicioId, Integer municipioDestinoId) {
+        
+        Municipio municipioInicio = municipioInicioData.findATById(municipioInicioId);
+        if (municipioInicio == null) {
+            return false;
+        }
+        
+        Municipio municipioDestino = municipioDestinoData.findATById(municipioDestinoId);
+        if(municipioDestino == null){
+            return false;
+        }
+        
+        
+        Trayecto trayecto = new Trayecto();
+        trayecto.setMunicipioInicioId(municipioInicioId);
+        trayecto.setMunicipioDestinoId(municipioDestinoId);
+        
+        classData.saveT(trayecto);
+        return true;
+    }
 }

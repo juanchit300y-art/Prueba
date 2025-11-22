@@ -11,7 +11,7 @@ package Modelos;
  */
 public class Reserva {
     private Integer id;
-    private int numPersonas;
+    private Integer numPersonas;
     private Integer HabitacionId;
     private Integer ItinerarioTransporteId;
 
@@ -40,14 +40,14 @@ public class Reserva {
     /**
      * @return the numPersonas
      */
-    public int getNumPersonas() {
+    public Integer getNumPersonas() {
         return numPersonas;
     }
 
     /**
      * @param numPersonas the numPersonas to set
      */
-    public void setNumPersonas(int numPersonas) {
+    public void setNumPersonas(Integer numPersonas) {
         this.numPersonas = numPersonas;
     }
 
