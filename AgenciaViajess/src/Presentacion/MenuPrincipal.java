@@ -15,7 +15,7 @@ public class MenuPrincipal {
     //Atributos
     private Integer id;
     Scanner scanner;
-    private MenuAdministrador menuAdministrador;
+    MenuAdministrador asdasd;
     //Constructores
     public MenuPrincipal() {
     }
