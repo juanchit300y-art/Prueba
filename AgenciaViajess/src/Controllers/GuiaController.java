@@ -76,4 +76,20 @@ public class GuiaController extends GeneralController<Guia> {
         classData.saveT(guia);
         return true;
     }
+    //Turno Relacion (caso Profesor)
+    public List<Turno> getTurnosDeGuia(Integer guiaId){ 
+        return turnoData.findTurnosByGuiaId(guiaId);
+    }
+    public boolean assignTurnoToGuia(Integer guiaId, Integer turnoId) {
+        Guia guia = classData.findATById(guiaId);
+        Turno turno = turnoData.findATById(turnoId);
+        
+        if (guia == null || turno == null) {
+            return false;
+        }
+        
+        turno.setGuiaId(guiaId);
+        turnoData.saveT(turno);
+        return true;
+    }
 }
