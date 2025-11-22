@@ -41,21 +41,12 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
             return false;
         }
         if (fecha_inicio != null && !fecha_inicio.trim().isEmpty()) {
-            servicioTransporte.set(fecha_inicio.trim());
+            servicioTransporte.setFecha_iniciio(fecha_inicio.trim());
         }
         
         if (fecha_fin != null && !fecha_fin.trim().isEmpty()) {
             servicioTransporte.setFecha_fin(fecha_fin.trim());
         }
-        
-        if(vehiculoId != null){
-            Vehiculo vehiculo = vehiculoData.findATById(vehiculoId);
-            if (vehiculo == null) {
-                return false;
-            }
-            servicioTransporte.setVehiculoId(vehiculoId);
-        }
-        
         if (trayectoId != null) {
             Trayecto trayecto = trayectoData.findATById(trayectoId);
             if (trayecto == null) {
@@ -63,12 +54,27 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
             }
             servicioTransporte.setTrayectoId(trayectoId);
         }
-
+        if (opcion != null){
+            if(vehiculoId != null && opcion == 1){
+                Aeronave aeronave = aeronaveData.findATById(vehiculoId);
+                if (aeronave == null) {
+                    return false;
+                }
+                servicioTransporte.setVehiculoId(vehiculoId);
+            }
+            if(vehiculoId != null && opcion == 2){
+                Carro carro = carroData.findATById(vehiculoId);
+                if (carro == null) {
+                    return false;
+                }
+                servicioTransporte.setVehiculoId(vehiculoId);
+            }
+        }    
         classData.saveT(servicioTransporte);
         return true;
     }
 
-    public boolean añadirReserva(Integer id,String fecha_inicio, String fecha_fin, Integer vehiculoId, Integer trayectoId) {
+    public boolean añadirReserva(Integer id,String fecha_inicio, String fecha_fin, Integer opcion, Integer vehiculoId, Integer trayectoId) {
         if (fecha_inicio == null || fecha_inicio.trim().isEmpty()) {
             return false;
         }
@@ -76,18 +82,27 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
         if (fecha_fin == null || fecha_fin.trim().isEmpty()) {
             return false;
         }
-        
-        Vehiculo vehiculo = vehiculoData.findATById(vehiculoId);
-        if (vehiculo == null) {
+        if(opcion == null && opcion>2 && opcion< 1  ){
             return false;
         }
-        
+        if (opcion == 1 ){
+            Aeronave aeronave = aeronaveData.findATById(vehiculoId);
+            if (aeronave == null) {
+                return false;
+            }
+        }
+        if (opcion == 2 ){
+            Carro carro = carroData.findATById(vehiculoId);
+            if (carro == null) {
+                return false;
+            }
+        }
         Trayecto trayecto = trayectoData.findATById(trayectoId);
         if (trayecto == null) {
             return false;
         }
         ServicioTransporte servicioTransporte = new ServicioTransporte();
-        servicioTransporte.setFecha_inicio(fecha_inicio);
+        servicioTransporte.setFecha_iniciio(fecha_inicio);
         servicioTransporte.setFecha_fin(fecha_fin);
         servicioTransporte.setVehiculoId(vehiculoId);
         servicioTransporte.setTrayectoId(trayectoId);

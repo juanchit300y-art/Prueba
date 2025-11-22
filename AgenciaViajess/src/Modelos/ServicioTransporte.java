@@ -43,16 +43,16 @@ public class ServicioTransporte {
     }
 
     /**
-     * @return the fecha_iniciio
+     * @return the fecha_inicio
      */
     public String getFecha_inicio() {
         return fecha_inicio;
     }
 
-    /**
+        /**
      * @param fecha_inicio the fecha_inicio to set
      */
-    public void setFecha_inicio(String fecha_inicio) {
+    public void setFecha_Inicio(String fecha_inicio) {
         this.fecha_inicio= fecha_inicio;
     }
 
