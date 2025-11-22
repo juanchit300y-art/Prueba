@@ -99,7 +99,7 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
     }
     //Turno Relacion
     //En caso Profesor (La clase tiene un listado de objetos
-    public List<Turno> getTurnosActividadTuristica(Integer actividadTuristicaId){ 
+    public List<Turno> getTurnosDeActividadTuristica(Integer actividadTuristicaId){ 
         return turnoData.findTurnosByActividadTuristicaId(actividadTuristicaId);
     }
     public boolean assignTurnoToActividadTuristica(Integer actividadTuristicaId, Integer turnoId) {

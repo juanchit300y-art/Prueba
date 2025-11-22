@@ -61,5 +61,20 @@ public class AerolineaController extends GeneralController<Aerolinea> {
         classData.saveT(aerolinea);
         return true;
     }
-
+    // Aeronave Relacionm (caso profesor)
+    public List<Aeronave> getAeronavesDeAerolinea(Integer aerolineaId){ 
+        return aeronaveData.findAAeronavesByAerolineaId(aerolineaId);
+    }
+    public boolean assignAeronaveToAerolinea(Integer aerolineaId, Integer aeronaveId) {
+        Aerolinea aerolinea = classData.findATById(aerolineaId);
+        Aeronave aeronave = aeronaveData.findATById(aeronaveId);
+        
+        if (aerolinea == null || aeronave == null) {
+            return false;
+        }
+        
+        aeronave.setAerolineaId(aerolineaId);
+        aeronaveData.saveT(aeronave);
+        return true;
+    }
 }
