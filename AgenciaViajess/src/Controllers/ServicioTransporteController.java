@@ -15,14 +15,16 @@ import java.util.List;
  * @author DELL
  */
 public class ServicioTransporteController extends GeneralController<ServicioTransporte> {
-    VehiculoRepository vehiculoData;
+    CarroRepository carroData;
+    AeronaveRepository aeronaveData;
     TrayectoRepository trayectoData;
-    
+   
     public ServicioTransporteController() {
     }
     public ServicioTransporteController(ServicioTransporteRepository classData) {
         this.classData= new ServicioTransporteRepository();
-        this.vehiculoData= new VehiculoRepository();
+        this.carroData= new CarroRepository();
+        this.aeronaveData= new AeronaveRepository();
         this.trayectoData= new TrayectoRepository();
     
     }
@@ -33,13 +35,13 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
         return true;
     }    
     
-    public boolean actualizarServicioTransporte(Integer id,String fecha_inicio, String fecha_fin, Integer vehiculoId, Integer trayectoId) {
+    public boolean actualizarServicioTransporte(Integer id,String fecha_inicio, String fecha_fin, Integer opcion,Integer vehiculoId , Integer trayectoId) {
         ServicioTransporte servicioTransporte = classData.findATById(id);
         if (servicioTransporte == null) {
             return false;
         }
         if (fecha_inicio != null && !fecha_inicio.trim().isEmpty()) {
-            servicioTransporte.setFecha_inicio(fecha_inicio.trim());
+            servicioTransporte.set(fecha_inicio.trim());
         }
         
         if (fecha_fin != null && !fecha_fin.trim().isEmpty()) {
