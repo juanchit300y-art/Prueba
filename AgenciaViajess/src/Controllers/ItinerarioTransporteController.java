@@ -91,8 +91,8 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
     }
 
     //Relacion a Trayecto (caso curso)
-    public List<ItinerarioTransporte> getItinerariosTransporteByTrayecto(Integer itinerarioTransporteId) {
-        return itinerarioTransporteData.findItinerarioTransportByTrayectoId(itinerarioTransporteId);
+    public List<ItinerarioTransporte> getItinerariosTransporteByTrayecto(Integer trayectoId) {
+        return itinerarioTransporteData.findItinerarioTransportByTrayectoId(trayectoId);
     }
     public Trayecto getTrayectoDeItinerarioTransporte(Integer itinerarioTransporteId) {
         ItinerarioTransporte itinerarioTransporte = classData.findATById(itinerarioTransporteId);
@@ -103,8 +103,8 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
     }
     
     //Relacion a Viaje (caso curso)
-    public List<ItinerarioTransporte> getItinerariosTransporteByViaje(Integer itinerarioTransporteId) {
-        return itinerarioTransporteData.findItinerarioTransportByViajeId(itinerarioTransporteId);
+    public List<ItinerarioTransporte> getItinerariosTransporteByViaje(Integer viajeId) {
+        return itinerarioTransporteData.findItinerarioTransportByViajeId(viajeId);
     }
     public Viaje getViajeDeItinerarioTransporte(Integer itinerarioTransporteId) {
         ItinerarioTransporte itinerarioTransporte = classData.findATById(itinerarioTransporteId);

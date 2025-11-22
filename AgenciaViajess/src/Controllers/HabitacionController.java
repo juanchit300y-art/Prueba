@@ -71,7 +71,7 @@ public class HabitacionController extends GeneralController<Habitacion> {
         classData.saveT(habitacion);
         return true;
     }
-    //Resacion lista reservas (caso profesor)
+    //Relacion lista reservas (caso profesor)
     public List<Reserva> getReservasDeHabitacion(Integer habitacionId){ 
         return reservaData.findReservaByHabitacionId(habitacionId);
     }
@@ -88,7 +88,7 @@ public class HabitacionController extends GeneralController<Habitacion> {
         return true;
     }
 
-    //Relacion Hotel (caso curso)
+    //Relacion a Hotel (caso curso)
     public List<Habitacion> getHabitacionesByHotel(Integer hotelId) {
         return habitacionData.findHabitacionesByHotelId(hotelId);
     }
