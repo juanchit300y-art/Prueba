@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/JsonRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/GeneralRepository.java</file>
+            <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/ViajeController.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/ServicioTransporte.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/Viaje.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/Entretenimiento.java</file>
+            <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/CuotaController.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/HotelController.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/MunicipioRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Presentacion/MenuPrincipal.java</file>
@@ -31,6 +33,7 @@
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/MunicipioController.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/PlanRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/IDataAccess.java</file>
+            <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/EntretenimientoController.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/ItinerarioTransporteController.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/AeronaveRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/Hotel.java</file>
@@ -38,22 +41,29 @@
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/CuotaRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/ViajeRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/Cliente.java</file>
+            <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/TrayectoController.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/ElementoPlan.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/AeronaveController.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/Usuario.java</file>
+            <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/ReservaController.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/EntretenimientoRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/ServicioTransporteRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Presentacion/SubMenuAeronave.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/Plan.java</file>
+            <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/FacturaController.java</file>
+            <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/HotelRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/Municipio.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/CarroRepository.java</file>
+            <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/GeneralController.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/ElementoPlanRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/ActividadTuristicaController.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/HabitacionRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/Carro.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/PlanController.java</file>
+            <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Controllers/ServicioTransporteController.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/ActividadTuristica.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Presentacion/SubMenuElementoPlan.java</file>
+            <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/VehiculoRepository.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/Habitacion.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Modelos/Factura.java</file>
             <file>file:/C:/JAVA/Prueba/AgenciaViajess/src/Persistencia/TrayectoRepository.java</file>
