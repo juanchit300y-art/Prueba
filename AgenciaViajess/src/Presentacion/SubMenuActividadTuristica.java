@@ -4,11 +4,12 @@
  * and open the template in the editor.
  */
 package Presentacion;
-
+import Controllers.ActividadTuristicaController;
 /**
  *
  * @author DELL
  */
 public class SubMenuActividadTuristica {
+    private ActividadTuristicaController controlador;
     
 }

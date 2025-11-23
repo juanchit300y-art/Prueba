@@ -70,6 +70,12 @@ public class MenuAdministrador {
             System.out.println("===Presione 0 para Salir====");
             inicio= scanner.nextInt();
             scanner.nextLine();
+            switch(inicio){
+                case 0:
+                    break;
+                case 1:
+                    
+            }
         }
     }
     
