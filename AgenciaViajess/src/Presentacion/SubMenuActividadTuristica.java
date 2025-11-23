@@ -36,7 +36,20 @@ public class SubMenuActividadTuristica {
         this.controlador = controlador;
     }
     public void verSubMenuActividadTuristica(){
-        System.out.println();
+        int inicio=1;
+        while(inicio !=0 ){
+        System.out.println("========Bienvenido al menu de Gestion de Actividades Turisticas========");
+        System.out.println("Seleccion la opcion deseada: ");
+        System.out.println("1.  ");
+        System.out.println("2.  ");
+        System.out.println("3.  ");
+        System.out.println("4.  ");
+        System.out.println("Presione 0 para volver  ");
+        inicio= scanner.nextInt();
+        scanner.nextLine();
+        
+        }
     }
+        
     
 }
