@@ -44,11 +44,12 @@ public class MenuAdministrador {
     
     public void verMenu(){
         int inicio=1;
-        while(inicio !=  9){}    
+        while(inicio !=  9){    
             System.out.println("========Bienvenido al menu de Administrador========");
             System.out.println("9. Salir");
             inicio= scanner.nextInt();
             scanner.nextLine();
         }
+    }
     
 }
