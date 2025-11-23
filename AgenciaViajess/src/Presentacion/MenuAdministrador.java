@@ -25,11 +25,15 @@ public class MenuAdministrador {
     public void ingresoContraseña(){
         int volver=1;
         while(volver !=0){
+            int contraseña;
             System.out.println("Ingrese la contraseña de Administrador para ingresar al sistema");
-            int contraseña= scanner.nextInt();
+            contraseña= scanner.nextInt();
             scanner.nextLine();
+            System.out.println(contraseña);
+            verMenu();
             if(contraseña== 12345){
                 verMenu();
+                volver=0;
             }
             else{
                 System.out.println("Contraseña Incorrecta, presione 0 para volver");
