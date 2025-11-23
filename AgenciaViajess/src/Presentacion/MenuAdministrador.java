@@ -29,8 +29,6 @@ public class MenuAdministrador {
             System.out.println("Ingrese la contraseña de Administrador para ingresar al sistema");
             contraseña= scanner.nextInt();
             scanner.nextLine();
-            System.out.println(contraseña);
-            verMenu();
             if(contraseña== 12345){
                 verMenu();
                 volver=0;
@@ -48,6 +46,9 @@ public class MenuAdministrador {
         int inicio=1;
         while(inicio !=  9){}    
             System.out.println("========Bienvenido al menu de Administrador========");
+            System.out.println("9. Salir");
+            inicio= scanner.nextInt();
+            scanner.nextLine();
         }
     
 }
