@@ -14,6 +14,8 @@ import java.util.Scanner;
 public class MenuAdministrador {
     private Integer id;
     private String contraseña;
+    private SubMenuActividadTuristica submenuActividadTuristica;
+    private SubMenuAerolinea submenuAerolinea;
     Scanner scanner;
 
     public MenuAdministrador() {
@@ -23,6 +25,8 @@ public class MenuAdministrador {
         this.id = id;
         this.contraseña = contraseña;
         this.scanner = scanner;
+        this.submenuActividadTuristica= new SubMenuActividadTuristica(scanner);
+        this.submenuAerolinea= new SubMenuAerolinea(scanner);
     }
 
     /**
@@ -94,8 +98,27 @@ public class MenuAdministrador {
                 case 0:
                     break;
                 case 1:
-                 
-                    
+                    submenuActividadTuristica.verSubMenuActividadTuristica();
+                    break;
+                case 2:    
+                    submenuAerolinea.verSubMenuAerolinea();
+                    break;
+                case 3:    
+                    // linea    
+                case 4:    
+                    // linea
+                case 5:    
+                    // linea
+                case 6:    
+                    // linea
+                case 7:    
+                    // linea
+                case 8:    
+                    // linea
+                case 9:    
+                    // linea
+                default:
+                    System.out.println("Dato ingresado invalido, ingrese una opcion valida");
             }
         }
     }

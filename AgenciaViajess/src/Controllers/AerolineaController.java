@@ -17,9 +17,10 @@ public class AerolineaController extends GeneralController<Aerolinea> {
     AeronaveRepository aeronaveData;
  
     public AerolineaController() {
+        this.classData= new AerolineaRepository();
     }
     public AerolineaController(AerolineaRepository classData) {
-        this.classData= new AerolineaRepository();
+        this.classData= classData;
         this.aeronaveData= new AeronaveRepository();
     }
     @Override

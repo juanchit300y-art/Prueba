@@ -5,6 +5,7 @@
  */
 package agenciaviajess;
 
+import Modelos.Municipio;
 import Presentacion.*;
 import java.util.Scanner;
 
