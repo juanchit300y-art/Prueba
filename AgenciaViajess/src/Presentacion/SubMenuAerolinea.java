@@ -5,6 +5,7 @@
  */
 package Presentacion;
 import Controllers.AerolineaController;
+import Modelos.Aerolinea;
 import java.util.Scanner;
 /**
  *
@@ -57,22 +58,28 @@ public class SubMenuAerolinea {
                     añadirAerolinea();
                     break;
                 case 2:    
-                    // linea
+                    modificarAerolinea();
+                    break;
                 case 3:    
-                    // linea    
+                    eliminarAerolinea();   
+                    break;
                 case 4:    
                     // linea
+                    break;
                 case 5:    
                     // linea
+                    break;
                 case 6:    
                     // linea
+                    break;
                 default:
-                    System.out.println("Numero invalido, incgrese una de las opciones correspondientes");
+                    System.out.println("======== Numero invalido, incgrese una de las opciones correspondientes======== ");
             }
         }
     }
     public void añadirAerolinea(){
         String nombre= null;
+        System.out.println("Para añadir la nueva aerolinea:   ");
         System.out.println("Ingrese el nombre de la aerolinea");
         nombre= scanner.nextLine();
         String correo;
@@ -82,8 +89,39 @@ public class SubMenuAerolinea {
             System.out.println("======== La aerolinea se guardo correctamente========");
         }
         else{
-            System.out.println("La creacion de la Arolinea fallo, revise los datos ingresados");
+            System.out.println("======== La creacion de la Arolinea fallo, revise los datos ingresados======== ");
         }
     }    
-    
+    public void modificarAerolinea(){
+        int idAModificar;
+        System.out.println("Para modificar una Aerolinea:   ");
+        System.out.println("Ingrese el id de la Aerolinea a modificar: ");
+        idAModificar= scanner.nextInt();
+        scanner.nextLine();
+        Aerolinea aerolinea= controlador.getGeneralById(idAModificar);
+        System.out.println("Estos son los datos actuales de esa Aerolinea:  ");
+        System.out.println(aerolinea);
+        String nombre;
+        System.out.println("Ingrese el nuevo nombre de la Aerolinea:      (Si no desea cambiarlo presione Enter y deje el espacio vacio)");
+        nombre= scanner.nextLine();
+        String correo;
+        System.out.println("Ingrese el nuevo correo de la Aerolinea:      (Si no desea cambiarlo presione Enter y deje el espacio vacio)");
+        correo= scanner.nextLine();
+        System.out.println("Ingrese el nuevo nombre de la Aerolinea:      (Si no desea cambiarlo presione Enter y deje el espacio vacio)");
+        if(controlador.actualizarAerolinea(idAModificar, nombre, correo)){
+            System.out.println("======== La modificacion se guardo correctamente ========");
+        }
+        else{
+            System.out.println("======== La modificacion no se guardo correctamente, vuelva a intentarlo ======== ");
+        }   
+    }
+    public void eliminarAerolinea(){
+        int aerolineaAEliminarId;
+        System.out.println("Para eliminar una Aerolinea: ");
+        System.out.println("Ingrese el id de la Aerolinea que desea eliminar: ");
+        aerolineaAEliminarId= scanner.nextInt();
+        scanner.nextLine();
+        Aerolinea aerolineaAEliminar= controlador.getGeneralById(aerolineaAEliminarId);
+        System.out.println("");
+    }
 }
