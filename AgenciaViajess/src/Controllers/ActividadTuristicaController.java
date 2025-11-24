@@ -20,9 +20,14 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
     ActividadTuristicaRepository actividadTuristicaData;
     
     public ActividadTuristicaController() {
+        this.classData= new ActividadTuristicaRepository();
+        this.municipioData= new MunicipioRepository();
+        this.turnoData= new TurnoRepository();
+        this.elementoPlanData= new ElementoPlanRepository();
+        this.actividadTuristicaData= new ActividadTuristicaRepository();
     }
     public ActividadTuristicaController(ActividadTuristicaRepository classData) {
-        this.classData= new ActividadTuristicaRepository();
+        this.classData= classData;
         this.municipioData= new MunicipioRepository();
         this.turnoData= new TurnoRepository();
         this.elementoPlanData= new ElementoPlanRepository();

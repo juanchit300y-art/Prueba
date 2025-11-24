@@ -20,9 +20,14 @@ public class HotelController extends GeneralController<Hotel> {
     HotelRepository hotelData;
     
     public HotelController() {
+        this.classData= new HotelRepository();
+        this.habitacionData= new HabitacionRepository();
+        this.carroData= new CarroRepository();
+        this.municipioData= new MunicipioRepository();
+        this.hotelData = new HotelRepository();
     }
     public HotelController(HotelRepository classData) {
-        this.classData= new HotelRepository();
+        this.classData= classData;
         this.habitacionData= new HabitacionRepository();
         this.carroData= new CarroRepository();
         this.municipioData= new MunicipioRepository();

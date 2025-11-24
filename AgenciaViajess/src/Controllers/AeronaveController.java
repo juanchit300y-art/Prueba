@@ -19,9 +19,12 @@ public class AeronaveController extends GeneralController<Aeronave> {
     AeronaveRepository aeronaveData;
     
     public AeronaveController() {
+        this.classData= new AeronaveRepository();
+        this.aerolineaData= new AerolineaRepository();
+        this.aeronaveData= new AeronaveRepository();
     }
     public AeronaveController(AeronaveRepository classData) {
-        this.classData= new AeronaveRepository();
+        this.classData= classData;
         this.aerolineaData= new AerolineaRepository();
         this.aeronaveData= new AeronaveRepository();
     }

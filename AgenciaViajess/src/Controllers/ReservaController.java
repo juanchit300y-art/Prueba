@@ -18,9 +18,13 @@ public class ReservaController extends GeneralController<Reserva> {
     ItinerarioTransporteRepository itinerarioTransporteData;
     ReservaRepository reservaData;
     public ReservaController() {
+        this.classData= new ReservaRepository();
+        this.habitacionData= new HabitacionRepository();
+        this.itinerarioTransporteData= new ItinerarioTransporteRepository();
+        this.reservaData= new ReservaRepository();
     }
     public ReservaController(ReservaRepository classData) {
-        this.classData= new ReservaRepository();
+        this.classData= classData;
         this.habitacionData= new HabitacionRepository();
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
         this.reservaData= new ReservaRepository();

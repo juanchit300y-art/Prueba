@@ -18,9 +18,13 @@ public class FacturaController extends GeneralController<Factura> {
     ClienteRepository clienteData;
     FacturaRepository facturaData;
     public FacturaController() {
+        this.classData= new FacturaRepository();
+        this.viajeData= new ViajeRepository();
+        this.clienteData= new ClienteRepository();
+        this.facturaData= new FacturaRepository();
     }
     public FacturaController(FacturaRepository classData) {
-        this.classData= new FacturaRepository();
+        this.classData= classData;
         this.viajeData= new ViajeRepository();
         this.clienteData= new ClienteRepository();
         this.facturaData= new FacturaRepository();

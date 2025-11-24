@@ -19,9 +19,12 @@ public class CarroController extends GeneralController<Carro> {
     CarroRepository carroData;
     
     public CarroController() {
+        this.classData= new CarroRepository();
+        this.hotelData= new HotelRepository();
+        this.carroData= new CarroRepository();
     }
     public CarroController(CarroRepository classData) {
-        this.classData= new CarroRepository();
+        this.classData= classData;
         this.hotelData= new HotelRepository();
         this.carroData= new CarroRepository();
     }

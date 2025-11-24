@@ -17,9 +17,11 @@ public class GuiaController extends GeneralController<Guia> {
     TurnoRepository turnoData;
     
     public GuiaController() {
+        this.classData= new GuiaRepository();
+        this.turnoData= new TurnoRepository();
     }
     public GuiaController(GuiaRepository classData) {
-        this.classData= new GuiaRepository();
+        this.classData= classData;
         this.turnoData= new TurnoRepository();
     }
     @Override

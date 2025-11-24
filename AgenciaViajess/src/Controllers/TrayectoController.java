@@ -20,9 +20,15 @@ public class TrayectoController extends GeneralController<Trayecto> {
     ServicioTransporteRepository servicioTransporteData;
     TrayectoRepository trayectoData;
     public TrayectoController() {
+        this.classData= new TrayectoRepository();
+        this.municipioInicioData= new MunicipioRepository();
+        this.municipioDestinoData= new MunicipioRepository();
+        this.itinerarioTransporteData= new ItinerarioTransporteRepository();
+        this.servicioTransporteData= new ServicioTransporteRepository();
+        this.trayectoData = new TrayectoRepository();
     }
     public TrayectoController(TrayectoRepository classData) {
-        this.classData= new TrayectoRepository();
+        this.classData= classData;
         this.municipioInicioData= new MunicipioRepository();
         this.municipioDestinoData= new MunicipioRepository();
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();

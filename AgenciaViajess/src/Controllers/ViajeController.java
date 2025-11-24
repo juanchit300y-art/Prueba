@@ -21,9 +21,14 @@ public class ViajeController extends GeneralController<Viaje> {
     
     
     public ViajeController() {
+        this.classData= new ViajeRepository();
+        this.entretenimientoData= new EntretenimientoRepository();
+        this.cuotaData= new CuotaRepository();
+        this.itinerarioTransporteData= new ItinerarioTransporteRepository();
+        this.facturaData= new FacturaRepository();
     }
     public ViajeController(ViajeRepository classData) {
-        this.classData= new ViajeRepository();
+        this.classData= classData;
         this.entretenimientoData= new EntretenimientoRepository();
         this.cuotaData= new CuotaRepository();
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();

@@ -42,14 +42,14 @@ public class SubMenuAerolinea {
     public void verSubMenuAerolinea(){
         int inicio=1;
         while(inicio !=0 ){
-        System.out.println("========Bienvenido al menu de Gestion de Actividades Turisticas========");
+        System.out.println("========Bienvenido al menu de Gestion deAerolinea========");
         System.out.println("Seleccion la opcion deseada: ");
-        System.out.println("1. Añadir Actividad Turistica  ");
-        System.out.println("2. Modificar Actividad Turistica  ");
-        System.out.println("3. Elimar Actividad Turistica ");
-        System.out.println("4. Ver todas las actividades Tursiticas ");
-        System.out.println("5. Buscar Actividad Turistica");
-        System.out.println("6. Gestionar Elemento Plan");
+        System.out.println("1. Añadir Aerolinea");
+        System.out.println("2. Modificar Aerolinea");
+        System.out.println("3. Elimar Aerolinea");
+        System.out.println("4. Ver todas las aerolineas");
+        System.out.println("5. Buscar Aerolinea");
+        System.out.println("6. Gestionar Aeronaves");
         System.out.println("Presione 0 para volver  ");
         inicio= scanner.nextInt();
         scanner.nextLine();
@@ -57,7 +57,7 @@ public class SubMenuAerolinea {
                 case 0:
                     break;
                 case 1:
-                    añadirActividadTuristica();
+                    añadirAerolinea();
                     break;
                 case 2:    
                     // linea
@@ -74,20 +74,18 @@ public class SubMenuAerolinea {
             }
         }
     }
-    public void añadirActividadTuristica(){
+    public void añadirAerolinea(){
         String nombre= null;
-        System.out.println("Ingrese el nombre de la actividad Turistica");
+        System.out.println("Ingrese el nombre de la aerolinea");
         nombre= scanner.nextLine();
-        Integer idMunicipio;
         String correo;
-        int numeroEntrada;
-        System.out.println("Ingrese el Municipio al que corresponde");
+        System.out.println("Ingrese el correo de la aerolinea:");
         correo= scanner.nextLine();
         if(controlador.añadirAerolinea(nombre, correo)){
-            
+            System.out.println("======== La aerolinea se guardo correctamente========");
         }
         else{
-            System.out.println("La creacion de la Actividad Turistica fallo, revise los datos ingresados");
+            System.out.println("La creacion de la Arolinea fallo, revise los datos ingresados");
         }
     }    
     

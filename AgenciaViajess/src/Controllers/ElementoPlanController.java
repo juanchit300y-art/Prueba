@@ -18,9 +18,13 @@ public class ElementoPlanController extends GeneralController<ElementoPlan> {
     PlanRepository planData;
     ElementoPlanRepository elementoPlanData;
     public ElementoPlanController() {
+        this.classData= new ElementoPlanRepository();
+        this.actividadTuristicaData= new ActividadTuristicaRepository();
+        this.planData= new PlanRepository();
+        this.elementoPlanData= new ElementoPlanRepository();
     }
     public ElementoPlanController(ElementoPlanRepository classData) {
-        this.classData= new ElementoPlanRepository();
+        this.classData= classData;
         this.actividadTuristicaData= new ActividadTuristicaRepository();
         this.planData= new PlanRepository();
         this.elementoPlanData= new ElementoPlanRepository();

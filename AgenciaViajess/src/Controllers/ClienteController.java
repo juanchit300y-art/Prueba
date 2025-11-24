@@ -17,9 +17,11 @@ public class ClienteController extends GeneralController<Cliente> {
     FacturaRepository facturaData;
     
     public ClienteController() {
+        this.classData= new ClienteRepository();
+        this.facturaData= new FacturaRepository();
     }
     public ClienteController(ClienteRepository classData) {
-        this.classData= new ClienteRepository();
+        this.classData= classData;
         this.facturaData= new FacturaRepository();
     }
     @Override

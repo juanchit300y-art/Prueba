@@ -19,9 +19,13 @@ public class MunicipioController extends GeneralController<Municipio> {
     TrayectoRepository trayectoData;
     
     public MunicipioController() {
+        this.classData= new MunicipioRepository();
+        this.hotelData= new HotelRepository();
+        this.actividadTuristicaData= new ActividadTuristicaRepository();
+        this.trayectoData= new TrayectoRepository();
     }
     public MunicipioController(MunicipioRepository classData) {
-        this.classData= new MunicipioRepository();
+        this.classData= classData;
         this.hotelData= new HotelRepository();
         this.actividadTuristicaData= new ActividadTuristicaRepository();
         this.trayectoData= new TrayectoRepository();

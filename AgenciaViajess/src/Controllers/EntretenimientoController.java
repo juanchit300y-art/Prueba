@@ -18,9 +18,13 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
     PlanRepository planData;
     EntretenimientoRepository entretenimientoData;
     public EntretenimientoController() {
+        this.classData= new EntretenimientoRepository();
+        this.viajeData= new ViajeRepository();
+        this.planData= new PlanRepository();
+        this.entretenimientoData= new EntretenimientoRepository();
     }
     public EntretenimientoController(EntretenimientoRepository classData) {
-        this.classData= new EntretenimientoRepository();
+        this.classData= classData;
         this.viajeData= new ViajeRepository();
         this.planData= new PlanRepository();
         this.entretenimientoData= new EntretenimientoRepository();

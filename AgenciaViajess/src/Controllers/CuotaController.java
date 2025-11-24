@@ -18,9 +18,12 @@ public class CuotaController extends GeneralController<Cuota> {
     CuotaRepository cuotaData;
     
     public CuotaController() {
+        this.classData= new CuotaRepository();
+        this.viajeData= new ViajeRepository();
+        this.cuotaData= new CuotaRepository();
     }
     public CuotaController(CuotaRepository classData) {
-        this.classData= new CuotaRepository();
+        this.classData= classData;
         this.viajeData= new ViajeRepository();
         this.cuotaData= new CuotaRepository();
     }

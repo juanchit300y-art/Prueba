@@ -20,9 +20,14 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
     TrayectoRepository trayectoData;
     ServicioTransporteRepository servicioTransporteData;
     public ServicioTransporteController() {
+        this.classData= new ServicioTransporteRepository();
+        this.carroData= new CarroRepository();
+        this.aeronaveData= new AeronaveRepository();
+        this.trayectoData= new TrayectoRepository();
+        this.servicioTransporteData = new ServicioTransporteRepository();
     }
     public ServicioTransporteController(ServicioTransporteRepository classData) {
-        this.classData= new ServicioTransporteRepository();
+        this.classData= classData;
         this.carroData= new CarroRepository();
         this.aeronaveData= new AeronaveRepository();
         this.trayectoData= new TrayectoRepository();

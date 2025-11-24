@@ -19,9 +19,13 @@ public class HabitacionController extends GeneralController<Habitacion> {
     HabitacionRepository habitacionData;
     
     public HabitacionController() {
+        this.classData= new HabitacionRepository();
+        this.reservaData= new ReservaRepository();
+        this.hotelData= new HotelRepository();
+        this.habitacionData = new HabitacionRepository();
     }
     public HabitacionController(HabitacionRepository classData) {
-        this.classData= new HabitacionRepository();
+        this.classData= classData;
         this.reservaData= new ReservaRepository();
         this.hotelData= new HotelRepository();
         this.habitacionData = new HabitacionRepository();
