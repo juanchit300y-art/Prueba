@@ -23,7 +23,7 @@ public class MenuPrincipal {
     public MenuPrincipal(Integer id, Scanner scanner) {
         this.id = id;
         this.scanner=scanner;
-        this.menuAdministrador= new MenuAdministrador(1, scanner);
+        this.menuAdministrador= new MenuAdministrador(1,"Guerrero", scanner );
     }
     //Getters y Setters
     public Integer getId() {

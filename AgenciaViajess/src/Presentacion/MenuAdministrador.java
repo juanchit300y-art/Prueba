@@ -13,23 +13,54 @@ import java.util.Scanner;
  */
 public class MenuAdministrador {
     private Integer id;
+    private String contraseña;
     Scanner scanner;
 
     public MenuAdministrador() {
     }
 
-    public MenuAdministrador(Integer id, Scanner scanner) {
+    public MenuAdministrador(Integer id, String contraseña, Scanner scanner) {
         this.id = id;
+        this.contraseña = contraseña;
         this.scanner = scanner;
     }
+
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the contraseña
+     */
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    /**
+     * @param contraseña the contraseña to set
+     */
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+    
+    
     public void ingresoContraseña(){
         int volver=1;
         while(volver !=0){
-            int contraseña;
+            String contraseña;
             System.out.println("Ingrese la contraseña de Administrador para ingresar al sistema");
-            contraseña= scanner.nextInt();
-            scanner.nextLine();
-            if(contraseña== 12345){
+            contraseña= scanner.nextLine();
+            if(contraseña.equals (this.contraseña)){
                 verMenu();
                 volver=0;
             }
@@ -48,25 +79,14 @@ public class MenuAdministrador {
             System.out.println("========Bienvenido al menu de Administrador========");
             System.out.println("Ingrese la opcion que desee:");
             System.out.println("1.Gestionar Actividades Turisticas");
-            System.out.println("2. Gestionar Aerolineas");
-            System.out.println("3. Gestionar Aeronaves");
-            System.out.println("4. Gestionar Carros");
-            System.out.println("5. Gestionar Clientes");
-            System.out.println("6. Gestionar Cuotas");
-            System.out.println("7. Gestionar Elementos Planes");
-            System.out.println("8. Gestionar Entretenimiento ");
-            System.out.println("9. Gestionar Facturas");
-            System.out.println("10. Gestionar Guias");
-            System.out.println("11. Gestionar Habitaciones");
-            System.out.println("12. Gestionar Hoteles");
-            System.out.println("13. Gestionar Itinerario Transporte");
-            System.out.println("14. Gestionar Municipios");
-            System.out.println("15. Gestionar Planes");
-            System.out.println("16. Gestionar Reservas");
-            System.out.println("17. Gestionar Servicios de Transporte");
-            System.out.println("18. Gestionar Trayectos");
-            System.out.println("19. Gestionar Turnos");
-            System.out.println("20. Gestionar Viajes");
+            System.out.println("2. Gestionar Aerolineas"); 
+            System.out.println("3. Gestionar Hoteles");
+            System.out.println("4. Gestionar Municipios");
+            System.out.println("5. Gestionar Planes");
+            System.out.println("6. Gestionar Servicios de Transporte");
+            System.out.println("7. Gestionar Trayectos");
+            System.out.println("8. Gestionar Usuario");
+            System.out.println("9. Gestionar Viajes");
             System.out.println("===Presione 0 para Salir====");
             inicio= scanner.nextInt();
             scanner.nextLine();
@@ -74,6 +94,7 @@ public class MenuAdministrador {
                 case 0:
                     break;
                 case 1:
+                 
                     
             }
         }

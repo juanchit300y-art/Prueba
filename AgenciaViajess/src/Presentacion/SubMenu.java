@@ -21,8 +21,6 @@ public class SubMenu {
         this.scanner = scanner;
         this.controlador = controlador;
     }
-    public void verSubMenu{
-    
-    }
+
     
 }
