@@ -14,8 +14,6 @@ public class SubMenuActividadTuristica {
     private ActividadTuristicaController controlador;
     Scanner scanner;
 
-    public SubMenuActividadTuristica() {
-    }
     public SubMenuActividadTuristica(Scanner scanner) {
         this.controlador= new ActividadTuristicaController();
         this.scanner= scanner;

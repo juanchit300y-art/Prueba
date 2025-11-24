@@ -13,9 +13,6 @@ import java.util.Scanner;
 public class SubMenuAerolinea {
     private AerolineaController controlador;
     Scanner scanner;
-
-    public SubMenuAerolinea() {
-    }
     public SubMenuAerolinea(Scanner scanner) {
         this.controlador= new AerolineaController();
         this.scanner= scanner;
