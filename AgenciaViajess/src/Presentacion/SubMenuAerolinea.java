@@ -124,4 +124,32 @@ public class SubMenuAerolinea {
         Aerolinea aerolineaAEliminar= controlador.getGeneralById(aerolineaAEliminarId);
         System.out.println("");
     }
+    1.	Mercado:  
+a.	Personas mayores con acceso a celulares
+b.	Se estima 2,7 millones de posibles clientes
+2.	Problema:
+a.	La vulnerabilidad digital a la que están sujetos las personas mayores, enfocándonos en las ciberestafas a las que están expuestos
+3.	Dolor:
+a.	Desconfianza, impotencia por el desconocimiento, perdida de dinero y tiempo, estrés, incertidumbre
+4.	La competencia:
+a.	Truora, que se enfoca en la ciberciguridad antifraudes pero a diferencia de ellos nosotros trabajamos enfocándonos en adultos mayores, expandiéndonos por mas ramas que ellos no abarcan y tenemos asistencia humana, y nuestro precio accesible.
+5.	La solución
+a.	 Una aplicación que se basa en el uso de IA y acompañamiento humano personalizado que reconoce, interpreta, alerta y protege de distintos tipos de estafa en contextos, de tecnologia móvil con énfasis en llamadas y mensajes de tipo sms.
+6.	Las características:
+a.	Confiable, seguro, fácil de usar, accesible .
+7.	Los beneficios
+a.	
+8.	Los Modelos de Ingresos
+a.	
+9.	El equipo de trabajo/Talentos
+a.	Guerrero:
+b.	Jacobo:
+c.	Miguel:
+d.	Juanes:
+10.	El objetivo/propósito
+a.	
+11.	La tecnología
+a.	
+12.	El negocio/trato
+
 }
