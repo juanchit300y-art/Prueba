@@ -72,7 +72,7 @@ public class SubMenuAerolinea {
                     buscarAerolinea();
                     break;
                 case 6:    
-                    // linea
+                    eleccionEspecificoOGeneral();
                     break;
                 default:
                     System.out.println("======== Numero invalido, incgrese una de las opciones correspondientes======== ");
