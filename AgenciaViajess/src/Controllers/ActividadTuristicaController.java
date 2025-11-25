@@ -14,28 +14,28 @@ import java.util.List;
  * @author DELL
  */
 public class ActividadTuristicaController extends GeneralController<ActividadTuristica> {
-    MunicipioRepository municipioData;
-    TurnoRepository turnoData;
-    ElementoPlanRepository elementoPlanData;
+    MunicipioController municipioData;
+    TurnoController turnoData;
+    ElementoPlanController elementoPlanData;
     ActividadTuristicaRepository actividadTuristicaData;
     
     public ActividadTuristicaController() {
         this.classData= new ActividadTuristicaRepository();
-        this.municipioData= new MunicipioRepository();
-        this.turnoData= new TurnoRepository();
-        this.elementoPlanData= new ElementoPlanRepository();
+        this.municipioData= new MunicipioController();
+        this.turnoData= new TurnoController();
+        this.elementoPlanData= new ElementoPlanController();
         this.actividadTuristicaData= new ActividadTuristicaRepository();
     }
     public ActividadTuristicaController(ActividadTuristicaRepository classData) {
         this.classData= classData;
-        this.municipioData= new MunicipioRepository();
+        this.municipioData= new MunicipioController();
         this.turnoData= new TurnoRepository();
-        this.elementoPlanData= new ElementoPlanRepository();
+        this.elementoPlanData= new ElementoPlanController();
         this.actividadTuristicaData= new ActividadTuristicaRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
-        List<ElementoPlan> elementosPlanActividadTuristica= elementoPlanData.findElementosPLanByActividadTuristicaId(id);
+        List<ElementoPlan> elementosPlanActividadTuristica= elementoPlanData.getElementosPlanByActividadTuristica(id);
         List<Turno> turnosActividadTuristica= turnoData.findTurnosByActividadTuristicaId(id);        
         if (!elementosPlanActividadTuristica.isEmpty()) {
             return false; 
@@ -57,7 +57,7 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
         }
         if (municipioId != null) {
             
-            Municipio municipio = municipioData.findATById(municipioId);
+            Municipio municipio = municipioData.getGeneralById(municipioId);  
             if (municipio == null) {
                 return false;
             }
@@ -73,7 +73,7 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
             return false;
         }
         
-        Municipio municipio = municipioData.findATById(municipioId);
+        Municipio municipio = municipioData.getGeneralById(municipioId);
         if (municipio == null) {
             return false;
         }
@@ -88,18 +88,18 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
     //Elemento Plan Relacion
     //En caso de Profesor
     public List<ElementoPlan> getElementosPlanActividadTuristica(Integer actividadTuristicaId){ 
-        return elementoPlanData.findElementosPLanByActividadTuristicaId(actividadTuristicaId);
+        return elementoPlanData.getElementosPlanByActividadTuristica(actividadTuristicaId);
     }
     public boolean assignElementoPlanToActividadTuristica(Integer actividadTuristicaId, Integer elementoPlanId) {
         ActividadTuristica actividadTuristica = classData.findATById(actividadTuristicaId);
-        ElementoPlan elementoPlan = elementoPlanData.findATById(elementoPlanId);
+        ElementoPlan elementoPlan = elementoPlanData.getGeneralById(elementoPlanId);
         
         if (actividadTuristica == null || elementoPlan == null) {
             return false;
         }
         
         elementoPlan.setActividadTuristicaId(actividadTuristicaId);
-        elementoPlanData.saveT(elementoPlan);
+        elementoPlanData.elementoPlanData.saveT(elementoPlan);//----------------------------------------------------------
         return true;
     }
     //Turno Relacion
@@ -130,7 +130,7 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
         if (actividadTuristica == null) {
             return null;
         }
-        return municipioData.findATById(actividadTuristica.getMunicipioId());
+        return municipioData.getGeneralById(actividadTuristica.getMunicipioId());
     }
 
 }
