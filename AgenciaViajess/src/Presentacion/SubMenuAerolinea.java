@@ -42,7 +42,7 @@ public class SubMenuAerolinea {
     public void verSubMenuAerolinea(){
         int inicio=1;
         while(inicio !=0 ){
-        System.out.println("========Bienvenido al menu de Gestion deAerolinea========");
+        System.out.println("========Bienvenido al menu de Gestion de Aerolinea========");
         System.out.println("Seleccion la opcion deseada: ");
         System.out.println("1. Añadir Aerolinea");
         System.out.println("2. Modificar Aerolinea");
@@ -181,8 +181,8 @@ public class SubMenuAerolinea {
     public void eleccionEspecificoOGeneral(){
         int opcion;
         System.out.println("Escoja la opcion que desee: ");
-        System.out.println("1. Si desea Gestionar las aeronaves de una Aerolinea en especifico, presione 1");
-        System.out.println("2. Pero si desea Gestionar las aeronaves de toda la Agencia, presione 2");
+        System.out.println("1. Si desea Gestionar las aeronaves de una Aerolinea en especifico");
+        System.out.println("2. Pero si desea Gestionar las aeronaves de toda la Agencia");
         System.out.println("======== Presione 0 para volver ========");
         opcion= scanner.nextInt();
         scanner.nextLine();
