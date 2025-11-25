@@ -61,5 +61,12 @@ public class ElementoPlan {
     public void setPlanId(Integer idPlan) {
         this.PlanId = idPlan;
     }
+    @Override
+    public String toString() {
+    return "=== Datos de Elemento del Plan ===\n" +
+           "ID: " + id + "\n" +
+           "ID Actividad Turística: " + ActividadTuristicaId + "\n" +
+           "ID Plan: " + PlanId + "\n";
+    }
     
 }

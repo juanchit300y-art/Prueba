@@ -63,5 +63,13 @@ public class Cuota {
     public void setViajeId(Integer idViaje) {
         this.viajeId = idViaje;
     }
+    @Override
+    public String toString() {
+    return "=== Datos de Cuota ===\n" +
+           "ID: " + id + "\n" +
+           "Monto: " + monto + "\n" +
+           "ID Viaje: " + viajeId + "\n";
+    }
+
     
 }

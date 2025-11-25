@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Modelos;
-//uwu
+
 /**
  *
  * @author Juan Guerrero
@@ -31,4 +31,11 @@ public class Carro extends Vehiculo {
     public void setHotelId(Integer idHotel) {
         this.HotelId = idHotel;
     }
+    @Override
+    public String toString() {
+    return "=== Datos de Carro ===\n" +
+           super.toString() +
+           "ID Hotel: " + HotelId + "\n";
+    }
+
 }

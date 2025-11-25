@@ -62,7 +62,13 @@ public class Habitacion {
     public void setHotelId(Integer HotelId) {
         this.HotelId = HotelId;
     }
+    @Override
+    public String toString() {
+    return "Habitacion{" +
+            "Id=" + Id +
+            ", capacidad=" + capacidad +
+            ", HotelId=" + HotelId +
+            '}';
+    }
 
-
-    
 }

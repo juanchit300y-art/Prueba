@@ -137,13 +137,16 @@ public class SubMenuAerolinea {
                     System.out.println("======== No fue posible eliminar la aerolinea, asegurese de que no la aerolinea no posea aeronaves======== ");
                     System.out.println("======== De ser asi, no es posible realizar su eliminacion ========  ");
                 }
-            case 0:
+                break;
+            case 2:
                 System.out.println("========La Aerolinea no fue eliminada, muchas gracias ========  ");
+                break;
             default:
                 System.out.println("======== Opcion invalida, por favor ingrese un numero valido ======== ");
-        }
-        
+        }    
     }
-    
+    public void verTodasAerolineas(){
+        System.out.println("======== Todas las aerolineas de nuestra agencia de viajes======== ");
+    }
 
 }

@@ -64,5 +64,13 @@ public class Aerolinea {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+    @Override
+    public String toString() {
+    return "=== Datos de Aerolínea ===\n" +
+           "ID: " + id + "\n" +
+           "Nombre: " + nombre + "\n" +
+           "Correo: " + correo + "\n";
+    }
+
     
 }

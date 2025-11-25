@@ -78,6 +78,13 @@ public class Reserva {
     public void setItinerarioTransporteId(Integer ItinerarioTransporteId) {
         this.ItinerarioTransporteId = ItinerarioTransporteId;
     }
-
-    
+    @Override
+    public String toString() {
+    return "Reserva{" +
+            "id=" + id +
+            ", numPersonas=" + numPersonas +
+            ", HabitacionId=" + HabitacionId +
+            ", ItinerarioTransporteId=" + ItinerarioTransporteId +
+            '}';
+    }
 }

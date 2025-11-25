@@ -30,4 +30,11 @@ public class Aeronave extends Vehiculo{
     public void setAerolineaId(Integer idAerolinea) {
         this.aerolineaId = idAerolinea;
     }
+    @Override
+    public String toString() {
+    return "=== Datos de Aeronave ===\n" +
+           super.toString() +
+           "ID Aerolínea: " + aerolineaId + "\n";
+    }
+
 }

@@ -79,9 +79,12 @@ public class Factura {
     public void setCosto(Integer costo) {
         this.costo = costo;
     }
-
-
-
-   
-
+    @Override
+    public String toString() {
+    return "=== Datos de Factura ===\n" +
+           "ID: " + id + "\n" +
+           "Costo: " + costo + "\n" +
+           "ID Viaje: " + ViajeId + "\n" +
+           "ID Cliente: " + ClienteId + "\n";
+    }
 }

@@ -3,5 +3,10 @@
     "id": 1,
     "nombre": "MarcosCorporation",
     "correo": "marcos@gnial.com"
+  },
+  {
+    "id": 2,
+    "nombre": "Guerrero SAS",
+    "correo": "portero@gmail.com"
   }
 ]

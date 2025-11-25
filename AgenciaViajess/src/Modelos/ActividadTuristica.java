@@ -63,5 +63,12 @@ public class ActividadTuristica {
     public void setMunicipioId(Integer idMunicipio) {
         this.MunicipioId = idMunicipio;
     }
-   
+   @Override
+    public String toString() {
+    return "=== Datos de Actividad Turística ===\n" +
+           "ID: " + id + "\n" +
+           "Nombre: " + nombre + "\n" +
+           "ID Municipio: " + MunicipioId + "\n";
+    }
+
 }

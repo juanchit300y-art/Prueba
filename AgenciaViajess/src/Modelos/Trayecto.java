@@ -62,6 +62,14 @@ public class Trayecto {
     public void setMunicipioDestinoId(Integer municipioDestino) {
         this.municipioDestinoId = municipioDestino;
     }
+     @Override
+    public String toString() {
+        return "Trayecto{" +
+                "id=" + id +
+                ", municipioInicioId=" + municipioInicioId +
+                ", municipioDestinoId=" + municipioDestinoId +
+                '}';
+    }
     
     
 }

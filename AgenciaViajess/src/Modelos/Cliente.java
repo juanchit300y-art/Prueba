@@ -33,5 +33,11 @@ public class Cliente extends Usuario{
     public void setMedioDePago(String medioDePago) {
         this.medioDePago = medioDePago;
     }
+    @Override
+    public String toString() {
+    return "=== Datos de Cliente ===\n" +
+           super.toString() +
+           "Medio de pago: " + medioDePago + "\n";
+    }
     
 }

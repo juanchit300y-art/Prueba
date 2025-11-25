@@ -62,6 +62,13 @@ public class Turno {
     public void setGuiaId(Integer GuiaId) {
         this.GuiaId = GuiaId;
     }
-
+    @Override
+    public String toString() {
+        return "Turno{" +
+                "id=" + id +
+                ", ActividadTuristicaId=" + ActividadTuristicaId +
+                ", GuiaId=" + GuiaId +
+                '}';
+    }
     
 }

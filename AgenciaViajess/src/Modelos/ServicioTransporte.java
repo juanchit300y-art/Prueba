@@ -111,6 +111,17 @@ public class ServicioTransporte {
     public void setTrayectoId(Integer TrayectoId) {
         this.TrayectoId = TrayectoId;
     }
+    @Override
+    public String toString() {
+    return "ServicioTransporte{" +
+            "id=" + id +
+            ", fecha_inicio='" + fecha_inicio + '\'' +
+            ", fecha_fin='" + fecha_fin + '\'' +
+            ", costo=" + costo +
+            ", VehiculoId=" + VehiculoId +
+            ", TrayectoId=" + TrayectoId +
+            '}';
+    }
 
 
     

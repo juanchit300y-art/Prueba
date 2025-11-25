@@ -62,6 +62,13 @@ public class Entretenimiento {
     public void setViajeId(Integer ViajeId) {
         this.ViajeId = ViajeId;
     }
+    @Override
+    public String toString() {
+    return "=== Datos de Entretenimiento ===\n" +
+           "ID: " + id + "\n" +
+           "ID Plan: " + PlanId + "\n" +
+           "ID Viaje: " + ViajeId + "\n";
+    }
 
 
 }

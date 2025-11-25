@@ -33,5 +33,11 @@ public class Guia extends Usuario {
     public void setAñosExperiencia(Integer añosExperiencia) {
         this.añosExperiencia = añosExperiencia;
     }
-    
+    @Override
+    public String toString() {
+    return "=== Datos de Guía ===\n" +
+           super.toString() +
+           "Años de experiencia: " + añosExperiencia + "\n";
+    }
+
 }

@@ -32,5 +32,12 @@ public class Viaje {
     public void setId(Integer id) {
         this.id = id;
     }
+    @Override
+    public String toString() {
+        return "Viaje{" +
+                "id=" + id +
+                '}';
+    }
+
    
 }
