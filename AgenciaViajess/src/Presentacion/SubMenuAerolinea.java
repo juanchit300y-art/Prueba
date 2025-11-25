@@ -50,7 +50,7 @@ public class SubMenuAerolinea {
         System.out.println("4. Ver todas las aerolineas");
         System.out.println("5. Buscar Aerolinea");
         System.out.println("6. Gestionar Aeronaves");
-        System.out.println("Presione 0 para volver  ");
+        System.out.println("======== Presione 0 para volver ========  ");
         inicio= scanner.nextInt();
         scanner.nextLine();
                     switch(inicio){
@@ -69,7 +69,7 @@ public class SubMenuAerolinea {
                     verTodasAerolineas();
                     break;
                 case 5:    
-                    // linea
+                    buscarAerolinea();
                     break;
                 case 6:    
                     // linea
@@ -156,12 +156,51 @@ public class SubMenuAerolinea {
         System.out.println("======== Todas las aerolineas de nuestra agencia de viajes======== ");
         List<Aerolinea> aerolineas= controlador.getAllGeneral();
         if(aerolineas.isEmpty()){
-            System.out.println("No se encuentran Aerolineas registradas en el sistema");
+            System.out.println("========No se encuentran Aerolineas registradas en el sistema========");
         }
         else{
             for(Aerolinea actual: aerolineas){
                 System.out.println(actual);
             }
+        }
+    }
+    public void buscarAerolinea(){
+        System.out.println("Para buscar una Aerolinea: ");
+        int idAerolineaBuscada;
+        System.out.println("Ingrese el Id de la Aerolinea que desea buscar:  ");
+        idAerolineaBuscada= scanner.nextInt();
+        scanner.nextLine();
+        Aerolinea aerolinea= controlador.getGeneralById(idAerolineaBuscada);
+        if (aerolinea== null){
+            System.out.println("======== Aerolinea inexistente o Id no encontrado ========");
+        }
+        else{
+            System.out.println(aerolinea);
+        }
+    }
+    public void eleccionEspecificoOGeneral(){
+        int opcion;
+        System.out.println("Escoja la opcion que desee: ");
+        System.out.println("1. Si desea Gestionar las aeronaves de una Aerolinea en especifico, presione 1");
+        System.out.println("2. Pero si desea Gestionar las aeronaves de toda la Agencia, presione 2");
+        System.out.println("======== Presione 0 para volver ========");
+        opcion= scanner.nextInt();
+        scanner.nextLine();
+        switch(opcion){
+            case 0:
+                break;
+            case 1:
+                int idAeronavesAerolinea;
+                System.out.println("Ingrese el Id de la Aerolinea de la cual desea gestionar sus Aeronaves: ");
+                idAeronavesAerolinea= scanner.nextInt();
+                scanner.nextLine();
+                System.out.println("Codigo en proceso, estamos trabajando en eso :p (Aqui va linea de codigo) "); //Linea de Codigoooooooooo
+                break;
+            case 2:
+                System.out.println("Codigo en proceso, estamos trabajando en eso :p"); //Linea de codigooooooooooooooooo
+                break;
+            default:
+                System.out.println("======== Opcion invalidad, ingrese el dato correspondiente ======== ");
         }
     }
 
