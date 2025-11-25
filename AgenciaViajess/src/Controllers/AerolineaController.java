@@ -18,6 +18,7 @@ public class AerolineaController extends GeneralController<Aerolinea> {
  
     public AerolineaController() {
         this.classData= new AerolineaRepository();
+        this.aeronaveData= new AeronaveRepository();
     }
     public AerolineaController(AerolineaRepository classData) {
         this.classData= classData;
