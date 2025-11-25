@@ -129,28 +129,32 @@ public class SubMenuAerolinea {
         aerolineaAEliminarId= scanner.nextInt();
         scanner.nextLine();
         Aerolinea aerolineaAEliminar= controlador.getGeneralById(aerolineaAEliminarId);
-        System.out.println("La aerolinea que fue ingresada es: ");
-        System.out.println(aerolineaAEliminar);
-        System.out.println("¿Esta seguro que desea eliminarla?");
-        int eleccion;
-        System.out.println("Presione 1 para confirmar y 2 para cancelar");
-        eleccion= scanner.nextInt();
-        switch(eleccion){
-            case 1:
-                if(controlador.eliminarObjeto(aerolineaAEliminarId)){
-                    System.out.println("======== La aerolinea fue eliminada correctamente ======== ");
-                }
-                else{
-                    System.out.println("======== No fue posible eliminar la aerolinea, asegurese de que no la aerolinea no posea aeronaves======== ");
-                    System.out.println("======== De ser asi, no es posible realizar su eliminacion ========  ");
-                }
-                break;
-            case 2:
-                System.out.println("========La Aerolinea no fue eliminada, muchas gracias ========  ");
-                break;
-            default:
-                System.out.println("======== Opcion invalida, por favor ingrese un numero valido ======== ");
-        }    
+        if (aerolineaAEliminar== null){
+        }
+        else{
+            System.out.println("La aerolinea que fue ingresada es: ");
+            System.out.println(aerolineaAEliminar);
+            System.out.println("¿Esta seguro que desea eliminarla?");
+            int eleccion;
+            System.out.println("Presione 1 para confirmar y 2 para cancelar");
+            eleccion= scanner.nextInt();
+            switch(eleccion){
+                case 1:
+                    if(controlador.eliminarObjeto(aerolineaAEliminarId)){
+                        System.out.println("======== La aerolinea fue eliminada correctamente ======== ");
+                    }
+                    else{
+                        System.out.println("======== No fue posible eliminar la aerolinea, asegurese de que no la aerolinea no posea aeronaves======== ");
+                        System.out.println("======== De ser asi, no es posible realizar su eliminacion ========  ");
+                    }
+                    break;
+                case 2:
+                    System.out.println("========La Aerolinea no fue eliminada, muchas gracias ========  ");
+                    break;
+                default:
+                    System.out.println("======== Opcion invalida, por favor ingrese un numero valido ======== ");
+            }
+        }
     }
     public void verTodasAerolineas(){
         System.out.println("======== Todas las aerolineas de nuestra agencia de viajes======== ");
@@ -182,7 +186,7 @@ public class SubMenuAerolinea {
         int opcion;
         System.out.println("Escoja la opcion que desee: ");
         System.out.println("1. Si desea Gestionar las aeronaves de una Aerolinea en especifico");
-        System.out.println("2. Pero si desea Gestionar las aeronaves de toda la Agencia");
+        System.out.println("2. Si desea Gestionar las aeronaves de toda la Agencia");
         System.out.println("======== Presione 0 para volver ========");
         opcion= scanner.nextInt();
         scanner.nextLine();

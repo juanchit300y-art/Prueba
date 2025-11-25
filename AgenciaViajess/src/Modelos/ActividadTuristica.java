@@ -70,5 +70,4 @@ public class ActividadTuristica {
            "Nombre: " + nombre + "\n" +
            "ID Municipio: " + MunicipioId + "\n";
     }
-
 }
