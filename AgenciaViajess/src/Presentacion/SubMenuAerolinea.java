@@ -130,6 +130,7 @@ public class SubMenuAerolinea {
         scanner.nextLine();
         Aerolinea aerolineaAEliminar= controlador.getGeneralById(aerolineaAEliminarId);
         if (aerolineaAEliminar== null){
+            System.out.println("Aerolinea inexistente, no se encontro Aerolinea con ese Id");
         }
         else{
             System.out.println("La aerolinea que fue ingresada es: ");
