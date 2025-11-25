@@ -27,6 +27,9 @@ public abstract class GeneralController <T> {
     public T getGeneralById(Integer idBuscado) {
         return classData.findATById(idBuscado);
     }
+    public void guardarT(T dato){
+        classData.saveT(dato);
+    }
     public abstract boolean eliminarObjeto(Integer id);
     
 }

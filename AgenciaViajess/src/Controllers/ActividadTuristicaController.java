@@ -14,29 +14,29 @@ import java.util.List;
  * @author DELL
  */
 public class ActividadTuristicaController extends GeneralController<ActividadTuristica> {
-    MunicipioController municipioData;
-    TurnoController turnoData;
-    ElementoPlanController elementoPlanData;
+    MunicipioRepository municipioData;
+    TurnoRepository turnoData;
+    ElementoPlanRepository elementoPlanData;
     ActividadTuristicaRepository actividadTuristicaData;
     
     public ActividadTuristicaController() {
         this.classData= new ActividadTuristicaRepository();
-        this.municipioData= new MunicipioController();
-        this.turnoData= new TurnoController();
-        this.elementoPlanData= new ElementoPlanController();
+        this.municipioData= new MunicipioRepository();
+        this.turnoData= new TurnoRepository();
+        this.elementoPlanData= new ElementoPlanRepository();
         this.actividadTuristicaData= new ActividadTuristicaRepository();
     }
     public ActividadTuristicaController(ActividadTuristicaRepository classData) {
         this.classData= classData;
-        this.municipioData= new MunicipioController();
-        this.turnoData= new TurnoController();
-        this.elementoPlanData= new ElementoPlanController();
+        this.municipioData= new MunicipioRepository();
+        this.turnoData= new TurnoRepository();
+        this.elementoPlanData= new ElementoPlanRepository();
         this.actividadTuristicaData= new ActividadTuristicaRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
-        List<ElementoPlan> elementosPlanActividadTuristica= elementoPlanData.getElementosPlanByActividadTuristica(id);
-        List<Turno> turnosActividadTuristica= turnoData.getTurnosByActividadTuristica(id);        
+        List<ElementoPlan> elementosPlanActividadTuristica= elementoPlanData.findElementosPLanByActividadTuristicaId(id);
+        List<Turno> turnosActividadTuristica= turnoData.findTurnosByActividadTuristicaId(id);        
         if (!elementosPlanActividadTuristica.isEmpty()) {
             return false; 
         }
@@ -57,7 +57,7 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
         }
         if (municipioId != null) {
             
-            Municipio municipio = municipioData.getGeneralById(municipioId);  
+            Municipio municipio = municipioData.findATById(municipioId);  
             if (municipio == null) {
                 return false;
             }
@@ -73,7 +73,7 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
             return false;
         }
         
-        Municipio municipio = municipioData.getGeneralById(municipioId);
+        Municipio municipio = municipioData.findATById(municipioId);
         if (municipio == null) {
             return false;
         }
@@ -88,35 +88,35 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
     //Elemento Plan Relacion
     //En caso de Profesor
     public List<ElementoPlan> getElementosPlanActividadTuristica(Integer actividadTuristicaId){ 
-        return elementoPlanData.getElementosPlanByActividadTuristica(actividadTuristicaId);
+        return elementoPlanData.findElementosPLanByActividadTuristicaId(actividadTuristicaId);
     }
     public boolean assignElementoPlanToActividadTuristica(Integer actividadTuristicaId, Integer elementoPlanId) {
         ActividadTuristica actividadTuristica = classData.findATById(actividadTuristicaId);
-        ElementoPlan elementoPlan = elementoPlanData.getGeneralById(elementoPlanId);
+        ElementoPlan elementoPlan = elementoPlanData.findATById(elementoPlanId);
         
         if (actividadTuristica == null || elementoPlan == null) {
             return false;
         }
         
         elementoPlan.setActividadTuristicaId(actividadTuristicaId);
-        elementoPlanData.elementoPlanData.saveT(elementoPlan);//----------------------------------------------------------
+        elementoPlanData.saveT(elementoPlan);//----------------------------------------------------------
         return true;
     }
     //Turno Relacion
     //En caso Profesor (La clase tiene un listado de objetos
     public List<Turno> getTurnosDeActividadTuristica(Integer actividadTuristicaId){ 
-        return turnoData.getTurnosByActividadTuristica(actividadTuristicaId);
+        return turnoData.findTurnosByActividadTuristicaId(actividadTuristicaId);
     }
     public boolean assignTurnoToActividadTuristica(Integer actividadTuristicaId, Integer turnoId) {
         ActividadTuristica actividadTuristica = classData.findATById(actividadTuristicaId);
-        Turno turno = turnoData.getGeneralById(turnoId);
+        Turno turno = turnoData.findATById(turnoId);
         
         if (actividadTuristica == null || turno == null) {
             return false;
         }
         
         turno.setActividadTuristicaId(actividadTuristicaId);
-        turnoData.saveT(turno);// este es el error que se soluciona con otro data arriba uwu
+        turnoData.saveT(turno);
         return true;
     }
     // Municipio Relacion
@@ -130,7 +130,7 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
         if (actividadTuristica == null) {
             return null;
         }
-        return municipioData.getGeneralById(actividadTuristica.getMunicipioId());
+        return municipioData.findATById(actividadTuristica.getMunicipioId());
     }
 
 }

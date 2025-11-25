@@ -14,19 +14,19 @@ import java.util.List;
  * @author DELL
  */
 public class AerolineaController extends GeneralController<Aerolinea> {
-    AeronaveRepository aeronaveData;
+    AeronaveController aeronaveData;
  
     public AerolineaController() {
         this.classData= new AerolineaRepository();
-        this.aeronaveData= new AeronaveRepository();
+        this.aeronaveData= new AeronaveController();
     }
     public AerolineaController(AerolineaRepository classData) {
         this.classData= classData;
-        this.aeronaveData= new AeronaveRepository();
+        this.aeronaveData= new AeronaveController();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
-        List<Aeronave> aeronavesAerolinea= aeronaveData.findAAeronavesByAerolineaId(id);        
+        List<Aeronave> aeronavesAerolinea= aeronaveData.getAeronavesByAerolinea(id);        
         if (!aeronavesAerolinea.isEmpty()) {
             return false; 
         }
@@ -65,18 +65,18 @@ public class AerolineaController extends GeneralController<Aerolinea> {
     }
     // Aeronave Relacionm (caso profesor)
     public List<Aeronave> getAeronavesDeAerolinea(Integer aerolineaId){ 
-        return aeronaveData.findAAeronavesByAerolineaId(aerolineaId);
+        return aeronaveData.getAeronavesByAerolinea(aerolineaId);
     }
     public boolean assignAeronaveToAerolinea(Integer aerolineaId, Integer aeronaveId) {
         Aerolinea aerolinea = classData.findATById(aerolineaId);
-        Aeronave aeronave = aeronaveData.findATById(aeronaveId);
+        Aeronave aeronave = aeronaveData.getGeneralById(aeronaveId);
         
         if (aerolinea == null || aeronave == null) {
             return false;
         }
         
         aeronave.setAerolineaId(aerolineaId);
-        aeronaveData.saveT(aeronave);
+        aeronaveData.guardarT(aeronave);
         return true;
     }
 }

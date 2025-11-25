@@ -14,19 +14,19 @@ import java.util.List;
  * @author DELL
  */
 public class TurnoController extends GeneralController<Turno> {
-    ActividadTuristicaController actividadTuristicaData;
-    GuiaController guiaData;
+    ActividadTuristicaRepository actividadTuristicaData;
+    GuiaRepository guiaData;
     TurnoRepository turnoData;
     public TurnoController() {
         this.classData= new TurnoRepository();
-        this.actividadTuristicaData= new ActividadTuristicaController();
-        this.guiaData= new GuiaController();
+        this.actividadTuristicaData= new ActividadTuristicaRepository();
+        this.guiaData= new GuiaRepository();
         this.turnoData= new TurnoRepository();
     }
     public TurnoController(TurnoRepository classData) {
         this.classData= classData;
-        this.actividadTuristicaData= new ActividadTuristicaController();
-        this.guiaData= new GuiaController();
+        this.actividadTuristicaData= new ActividadTuristicaRepository();
+        this.guiaData= new GuiaRepository();
         this.turnoData= new TurnoRepository();
     }
     @Override
@@ -42,14 +42,14 @@ public class TurnoController extends GeneralController<Turno> {
         }
         
         if (actividadTuristicaId != null) {
-            ActividadTuristica actividadTuristica = actividadTuristicaData.getGeneralById(actividadTuristicaId);
+            ActividadTuristica actividadTuristica = actividadTuristicaData.findATById(actividadTuristicaId);
             if (actividadTuristica == null) {
                 return false;
             }
             turno.setActividadTuristicaId(actividadTuristicaId);
         }
         if(guiaId!= null){
-            Guia guia= guiaData.getGeneralById(guiaId);
+            Guia guia= guiaData.findATById(guiaId);
             if(guia== null){
                 return false;
             }
@@ -60,11 +60,11 @@ public class TurnoController extends GeneralController<Turno> {
     }
 
     public boolean añadirTurno(Integer actividadTuristicaId, Integer guiaId) {
-        ActividadTuristica actividadTuristica = actividadTuristicaData.getGeneralById(actividadTuristicaId);
+        ActividadTuristica actividadTuristica = actividadTuristicaData.findATById(actividadTuristicaId);
         if (actividadTuristica == null) {
             return false;
         }
-        Guia guia = guiaData.getGeneralById(guiaId);
+        Guia guia = guiaData.findATById(guiaId);
         if (guia == null) {
             return false;
         }
@@ -77,14 +77,14 @@ public class TurnoController extends GeneralController<Turno> {
     }
     //Cliente relacion (caso curso) - relacion a guia
     public List<Turno> getTurnosByGuia(Integer guiaId) {
-        return guiaData.getTurnosDeGuia(guiaId);
+        return turnoData.findTurnosByGuiaId(guiaId);
     }
     public Guia getGuiaDeTurno(Integer turnoId) {
         Turno turno = classData.findATById(turnoId);
         if (turno == null) {
             return null;
         }
-        return guiaData.getGeneralById(turno.getGuiaId());
+        return guiaData.findATById(turno.getGuiaId());
     }
     //Viaje relacion (caso curso) -  relacion a Actividad Turistica
     public List<Turno> getTurnosByActividadTuristica(Integer actividadTuristicaId) {
@@ -95,6 +95,6 @@ public class TurnoController extends GeneralController<Turno> {
         if (turno == null) {
             return null;
         }
-        return actividadTuristicaData.getGeneralById(turno.getActividadTuristicaId());
+        return actividadTuristicaData.findATById(turno.getActividadTuristicaId());
     }
 }

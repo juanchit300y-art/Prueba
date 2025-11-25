@@ -1,4 +1,4 @@
-package Presentacion;
+  package Presentacion;
 
 import Controllers.AeronaveController;
 import Modelos.Aeronave;
@@ -71,7 +71,7 @@ public class SubMenuAeronave {
         String nombre = scanner.nextLine();
 
         System.out.println("Ingrese el modelo de la aeronave:");
-        String modelo = scanner.nextLine();
+        Integer modelo = scanner.nextInt();//lo cambié para que dejara ejecutar xd
 
         if (controlador.añadirAeronave(nombre, modelo)) {
             System.out.println("======== La aeronave se guardó correctamente ========");
@@ -97,7 +97,7 @@ public class SubMenuAeronave {
             String nombre = scanner.nextLine();
 
             System.out.println("Ingrese el nuevo modelo (Enter para dejar igual):");
-            String modelo = scanner.nextLine();
+            Integer modelo = scanner.nextInt();//lo cambié--------------------------
 
             if (controlador.actualizarAeronave(id, nombre, modelo)) {
                 System.out.println("======== La aeronave fue modificada correctamente ========");
