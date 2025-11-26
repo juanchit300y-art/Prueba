@@ -42,7 +42,7 @@ public class SubMenuAerolinea {
     public void verSubMenuAerolinea(){
         int inicio=1;
         while(inicio !=0 ){
-        System.out.println("========Bienvenido al menu de Gestion de Aerolinea========");
+        System.out.println("========Bienvenido al menu de Gestion de Aerolineas========");
         System.out.println("Seleccion la opcion deseada: ");
         System.out.println("1. Añadir Aerolinea");
         System.out.println("2. Modificar Aerolinea");

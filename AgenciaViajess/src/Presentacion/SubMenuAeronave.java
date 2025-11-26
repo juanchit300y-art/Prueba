@@ -1,4 +1,4 @@
-  package Presentacion;
+package Presentacion;
 
 import Controllers.AeronaveController;
 import Modelos.Aeronave;
@@ -30,7 +30,7 @@ public class SubMenuAeronave {
     public void verSubMenuAeronave() {
         int inicio = 1;
         while (inicio != 0) {
-            System.out.println("======== Bienvenido al menu de Gestion de Aeronave ========");
+            System.out.println("======== Bienvenido al menu de Gestion de Aeronaves ========");
             System.out.println("Seleccione la opcion deseada: ");
             System.out.println("1. Añadir Aeronave");
             System.out.println("2. Modificar Aeronave");
@@ -67,16 +67,16 @@ public class SubMenuAeronave {
 
     public void añadirAeronave() {
         System.out.println("Para añadir la nueva aeronave:");
-        System.out.println("Ingrese el nombre de la aeronave:");
-        String nombre = scanner.nextLine();
-
-        System.out.println("Ingrese el modelo de la aeronave:");
-        Integer modelo = scanner.nextInt();//lo cambié para que dejara ejecutar xd
-
-        if (controlador.añadirAeronave(nombre, modelo)) {
+        System.out.println("Ingrese la marca de la aeronave:");
+        String marca = scanner.nextLine();
+        int idAerolinea;
+        System.out.println("Ingrese el id de la Aerolinea a la que desea añadirla:");
+        idAerolinea= scanner.nextInt();
+        scanner.nextLine();
+        if (controlador.añadirAeronave(marca, idAerolinea)) {
             System.out.println("======== La aeronave se guardó correctamente ========");
         } else {
-            System.out.println("======== No fue posible guardar la aeronave, revise los datos ========");
+            System.out.println("======== No fue posible guardar la aeronave, revise los datos ingresados ========");
         }
     }
 
@@ -93,13 +93,13 @@ public class SubMenuAeronave {
             System.out.println("Datos actuales de la aeronave:");
             System.out.println(aeronave);
 
-            System.out.println("Ingrese el nuevo nombre (Enter para dejar igual):");
-            String nombre = scanner.nextLine();
+            System.out.println("Ingrese la nueva marca que quiere registrar :       (Si no desea cambiarlo presione Enter y deje el espacio vacio)");
+            String marca = scanner.nextLine();
 
-            System.out.println("Ingrese el nuevo modelo (Enter para dejar igual):");
-            Integer modelo = scanner.nextInt();//lo cambié--------------------------
+            System.out.println("Ingrese el id de su nueva Aerolinea:                           (Si no desea cambiarlo presione Enter y deje el espacio vacio)");
+            int idAerolinea = scanner.nextInt();//lo cambié--------------------------
 
-            if (controlador.actualizarAeronave(id, nombre, modelo)) {
+            if (controlador.actualizarAeronave(id, marca, idAerolinea)) {
                 System.out.println("======== La aeronave fue modificada correctamente ========");
             } else {
                 System.out.println("======== No fue posible modificar la aeronave ========");
