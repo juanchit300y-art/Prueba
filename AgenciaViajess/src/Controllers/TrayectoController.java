@@ -1,157 +1,118 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controllers;
+
 import Persistencia.*;
 import Modelos.*;
 import java.util.List;
 
-
-/**
- *
- * @author DELL
- */
 public class TrayectoController extends GeneralController<Trayecto> {
-    MunicipioRepository municipioInicioData;
-    MunicipioRepository municipioDestinoData;
-    ItinerarioTransporteRepository itinerarioTransporteData;
-    ServicioTransporteRepository servicioTransporteData;
-    TrayectoRepository trayectoData;
+
+    private MunicipioRepository municipioData;
+    private ItinerarioTransporteRepository itinerarioData;
+    private ServicioTransporteRepository servicioData;
+
     public TrayectoController() {
-        this.classData= new TrayectoRepository();
-        this.municipioInicioData= new MunicipioRepository();
-        this.municipioDestinoData= new MunicipioRepository();
-        this.itinerarioTransporteData= new ItinerarioTransporteRepository();
-        this.servicioTransporteData= new ServicioTransporteRepository();
-        this.trayectoData = new TrayectoRepository();
+        this.classData = new TrayectoRepository();
+        this.municipioData = new MunicipioRepository();
+        this.itinerarioData = new ItinerarioTransporteRepository();
+        this.servicioData = new ServicioTransporteRepository();
     }
+
     public TrayectoController(TrayectoRepository classData) {
-        this.classData= classData;
-        this.municipioInicioData= new MunicipioRepository();
-        this.municipioDestinoData= new MunicipioRepository();
-        this.itinerarioTransporteData= new ItinerarioTransporteRepository();
-        this.servicioTransporteData= new ServicioTransporteRepository();
-        this.trayectoData = new TrayectoRepository();
+        this.classData = classData;
+        this.municipioData = new MunicipioRepository();
+        this.itinerarioData = new ItinerarioTransporteRepository();
+        this.servicioData = new ServicioTransporteRepository();
     }
-    
+
     @Override
     public boolean eliminarObjeto(Integer id) {
-        List<ItinerarioTransporte> itinerariosTransporteTrayecto = itinerarioTransporteData.findItinerarioTransportByTrayectoId(id);
-        List<ServicioTransporte> servicioTransporteTrayecto = servicioTransporteData.findServicioTransporteByTrayectoId(id);
-        
-        if (!itinerariosTransporteTrayecto.isEmpty()) {
-            return false; 
-        }
-        if (!servicioTransporteTrayecto.isEmpty()) {
-            return false; 
-        }
-        
+
+        if (!itinerarioData.findItinerarioTransportByTrayectoId(id).isEmpty())
+            return false;
+
+        if (!servicioData.findServicioTransporteByTrayectoId(id).isEmpty())
+            return false;
+
         classData.deleteT(id);
         return true;
-    }      
-    
+    }
+
     public boolean actualizarTrayecto(Integer id, Integer municipioInicioId, Integer municipioDestinoId) {
         Trayecto trayecto = classData.findATById(id);
-        if (trayecto == null) {
-            return false;
-        }
-        
-        if (municipioInicioId != null) {
-            Municipio municipio = municipioInicioData.findATById(municipioInicioId);
-            if (municipio == null) {
-                return false;
-            }
+        if (trayecto == null) return false;
+
+        if (municipioInicioId != null && municipioData.findATById(municipioInicioId) != null) {
             trayecto.setMunicipioInicioId(municipioInicioId);
         }
-        
-        if (municipioDestinoId != null) {
-            Municipio municipio = municipioDestinoData.findATById(municipioDestinoId);
-            if (municipio == null) {
-                return false;
-            }
+
+        if (municipioDestinoId != null && municipioData.findATById(municipioDestinoId) != null) {
             trayecto.setMunicipioDestinoId(municipioDestinoId);
         }
+
         classData.saveT(trayecto);
         return true;
     }
 
     public boolean añadirTrayecto(Integer municipioInicioId, Integer municipioDestinoId) {
-        
-        Municipio municipioInicio = municipioInicioData.findATById(municipioInicioId);
-        if (municipioInicio == null) {
-            return false;
-        }
-        
-        Municipio municipioDestino = municipioDestinoData.findATById(municipioDestinoId);
-        if(municipioDestino == null){
-            return false;
-        }
-        
-        
+
+        if (municipioData.findATById(municipioInicioId) == null) return false;
+        if (municipioData.findATById(municipioDestinoId) == null) return false;
+
         Trayecto trayecto = new Trayecto();
         trayecto.setMunicipioInicioId(municipioInicioId);
         trayecto.setMunicipioDestinoId(municipioDestinoId);
-        
+
         classData.saveT(trayecto);
         return true;
     }
-    //Relacion a MunicipioInicio (caso curso)
-    public List<Trayecto> getTrayectosByMunicipioInicio(Integer municipioInicioId) {
-        return trayectoData.findTrayectosByMunicipioInicioId(municipioInicioId);
-    }
-    public Trayecto getMunicipioInicioDeTrayecto(Integer trayectoId) {
+
+    // ======================================================
+    //        RELACIONES CORRECTAS
+    // ======================================================
+
+    // Municipio inicio
+    public Municipio getMunicipioInicioDeTrayecto(Integer trayectoId) {
         Trayecto trayecto = classData.findATById(trayectoId);
-        if (trayecto == null) {
-            return null;
-        }
-        return trayectoData.findATById(trayecto.getMunicipioInicioId());
+        if (trayecto == null) return null;
+        return municipioData.findATById(trayecto.getMunicipioInicioId());
     }
 
-    //Relacion a MunicipioDestino (caso curso)
-    public List<Trayecto> getTrayectosByMunicipioDestino(Integer municipioDestinoId) {
-        return trayectoData.findTrayectosByMunicipioDestinoId(municipioDestinoId);
-    }
-    public Trayecto getMunicipioDestinoDeTrayecto(Integer trayectoId) {
+    // Municipio destino
+    public Municipio getMunicipioDestinoDeTrayecto(Integer trayectoId) {
         Trayecto trayecto = classData.findATById(trayectoId);
-        if (trayecto == null) {
-            return null;
-        }
-        return trayectoData.findATById(trayecto.getMunicipioDestinoId());
+        if (trayecto == null) return null;
+        return municipioData.findATById(trayecto.getMunicipioDestinoId());
     }
-    
-    //Relacion lista ItinerarioTransporte (caso profesor)
-    public List<ItinerarioTransporte> getItinerariosTransporteDeTrayecto(Integer trayectoId){ 
-        return itinerarioTransporteData.findItinerarioTransportByTrayectoId(trayectoId);
+
+    // Itinerarios asignados al trayecto
+    public List<ItinerarioTransporte> getItinerariosTransporteDeTrayecto(Integer trayectoId) {
+        return itinerarioData.findItinerarioTransportByTrayectoId(trayectoId);
     }
-    public boolean assignItinerarioTransporteToTrayecto(Integer trayectoId, Integer itinerarioTransporteId) {
+
+    public boolean assignItinerarioTransporteToTrayecto(Integer trayectoId, Integer itinerarioId) {
         Trayecto trayecto = classData.findATById(trayectoId);
-        ItinerarioTransporte itinerarioTransporte = itinerarioTransporteData.findATById(itinerarioTransporteId);
-        
-        if (trayecto == null || itinerarioTransporte == null) {
-            return false;
-        }
-        
-        itinerarioTransporte.setTrayectoId(trayectoId);
-        itinerarioTransporteData.saveT(itinerarioTransporte);
+        ItinerarioTransporte itinerario = itinerarioData.findATById(itinerarioId);
+
+        if (trayecto == null || itinerario == null) return false;
+
+        itinerario.setTrayectoId(trayectoId);
+        itinerarioData.saveT(itinerario);
         return true;
     }
-    
-    //Relacion lista ServicioTransporte (caso profesor)
-    public List<ServicioTransporte> getServiciosTransporteDeTrayecto(Integer trayectoId){ 
-        return servicioTransporteData.findServicioTransporteByTrayectoId(trayectoId);
+
+    // Servicios asignados al trayecto
+    public List<ServicioTransporte> getServiciosTransporteDeTrayecto(Integer trayectoId) {
+        return servicioData.findServicioTransporteByTrayectoId(trayectoId);
     }
-    public boolean assignServicioTransporteToTrayecto(Integer trayectoId, Integer servicioTransporteId) {
+
+    public boolean assignServicioTransporteToTrayecto(Integer trayectoId, Integer servicioId) {
         Trayecto trayecto = classData.findATById(trayectoId);
-        ServicioTransporte servicioTransporte = servicioTransporteData.findATById(servicioTransporteId);
-        
-        if (trayecto == null || servicioTransporte == null) {
-            return false;
-        }
-        
-        servicioTransporte.setTrayectoId(trayectoId);
-        servicioTransporteData.saveT(servicioTransporte);
+        ServicioTransporte servicio = servicioData.findATById(servicioId);
+
+        if (trayecto == null || servicio == null) return false;
+
+        servicio.setTrayectoId(trayectoId);
+        servicioData.saveT(servicio);
         return true;
     }
 }

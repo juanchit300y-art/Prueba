@@ -70,6 +70,4 @@ public class Trayecto {
                 ", municipioDestinoId=" + municipioDestinoId +
                 '}';
     }
-    
-    
 }
