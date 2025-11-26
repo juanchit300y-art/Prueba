@@ -15,15 +15,18 @@ import java.util.Scanner;
  */
 public class SubMenuAerolinea {
     private AerolineaController controlador;
+    private SubMenuAeronave submenuAeronave;
     Scanner scanner;
     public SubMenuAerolinea(Scanner scanner) {
         this.controlador= new AerolineaController();
         this.scanner= scanner;
+        this.submenuAeronave= new SubMenuAeronave(scanner);
     }
 
     public SubMenuAerolinea(AerolineaController controlador, Scanner scanner) {
         this.controlador = controlador;
         this.scanner = scanner;
+        this.submenuAeronave= new SubMenuAeronave(scanner);
     }
     
     /**
@@ -199,7 +202,7 @@ public class SubMenuAerolinea {
                 System.out.println("Ingrese el Id de la Aerolinea de la cual desea gestionar sus Aeronaves: ");
                 idAeronavesAerolinea= scanner.nextInt();
                 scanner.nextLine();
-                System.out.println("Codigo en proceso, estamos trabajando en eso :p (Aqui va linea de codigo) "); //Linea de Codigoooooooooo
+                submenuAeronave.verSubMenuAeronaveEspecifico(idAeronavesAerolinea);
                 break;
             case 2:
                 System.out.println("Codigo en proceso, estamos trabajando en eso :p"); //Linea de codigooooooooooooooooo

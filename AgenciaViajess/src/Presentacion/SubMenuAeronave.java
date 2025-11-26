@@ -167,4 +167,44 @@ public class SubMenuAeronave {
             System.out.println(aeronave);
         }
     }
+    //Gestion itinerario
+    // Aerolinea Especifica
+      public void verSubMenuAeronaveEspecifico(Integer aerlinea) {
+        int inicio = 1;
+        while (inicio != 0) {
+            System.out.println("======== Bienvenido al menu de Gestion de Aeronaves ========");
+            System.out.println("Seleccione la opcion deseada: ");
+            System.out.println("1. Añadir Aeronave");
+            System.out.println("2. Modificar Aeronave");
+            System.out.println("3. Eliminar Aeronave");
+            System.out.println("4. Ver todas las Aeronaves");
+            System.out.println("5. Buscar Aeronave");
+            System.out.println("======== Presione 0 para volver ========");
+            inicio = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (inicio) {
+                case 0:
+                    break;
+                case 1:
+                    añadirAeronave();
+                    break;
+                case 2:
+                    modificarAeronave();
+                    break;
+                case 3:
+                    eliminarAeronave();
+                    break;
+                case 4:
+                    verTodasAeronaves();
+                    break;
+                case 5:
+                    buscarAeronave();
+                    break;
+                default:
+                    System.out.println("======== Numero invalido, ingrese una opcion válida ========");
+            }
+        }
+    }
+
 }
