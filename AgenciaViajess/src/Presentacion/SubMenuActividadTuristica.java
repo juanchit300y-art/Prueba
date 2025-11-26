@@ -40,8 +40,7 @@ public class SubMenuActividadTuristica {
             System.out.println("9. Asignar Turno a una Actividad Turística");
             System.out.println("10. Ver Municipio asociado a una Actividad Turística");
             System.out.println("11. Ver todas las Actividades Turísticas por Municipio");
-            System.out.println("===================================");
-            System.out.println("0. Volver");
+            System.out.println("===Presione 0 para Salir====");
             opcion = scanner.nextInt();
             scanner.nextLine();
 

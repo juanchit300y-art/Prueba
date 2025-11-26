@@ -3,13 +3,15 @@ package Presentacion;
 import Controllers.AeronaveController;
 import Modelos.Aeronave;
 import Modelos.Aerolinea;
+import Modelos.ServicioTransporte;
 import java.util.List;
 import java.util.Scanner;
 
 public class SubMenuAeronave {
+
     private AeronaveController controlador;
-    Scanner scanner;
-    
+    private Scanner scanner;
+
     public SubMenuAeronave(Scanner scanner) {
         this.controlador = new AeronaveController();
         this.scanner = scanner;
@@ -20,134 +22,131 @@ public class SubMenuAeronave {
         this.scanner = scanner;
     }
 
-    public AeronaveController getControlador() {
-        return controlador;
-    }
-
-    public void setControlador(AeronaveController controlador) {
-        this.controlador = controlador;
-    }
-
     public void verSubMenuAeronave() {
-        int inicio = 1;
-        while (inicio != 0) {
-            System.out.println("======== Bienvenido al menu de Gestion de Aeronaves ========");
-            System.out.println("Seleccione la opcion deseada: ");
+        int opcion = 1;
+
+        while (opcion != 0) {
+
+            System.out.println("======== Gestión de Aeronaves ========");
             System.out.println("1. Añadir Aeronave");
             System.out.println("2. Modificar Aeronave");
             System.out.println("3. Eliminar Aeronave");
             System.out.println("4. Ver todas las Aeronaves");
             System.out.println("5. Buscar Aeronave");
-            System.out.println("======== Presione 0 para volver ========");
-            inicio = scanner.nextInt();
+            System.out.println("--------- Opciones Extra ---------");
+            System.out.println("6. Ver Aerolínea de una Aeronave");
+            System.out.println("7. Ver Servicios de Transporte de una Aeronave");
+            System.out.println("8. Asignar Servicio de Transporte a Aeronave");
+            System.out.println("=======Presione 0 para Salir========");
+            System.out.println("0. Volver");
+
+            opcion = scanner.nextInt();
             scanner.nextLine();
 
-            switch (inicio) {
-                case 0:
-                    break;
-                case 1:
-                    añadirAeronave();
-                    break;
-                case 2:
-                    modificarAeronave();
-                    break;
-                case 3:
-                    eliminarAeronave();
-                    break;
-                case 4:
-                    verTodasAeronaves();
-                    break;
-                case 5:
-                    buscarAeronave();
-                    break;
+            switch (opcion) {
+                case 0: break;
+                case 1: añadirAeronave(); break;
+                case 2: modificarAeronave(); break;
+                case 3: eliminarAeronave(); break;
+                case 4: verTodasAeronaves(); break;
+                case 5: buscarAeronave(); break;
+
+                case 6: verAerolineaDeAeronave(); break;
+                case 7: verServiciosTransporte(); break;
+                case 8: asignarServicioTransporte(); break;
+
                 default:
-                    System.out.println("======== Numero invalido, ingrese una opcion válida ========");
+                    System.out.println("===== Opción inválida =====");
             }
         }
     }
 
+    // ----------------------------- CRUD -----------------------------
+
     public void añadirAeronave() {
-        System.out.println("Para añadir la nueva aeronave:");
-        System.out.println("Ingrese la marca de la aeronave:");
+        System.out.println("Ingrese la marca de la Aeronave:");
         String marca = scanner.nextLine();
-        int idAerolinea;
-        System.out.println("Ingrese el id de la Aerolinea a la que desea añadirla:");
-        idAerolinea= scanner.nextInt();
+
+        System.out.println("Ingrese el ID de la Aerolínea:");
+        Integer aerolineaId = scanner.nextInt();
         scanner.nextLine();
-        if (controlador.añadirAeronave(marca, idAerolinea)) {
-            System.out.println("======== La aeronave se guardó correctamente ========");
+
+        if (controlador.añadirAeronave(marca, aerolineaId)) {
+            System.out.println("===== Aeronave registrada con éxito =====");
         } else {
-            System.out.println("======== No fue posible guardar la aeronave, revise los datos ingresados ========");
+            System.out.println("===== No se pudo registrar la Aeronave =====");
         }
     }
 
     public void modificarAeronave() {
-        System.out.println("Para modificar una aeronave:");
-        System.out.println("Ingrese el id de la Aeronave a modificar:");
+        System.out.println("Ingrese el ID de la Aeronave a modificar:");
         int id = scanner.nextInt();
         scanner.nextLine();
 
         Aeronave aeronave = controlador.getGeneralById(id);
+
         if (aeronave == null) {
-            System.out.println("======== El id ingresado no existe ========");
+            System.out.println("===== ID no encontrado =====");
+            return;
+        }
+
+        System.out.println("Datos actuales:");
+        System.out.println(aeronave);
+
+        System.out.println("Nueva marca (Enter para no cambiar):");
+        String marca = scanner.nextLine();
+
+        System.out.println("Nuevo ID de Aerolínea (Enter para no cambiar):");
+        String input = scanner.nextLine();
+        Integer aerolineaId = null;
+
+        if (!input.trim().isEmpty()) {
+            aerolineaId = Integer.parseInt(input);
+        }
+
+        if (marca.trim().isEmpty()) marca = null;
+
+        if (controlador.actualizarAeronave(id, marca, aerolineaId)) {
+            System.out.println("===== Aeronave modificada =====");
         } else {
-            System.out.println("Datos actuales de la aeronave:");
-            System.out.println(aeronave);
-
-            System.out.println("Ingrese la nueva marca que quiere registrar :       (Si no desea cambiarlo presione Enter y deje el espacio vacio)");
-            String marca = scanner.nextLine();
-
-            System.out.println("Ingrese el id de su nueva Aerolinea:                           (Si no desea cambiarlo presione Enter y deje el espacio vacio)");
-            int idAerolinea = scanner.nextInt();//lo cambié--------------------------
-
-            if (controlador.actualizarAeronave(id, marca, idAerolinea)) {
-                System.out.println("======== La aeronave fue modificada correctamente ========");
-            } else {
-                System.out.println("======== No fue posible modificar la aeronave ========");
-            }
+            System.out.println("===== No se pudo modificar =====");
         }
     }
 
     public void eliminarAeronave() {
-        System.out.println("Para eliminar una aeronave:");
-        System.out.println("Ingrese el id de la aeronave que desea eliminar:");
+        System.out.println("Ingrese el ID de la Aeronave a eliminar:");
         int id = scanner.nextInt();
         scanner.nextLine();
 
         Aeronave aeronave = controlador.getGeneralById(id);
+
         if (aeronave == null) {
-            System.out.println("======== Aeronave inexistente ========");
-        } else {
-            System.out.println("La aeronave que será eliminada:");
-            System.out.println(aeronave);
+            System.out.println("===== ID no encontrado =====");
+            return;
+        }
 
-            System.out.println("¿Está seguro que desea eliminarla?");
-            System.out.println("Presione 1 para confirmar y 2 para cancelar");
-            int opcion = scanner.nextInt();
+        System.out.println("Aeronave encontrada:");
+        System.out.println(aeronave);
 
-            switch (opcion) {
-                case 1:
-                    if (controlador.eliminarObjeto(id)) {
-                        System.out.println("======== Aeronave eliminada correctamente ========");
-                    } else {
-                        System.out.println("======== No fue posible eliminar la aeronave ========");
-                    }
-                    break;
-                case 2:
-                    System.out.println("======== Operación cancelada ========");
-                    break;
-                default:
-                    System.out.println("======== Opción inválida ========");
+        System.out.println("¿Confirmar eliminación? (1=Sí / 2=No)");
+        int confirm = scanner.nextInt();
+
+        if (confirm == 1) {
+            if (controlador.eliminarObjeto(id)) {
+                System.out.println("===== Aeronave eliminada =====");
+            } else {
+                System.out.println("===== No se puede eliminar: tiene Servicios de Transporte asociados =====");
             }
+        } else {
+            System.out.println("===== Cancelado =====");
         }
     }
 
     public void verTodasAeronaves() {
-        System.out.println("======== Todas las aeronaves registradas ========");
         List<Aeronave> lista = controlador.getAllGeneral();
 
         if (lista.isEmpty()) {
-            System.out.println("======== No hay aeronaves registradas ========");
+            System.out.println("===== No hay Aeronaves registradas =====");
         } else {
             for (Aeronave a : lista) {
                 System.out.println(a);
@@ -156,46 +155,64 @@ public class SubMenuAeronave {
     }
 
     public void buscarAeronave() {
-        System.out.println("Para buscar una aeronave:");
-        System.out.println("Ingrese el ID:");
+        System.out.println("Ingrese el ID de la Aeronave:");
         int id = scanner.nextInt();
         scanner.nextLine();
 
         Aeronave aeronave = controlador.getGeneralById(id);
+
         if (aeronave == null) {
-            System.out.println("======== Aeronave no encontrada ========");
+            System.out.println("===== Aeronave no encontrada =====");
         } else {
             System.out.println(aeronave);
         }
     }
-    //Gestion itinerario
-    // Aerolinea Especifica
-      public void verSubMenuAeronaveEspecifico(Aerolinea aerolinea, Integer idAerolinea) {
-        int inicio = 1;
-        while (inicio != 0) {
-            System.out.println("======== Bienvenido al menu de Gestion de Aeronaves de una Aerolinea ========");
-            System.out.println("La aerolinea que esta gestionando es: ");
+
+    // --------------------------- EXTRA ------------------------------
+
+    public void verAerolineaDeAeronave() {
+        System.out.println("Ingrese el ID de la Aeronave:");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        Aerolinea aerolinea = controlador.getAerolineaDeAeronave(id);
+
+        if (aerolinea == null) {
+            System.out.println("===== La aeronave no existe o no tiene Aerolínea asignada =====");
+        } else {
             System.out.println(aerolinea);
-            
-            System.out.println("Seleccione la opcion deseada: ");
-            System.out.println("1. Añadir Aeronave");
-            System.out.println("2. Modificar Aeronave");
-            System.out.println("3. Eliminar Aeronave");
-            System.out.println("4. Ver todas las Aeronaves");
-            System.out.println("5. Buscar Aeronave");
-            System.out.println("======== Presione 0 para volver ========");
-            inicio = scanner.nextInt();
-            scanner.nextLine();
+        }
+    }
 
-            switch (inicio) {
-                case 0:
-                    break;
-                case 1:
+    public void verServiciosTransporte() {
+        System.out.println("Ingrese el ID de la Aeronave:");
+        int id = scanner.nextInt();
+        scanner.nextLine();
 
-                    break;
-                default:
-                    System.out.println("======== Numero invalido, ingrese una opcion válida ========");
+        List<ServicioTransporte> lista = controlador.getServiciosTrasportesDeAeronave(id);
+
+        if (lista.isEmpty()) {
+            System.out.println("===== La aeronave no tiene servicios asignados =====");
+        } else {
+            for (ServicioTransporte s : lista) {
+                System.out.println(s);
             }
+        }
+    }
+
+    public void asignarServicioTransporte() {
+        System.out.println("Ingrese el ID de la Aeronave:");
+        int aeronaveId = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Ingrese el ID del Servicio de Transporte:");
+        int servicioId = scanner.nextInt();
+        scanner.nextLine();
+
+        if (controlador.assignServicioTransporteToAeronave(aeronaveId, servicioId)) {
+            System.out.println("===== Servicio de Transporte asignado =====");
+        } else {
+            System.out.println("===== No se pudo asignar =====");
         }
     }
 }

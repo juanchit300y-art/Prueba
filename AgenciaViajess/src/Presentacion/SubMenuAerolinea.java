@@ -1,216 +1,196 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Presentacion;
+
 import Controllers.AerolineaController;
 import Modelos.Aerolinea;
 import Modelos.Aeronave;
 import java.util.List;
 import java.util.Scanner;
-/**
- *
- * @author DELL
- */
+
 public class SubMenuAerolinea {
+
     private AerolineaController controlador;
-    private SubMenuAeronave submenuAeronave;
-    Scanner scanner;
+    private Scanner scanner;
+
     public SubMenuAerolinea(Scanner scanner) {
-        this.controlador= new AerolineaController();
-        this.scanner= scanner;
-        this.submenuAeronave= new SubMenuAeronave(scanner);
+        this.controlador = new AerolineaController();
+        this.scanner = scanner;
     }
 
     public SubMenuAerolinea(AerolineaController controlador, Scanner scanner) {
         this.controlador = controlador;
         this.scanner = scanner;
-        this.submenuAeronave= new SubMenuAeronave(scanner);
-    }
-    
-    /**
-     * @return the controlador
-     */
-    public AerolineaController getControlador() {
-        return controlador;
     }
 
-    /**
-     * @param controlador the controlador to set
-     */
-    public void setControlador(AerolineaController controlador) {
-        this.controlador = controlador;
-    }
-    public void verSubMenuAerolinea(){
-        int inicio=1;
-        while(inicio !=0 ){
-        System.out.println("========Bienvenido al menu de Gestion de Aerolineas========");
-        System.out.println("Seleccion la opcion deseada: ");
-        System.out.println("1. Añadir Aerolinea");
-        System.out.println("2. Modificar Aerolinea");
-        System.out.println("3. Elimar Aerolinea");
-        System.out.println("4. Ver todas las aerolineas");
-        System.out.println("5. Buscar Aerolinea");
-        System.out.println("6. Gestionar Aeronaves");
-        System.out.println("======== Presione 0 para volver ========  ");
-        inicio= scanner.nextInt();
-        scanner.nextLine();
-                    switch(inicio){
-                case 0:
-                    break;
-                case 1:
-                    añadirAerolinea();
-                    break;
-                case 2:    
-                    modificarAerolinea();
-                    break;
-                case 3:    
-                    eliminarAerolinea();   
-                    break;
-                case 4:    
-                    verTodasAerolineas();
-                    break;
-                case 5:    
-                    buscarAerolinea();
-                    break;
-                case 6:    
-                    eleccionEspecificoOGeneral();
-                    break;
+    public void verSubMenuAerolinea() {
+        int opcion = 1;
+
+        while (opcion != 0) {
+
+            System.out.println("======== Gestión de Aerolíneas ========");
+            System.out.println("1. Añadir Aerolínea");
+            System.out.println("2. Modificar Aerolínea");
+            System.out.println("3. Eliminar Aerolínea");
+            System.out.println("4. Ver todas las Aerolíneas");
+            System.out.println("5. Buscar Aerolínea");
+            System.out.println("--------- Opciones Extra ---------");
+            System.out.println("6. Ver Aeronaves de una Aerolínea");
+            System.out.println("7. Asignar Aeronave a Aerolínea");
+            System.out.println("=======Presione 0 para Salir========");
+
+            opcion = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcion) {
+                case 0: break;
+
+                case 1: añadirAerolinea(); break;
+                case 2: modificarAerolinea(); break;
+                case 3: eliminarAerolinea(); break;
+                case 4: verTodasAerolineas(); break;
+                case 5: buscarAerolinea(); break;
+
+                case 6: verAeronavesDeAerolinea(); break;
+                case 7: asignarAeronaveAAerolinea(); break;
+
                 default:
-                    System.out.println("======== Numero invalido, incgrese una de las opciones correspondientes======== ");
+                    System.out.println("===== Opción inválida =====");
             }
-        }
-    }
-    public void añadirAerolinea(){
-        String nombre= null;
-        System.out.println("Para añadir la nueva aerolinea:   ");
-        System.out.println("Ingrese el nombre de la aerolinea");
-        nombre= scanner.nextLine();
-        String correo;
-        System.out.println("Ingrese el correo de la aerolinea:");
-        correo= scanner.nextLine();
-        if(controlador.añadirAerolinea(nombre, correo)){
-            System.out.println("======== La aerolinea se guardo correctamente========");
-        }
-        else{
-            System.out.println("======== La creacion de la Arolinea fallo, revise los datos ingresados======== ");
-        }
-    }    
-    public void modificarAerolinea(){
-        int idAModificar;
-        System.out.println("Para modificar una Aerolinea:   ");
-        System.out.println("Ingrese el id de la Aerolinea a modificar: ");
-        idAModificar= scanner.nextInt();
-        scanner.nextLine();
-        Aerolinea aerolinea= controlador.getGeneralById(idAModificar);
-        if(aerolinea== null){
-            System.out.println("========El id ingresado no existe, por favor reviselo========");
-        }
-        else {
-            System.out.println("Estos son los datos actuales de esa Aerolinea:  ");
-            System.out.println(aerolinea);
-            String nombre;
-            System.out.println("Ingrese el nuevo nombre de la Aerolinea:      (Si no desea cambiarlo presione Enter y deje el espacio vacio)");
-            nombre= scanner.nextLine();
-            String correo;
-            System.out.println("Ingrese el nuevo correo de la Aerolinea:      (Si no desea cambiarlo presione Enter y deje el espacio vacio)");
-            correo= scanner.nextLine();
-            System.out.println("Ingrese el nuevo nombre de la Aerolinea:      (Si no desea cambiarlo presione Enter y deje el espacio vacio)");
-            if(controlador.actualizarAerolinea(idAModificar, nombre, correo)){
-                System.out.println("======== La modificacion se guardo correctamente ========");
-            }
-            else{
-                System.out.println("======== La modificacion no se guardo correctamente, vuelva a intentarlo ======== ");
-            }
-        }
-    }
-    public void eliminarAerolinea(){
-        int aerolineaAEliminarId;
-        System.out.println("Para eliminar una Aerolinea: ");
-        System.out.println("Ingrese el id de la Aerolinea que desea eliminar: ");
-        aerolineaAEliminarId= scanner.nextInt();
-        scanner.nextLine();
-        Aerolinea aerolineaAEliminar= controlador.getGeneralById(aerolineaAEliminarId);
-        if (aerolineaAEliminar== null){
-            System.out.println("Aerolinea inexistente, no se encontro Aerolinea con ese Id");
-        }
-        else{
-            System.out.println("La aerolinea que fue ingresada es: ");
-            System.out.println(aerolineaAEliminar);
-            System.out.println("¿Esta seguro que desea eliminarla?");
-            int eleccion;
-            System.out.println("Presione 1 para confirmar y 2 para cancelar");
-            eleccion= scanner.nextInt();
-            switch(eleccion){
-                case 1:
-                    if(controlador.eliminarObjeto(aerolineaAEliminarId)){
-                        System.out.println("======== La aerolinea fue eliminada correctamente ======== ");
-                    }
-                    else{
-                        System.out.println("======== No fue posible eliminar la aerolinea, asegurese de que no la aerolinea no posea aeronaves======== ");
-                        System.out.println("======== De ser asi, no es posible realizar su eliminacion ========  ");
-                    }
-                    break;
-                case 2:
-                    System.out.println("========La Aerolinea no fue eliminada, muchas gracias ========  ");
-                    break;
-                default:
-                    System.out.println("======== Opcion invalida, por favor ingrese un numero valido ======== ");
-            }
-        }
-    }
-    public void verTodasAerolineas(){
-        System.out.println("======== Todas las aerolineas de nuestra agencia de viajes======== ");
-        List<Aerolinea> aerolineas= controlador.getAllGeneral();
-        if(aerolineas.isEmpty()){
-            System.out.println("========No se encuentran Aerolineas registradas en el sistema========");
-        }
-        else{
-            for(Aerolinea actual: aerolineas){
-                System.out.println(actual);
-            }
-        }
-    }
-    public void buscarAerolinea(){
-        System.out.println("Para buscar una Aerolinea: ");
-        int idAerolineaBuscada;
-        System.out.println("Ingrese el Id de la Aerolinea que desea buscar:  ");
-        idAerolineaBuscada= scanner.nextInt();
-        scanner.nextLine();
-        Aerolinea aerolinea= controlador.getGeneralById(idAerolineaBuscada);
-        if (aerolinea== null){
-            System.out.println("======== Aerolinea inexistente o Id no encontrado ========");
-        }
-        else{
-            System.out.println(aerolinea);
-        }
-    }
-    public void eleccionEspecificoOGeneral(){
-        int opcion;
-        System.out.println("Escoja la opcion que desee: ");
-        System.out.println("1. Si desea Gestionar las aeronaves de una Aerolinea en especifico");
-        System.out.println("2. Si desea Gestionar las aeronaves de toda la Agencia");
-        System.out.println("======== Presione 0 para volver ========");
-        opcion= scanner.nextInt();
-        scanner.nextLine();
-        switch(opcion){
-            case 0:
-                break;
-            case 1:
-                int idAeronavesAerolinea;
-                System.out.println("Ingrese el Id de la Aerolinea de la cual desea gestionar sus Aeronaves: ");
-                idAeronavesAerolinea= scanner.nextInt();
-                scanner.nextLine();
-                Aerolinea aerolinea= controlador.getGeneralById(idAeronavesAerolinea);
-                submenuAeronave.verSubMenuAeronaveEspecifico(aerolinea, idAeronavesAerolinea );
-                break;
-            case 2:
-                System.out.println("Codigo en proceso, estamos trabajando en eso :p"); //Linea de codigooooooooooooooooo
-                break;
-            default:
-                System.out.println("======== Opcion invalidad, ingrese el dato correspondiente ======== ");
         }
     }
 
+    // --------------------- CRUD -------------------------
+
+    public void añadirAerolinea() {
+        System.out.println("Ingrese el nombre de la Aerolínea:");
+        String nombre = scanner.nextLine();
+
+        System.out.println("Ingrese el correo de la Aerolínea:");
+        String correo = scanner.nextLine();
+
+        if (controlador.añadirAerolinea(nombre, correo)) {
+            System.out.println("===== Aerolínea registrada con éxito =====");
+        } else {
+            System.out.println("===== No se pudo registrar la Aerolínea =====");
+        }
+    }
+
+    public void modificarAerolinea() {
+        System.out.println("Ingrese el ID de la Aerolínea a modificar:");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        Aerolinea aerolinea = controlador.getGeneralById(id);
+
+        if (aerolinea == null) {
+            System.out.println("===== ID no encontrado =====");
+            return;
+        }
+
+        System.out.println("Datos actuales:");
+        System.out.println(aerolinea);
+
+        System.out.println("Nuevo nombre (Enter para no cambiar):");
+        String nombre = scanner.nextLine();
+
+        System.out.println("Nuevo correo (Enter para no cambiar):");
+        String correo = scanner.nextLine();
+
+        if (nombre.trim().isEmpty()) nombre = null;
+        if (correo.trim().isEmpty()) correo = null;
+
+        if (controlador.actualizarAerolinea(id, nombre, correo)) {
+            System.out.println("===== Aerolínea modificada =====");
+        } else {
+            System.out.println("===== No se pudo modificar =====");
+        }
+    }
+
+    public void eliminarAerolinea() {
+        System.out.println("Ingrese el ID de la Aerolínea a eliminar:");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        Aerolinea aerolinea = controlador.getGeneralById(id);
+
+        if (aerolinea == null) {
+            System.out.println("===== ID no encontrado =====");
+            return;
+        }
+
+        System.out.println("Aerolínea encontrada:");
+        System.out.println(aerolinea);
+
+        System.out.println("¿Confirmar eliminación? (1=Sí / 2=No)");
+        int confirm = scanner.nextInt();
+
+        if (confirm == 1) {
+            if (controlador.eliminarObjeto(id)) {
+                System.out.println("===== Aerolínea eliminada =====");
+            } else {
+                System.out.println("===== No se puede eliminar: tiene Aeronaves asociadas =====");
+            }
+        } else {
+            System.out.println("===== Cancelado =====");
+        }
+    }
+
+    public void verTodasAerolineas() {
+        List<Aerolinea> lista = controlador.getAllGeneral();
+
+        if (lista.isEmpty()) {
+            System.out.println("===== No hay Aerolíneas registradas =====");
+        } else {
+            for (Aerolinea aero : lista) {
+                System.out.println(aero);
+            }
+        }
+    }
+
+    public void buscarAerolinea() {
+        System.out.println("Ingrese el ID de la Aerolínea:");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        Aerolinea aerolinea = controlador.getGeneralById(id);
+
+        if (aerolinea == null) {
+            System.out.println("===== Aerolínea no encontrada =====");
+        } else {
+            System.out.println(aerolinea);
+        }
+    }
+
+    // ------------------------ EXTRAS -----------------------
+
+    public void verAeronavesDeAerolinea() {
+        System.out.println("Ingrese el ID de la Aerolínea:");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        List<Aeronave> aeronaves = controlador.getAeronavesDeAerolinea(id);
+
+        if (aeronaves.isEmpty()) {
+            System.out.println("===== No tiene Aeronaves asignadas =====");
+        } else {
+            for (Aeronave a : aeronaves) {
+                System.out.println(a);
+            }
+        }
+    }
+
+    public void asignarAeronaveAAerolinea() {
+        System.out.println("ID de la Aerolínea:");
+        int idAero = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("ID de la Aeronave:");
+        int idNave = scanner.nextInt();
+        scanner.nextLine();
+
+        if (controlador.assignAeronaveToAerolinea(idAero, idNave)) {
+            System.out.println("===== Aeronave asignada =====");
+        } else {
+            System.out.println("===== No se pudo asignar =====");
+        }
+    }
 }

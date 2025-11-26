@@ -19,19 +19,20 @@ public class SubMenuCarro {
         this.scanner = scanner;
     }
     public void iniciarMenu() {
-        int opcion;
+        int opcion=1;
 
-        do {
+        while (opcion != 0);{
             System.out.println("===== MENÚ CARRO =====");
             System.out.println("1. Añadir Carro");
             System.out.println("2. Actualizar Carro");
             System.out.println("3. Eliminar Carro");
-            System.out.println("4. Asignar Servicio de Transporte a Carro");
-            System.out.println("5. Ver Carros por Hotel");
-            System.out.println("6. Ver Hotel de un Carro");
-            System.out.println("7. Ver Servicios Transporte de un Carro");
-            System.out.println("8. Mostrar Todos los Carros");
-            System.out.println("0. Volver");
+            System.out.println("4. Mostrar Todos los Carros");
+            System.out.println("========Opciones Extras========");
+            System.out.println("5. Asignar Servicio de Transporte a Carro");
+            System.out.println("6. Ver Carros por Hotel");
+            System.out.println("7. Ver Hotel de un Carro");
+            System.out.println("8. Ver Servicios Transporte de un Carro");
+            System.out.println("=======Presione 0 para Salir========");
             System.out.print("Seleccione una opción: ");
 
             opcion = scanner.nextInt();
@@ -51,34 +52,33 @@ public class SubMenuCarro {
                     break;
 
                 case 4:
-                    asignarServicioTransporte();
-                    break;
-
-                case 5:
-                    mostrarCarrosPorHotel();
-                    break;
-
-                case 6:
-                    mostrarHotelDeCarro();
-                    break;
-
-                case 7:
-                    mostrarServiciosDeCarro();
-                    break;
-
-                case 8:
                     mostrarTodosLosCarros();
                     break;
 
+                case 5:
+                    asignarServicioTransporte();          
+                    break;
+
+                case 6:
+                    mostrarCarrosPorHotel();       
+                    break;
+
+                case 7:
+                    mostrarHotelDeCarro(); 
+                    break;
+
+                case 8:
+                    mostrarServiciosDeCarro(); 
+                    break;
+
                 case 0:
-                    System.out.println("Volviendo...");
                     break;
 
                 default:
                     System.out.println("Opción inválida.");
             }
 
-        } while (opcion != 0);
+        } 
     }
 
     // ===== OPCIÓN 1 =====
