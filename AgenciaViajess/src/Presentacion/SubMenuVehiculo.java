@@ -10,5 +10,5 @@ package Presentacion;
  * @author DELL
  */
 public class SubMenuVehiculo {
-    
+    //Eleccion entre carro y aeronave
 }

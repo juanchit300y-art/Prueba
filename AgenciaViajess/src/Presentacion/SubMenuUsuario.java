@@ -10,5 +10,6 @@ package Presentacion;
  * @author DELL
  */
 public class SubMenuUsuario {
-    
+    //eleccion entre Guia y cliente
+    //Controlador de trayecto
 }

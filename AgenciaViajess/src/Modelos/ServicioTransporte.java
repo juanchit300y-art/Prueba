@@ -122,7 +122,4 @@ public class ServicioTransporte {
             ", TrayectoId=" + TrayectoId +
             '}';
     }
-
-
-    
 }
