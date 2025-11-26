@@ -91,6 +91,7 @@ public class MenuAdministrador {
             System.out.println("7. Gestionar Trayectos");
             System.out.println("8. Gestionar Usuario");
             System.out.println("9. Gestionar Viajes");
+            System.out.println("10. Restablecer contraseña de Administradores");
             System.out.println("===Presione 0 para Salir====");
             inicio= scanner.nextInt();
             scanner.nextLine();
@@ -117,6 +118,8 @@ public class MenuAdministrador {
                     // linea
                 case 9:    
                     // linea
+                case 10:
+                    
                 default:
                     System.out.println("Dato ingresado invalido, ingrese una opcion valida");
             }
