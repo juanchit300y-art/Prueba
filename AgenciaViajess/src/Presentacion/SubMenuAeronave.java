@@ -2,13 +2,14 @@ package Presentacion;
 
 import Controllers.AeronaveController;
 import Modelos.Aeronave;
+import Modelos.Aerolinea;
 import java.util.List;
 import java.util.Scanner;
 
 public class SubMenuAeronave {
     private AeronaveController controlador;
     Scanner scanner;
-
+    
     public SubMenuAeronave(Scanner scanner) {
         this.controlador = new AeronaveController();
         this.scanner = scanner;
@@ -169,10 +170,13 @@ public class SubMenuAeronave {
     }
     //Gestion itinerario
     // Aerolinea Especifica
-      public void verSubMenuAeronaveEspecifico(Integer aerlinea) {
+      public void verSubMenuAeronaveEspecifico(Aerolinea aerolinea, Integer idAerolinea) {
         int inicio = 1;
         while (inicio != 0) {
-            System.out.println("======== Bienvenido al menu de Gestion de Aeronaves ========");
+            System.out.println("======== Bienvenido al menu de Gestion de Aeronaves de una Aerolinea ========");
+            System.out.println("La aerolinea que esta gestionando es: ");
+            System.out.println(aerolinea);
+            
             System.out.println("Seleccione la opcion deseada: ");
             System.out.println("1. Añadir Aeronave");
             System.out.println("2. Modificar Aeronave");
@@ -187,24 +191,11 @@ public class SubMenuAeronave {
                 case 0:
                     break;
                 case 1:
-                    añadirAeronave();
-                    break;
-                case 2:
-                    modificarAeronave();
-                    break;
-                case 3:
-                    eliminarAeronave();
-                    break;
-                case 4:
-                    verTodasAeronaves();
-                    break;
-                case 5:
-                    buscarAeronave();
+
                     break;
                 default:
                     System.out.println("======== Numero invalido, ingrese una opcion válida ========");
             }
         }
     }
-
 }

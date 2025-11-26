@@ -21,11 +21,13 @@ public class CarroController extends GeneralController<Carro> {
     public CarroController() {
         this.classData= new CarroRepository();
         this.hotelData= new HotelRepository();
+        this.servicioTransporteData = new ServicioTransporteRepository();
         this.carroData= new CarroRepository();
     }
     public CarroController(CarroRepository classData) {
         this.classData= classData;
         this.hotelData= new HotelRepository();
+        this.servicioTransporteData = new ServicioTransporteRepository();
         this.carroData= new CarroRepository();
     }
     @Override

@@ -202,7 +202,8 @@ public class SubMenuAerolinea {
                 System.out.println("Ingrese el Id de la Aerolinea de la cual desea gestionar sus Aeronaves: ");
                 idAeronavesAerolinea= scanner.nextInt();
                 scanner.nextLine();
-                submenuAeronave.verSubMenuAeronaveEspecifico(idAeronavesAerolinea);
+                Aerolinea aerolinea= controlador.getGeneralById(idAeronavesAerolinea);
+                submenuAeronave.verSubMenuAeronaveEspecifico(aerolinea, idAeronavesAerolinea );
                 break;
             case 2:
                 System.out.println("Codigo en proceso, estamos trabajando en eso :p"); //Linea de codigooooooooooooooooo
