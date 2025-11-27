@@ -11,9 +11,18 @@ import java.util.Scanner;
 
 public class SubMenuHotel {
 
-    private Scanner scanner = new Scanner(System.in);
-    private HotelController controller = new HotelController();
+    private Scanner scanner;
+    private HotelController controller;
+    private SubMenuCarro submenuCarro;
+    private SubMenuHabitacion submenuHabitacion;
+    public SubMenuHotel(Scanner scanner) {
+        this.controller = new HotelController();
+        this.scanner = scanner;
+        this.submenuCarro= new SubMenuCarro(scanner);
+        this.submenuHabitacion= new SubMenuHabitacion(scanner);
 
+    }
+    
     public void mostrarMenu() {
         int opcion = 1;
 
@@ -32,6 +41,8 @@ public class SubMenuHotel {
             System.out.println("9. Asignar Carro a un Hotel");
             System.out.println("10. Ver Hoteles por ID de Municipio");
             System.out.println("11. Ver Municipio asociado a un Hotel");
+            System.out.println("12. Gestionar Carros");
+            System.out.println("13. Gestionar Habitaciones");
 
             System.out.println("======= Presione 0 para Salir =======");
             System.out.print("Seleccione una opción: ");
@@ -72,6 +83,12 @@ public class SubMenuHotel {
                     break;
                 case 11:
                     verMunicipioDeHotel();
+                    break;
+                case 12:
+                    submenuCarro.iniciarMenu();
+                    break;
+                case 13:
+                    submenuHabitacion.mostrarMenu();
                     break;
                 case 0:
                     System.out.println("Regresando...");

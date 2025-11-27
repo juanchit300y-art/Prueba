@@ -12,6 +12,12 @@ public class SubMenuItinerarioTransporte {
 
     private Scanner scanner = new Scanner(System.in);
     private ItinerarioTransporteController controller = new ItinerarioTransporteController();
+    private SubMenuReserva submenuReserva;
+    public SubMenuItinerarioTransporte(Scanner scanner) {
+        this.controller = new ItinerarioTransporteController();
+        this.scanner = scanner;
+        this.submenuReserva= new SubMenuReserva(scanner);
+    }
 
     public void mostrarMenu() {
         int opcion = 1;
@@ -31,6 +37,7 @@ public class SubMenuItinerarioTransporte {
             System.out.println("9. Ver Viaje asociado a un Itinerario");
             System.out.println("10. Ver Reservas asociadas a un Itinerario");
             System.out.println("11. Asignar Reserva a un Itinerario");
+            System.out.println("12. Gestionar Reservas");
 
             System.out.println("======= Presione 0 para Salir =======");
             System.out.print("Seleccione una opción: ");
@@ -71,6 +78,9 @@ public class SubMenuItinerarioTransporte {
                     break;
                 case 11:
                     asignarReserva();
+                    break;
+                case 12:
+                    submenuReserva.mostrarMenu();
                     break;
                 case 0:
                     System.out.println("Regresando...");

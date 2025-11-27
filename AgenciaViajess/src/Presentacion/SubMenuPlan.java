@@ -13,14 +13,14 @@ public class SubMenuPlan {
 
     private Scanner scanner;
     private PlanController planController;
-    private ElementoPlanController elementoPlanController;
-    private EntretenimientoController entretenimientoController;
+    private SubMenuElementoPlan submenuElemento;
+    private SubMenuEntretenimiento submenuEntretenimiento;
 
-    public SubMenuPlan() {
-        scanner = new Scanner(System.in);
-        planController = new PlanController();
-        elementoPlanController = new ElementoPlanController();
-        entretenimientoController = new EntretenimientoController();
+    public SubMenuPlan(Scanner scanner ) {
+        this.scanner = scanner;
+        this.planController = new PlanController();
+        this.submenuElemento= new SubMenuElementoPlan(scanner);
+        this.submenuEntretenimiento= new SubMenuEntretenimiento(scanner);
     }
 
     public void iniciar() {
@@ -40,6 +40,8 @@ public class SubMenuPlan {
             System.out.println("7. Asignar ElementoPlan a un Plan");
             System.out.println("8. Ver Entretenimientos de un Plan");
             System.out.println("9. Asignar Entretenimiento a un Plan");
+            System.out.println("10. Gestionar Elementos de los planes");
+            System.out.println("11. Gestionar Entretenimientos");
 
             System.out.println("====== Presione 0 para Salir =======");
 
@@ -76,7 +78,12 @@ public class SubMenuPlan {
                 case 9:
                     asignarEntretenimiento();
                     break;
-
+                case 10:
+                    submenuElemento.mostrarMenu();
+                    break;
+                case 11:
+                    submenuEntretenimiento.mostrarMenu();
+                    break;
                 case 0:
                     System.out.println("Saliendo del submenú Plan...");
                     break;

@@ -12,15 +12,21 @@ public class SubMenuTrayecto {
 
     private TrayectoController controlador;
     private Scanner scanner;
+    private SubMenuItinerarioTransporte submenuItinerarioTransporte;
+    private SubMenuServicioTransporte submenuServicioTransporte;
 
     public SubMenuTrayecto(Scanner scanner) {
         this.controlador = new TrayectoController();
         this.scanner = scanner;
+        this.submenuItinerarioTransporte= new SubMenuItinerarioTransporte(scanner);
+        this.submenuServicioTransporte= new SubMenuServicioTransporte(scanner);
     }
 
     public SubMenuTrayecto(TrayectoController controlador, Scanner scanner) {
         this.controlador = controlador;
         this.scanner = scanner;
+        this.submenuItinerarioTransporte= new SubMenuItinerarioTransporte(scanner);
+        this.submenuServicioTransporte= new SubMenuServicioTransporte(scanner);
     }
 
     public void verSubMenuTrayecto() {
@@ -41,6 +47,8 @@ public class SubMenuTrayecto {
             System.out.println("9. Asignar Itinerario a un Trayecto");
             System.out.println("10. Ver Servicios de Transporte de un Trayecto");
             System.out.println("11. Asignar Servicio de Transporte a un Trayecto");
+            System.out.println("12. Gestionar Itinerarios de Transporte");
+            System.out.println("13. Gestionar Servicios de Transporte ");
             System.out.println("===Presione 0 para Salir====");
 
             opcion = scanner.nextInt();
@@ -61,6 +69,8 @@ public class SubMenuTrayecto {
                 case 9: asignarItinerario(); break;
                 case 10: verServiciosDeTrayecto(); break;
                 case 11: asignarServicio(); break;
+                case 12: submenuItinerarioTransporte.mostrarMenu();break;
+                case 13: submenuServicioTransporte.mostrarMenu(); break;
 
                 default:
                     System.out.println("===== Opción inválida =====");

@@ -8,8 +8,14 @@ import java.util.Scanner;
 
 public class SubMenuGuia {
 
-    private Scanner scanner = new Scanner(System.in);
-    private GuiaController controller = new GuiaController();
+    private Scanner scanner;
+    private GuiaController controller;
+    private SubMenuTurno submenuTurno;
+    public SubMenuGuia(Scanner scanner) {
+        this.controller = new GuiaController();
+        this.scanner = scanner;
+        this.submenuTurno= new SubMenuTurno(scanner);
+    }
 
     public void mostrarMenu() {
         int opcion = 1;
@@ -25,6 +31,7 @@ public class SubMenuGuia {
             System.out.println("------ Opciones extras ------");
             System.out.println("6. Ver Turnos asignados a un Guía");
             System.out.println("7. Asignar Turno a un Guía");
+            System.out.println("8. Gestionar Turnos");
 
             System.out.println("======= Presione 0 para Salir =======");
             System.out.print("Seleccione una opción: ");
@@ -53,6 +60,9 @@ public class SubMenuGuia {
                     break;
                 case 7:
                     asignarTurno();
+                    break;
+                case 8:
+                    submenuTurno.verSubMenuTurno();
                     break;
                 case 0:
                     System.out.println("Regresando...");

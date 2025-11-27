@@ -11,12 +11,10 @@ public class SubMenuCuota {
 
     private Scanner scanner;
     private CuotaController cuotaController;
-    private ViajeController viajeController;
 
-    public SubMenuCuota() {
-        scanner = new Scanner(System.in);
-        cuotaController = new CuotaController();
-        viajeController = new ViajeController();
+    public SubMenuCuota(Scanner scanner) {
+        this.scanner=scanner;
+        this.cuotaController = new CuotaController();
     }
 
     public void mostrarMenu() {

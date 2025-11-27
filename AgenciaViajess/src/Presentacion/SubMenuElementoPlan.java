@@ -12,9 +12,9 @@ public class SubMenuElementoPlan {
     private Scanner scanner;
     private ElementoPlanController elementoPlanController;
 
-    public SubMenuElementoPlan() {
-        scanner = new Scanner(System.in);
-        elementoPlanController = new ElementoPlanController();
+    public SubMenuElementoPlan(Scanner scanner) {
+        this.elementoPlanController = new ElementoPlanController();
+        this.scanner = scanner;
     }
 
     public void mostrarMenu() {

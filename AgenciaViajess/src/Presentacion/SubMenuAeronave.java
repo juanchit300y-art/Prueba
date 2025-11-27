@@ -6,15 +6,16 @@ import Modelos.Aerolinea;
 import Modelos.ServicioTransporte;
 import java.util.List;
 import java.util.Scanner;
-
+import Presentacion.SubMenuServicioTransporte;
 public class SubMenuAeronave {
 
     private AeronaveController controlador;
     private Scanner scanner;
-
+    private SubMenuServicioTransporte submenuServicioTransporte;
     public SubMenuAeronave(Scanner scanner) {
         this.controlador = new AeronaveController();
         this.scanner = scanner;
+        this.submenuServicioTransporte= new SubMenuServicioTransporte(scanner);
     }
 
     public SubMenuAeronave(AeronaveController controlador, Scanner scanner) {
@@ -37,6 +38,7 @@ public class SubMenuAeronave {
             System.out.println("6. Ver Aerolínea de una Aeronave");
             System.out.println("7. Ver Servicios de Transporte de una Aeronave");
             System.out.println("8. Asignar Servicio de Transporte a Aeronave");
+            System.out.println("9. Gestionar Servicios de Transporte ");
             System.out.println("=======Presione 0 para Salir========");
             System.out.println("0. Volver");
 
@@ -54,6 +56,7 @@ public class SubMenuAeronave {
                 case 6: verAerolineaDeAeronave(); break;
                 case 7: verServiciosTransporte(); break;
                 case 8: asignarServicioTransporte(); break;
+                case 9: submenuServicioTransporte.mostrarMenu(); break;
 
                 default:
                     System.out.println("===== Opción inválida =====");

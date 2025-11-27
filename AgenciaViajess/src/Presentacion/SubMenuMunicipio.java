@@ -10,9 +10,18 @@ import java.util.Scanner;
 
 public class SubMenuMunicipio {
 
-    private Scanner scanner = new Scanner(System.in);
-    private MunicipioController controller = new MunicipioController();
-
+    private Scanner scanner;
+    private MunicipioController controller;
+    private SubMenuActividadTuristica submenuActividadTuristica;
+    private SubMenuHotel submenuHotel;
+    private SubMenuTrayecto submenuTrayecto;
+    public SubMenuMunicipio(Scanner scanner) {
+        this.controller = new MunicipioController();
+        this.scanner = scanner;
+        this.submenuActividadTuristica= new SubMenuActividadTuristica(scanner);
+        this.submenuHotel= new SubMenuHotel(scanner);
+        this.submenuTrayecto= new SubMenuTrayecto(scanner);
+    }
     public void mostrarMenu() {
         int opcion = 1;
 
@@ -33,6 +42,9 @@ public class SubMenuMunicipio {
             System.out.println("11. Asignar Trayecto como Inicio de un Municipio");
             System.out.println("12. Ver Trayectos donde el Municipio es Destino");
             System.out.println("13. Asignar Trayecto como Destino de un Municipio");
+            System.out.println("14. Gestionar Actividades Turisticas");
+            System.out.println("15. Gestionar Hoteles");
+            System.out.println("16. Gestionar Trayectos");
 
             System.out.println("======= Presione 0 para Salir =======");
             System.out.print("Seleccione una opción: ");
@@ -79,6 +91,15 @@ public class SubMenuMunicipio {
                     break;
                 case 13:
                     asignarTrayectoDestino();
+                    break;
+                case 14:
+                    submenuActividadTuristica.verSubMenuActividadTuristica();
+                    break;
+                case 15:
+                    submenuHotel.mostrarMenu();
+                    break;
+                case 16:
+                    submenuTrayecto.verSubMenuTrayecto();
                     break;
                 case 0:
                     System.out.println("Regresando...");

@@ -5,20 +5,23 @@ import Modelos.Aerolinea;
 import Modelos.Aeronave;
 import java.util.List;
 import java.util.Scanner;
+import Presentacion.SubMenuAeronave;
 
 public class SubMenuAerolinea {
 
     private AerolineaController controlador;
     private Scanner scanner;
-
+    private SubMenuAeronave submenuAeronave;
     public SubMenuAerolinea(Scanner scanner) {
         this.controlador = new AerolineaController();
         this.scanner = scanner;
+        this.submenuAeronave= new SubMenuAeronave(scanner);
     }
 
     public SubMenuAerolinea(AerolineaController controlador, Scanner scanner) {
         this.controlador = controlador;
         this.scanner = scanner;
+        this.submenuAeronave= new SubMenuAeronave(scanner);
     }
 
     public void verSubMenuAerolinea() {
@@ -35,6 +38,7 @@ public class SubMenuAerolinea {
             System.out.println("--------- Opciones Extra ---------");
             System.out.println("6. Ver Aeronaves de una Aerolínea");
             System.out.println("7. Asignar Aeronave a Aerolínea");
+            System.out.println("8. Gestionar Aeronaves");            
             System.out.println("=======Presione 0 para Salir========");
 
             opcion = scanner.nextInt();
@@ -51,7 +55,7 @@ public class SubMenuAerolinea {
 
                 case 6: verAeronavesDeAerolinea(); break;
                 case 7: asignarAeronaveAAerolinea(); break;
-
+                case 8: submenuAeronave.verSubMenuAeronave(); break;
                 default:
                     System.out.println("===== Opción inválida =====");
             }

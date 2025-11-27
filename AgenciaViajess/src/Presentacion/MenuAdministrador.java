@@ -16,6 +16,13 @@ public class MenuAdministrador {
     private String contraseña;
     private SubMenuActividadTuristica submenuActividadTuristica;
     private SubMenuAerolinea submenuAerolinea;
+    private SubMenuHotel submenuHotel;
+    private SubMenuMunicipio submenuMunicipio;
+    private SubMenuPlan submenuPlan;
+    private SubMenuServicioTransporte submenuServicioTransporte;
+    private SubMenuTrayecto submenuTrayecto;
+    private SubMenuUsuario submenuUsuario;
+    private SubMenuViaje submenuViaje;
     Scanner scanner;
 
     public MenuAdministrador() {
@@ -27,6 +34,13 @@ public class MenuAdministrador {
         this.scanner = scanner;
         this.submenuActividadTuristica= new SubMenuActividadTuristica(scanner);
         this.submenuAerolinea= new SubMenuAerolinea(scanner);
+        this.submenuHotel= new SubMenuHotel(scanner);
+        this.submenuMunicipio= new SubMenuMunicipio(scanner);
+        this.submenuPlan= new SubMenuPlan(scanner);
+        this.submenuServicioTransporte= new SubMenuServicioTransporte(scanner);
+        this.submenuTrayecto= new SubMenuTrayecto (scanner);
+        this.submenuUsuario= new SubMenuUsuario(scanner);
+        this.submenuViaje= new SubMenuViaje(scanner);
     }
 
     /**
@@ -105,24 +119,52 @@ public class MenuAdministrador {
                     submenuAerolinea.verSubMenuAerolinea();
                     break;
                 case 3:    
-                    // linea    
+                    submenuHotel.mostrarMenu();
+                    break;
                 case 4:    
-                    // linea
+                    submenuMunicipio.mostrarMenu();
+                    break;
                 case 5:    
-                    // linea
+                    submenuPlan.iniciar();
+                    break;
                 case 6:    
-                    // linea
+                    submenuServicioTransporte.mostrarMenu();
+                    break;
                 case 7:    
-                    // linea
+                    submenuTrayecto.verSubMenuTrayecto();
+                    break;
                 case 8:    
-                    // linea
+                    submenuUsuario.mostrar();
+                    break;
                 case 9:    
-                    // linea
+                    submenuViaje.verSubMenuViaje();
+                    break;
                 case 10:
-                    
+                    restablecerContraseña();
+                    break;
                 default:
                     System.out.println("Dato ingresado invalido, ingrese una opcion valida");
             }
+        }
+    }
+    public void restablecerContraseña(){
+        String contraseña;
+        System.out.println("Ingrese una nueva contraseña");
+        contraseña= scanner.nextLine();
+        int opcion;
+        System.out.println("Se restablecerea la contraseña, esta seguto de hacerlo? (1.Si/2.No)");
+        opcion= scanner.nextInt();
+        scanner.nextLine();
+        switch(opcion){
+            case 1:
+                setContraseña(contraseña);
+                System.out.println("Se ha restablecido la contraseña exisitosamente");
+                break;
+            case 2:
+                System.out.println("Proceso cancelado, muchas gracias ");
+                break;
+            default:
+                System.out.println("Opcion invalida");
         }
     }
     
