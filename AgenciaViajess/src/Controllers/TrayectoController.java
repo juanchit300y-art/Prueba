@@ -2,6 +2,7 @@ package Controllers;
 
 import Persistencia.*;
 import Modelos.*;
+import java.util.LinkedList;
 import java.util.List;
 
 public class TrayectoController extends GeneralController<Trayecto> {
@@ -9,12 +10,16 @@ public class TrayectoController extends GeneralController<Trayecto> {
     private MunicipioRepository municipioData;
     private ItinerarioTransporteRepository itinerarioData;
     private ServicioTransporteRepository servicioData;
+    private CarroRepository carroData;
+    private AeronaveRepository aeronaveData;
 
     public TrayectoController() {
         this.classData = new TrayectoRepository();
         this.municipioData = new MunicipioRepository();
         this.itinerarioData = new ItinerarioTransporteRepository();
         this.servicioData = new ServicioTransporteRepository();
+        this.carroData = new CarroRepository();
+        this.aeronaveData = new AeronaveRepository();
     }
 
     public TrayectoController(TrayectoRepository classData) {
@@ -22,6 +27,8 @@ public class TrayectoController extends GeneralController<Trayecto> {
         this.municipioData = new MunicipioRepository();
         this.itinerarioData = new ItinerarioTransporteRepository();
         this.servicioData = new ServicioTransporteRepository();
+        this.carroData = new CarroRepository();
+        this.aeronaveData = new AeronaveRepository();
     }
 
     @Override
@@ -115,4 +122,62 @@ public class TrayectoController extends GeneralController<Trayecto> {
         servicioData.saveT(servicio);
         return true;
     }
+    
+    //lista trayectos terrestre
+    public List<Trayecto> getTrayectosTerrestres(){
+        List<Trayecto> trayectos = classData.getAllT();
+        List<Trayecto> trayectosTerrestres = null;
+        for(Trayecto actual : trayectos){
+            List<ServicioTransporte> serviciosTransporte = getServiciosTransporteDeTrayecto(actual.getId());
+            for(ServicioTransporte actual2 : serviciosTransporte){
+                List<Carro> carros = carroData.getAllT();
+                for(Carro actual3:carros){
+                    if(actual2.getVehiculoId().equals(actual3.getId())){
+                        trayectosTerrestres.add(actual);
+                    }
+                }
+            }
+        }
+        return trayectosTerrestres;
+    }
+    
+    //lista trayectos Aereos
+    public List<Trayecto> getTrayectosAereos(){
+        List<Trayecto> trayectos = classData.getAllT();
+        List<Trayecto> trayectosAereos = null;
+        for(Trayecto actual : trayectos){
+            List<ServicioTransporte> serviciosTransporte = getServiciosTransporteDeTrayecto(actual.getId());
+            for(ServicioTransporte actual2 : serviciosTransporte){
+                List<Aeronave> aeronaves = aeronaveData.getAllT();
+                for(Aeronave actual3:aeronaves){
+                    if(actual2.getVehiculoId().equals(actual3.getId())){
+                        trayectosAereos.add(actual);
+                    }
+                }
+            }
+        }
+        return trayectosAereos;
+    }
+    
+    public boolean verificadorTerrestre(Integer trayectoId){
+        Trayecto trayecto = classData.findATById(trayectoId);
+        List<Trayecto> trayectosTerrestres = getTrayectosTerrestres();
+        for(Trayecto actual:trayectosTerrestres){
+            if(actual.getId().equals(trayecto.getId())){
+                return true;
+            }
+        }
+        return false;
+    } 
+    
+        public boolean verificadorAereo(Integer trayectoId){
+        Trayecto trayecto = classData.findATById(trayectoId);
+        List<Trayecto> trayectosAereos = getTrayectosAereos();
+        for(Trayecto actual:trayectosAereos){
+            if(actual.getId().equals(trayecto.getId())){
+                return true;
+            }
+        }
+        return false;
+    } 
 }
