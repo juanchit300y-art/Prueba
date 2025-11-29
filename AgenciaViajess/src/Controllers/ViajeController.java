@@ -149,8 +149,8 @@ public class ViajeController extends GeneralController<Viaje> {
     }
     //Metodo A
     public Double metodoA(){
-        double numActividades;
-        double numPlanes;        
+        double numActividades=0;
+        double numPlanes=0;        
         double respuesta;
         List<Viaje> viajes= getAllGeneral();
         for(Viaje actual : viajes){
@@ -158,8 +158,9 @@ public class ViajeController extends GeneralController<Viaje> {
             List<ItinerarioTransporte> itinerariosTransporte= getItinerariosTransporteDeViaje(idActual);
             for(ItinerarioTransporte actual2: itinerariosTransporte){
                 Integer idTrayecto= actual2.getTrayectoId();
-                if(metodo && metodo2){
+                if(this.controladorTrayecto.verificadorAereo(idTrayecto) && this.controladorTrayecto.verificadorTerrestre(idTrayecto)){
                   List<Entretenimiento> entretenimientoViaje= getEntretenimientosDeViaje(idActual);
+                  numPlanes= entretenimientoViaje.size()+ numPlanes;
                   
                 }
             }

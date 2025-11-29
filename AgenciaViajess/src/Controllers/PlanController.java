@@ -103,4 +103,6 @@ public class PlanController extends GeneralController<Plan> {
         entretenimientoData.saveT(entretenimiento);
         return true;
     }
+    //Tamaño actividades
+
 }
