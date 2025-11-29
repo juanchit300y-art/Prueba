@@ -11,13 +11,9 @@ package Presentacion;
 import java.util.Scanner;
 public class SubMenuVehiculo {
     private Scanner scanner;
-    private SubMenuCarro submenuCarro;
-    private SubMenuAeronave submenuAeronave;
 
     public SubMenuVehiculo(Scanner scanner) {
         this.scanner= scanner;
-        this.submenuAeronave= new SubMenuAeronave(scanner);
-        this.submenuCarro= new SubMenuCarro(scanner);
     }
     public void mostrar(){
         int opcion;
@@ -30,10 +26,10 @@ public class SubMenuVehiculo {
         scanner.nextLine();
         switch(opcion){
             case 1:
-                submenuCarro.iniciarMenu();
+                new SubMenuCarro(scanner).iniciarMenu();
                 break;
             case 2:
-                submenuAeronave.verSubMenuAeronave();
+                new SubMenuAeronave(scanner).verSubMenuAeronave();
                 break;
             default:
                 System.out.println("========Opicon Invalida========");

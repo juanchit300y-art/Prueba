@@ -61,7 +61,7 @@ public class HabitacionController extends GeneralController<Habitacion> {
     }
 
     public boolean añadirHabitacion( Integer capacidad, Integer hotelId) {
-        if (capacidad == null || capacidad>=0 ) {
+        if (capacidad == null || capacidad<=0 ) {
             return false;
         }
         Hotel hotel = hotelData.findATById(hotelId);

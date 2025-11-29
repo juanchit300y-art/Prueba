@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "numPersonas": 20,
+    "HabitacionId": 1,
+    "ItinerarioTransporteId": 1
+  },
+  {
+    "id": 2,
+    "numPersonas": 12,
+    "HabitacionId": 2,
+    "ItinerarioTransporteId": 2
+  },
+  {
+    "id": 3,
+    "numPersonas": 10,
+    "HabitacionId": 3,
+    "ItinerarioTransporteId": 3
+  },
+  {
+    "id": 4,
+    "numPersonas": 5,
+    "HabitacionId": 4,
+    "ItinerarioTransporteId": 4
+  },
+  {
+    "id": 5,
+    "numPersonas": 7,
+    "HabitacionId": 5,
+    "ItinerarioTransporteId": 5
+  }
+]

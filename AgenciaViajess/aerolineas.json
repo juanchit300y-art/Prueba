@@ -1,17 +1,27 @@
 [
   {
     "id": 1,
-    "nombre": "MarcosCorporation",
-    "correo": "marcos@gnial.com"
+    "nombre": "Juanes",
+    "correo": "ortiz.rodriguez@gmail.com"
   },
   {
     "id": 2,
-    "nombre": "Nina AVAE",
-    "correo": "radiant@gmail.com"
+    "nombre": "Marcos",
+    "correo": "marcosAsociados@gmail.com"
+  },
+  {
+    "id": 3,
+    "nombre": "JacoboMarket",
+    "correo": "jacobo.market@gmail.com"
   },
   {
     "id": 4,
-    "nombre": "Pankeka",
-    "correo": "estefaniaHurtadoColmenares@gmail.com"
+    "nombre": "pankeka",
+    "correo": "nosepankekauwu@gmail.com"
+  },
+  {
+    "id": 5,
+    "nombre": "majitix",
+    "correo": "majitix@gmail.com"
   }
 ]

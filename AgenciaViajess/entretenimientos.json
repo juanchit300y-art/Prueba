@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "PlanId": 1,
+    "ViajeId": 1
+  },
+  {
+    "id": 2,
+    "PlanId": 2,
+    "ViajeId": 2
+  },
+  {
+    "id": 3,
+    "PlanId": 3,
+    "ViajeId": 3
+  },
+  {
+    "id": 4,
+    "PlanId": 4,
+    "ViajeId": 4
+  },
+  {
+    "id": 5,
+    "PlanId": 5,
+    "ViajeId": 5
+  }
+]

@@ -20,7 +20,7 @@ public class SubMenuCuota {
     public void mostrarMenu() {
         int opcion=1;
 
-        while (opcion != 0); {
+        while (opcion != 0) {
             System.out.println("====== SUBMENÚ CUOTA ======");
             System.out.println("1. Registrar cuota");
             System.out.println("2. Ver lista de cuotas");

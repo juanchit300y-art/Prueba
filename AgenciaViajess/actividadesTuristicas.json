@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "nombre": "Baile",
+    "MunicipioId": 1
+  },
+  {
+    "id": 2,
+    "nombre": "Tira chinas",
+    "MunicipioId": 2
+  },
+  {
+    "id": 3,
+    "nombre": "Pinturas",
+    "MunicipioId": 3
+  },
+  {
+    "id": 4,
+    "nombre": "Comida",
+    "MunicipioId": 4
+  },
+  {
+    "id": 5,
+    "nombre": "Caminata",
+    "MunicipioId": 5
+  }
+]

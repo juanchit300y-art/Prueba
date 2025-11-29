@@ -11,11 +11,10 @@ public class SubMenuAeronave {
 
     private AeronaveController controlador;
     private Scanner scanner;
-    private SubMenuServicioTransporte submenuServicioTransporte;
+
     public SubMenuAeronave(Scanner scanner) {
         this.controlador = new AeronaveController();
         this.scanner = scanner;
-        this.submenuServicioTransporte= new SubMenuServicioTransporte(scanner);
     }
 
     public SubMenuAeronave(AeronaveController controlador, Scanner scanner) {
@@ -56,7 +55,7 @@ public class SubMenuAeronave {
                 case 6: verAerolineaDeAeronave(); break;
                 case 7: verServiciosTransporte(); break;
                 case 8: asignarServicioTransporte(); break;
-                case 9: submenuServicioTransporte.mostrarMenu(); break;
+                case 9: new SubMenuServicioTransporte(scanner).mostrarMenu(); break;
 
                 default:
                     System.out.println("===== Opción inválida =====");

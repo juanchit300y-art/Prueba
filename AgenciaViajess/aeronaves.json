@@ -1,0 +1,27 @@
+[
+  {
+    "aerolineaId": 1,
+    "id": 1,
+    "marca": "Airbus"
+  },
+  {
+    "aerolineaId": 2,
+    "id": 2,
+    "marca": "Boeing"
+  },
+  {
+    "aerolineaId": 3,
+    "id": 3,
+    "marca": "Embraer"
+  },
+  {
+    "aerolineaId": 4,
+    "id": 4,
+    "marca": "Lockheed Martin"
+  },
+  {
+    "aerolineaId": 5,
+    "id": 5,
+    "marca": "Bombardier"
+  }
+]
