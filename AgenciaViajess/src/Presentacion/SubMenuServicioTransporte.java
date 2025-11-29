@@ -9,9 +9,14 @@ import java.util.Scanner;
 
 public class SubMenuServicioTransporte {
 
-    private Scanner scanner = new Scanner(System.in);
-    private ServicioTransporteController controller = new ServicioTransporteController();
-
+    private Scanner scanner;
+    private ServicioTransporteController controller ;
+    private SubMenuVehiculo submenuVehiculo;
+    public SubMenuServicioTransporte(Scanner scanner) {
+        this.controller = new ServicioTransporteController();
+        this.scanner = scanner;
+        this.submenuVehiculo= new SubMenuVehiculo(scanner);
+    }
     public void mostrarMenu() {
         int opcion = 1;
 
@@ -28,6 +33,7 @@ public class SubMenuServicioTransporte {
             System.out.println("7. Ver Trayecto asociado a un Servicio Transporte");
             System.out.println("8. Ver Servicios por ID de Vehículo");
             System.out.println("9. Ver Vehículo asociado a un Servicio Transporte");
+            System.out.println("10.Gestionar Vehiculos");
 
             System.out.println("======= Presione 0 para Salir =======");
             System.out.print("Seleccione una opción: ");
@@ -62,6 +68,9 @@ public class SubMenuServicioTransporte {
                     break;
                 case 9:
                     verVehiculoDeServicio();
+                    break;
+                case 10:
+                    submenuVehiculo.mostrar();
                     break;
                 case 0:
                     System.out.println("Regresando...");

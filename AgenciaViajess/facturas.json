@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "costo": 120000,
+    "ViajeId": 1,
+    "ClienteId": 1
+  },
+  {
+    "id": 2,
+    "costo": 256000,
+    "ViajeId": 2,
+    "ClienteId": 2
+  },
+  {
+    "id": 3,
+    "costo": 200000,
+    "ViajeId": 3,
+    "ClienteId": 3
+  },
+  {
+    "id": 4,
+    "costo": 450000,
+    "ViajeId": 4,
+    "ClienteId": 4
+  },
+  {
+    "id": 5,
+    "costo": 302000,
+    "ViajeId": 5,
+    "ClienteId": 5
+  }
+]

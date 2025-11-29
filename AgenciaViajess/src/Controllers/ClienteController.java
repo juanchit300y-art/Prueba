@@ -94,4 +94,16 @@ public class ClienteController extends GeneralController<Cliente> {
         facturaData.saveT(factura);
         return true;
     }
+    
+    //METODO INICIAR SESION CLIENTE
+    
+    public Boolean verificacionSesion(int id, String contraseña){
+        Cliente cliente = classData.findATById(id);
+        if(contraseña.equals(cliente.getContraseña())){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
 }

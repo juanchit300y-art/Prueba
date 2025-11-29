@@ -1,0 +1,37 @@
+[
+  {
+    "añosExperiencia": 23,
+    "id": 1,
+    "nombre": "Juan Pedro",
+    "contraseña": "juan1234",
+    "correo": "juan@gmail.com"
+  },
+  {
+    "añosExperiencia": 3,
+    "id": 2,
+    "nombre": "Maria Jose",
+    "contraseña": "mari123",
+    "correo": "mari@gmail.com"
+  },
+  {
+    "añosExperiencia": 12,
+    "id": 3,
+    "nombre": "Josefina",
+    "contraseña": "33",
+    "correo": "josefina@gmail.com"
+  },
+  {
+    "añosExperiencia": 11,
+    "id": 4,
+    "nombre": "Samantha",
+    "contraseña": "4455",
+    "correo": "samantha@gmail.com"
+  },
+  {
+    "añosExperiencia": 34,
+    "id": 5,
+    "nombre": "Rufina",
+    "contraseña": "23323",
+    "correo": "rufina@gmail.com"
+  }
+]

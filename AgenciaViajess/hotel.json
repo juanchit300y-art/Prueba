@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "nombre": "MarcosCorporation",
+    "correo": "marcos@gmail.com",
+    "MunicipioId": 1
+  },
+  {
+    "id": 2,
+    "nombre": "Serenity Bay",
+    "correo": "serenity@gmail.com",
+    "MunicipioId": 2
+  },
+  {
+    "id": 3,
+    "nombre": "Hotel El Bosque",
+    "correo": "elbosque@gmail.com",
+    "MunicipioId": 1
+  },
+  {
+    "id": 4,
+    "nombre": "La Caba�a ",
+    "correo": "caba�a@gmail.com",
+    "MunicipioId": 2
+  },
+  {
+    "id": 5,
+    "nombre": "El Amanecer",
+    "correo": "amanecer@gmail.com",
+    "MunicipioId": 3
+  },
+  {
+    "id": 6,
+    "nombre": "Glamho",
+    "correo": "Glamho@gmail.com",
+    "MunicipioId": 3
+  },
+  {
+    "id": 8,
+    "nombre": "RealMadrid",
+    "correo": "madrid@gmail.com",
+    "MunicipioId": 4
+  },
+  {
+    "id": 9,
+    "nombre": "Sereno",
+    "correo": "sereno@gmail.com",
+    "MunicipioId": 4
+  },
+  {
+    "id": 10,
+    "nombre": "Grand Royale",
+    "correo": "Grand_Royale@gmail.com",
+    "MunicipioId": 5
+  },
+  {
+    "id": 11,
+    "nombre": "Mark Hotel",
+    "correo": "Mark_Hotel@gmail.com",
+    "MunicipioId": 5
+  }
+]

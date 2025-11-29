@@ -16,6 +16,7 @@ public class MenuPrincipal {
     private Integer id;
     Scanner scanner;
     private MenuAdministrador menuAdministrador;
+    private SubMenuSesionUsuario submenuInicioSesionUsuario;
     //Constructores
     public MenuPrincipal() {
     }
@@ -24,6 +25,7 @@ public class MenuPrincipal {
         this.id = id;
         this.scanner=scanner;
         this.menuAdministrador= new MenuAdministrador(1,"Guerrero", scanner );
+        this.submenuInicioSesionUsuario = new SubMenuSesionUsuario(scanner);
     }
     //Getters y Setters
     public Integer getId() {
@@ -67,7 +69,7 @@ public class MenuPrincipal {
                     menuAdministrador.ingresoContraseña();
                     break;
                 case 2:    
-                    System.out.println("Aqui va linea de Codigo");
+                    submenuInicioSesionUsuario.verMenu();
                     break;
                 case 3:    
                     System.out.println("=======Gracias por visitar nuestro Sistema======= ");

@@ -11,18 +11,16 @@ public class SubMenuCuota {
 
     private Scanner scanner;
     private CuotaController cuotaController;
-    private ViajeController viajeController;
 
-    public SubMenuCuota() {
-        scanner = new Scanner(System.in);
-        cuotaController = new CuotaController();
-        viajeController = new ViajeController();
+    public SubMenuCuota(Scanner scanner) {
+        this.scanner=scanner;
+        this.cuotaController = new CuotaController();
     }
 
     public void mostrarMenu() {
         int opcion=1;
 
-        while (opcion != 0); {
+        while (opcion != 0) {
             System.out.println("====== SUBMENÚ CUOTA ======");
             System.out.println("1. Registrar cuota");
             System.out.println("2. Ver lista de cuotas");

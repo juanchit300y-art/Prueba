@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "ActividadTuristicaId": 1,
+    "PlanId": 1
+  },
+  {
+    "id": 2,
+    "ActividadTuristicaId": 2,
+    "PlanId": 2
+  },
+  {
+    "id": 3,
+    "ActividadTuristicaId": 3,
+    "PlanId": 3
+  },
+  {
+    "id": 4,
+    "ActividadTuristicaId": 4,
+    "PlanId": 4
+  },
+  {
+    "id": 5,
+    "ActividadTuristicaId": 5,
+    "PlanId": 5
+  }
+]

@@ -21,7 +21,7 @@ public class SubMenuCarro {
     public void iniciarMenu() {
         int opcion=1;
 
-        while (opcion != 0);{
+        while (opcion != 0){
             System.out.println("===== MENÚ CARRO =====");
             System.out.println("1. Añadir Carro");
             System.out.println("2. Actualizar Carro");

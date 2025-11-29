@@ -1,0 +1,37 @@
+[
+  {
+    "medioDePago": "efectivo",
+    "id": 1,
+    "nombre": "Maria Fernanda",
+    "contraseña": "mari123",
+    "correo": "maria@gmail.con"
+  },
+  {
+    "medioDePago": "targeta",
+    "id": 2,
+    "nombre": "Oscar",
+    "contraseña": "oscar1289213",
+    "correo": "oscar@gmail.com"
+  },
+  {
+    "medioDePago": "efectivo",
+    "id": 3,
+    "nombre": "Carlos Esteban",
+    "contraseña": "carlitos12321@gmail.com",
+    "correo": "carlitos@gmail.com"
+  },
+  {
+    "medioDePago": "targeta",
+    "id": 4,
+    "nombre": "vegeta",
+    "contraseña": "777",
+    "correo": "vegeta777@gmail.com"
+  },
+  {
+    "medioDePago": "efectivo",
+    "id": 5,
+    "nombre": "Juan Ortalizza",
+    "contraseña": "ortaliza1223",
+    "correo": "juanes12@gmail.com"
+  }
+]

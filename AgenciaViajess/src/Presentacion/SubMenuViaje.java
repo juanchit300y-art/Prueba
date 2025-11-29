@@ -13,15 +13,27 @@ public class SubMenuViaje {
 
     private ViajeController controlador;
     private Scanner scanner;
+    private SubMenuCuota submenuCuota;
+    private SubMenuFactura submenuFactura;
+    private SubMenuItinerarioTransporte submenuItinerarioTransporte;
+    private SubMenuEntretenimiento submenuEntretenimiento;
 
     public SubMenuViaje(Scanner scanner) {
         this.controlador = new ViajeController();
         this.scanner = scanner;
+        this.submenuCuota= new SubMenuCuota(scanner);
+        this.submenuEntretenimiento= new SubMenuEntretenimiento(scanner);
+        this.submenuFactura= new SubMenuFactura(scanner);
+        this.submenuItinerarioTransporte= new SubMenuItinerarioTransporte(scanner);
     }
 
     public SubMenuViaje(ViajeController controlador, Scanner scanner) {
         this.controlador = controlador;
         this.scanner = scanner;
+        this.submenuCuota= new SubMenuCuota(scanner);
+        this.submenuEntretenimiento= new SubMenuEntretenimiento(scanner);
+        this.submenuFactura= new SubMenuFactura(scanner);
+        this.submenuItinerarioTransporte= new SubMenuItinerarioTransporte(scanner);
     }
 
     public void verSubMenuViaje() {
@@ -43,6 +55,10 @@ public class SubMenuViaje {
             System.out.println("11. Asignar Cuota a un Viaje");
             System.out.println("12. Ver Itinerarios de un Viaje");
             System.out.println("13. Asignar Itinerario a un Viaje");
+            System.out.println("14. Gestionar Cuotas");
+            System.out.println("15. Gestionar Facturas");
+            System.out.println("16. Gestionar Itinerarios de Transporte");
+            System.out.println("17. Gestionar Entretenimientos ");
             System.out.println("====== Presione 0 para Salir =======");
 
             opcion = scanner.nextInt();
@@ -65,6 +81,10 @@ public class SubMenuViaje {
                 case 11: asignarCuota(); break;
                 case 12: verItinerarios(); break;
                 case 13: asignarItinerario(); break;
+                case 14: submenuCuota.mostrarMenu(); break;
+                case 15: submenuFactura.mostrarMenu();break;
+                case 16: submenuItinerarioTransporte.mostrarMenu();break;
+                case 17: submenuEntretenimiento.mostrarMenu();break;
 
                 default:
                     System.out.println("===== Opción inválida =====");

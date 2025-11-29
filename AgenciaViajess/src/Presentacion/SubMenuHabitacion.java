@@ -9,9 +9,15 @@ import java.util.Scanner;
 
 public class SubMenuHabitacion {
 
-    private Scanner scanner = new Scanner(System.in);
-    private HabitacionController controller = new HabitacionController();
+    private Scanner scanner;
+    private HabitacionController controller;
+    private SubMenuReserva submenuReserva;
+    public SubMenuHabitacion(Scanner scanner) {
+        this.controller = new HabitacionController();
+        this.scanner = scanner;
+        this.submenuReserva= new SubMenuReserva(scanner);
 
+    }
     public void mostrarMenu() {
         int opcion = 1;
 
@@ -28,6 +34,7 @@ public class SubMenuHabitacion {
             System.out.println("7. Asignar Reserva a una Habitación");
             System.out.println("8. Ver Habitaciones por ID de Hotel");
             System.out.println("9. Ver Hotel asociado a una Habitación");
+            System.out.println("10. Gestionar Reservas");
 
             System.out.println("======= Presione 0 para Salir =======");
             System.out.print("Seleccione una opción: ");
@@ -62,6 +69,9 @@ public class SubMenuHabitacion {
                     break;
                 case 9:
                     verHotelDeHabitacion();
+                    break;
+                case 10:
+                    submenuReserva.mostrarMenu();
                     break;
                 case 0:
                     System.out.println("Regresando...");

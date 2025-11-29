@@ -7,20 +7,26 @@ import Modelos.Turno;
 import Modelos.Municipio;
 import java.util.List;
 import java.util.Scanner;
-
+import Presentacion.*;
 public class SubMenuActividadTuristica {
 
     private ActividadTuristicaController controlador;
     private Scanner scanner;
+    private SubMenuElementoPlan submenuElementoPlan;
+    private SubMenuTurno submenuTurno;
 
     public SubMenuActividadTuristica(Scanner scanner) {
         this.controlador = new ActividadTuristicaController();
         this.scanner = scanner;
+        this.submenuElementoPlan= new SubMenuElementoPlan(scanner);
+        this.submenuTurno= new SubMenuTurno(scanner);
     }
 
     public SubMenuActividadTuristica(ActividadTuristicaController controlador, Scanner scanner) {
         this.controlador = controlador;
         this.scanner = scanner;
+        this.submenuElementoPlan= new SubMenuElementoPlan(scanner);
+        this.submenuTurno= new SubMenuTurno(scanner);
     }
 
     public void verSubMenuActividadTuristica() {
@@ -40,6 +46,8 @@ public class SubMenuActividadTuristica {
             System.out.println("9. Asignar Turno a una Actividad Turística");
             System.out.println("10. Ver Municipio asociado a una Actividad Turística");
             System.out.println("11. Ver todas las Actividades Turísticas por Municipio");
+            System.out.println("12. Gestionar Elementos de los planes");
+            System.out.println("13. Gestionar Turnos");
             System.out.println("===Presione 0 para Salir====");
             opcion = scanner.nextInt();
             scanner.nextLine();
@@ -59,6 +67,8 @@ public class SubMenuActividadTuristica {
                 case 9: asignarTurnoActividad(); break;
                 case 10: verMunicipioActividad(); break;
                 case 11: verActividadesPorMunicipio(); break;
+                case 12: submenuElementoPlan.mostrarMenu();break;
+                case 13: submenuTurno.verSubMenuTurno(); break;
 
                 default:
                     System.out.println("===== Opción inválida =====");

@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "municipioInicioId": 1,
+    "municipioDestinoId": 2
+  },
+  {
+    "id": 2,
+    "municipioInicioId": 2,
+    "municipioDestinoId": 1
+  },
+  {
+    "id": 3,
+    "municipioInicioId": 2,
+    "municipioDestinoId": 3
+  },
+  {
+    "id": 4,
+    "municipioInicioId": 3,
+    "municipioDestinoId": 2
+  },
+  {
+    "id": 5,
+    "municipioInicioId": 3,
+    "municipioDestinoId": 4
+  }
+]

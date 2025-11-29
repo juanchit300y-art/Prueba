@@ -11,18 +11,18 @@ public class SubMenuCliente {
 
     private Scanner scanner;
     private ClienteController clienteController;
-    private FacturaController facturaController;
+    private SubMenuFactura submenuFactura;
 
-    public SubMenuCliente() {
-        scanner = new Scanner(System.in);
-        clienteController = new ClienteController();
-        facturaController = new FacturaController();
+    public SubMenuCliente(Scanner scanner) {
+        this.scanner = scanner;
+        this.clienteController = new ClienteController();
+        this.submenuFactura = new SubMenuFactura(scanner);
     }
 
     public void mostrarMenu() {
         int opcion=1;
 
-        while (opcion != 0);{
+        while (opcion != 0){
             System.out.println("====== SUBMENÚ CLIENTE ======");
             System.out.println("1. Registrar cliente");
             System.out.println("2. Ver lista de clientes");
@@ -31,6 +31,7 @@ public class SubMenuCliente {
             System.out.println("----- OPCIONES EXTRA -----");
             System.out.println("5. Ver facturas de un cliente");
             System.out.println("6. Asignar factura a cliente");
+            System.out.println("7. Gestionar Facturas ");
             System.out.println("=======Presione 0 para Salir========");
             System.out.print("Seleccione una opción: ");
 
@@ -56,6 +57,9 @@ public class SubMenuCliente {
                 case 6:
                     asignarFacturaCliente();
                     break;
+                case 7:
+                    submenuFactura.mostrarMenu();
+                    break;
                 case 0:
                     System.out.println("Volviendo al menú principal...");
                     break;
@@ -66,7 +70,7 @@ public class SubMenuCliente {
         }
     }
 
-    private void registrarCliente() {
+    public void registrarCliente() {
         System.out.println("====== REGISTRAR CLIENTE ======");
 
         System.out.print("Nombre: ");

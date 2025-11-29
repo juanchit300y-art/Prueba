@@ -12,15 +12,15 @@ public class SubMenuElementoPlan {
     private Scanner scanner;
     private ElementoPlanController elementoPlanController;
 
-    public SubMenuElementoPlan() {
-        scanner = new Scanner(System.in);
-        elementoPlanController = new ElementoPlanController();
+    public SubMenuElementoPlan(Scanner scanner) {
+        this.elementoPlanController = new ElementoPlanController();
+        this.scanner = scanner;
     }
 
     public void mostrarMenu() {
         int opcion=1;
 
-        while (opcion != 0);{
+        while (opcion != 0){
             System.out.println("====== SUBMENÚ ELEMENTO PLAN ======");
             System.out.println("1. Registrar elemento plan");
             System.out.println("2. Ver lista de elementos plan");

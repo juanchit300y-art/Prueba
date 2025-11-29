@@ -9,9 +9,12 @@ import java.util.Scanner;
 
 public class SubMenuReserva {
 
-    private Scanner scanner = new Scanner(System.in);
-    private ReservaController controller = new ReservaController();
-
+    private Scanner scanner;
+    private ReservaController controller;
+    public SubMenuReserva(Scanner scanner) {
+        this.controller = new ReservaController();
+        this.scanner = scanner;
+    }
     public void mostrarMenu() {
         int opcion = 1;
 

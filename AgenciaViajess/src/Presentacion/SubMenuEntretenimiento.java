@@ -9,9 +9,12 @@ import java.util.Scanner;
 
 public class SubMenuEntretenimiento {
 
-    private Scanner scanner = new Scanner(System.in);
-    private EntretenimientoController controller = new EntretenimientoController();
-
+    private Scanner scanner;
+    private EntretenimientoController controller;
+    public SubMenuEntretenimiento(Scanner scanner ) {
+        this.scanner = scanner;
+        this.controller = new EntretenimientoController();
+    }
     public void mostrarMenu() {
         int opcion=1;
 
