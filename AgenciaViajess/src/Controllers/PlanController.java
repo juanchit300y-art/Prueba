@@ -104,5 +104,10 @@ public class PlanController extends GeneralController<Plan> {
         return true;
     }
     //Tamaño actividades
-
+        public double numActividadesXPlan(Integer idPlan){
+        double numActividades;
+        List<ElementoPlan> elementosDelPlan= getElementosPlanDePlan(idPlan);
+        numActividades= elementosDelPlan.size();
+        return numActividades;
+    }
 }
