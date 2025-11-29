@@ -23,6 +23,7 @@ public class MenuAdministrador {
     private SubMenuTrayecto submenuTrayecto;
     private SubMenuUsuario submenuUsuario;
     private SubMenuViaje submenuViaje;
+    private MenuMetodos menuMetodos;
     Scanner scanner;
 
     public MenuAdministrador() {
@@ -41,6 +42,7 @@ public class MenuAdministrador {
         this.submenuTrayecto= new SubMenuTrayecto (scanner);
         this.submenuUsuario= new SubMenuUsuario(scanner);
         this.submenuViaje= new SubMenuViaje(scanner);
+        this.menuMetodos= new MenuMetodos(scanner);
     }
 
     /**
@@ -105,7 +107,8 @@ public class MenuAdministrador {
             System.out.println("7. Gestionar Trayectos");
             System.out.println("8. Gestionar Usuario");
             System.out.println("9. Gestionar Viajes");
-            System.out.println("10. Restablecer contraseña de Administradores");
+            System.out.println("10. Metodos ");
+            System.out.println("11. Restablecer contraseña de Administradores");
             System.out.println("===Presione 0 para Salir====");
             inicio= scanner.nextInt();
             scanner.nextLine();
@@ -140,6 +143,9 @@ public class MenuAdministrador {
                     submenuViaje.verSubMenuViaje();
                     break;
                 case 10:
+                    menuMetodos.verMenu();
+                    break;
+                case 11:
                     restablecerContraseña();
                     break;
                 default:
