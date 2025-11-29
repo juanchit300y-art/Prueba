@@ -18,7 +18,7 @@ public class ViajeController extends GeneralController<Viaje> {
     private CuotaRepository cuotaData;
     private ItinerarioTransporteRepository itinerarioTransporteData;
     private FacturaRepository facturaData;
-    
+    private TrayectoController controladorTrayecto; 
     
     
     public ViajeController() {
@@ -27,6 +27,7 @@ public class ViajeController extends GeneralController<Viaje> {
         this.cuotaData= new CuotaRepository();
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
         this.facturaData= new FacturaRepository();
+        this.controladorTrayecto= new TrayectoController();
     }
     public ViajeController(ViajeRepository classData) {
         this.classData= classData;
@@ -34,6 +35,7 @@ public class ViajeController extends GeneralController<Viaje> {
         this.cuotaData= new CuotaRepository();
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
         this.facturaData= new FacturaRepository();
+        this.controladorTrayecto= new TrayectoController();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -157,7 +159,8 @@ public class ViajeController extends GeneralController<Viaje> {
             for(ItinerarioTransporte actual2: itinerariosTransporte){
                 Integer idTrayecto= actual2.getTrayectoId();
                 if(metodo && metodo2){
-                
+                  List<Entretenimiento> entretenimientoViaje= getEntretenimientosDeViaje(idActual);
+                  
                 }
             }
         }
