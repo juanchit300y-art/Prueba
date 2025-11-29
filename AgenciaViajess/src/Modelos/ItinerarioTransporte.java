@@ -80,11 +80,11 @@ public class ItinerarioTransporte {
     }
     @Override
     public String toString() {
-    return "ItinerarioTransporte{" +
-            "id=" + id +
-            ", orden=" + orden +
-            ", TrayectoId=" + TrayectoId +
-            ", ViajeId=" + ViajeId +
-            '}';
+        return "=== Datos de Itinerario de Transporte === " +
+               "ID: " + id + " " +
+               "Orden: " + orden + " " +
+               "ID Trayecto: " + TrayectoId + " " +
+               "ID Viaje: " + ViajeId;
     }
+
 }

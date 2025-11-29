@@ -50,10 +50,8 @@ public class Municipio {
     }
     @Override
     public String toString() {
-    return "Municipio{" +
-            "id=" + id +
-            ", nombre='" + nombre + '\'' +
-            '}';
+        return "=== Datos de Municipio ===" +
+               "ID: " + id +
+               "Nombre: " + nombre;
     }
-
 }

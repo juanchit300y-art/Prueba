@@ -64,11 +64,9 @@ public class Turno {
     }
     @Override
     public String toString() {
-        return "Turno{" +
-                "id=" + id +
-                ", ActividadTuristicaId=" + ActividadTuristicaId +
-                ", GuiaId=" + GuiaId +
-                '}';
+        return "=== Datos de Turno ===" +
+               "ID: " + id +
+               "ID Actividad Turística: " + ActividadTuristicaId +
+            "ID Guía: " + GuiaId;
     }
-    
 }

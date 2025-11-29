@@ -50,11 +50,8 @@ public abstract class Vehiculo {
     }
     @Override
     public String toString() {
-        return "Vehiculo{" +
-                "id=" + id +
-                ", marca='" + marca + '\'' +
-                '}';
-    }
-
-    
+        return "=== Datos de Vehículo ===" +
+               "ID: " + id +
+               "Marca: " + marca;
+    }   
 }

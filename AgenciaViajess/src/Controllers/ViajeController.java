@@ -19,6 +19,7 @@ public class ViajeController extends GeneralController<Viaje> {
     private ItinerarioTransporteRepository itinerarioTransporteData;
     private FacturaRepository facturaData;
     private TrayectoController controladorTrayecto; 
+    private PlanController controladorPlan;
     
     
     public ViajeController() {
@@ -28,6 +29,7 @@ public class ViajeController extends GeneralController<Viaje> {
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
         this.facturaData= new FacturaRepository();
         this.controladorTrayecto= new TrayectoController();
+        this.controladorPlan= new PlanController();
     }
     public ViajeController(ViajeRepository classData) {
         this.classData= classData;
@@ -36,6 +38,7 @@ public class ViajeController extends GeneralController<Viaje> {
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
         this.facturaData= new FacturaRepository();
         this.controladorTrayecto= new TrayectoController();
+        this.controladorPlan= new PlanController();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -161,13 +164,13 @@ public class ViajeController extends GeneralController<Viaje> {
                 if(this.controladorTrayecto.verificadorAereo(idTrayecto) && this.controladorTrayecto.verificadorTerrestre(idTrayecto)){
                   List<Entretenimiento> entretenimientoViaje= getEntretenimientosDeViaje(idActual);
                   numPlanes= entretenimientoViaje.size()+ numPlanes;
-                  
+                  for (Entretenimiento actual3 : entretenimientoViaje){
+                      Integer idPlan= actual3.getPlanId();
+                      numActividades= this.controladorPlan.numActividadesXPlan(idPlan)+ numActividades;
+                    }
                 }
             }
         }
-        
-        
-        
         respuesta= numActividades/numPlanes;
         return respuesta;
     }

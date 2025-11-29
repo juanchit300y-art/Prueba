@@ -80,11 +80,10 @@ public class Reserva {
     }
     @Override
     public String toString() {
-    return "Reserva{" +
-            "id=" + id +
-            ", numPersonas=" + numPersonas +
-            ", HabitacionId=" + HabitacionId +
-            ", ItinerarioTransporteId=" + ItinerarioTransporteId +
-            '}';
+        return "=== Datos de Reserva ===" +
+               "ID: " + id +
+               "Número de Personas: " + numPersonas +
+               "ID Habitación: " + HabitacionId +
+               "ID Itinerario Transporte: " + ItinerarioTransporteId;
     }
 }
