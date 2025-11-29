@@ -15,14 +15,20 @@ import java.util.List;
  */
 public class AerolineaController extends GeneralController<Aerolinea> {
     private AeronaveController aeronaveData;
+    private TrayectoController trayectoData;
+    private ServicioTransporteController servicioTransporteData;
  
     public AerolineaController() {
         this.classData= new AerolineaRepository();
         this.aeronaveData= new AeronaveController();
+        this.trayectoData = new TrayectoController();
+        this.servicioTransporteData = new ServicioTransporteController();
     }
     public AerolineaController(AerolineaRepository classData) {
         this.classData= classData;
         this.aeronaveData= new AeronaveController();
+        this.trayectoData = new TrayectoController();
+        this.servicioTransporteData = new ServicioTransporteController();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -79,4 +85,24 @@ public class AerolineaController extends GeneralController<Aerolinea> {
         aeronaveData.guardarT(aeronave);
         return true;
     }
+    
+    //METODO B
+    
+    public Double MetodoB(Integer aerolineaId){
+        Double respuesta = null;
+        List<Aeronave> aeronaves = getAeronavesDeAerolinea(aerolineaId);
+        Double menor = Double.MAX_VALUE;
+        for(Aeronave actual:aeronaves){
+            List<ServicioTransporte> serviciosTransporte = servicioTransporteData.getServiciosTransporteByVehiculo(actual.getId());
+            for(ServicioTransporte actual2:serviciosTransporte){
+                if(actual2.getCosto()<menor){
+                    menor = actual2.getCosto();
+                    respuesta= actual2.getCosto();
+                }
+            }
+        }        
+        return respuesta;
+    }
+    
+    
 }
