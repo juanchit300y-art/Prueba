@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "fecha_inicio": "1287/182/3498",
+    "fecha_fin": "7387/2736/63",
+    "costo": 579000.0,
+    "VehiculoId": 1,
+    "TrayectoId": 1
+  },
+  {
+    "id": 2,
+    "fecha_inicio": "18/267/267",
+    "fecha_fin": "91328/237/125",
+    "costo": 88878.0,
+    "VehiculoId": 1,
+    "TrayectoId": 1
+  },
+  {
+    "id": 3,
+    "fecha_inicio": "2378/62/63723",
+    "fecha_fin": "73/3276/2376",
+    "costo": 382273.0,
+    "VehiculoId": 2,
+    "TrayectoId": 2
+  },
+  {
+    "id": 4,
+    "fecha_inicio": "872/23/23",
+    "fecha_fin": "73/87/98",
+    "costo": 3438.0,
+    "VehiculoId": 2,
+    "TrayectoId": 3
+  }
+]
