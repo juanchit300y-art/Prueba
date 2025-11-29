@@ -43,37 +43,37 @@ public class MenuMetodos {
                 case 0:
                     break;
                 case 1:
-                    //Linea codigo
+                    MetodoA();
                     break;
                 case 2:
-                    //Linea Codigo
+                    MetodoB();
                     break;
                 case 3:
-                    //Linea Codigo
+                    MetodoC();
                     break;
                 case 4:
-                    //Linea Codigo
+                    MetodoD();
                     break;
                 case 5:
-                    //Linea Codigo
+                    MetodoE();
                     break;
                 case 6:
-                    //Linea Codigo
+                    MetodoF();
                     break;
                 case 7:
-                    //Linea Codigo
+                    MetodoG();
                     break;
                 case 8:
-                    //Linea Codigo
+                    MetodoH();
                     break;
                 case 9:
-                    //Linea Codigo
+                    MetodoI();
                     break;
                 case 10:
-                    //Linea Codigo
+                    MetodoJ();
                     break;
                 case 11:
-                    //Linea Codigo
+                    MetodoK();
                     break;
             }
         }
