@@ -80,37 +80,55 @@ public class MenuMetodos {
         }
     }
     public void MetodoA(){
+        System.out.println("======== Metodo A======== ");
+        System.out.println("Promedio de actividades por plan para viajes que incluyen al menos un trayecto aéreo y uno terrestre: ");
         double Resultado= this.viajeController.metodoA();
         System.out.println(Resultado);
     }
     public void MetodoB(){
-    
+        System.out.println("======== Metodo B======== ");
+        System.out.println("Mínimo costo de un trayecto aéreo para una aerolínea específica.");
+        Double respuesta;
+        System.out.println(respuesta);
     }
     public void MetodoC(){
-    
+        System.out.println("======== Metodo C======== ");
+        System.out.println("");
     }
     public void MetodoD(){
+        System.out.println("======== Metodo D======== ");
     
     }
     public void MetodoE(){
-    
+        System.out.println("======== Metodo E======== ");
+        System.out.println("");
     }
     public void MetodoF(){
-    
+        System.out.println("======== Metodo F======== ");
+        System.out.println("");
     }
     public void MetodoG(){
+        System.out.println("======== Metodo G======== ");
+        System.out.println("");
     
     }
     public void MetodoH(){
+        System.out.println("======== Metodo H======== ");
+        System.out.println("");
     
     }
     public void MetodoI(){
-    
+        System.out.println("======== Metodo I======== ");
+        System.out.println("");
     }
     public void MetodoJ(){
+        System.out.println("======== Metodo J======== ");
+        System.out.println("");
     
     }
     public void MetodoK(){
+        System.out.println("======== Metodo K======== ");
+        System.out.println("");
     
     }
     
