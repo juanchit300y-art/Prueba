@@ -50,9 +50,8 @@ public class Plan {
     }
     @Override
     public String toString() {
-    return "Plan{" +
-            "id=" + id +
-            ", nombre='" + nombre + '\'' +
-            '}';
+        return "=== Datos de Plan ===" +
+               "ID: " + id +
+               "Nombre: " + nombre;
     }
 }

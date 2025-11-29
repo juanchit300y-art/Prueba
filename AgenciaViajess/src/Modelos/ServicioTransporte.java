@@ -113,13 +113,12 @@ public class ServicioTransporte {
     }
     @Override
     public String toString() {
-    return "ServicioTransporte{" +
-            "id=" + id +
-            ", fecha_inicio='" + fecha_inicio + '\'' +
-            ", fecha_fin='" + fecha_fin + '\'' +
-            ", costo=" + costo +
-            ", VehiculoId=" + VehiculoId +
-            ", TrayectoId=" + TrayectoId +
-            '}';
+        return "=== Datos de Servicio de Transporte ===" +
+               "ID: " + id +
+               "Fecha inicio: " + fecha_inicio +
+               "Fecha fin: " + fecha_fin +
+               "Costo: " + costo +
+               "ID Vehículo: " + VehiculoId +
+               "ID Trayecto: " + TrayectoId;
     }
 }

@@ -80,13 +80,13 @@ public class Hotel {
     public void setMunicipioId(Integer MunicipioId) {
         this.MunicipioId = MunicipioId;
     }
-    @Override
-    public String toString() {
-    return "Hotel{" +
-            "id=" + id +
-            ", nombre='" + nombre + '\'' +
-            ", correo='" + correo + '\'' +
-            ", MunicipioId=" + MunicipioId +
-            '}';
-    }   
+@Override
+public String toString() {
+    return "=== Datos de Hotel ===" +
+           "ID: " + id +
+           "Nombre: " + nombre +
+           "Correo: " + correo +
+           "ID Municipio: " + MunicipioId;
+}
+
 }

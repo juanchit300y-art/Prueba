@@ -64,11 +64,11 @@ public class Habitacion {
     }
     @Override
     public String toString() {
-    return "Habitacion{" +
-            "Id=" + Id +
-            ", capacidad=" + capacidad +
-            ", HotelId=" + HotelId +
-            '}';
+        return "=== Datos de Habitación ===\n" +
+               "ID: " + Id + "\n" +
+               "Capacidad: " + capacidad + "\n" +
+               "ID Hotel: " + HotelId;
     }
+
 
 }

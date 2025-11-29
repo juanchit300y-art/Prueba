@@ -2,6 +2,7 @@ package Controllers;
 
 import Persistencia.*;
 import Modelos.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -126,7 +127,7 @@ public class TrayectoController extends GeneralController<Trayecto> {
     //lista trayectos terrestre
     public List<Trayecto> getTrayectosTerrestres(){
         List<Trayecto> trayectos = classData.getAllT();
-        List<Trayecto> trayectosTerrestres = null;
+        List<Trayecto> trayectosTerrestres = new ArrayList<>();
         for(Trayecto actual : trayectos){
             List<ServicioTransporte> serviciosTransporte = getServiciosTransporteDeTrayecto(actual.getId());
             for(ServicioTransporte actual2 : serviciosTransporte){
@@ -144,7 +145,7 @@ public class TrayectoController extends GeneralController<Trayecto> {
     //lista trayectos Aereos
     public List<Trayecto> getTrayectosAereos(){
         List<Trayecto> trayectos = classData.getAllT();
-        List<Trayecto> trayectosAereos = null;
+        List<Trayecto> trayectosAereos = new ArrayList<>();
         for(Trayecto actual : trayectos){
             List<ServicioTransporte> serviciosTransporte = getServiciosTransporteDeTrayecto(actual.getId());
             for(ServicioTransporte actual2 : serviciosTransporte){
