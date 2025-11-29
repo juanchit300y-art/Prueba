@@ -14,7 +14,7 @@ import java.util.List;
  * @author DELL
  */
 public class HabitacionController extends GeneralController<Habitacion> {
-    ReservaRepository reservaData;
+    private ReservaRepository reservaData;
     HotelRepository hotelData;
     HabitacionRepository habitacionData;
     

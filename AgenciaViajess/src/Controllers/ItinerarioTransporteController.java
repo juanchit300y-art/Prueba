@@ -14,10 +14,10 @@ import java.util.List;
  * @author DELL
  */
 public class ItinerarioTransporteController extends GeneralController<ItinerarioTransporte> {
-    TrayectoRepository trayectoData;
-    ViajeRepository viajeData;
-    ReservaRepository reservaData;
-    ItinerarioTransporteRepository itinerarioTransporteData;
+    private TrayectoRepository trayectoData;
+    private ViajeRepository viajeData;
+    private ReservaRepository reservaData;
+    private ItinerarioTransporteRepository itinerarioTransporteData;
     
     public ItinerarioTransporteController() {
         this.classData= new ItinerarioTransporteRepository();

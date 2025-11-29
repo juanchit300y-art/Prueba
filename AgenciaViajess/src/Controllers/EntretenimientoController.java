@@ -14,9 +14,9 @@ import java.util.List;
  * @author DELL
  */
 public class EntretenimientoController extends GeneralController<Entretenimiento> {
-    ViajeRepository viajeData;
-    PlanRepository planData;
-    EntretenimientoRepository entretenimientoData;
+    private ViajeRepository viajeData;
+    private PlanRepository planData;
+    private EntretenimientoRepository entretenimientoData;
     public EntretenimientoController() {
         this.classData= new EntretenimientoRepository();
         this.viajeData= new ViajeRepository();

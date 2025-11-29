@@ -14,10 +14,10 @@ import java.util.List;
  * @author DELL
  */
 public class HotelController extends GeneralController<Hotel> {
-    CarroRepository carroData;
-    HabitacionRepository habitacionData;
-    MunicipioRepository municipioData;
-    HotelRepository hotelData;
+    private CarroRepository carroData;
+    private HabitacionRepository habitacionData;
+    private MunicipioRepository municipioData;
+    private HotelRepository hotelData;
     
     public HotelController() {
         this.classData= new HotelRepository();

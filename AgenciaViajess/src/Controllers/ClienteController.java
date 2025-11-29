@@ -14,7 +14,7 @@ import java.util.List;
  * @author DELL
  */
 public class ClienteController extends GeneralController<Cliente> {
-    FacturaRepository facturaData;
+    private FacturaRepository facturaData;
     
     public ClienteController() {
         this.classData= new ClienteRepository();

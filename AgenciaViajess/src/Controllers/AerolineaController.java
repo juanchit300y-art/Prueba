@@ -14,7 +14,7 @@ import java.util.List;
  * @author DELL
  */
 public class AerolineaController extends GeneralController<Aerolinea> {
-    AeronaveController aeronaveData;
+    private AeronaveController aeronaveData;
  
     public AerolineaController() {
         this.classData= new AerolineaRepository();

@@ -15,10 +15,10 @@ import java.util.List;
  * @author DELL
  */
 public class ServicioTransporteController extends GeneralController<ServicioTransporte> {
-    CarroRepository carroData;
-    AeronaveRepository aeronaveData;
-    TrayectoRepository trayectoData;
-    ServicioTransporteRepository servicioTransporteData;
+    private CarroRepository carroData;
+    private AeronaveRepository aeronaveData;
+    private TrayectoRepository trayectoData;
+    private ServicioTransporteRepository servicioTransporteData;
     public ServicioTransporteController() {
         this.classData= new ServicioTransporteRepository();
         this.carroData= new CarroRepository();

@@ -14,9 +14,9 @@ import java.util.List;
  * @author DELL
  */
 public class FacturaController extends GeneralController<Factura> {
-    ViajeRepository viajeData;
-    ClienteRepository clienteData;
-    FacturaRepository facturaData;
+    private ViajeRepository viajeData;
+    private ClienteRepository clienteData;
+    private FacturaRepository facturaData;
     public FacturaController() {
         this.classData= new FacturaRepository();
         this.viajeData= new ViajeRepository();

@@ -14,9 +14,9 @@ import java.util.List;
  * @author DELL
  */
 public class TurnoController extends GeneralController<Turno> {
-    ActividadTuristicaRepository actividadTuristicaData;
-    GuiaRepository guiaData;
-    TurnoRepository turnoData;
+    private ActividadTuristicaRepository actividadTuristicaData;
+    private GuiaRepository guiaData;
+    private TurnoRepository turnoData;
     public TurnoController() {
         this.classData= new TurnoRepository();
         this.actividadTuristicaData= new ActividadTuristicaRepository();

@@ -14,9 +14,9 @@ import java.util.List;
  * @author DELL
  */
 public class ReservaController extends GeneralController<Reserva> {
-    HabitacionRepository habitacionData;
-    ItinerarioTransporteRepository itinerarioTransporteData;
-    ReservaRepository reservaData;
+    private HabitacionRepository habitacionData;
+    private ItinerarioTransporteRepository itinerarioTransporteData;
+    private ReservaRepository reservaData;
     public ReservaController() {
         this.classData= new ReservaRepository();
         this.habitacionData= new HabitacionRepository();
