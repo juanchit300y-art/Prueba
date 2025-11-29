@@ -14,10 +14,11 @@ import java.util.List;
  * @author DELL
  */
 public class ViajeController extends GeneralController<Viaje> {
-    EntretenimientoRepository entretenimientoData;
-    CuotaRepository cuotaData;
-    ItinerarioTransporteRepository itinerarioTransporteData;
-    FacturaRepository facturaData;
+    private EntretenimientoRepository entretenimientoData;
+    private CuotaRepository cuotaData;
+    private ItinerarioTransporteRepository itinerarioTransporteData;
+    private FacturaRepository facturaData;
+    
     
     
     public ViajeController() {
@@ -143,5 +144,27 @@ public class ViajeController extends GeneralController<Viaje> {
         itinerarioTransporte.setViajeId(viajeId);
         itinerarioTransporteData.saveT(itinerarioTransporte);
         return true;
+    }
+    //Metodo A
+    public Double metodoA(){
+        double numActividades;
+        double numPlanes;        
+        double respuesta;
+        List<Viaje> viajes= getAllGeneral();
+        for(Viaje actual : viajes){
+            Integer idActual= actual.getId();
+            List<ItinerarioTransporte> itinerariosTransporte= getItinerariosTransporteDeViaje(idActual);
+            for(ItinerarioTransporte actual2: itinerariosTransporte){
+                Integer idTrayecto= actual2.getTrayectoId();
+                if(metodo && metodo2){
+                
+                }
+            }
+        }
+        
+        
+        
+        respuesta= numActividades/numPlanes;
+        return respuesta;
     }
 }

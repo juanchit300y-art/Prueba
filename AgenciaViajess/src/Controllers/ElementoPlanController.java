@@ -14,9 +14,9 @@ import java.util.List;
  * @author DELL
  */
 public class ElementoPlanController extends GeneralController<ElementoPlan> {
-    ActividadTuristicaRepository actividadTuristicaData;
-    PlanRepository planData;
-    ElementoPlanRepository elementoPlanData;
+    private ActividadTuristicaRepository actividadTuristicaData;
+    private PlanRepository planData;
+    private ElementoPlanRepository elementoPlanData;
     public ElementoPlanController() {
         this.classData= new ElementoPlanRepository();
         this.actividadTuristicaData= new ActividadTuristicaRepository();

@@ -14,9 +14,9 @@ import java.util.List;
  * @author DELL
  */
 public class CarroController extends GeneralController<Carro> {
-    HotelRepository hotelData;
-    ServicioTransporteRepository servicioTransporteData;
-    CarroRepository carroData;
+    private HotelRepository hotelData;
+    private ServicioTransporteRepository servicioTransporteData;
+    private CarroRepository carroData;
     
     public CarroController() {
         this.classData= new CarroRepository();

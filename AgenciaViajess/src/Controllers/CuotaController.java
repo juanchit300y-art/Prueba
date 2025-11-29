@@ -14,8 +14,8 @@ import java.util.List;
  * @author DELL
  */
 public class CuotaController extends GeneralController<Cuota> {
-    ViajeRepository viajeData;
-    CuotaRepository cuotaData;
+    private ViajeRepository viajeData;
+    private CuotaRepository cuotaData;
     
     public CuotaController() {
         this.classData= new CuotaRepository();

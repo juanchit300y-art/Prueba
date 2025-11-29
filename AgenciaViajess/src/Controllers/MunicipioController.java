@@ -14,9 +14,9 @@ import java.util.List;
  * @author DELL
  */
 public class MunicipioController extends GeneralController<Municipio> {
-    HotelRepository hotelData;
-    ActividadTuristicaRepository actividadTuristicaData;
-    TrayectoRepository trayectoData;
+    private HotelRepository hotelData;
+    private ActividadTuristicaRepository actividadTuristicaData;
+    private TrayectoRepository trayectoData;
     
     public MunicipioController() {
         this.classData= new MunicipioRepository();

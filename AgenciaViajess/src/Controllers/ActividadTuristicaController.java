@@ -14,10 +14,10 @@ import java.util.List;
  * @author DELL
  */
 public class ActividadTuristicaController extends GeneralController<ActividadTuristica> {
-    MunicipioRepository municipioData;
-    TurnoRepository turnoData;
-    ElementoPlanRepository elementoPlanData;
-    ActividadTuristicaRepository actividadTuristicaData;
+    private MunicipioRepository municipioData;
+    private TurnoRepository turnoData;
+    private ElementoPlanRepository elementoPlanData;
+    private ActividadTuristicaRepository actividadTuristicaData;
     
     public ActividadTuristicaController() {
         this.classData= new ActividadTuristicaRepository();
