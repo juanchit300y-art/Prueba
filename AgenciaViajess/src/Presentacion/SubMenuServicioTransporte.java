@@ -108,8 +108,12 @@ public class SubMenuServicioTransporte {
         System.out.print("Ingrese ID del Trayecto: ");
         Integer trayectoId = scanner.nextInt();
         scanner.nextLine();
+        
+        System.out.print("Ingrese el costo: ");
+        Double costo = scanner.nextDouble();
+        scanner.nextLine();
 
-        boolean resultado = controller.añadirReserva(null, fechaInicio, fechaFin, opcionVehiculo, vehiculoId, trayectoId);
+        boolean resultado = controller.añadirServicioTransporte(trayectoId, costo, fechaInicio, fechaFin, trayectoId, vehiculoId, trayectoId);
 
         if (resultado) {
             System.out.println("Servicio Transporte creado correctamente.");
@@ -151,8 +155,13 @@ public class SubMenuServicioTransporte {
         Integer trayectoId = scanner.nextInt();
         scanner.nextLine();
         if (trayectoId == 0) trayectoId = null;
+        
+        System.out.print("Nuevo Costo de Trayecto (0 para no cambiar): ");
+        Double costo = scanner.nextDouble();
+        scanner.nextLine();
+        if (costo == 0) costo = null;
 
-        boolean resultado = controller.actualizarServicioTransporte(id, fechaInicio, fechaFin, opcionVehiculo, vehiculoId, trayectoId);
+        boolean resultado = controller.actualizarServicioTransporte(trayectoId,costo, fechaInicio, fechaFin, opcionVehiculo, vehiculoId, trayectoId);
 
         if (resultado) {
             System.out.println("Servicio Transporte actualizado con éxito.");

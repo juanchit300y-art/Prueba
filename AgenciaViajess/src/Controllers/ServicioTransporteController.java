@@ -40,11 +40,15 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
         return true;
     }    
     
-    public boolean actualizarServicioTransporte(Integer id,String fecha_inicio, String fecha_fin, Integer opcion,Integer vehiculoId , Integer trayectoId) {
+    public boolean actualizarServicioTransporte(Integer id, Double costo, String fecha_inicio, String fecha_fin, Integer opcion,Integer vehiculoId , Integer trayectoId) {
         ServicioTransporte servicioTransporte = classData.findATById(id);
         if (servicioTransporte == null) {
             return false;
         }
+        if(costo!=null && costo>=0){
+            servicioTransporte.setCosto(costo);
+        }
+        
         if (fecha_inicio != null && !fecha_inicio.trim().isEmpty()) {
             servicioTransporte.setFecha_inicio(fecha_inicio.trim());
         }
@@ -79,11 +83,13 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
         return true;
     }
 
-    public boolean añadirReserva(Integer id,String fecha_inicio, String fecha_fin, Integer opcion, Integer vehiculoId, Integer trayectoId) {
+    public boolean añadirServicioTransporte(Integer id, Double costo, String fecha_inicio, String fecha_fin, Integer opcion, Integer vehiculoId, Integer trayectoId) {
         if (fecha_inicio == null || fecha_inicio.trim().isEmpty()) {
             return false;
         }
-        
+        if(costo==null && costo<0){
+            return false;
+        }
         if (fecha_fin == null || fecha_fin.trim().isEmpty()) {
             return false;
         }
@@ -107,6 +113,7 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
             return false;
         }
         ServicioTransporte servicioTransporte = new ServicioTransporte();
+        servicioTransporte.setCosto(costo);
         servicioTransporte.setFecha_inicio(fecha_inicio);
         servicioTransporte.setFecha_fin(fecha_fin);
         servicioTransporte.setVehiculoId(vehiculoId);
