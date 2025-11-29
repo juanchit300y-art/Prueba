@@ -73,8 +73,8 @@ public class SubMenuGuia {
         }
     }
 
-    private void crear() {
-        System.out.println("=== Crear Guía ===");
+    public void crear() {
+            System.out.println("=== REGISTRAR Guía ===");
 
         System.out.print("Ingrese el nombre: ");
         String nombre = scanner.nextLine();
@@ -92,7 +92,7 @@ public class SubMenuGuia {
         boolean resultado = controller.añadirGuia(nombre, contraseña, correo, años);
 
         if (resultado) {
-            System.out.println("Guía creado correctamente.");
+            System.out.println("Guía registrado correctamente.");
         } else {
             System.out.println("Error: Verifique los datos ingresados.");
         }

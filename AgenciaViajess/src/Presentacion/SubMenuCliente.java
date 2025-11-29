@@ -70,7 +70,7 @@ public class SubMenuCliente {
         }
     }
 
-    private void registrarCliente() {
+    public void registrarCliente() {
         System.out.println("====== REGISTRAR CLIENTE ======");
 
         System.out.print("Nombre: ");
