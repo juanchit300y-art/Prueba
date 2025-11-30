@@ -14,12 +14,14 @@ import java.util.Scanner;
 public class MenuMetodos {
     Scanner scanner;
     private ViajeController viajeController;
+    private AerolineaController aerolineaController;
     public MenuMetodos() {
     }
 
     public MenuMetodos(Scanner scanner) {
         this.scanner = scanner;
         this.viajeController= new ViajeController();
+        this.aerolineaController= new AerolineaController();
     }
     public void verMenu(){
         int opcion= 1;
@@ -76,6 +78,8 @@ public class MenuMetodos {
                 case 11:
                     MetodoK();
                     break;
+                default:
+                    System.out.println("======== Opcion invalida======== ");
             }
         }
     }
@@ -88,8 +92,14 @@ public class MenuMetodos {
     public void MetodoB(){
         System.out.println("======== Metodo B======== ");
         System.out.println("Mínimo costo de un trayecto aéreo para una aerolínea específica.");
-        Double respuesta;
-        System.out.println(respuesta);
+        Integer idAerolinea;
+        System.out.println("Ingrese el Id de la Aerolinea: ");
+        idAerolinea= scanner.nextInt();
+        scanner.nextLine();
+        Double respuesta= aerolineaController.MetodoB(idAerolinea);
+        System.out.println("La aerolinea Seleccionada fue :");
+        System.out.print(this.aerolineaController.getGeneralById(idAerolinea));
+        System.out.println("El costo minimo de la aerolinea es: " + respuesta);
     }
     public void MetodoC(){
         System.out.println("======== Metodo C======== ");
