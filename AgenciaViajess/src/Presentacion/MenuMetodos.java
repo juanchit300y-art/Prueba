@@ -114,6 +114,11 @@ public class MenuMetodos {
     public void MetodoD(){
         System.out.println("======== Metodo D======== ");
         System.out.println("Suma total de costos de todos los trayectos de tipo vuelo para un cliente específico. ");
+        Integer clienteId;
+        System.out.println("Ingrse el id del cliente del cual lo quiere ver: ");
+        clienteId= scanner.nextInt();
+        scanner.nextLine();
+        
     
     }
     public void MetodoE(){
