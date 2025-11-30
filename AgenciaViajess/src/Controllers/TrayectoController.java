@@ -180,5 +180,7 @@ public class TrayectoController extends GeneralController<Trayecto> {
             }
         }
         return false;
-    } 
+    }
+    // Metodo verificador de vehiculo menorCantidadHabitaciones 
+    
 }

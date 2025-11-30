@@ -174,4 +174,10 @@ public class ViajeController extends GeneralController<Viaje> {
         respuesta= numActividades/numPlanes;
         return respuesta;
     }
+    //Metodo C
+    public int metodoC(){
+        int respuesta=0;
+        
+        return respuesta;
+    }
 }
