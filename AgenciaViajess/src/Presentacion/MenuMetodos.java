@@ -104,6 +104,10 @@ public class MenuMetodos {
     public void MetodoC(){
         System.out.println("======== Metodo C======== ");
         System.out.println("Cantidad de viajes que incluyen al menos un plan con una actividad específica dada por parámetro mediante el nombre) y que hayan utilizado un vehículo del hotel con menos habitaciones");
+        String nombreActividad;
+        System.out.println("Ingrese el nombre de la actividad especifica : ");
+        nombreActividad= scanner.nextLine();
+                
     }
     public void MetodoD(){
         System.out.println("======== Metodo D======== ");

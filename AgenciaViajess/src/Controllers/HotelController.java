@@ -136,4 +136,19 @@ public class HotelController extends GeneralController<Hotel> {
         }
         return municipioData.findATById(hotel.getMunicipioId());
     }
+    // Menor numero habitaciones 
+    public Hotel menorNumHabitaciones(){
+        List<Hotel> hoteles= getAllGeneral();
+        Hotel respuesta= null;
+        int menor= Integer.MAX_VALUE;
+        for (Hotel actual: hoteles ){
+            int numHabitaciones;
+            List<Habitacion> habitaciones=  getHabitacionesDeHotel(actual.getId());
+            if(habitaciones.size()< menor){
+                menor= habitaciones.size();
+                respuesta= actual;
+            }
+        }
+        return respuesta;
+    }
 }
