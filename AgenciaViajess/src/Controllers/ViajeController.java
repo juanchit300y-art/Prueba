@@ -177,7 +177,11 @@ public class ViajeController extends GeneralController<Viaje> {
     //Metodo C
     public int metodoC(){
         int respuesta=0;
-        
+        List<Viaje> viajesT= getAllGeneral();
+        for(Viaje actual: viajesT){
+            List<Entretenimiento> entretenimientoViaje=getEntretenimientosDeViaje(actual.getId());
+            
+        }
         return respuesta;
     }
 }
