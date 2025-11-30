@@ -34,7 +34,7 @@ public class Viaje {
     }
     @Override
     public String toString() {
-        return "=== Datos de Viaje ===" +
-               "ID: " + id;
+        return "=== Datos de Viaje ===\n " +
+               "ID: " + id + "\n";
     }
 }

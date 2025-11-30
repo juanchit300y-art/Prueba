@@ -82,11 +82,11 @@ public class Hotel {
     }
 @Override
 public String toString() {
-    return "=== Datos de Hotel ===" +
-           "ID: " + id +
-           "Nombre: " + nombre +
-           "Correo: " + correo +
-           "ID Municipio: " + MunicipioId;
+    return "=== Datos de Hotel ===\n" +
+           "ID: " + id + "\n"
+           + "Nombre: " + nombre + "\n" +
+           "Correo: " + correo + "\n"+
+           "ID Municipio: " + MunicipioId + "\n";
 }
 
 }

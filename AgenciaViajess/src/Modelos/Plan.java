@@ -50,8 +50,8 @@ public class Plan {
     }
     @Override
     public String toString() {
-        return "=== Datos de Plan ===" +
-               "ID: " + id +
-               "Nombre: " + nombre;
+        return "=== Datos de Plan === \n " +
+               "ID: " + id + "\n"+
+               "Nombre: " + nombre + "\n";
     }
 }

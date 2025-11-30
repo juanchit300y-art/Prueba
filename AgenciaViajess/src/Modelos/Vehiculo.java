@@ -51,7 +51,7 @@ public abstract class Vehiculo {
     @Override
     public String toString() {
         return "=== Datos de Vehículo ===" +
-               "ID: " + id +
-               "Marca: " + marca;
+               "ID: " + id + "\n" +
+               "Marca: " + marca + "\n";
     }   
 }

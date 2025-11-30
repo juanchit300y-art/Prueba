@@ -82,9 +82,9 @@ public abstract class Usuario {
     }
     @Override
     public String toString() {
-        return "=== Datos de Usuario ===" +
-               "ID: " + id +
-               "Nombre: " + nombre +
-               "Correo: " + correo;
+        return  
+               "ID: " + id + "\n" +
+               "Nombre: " + nombre + "\n" +
+               "Correo: " + correo + "\n";
     }
 }

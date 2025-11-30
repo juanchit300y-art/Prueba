@@ -103,42 +103,43 @@ public class MenuMetodos {
     }
     public void MetodoC(){
         System.out.println("======== Metodo C======== ");
-        System.out.println("");
+        System.out.println("Cantidad de viajes que incluyen al menos un plan con una actividad específica dada por parámetro mediante el nombre) y que hayan utilizado un vehículo del hotel con menos habitaciones");
     }
     public void MetodoD(){
         System.out.println("======== Metodo D======== ");
+        System.out.println("Suma total de costos de todos los trayectos de tipo vuelo para un cliente específico. ");
     
     }
     public void MetodoE(){
         System.out.println("======== Metodo E======== ");
-        System.out.println("");
+        System.out.println("Retornar en una lista de todos los hoteles que tienen habitaciones reservadas en viajes que incluyen un plan con al menos 3 actividades. ");
     }
     public void MetodoF(){
         System.out.println("======== Metodo F======== ");
-        System.out.println("");
+        System.out.println("Promedio de trayectos por viaje para clientes que han realizado más de un viaje. ");
     }
     public void MetodoG(){
         System.out.println("======== Metodo G======== ");
-        System.out.println("");
+        System.out.println("Máximo número de actividades en un plan para viajes que tienen al menos un trayecto terrestre.");
     
     }
     public void MetodoH(){
         System.out.println("======== Metodo H======== ");
-        System.out.println("");
+        System.out.println("Conteo de clientes que han utilizado una aerolínea específica y han realizado al menos una actividad en un municipio específico. ");
     
     }
     public void MetodoI(){
         System.out.println("======== Metodo I======== ");
-        System.out.println("");
+        System.out.println("Suma total de costos de todos los servicios de transporte (trayectos) para un viaje específico. ");
     }
     public void MetodoJ(){
         System.out.println("======== Metodo J======== ");
-        System.out.println("");
+        System.out.println("Retornar en una nueva lista todos los planes que incluyen una actividad con nombre específico y que han sido contratados por clientes con más de un viaje.");
     
     }
     public void MetodoK(){
         System.out.println("======== Metodo K======== ");
-        System.out.println("");
+        System.out.println("Promedio de habitaciones reservadas por hotel en viajes que incluyen al menos un trayecto aéreo y un trayecto terrestre.");
     
     }
     

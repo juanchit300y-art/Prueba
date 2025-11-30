@@ -65,9 +65,9 @@ public class ActividadTuristica {
     }
    @Override
     public String toString() {
-    return "=== Datos de Actividad Turística ===" +
-           "ID: " + id + "" +
-           "Nombre: " + nombre + "" +
-           "ID Municipio: " + MunicipioId + "";
+    return "=== Datos de Actividad Turística ===\n" +
+           "ID: " + id + "\n" +
+           "Nombre: " + nombre + "\n" +
+           "ID Municipio: " + MunicipioId + "\n";
     }
 }

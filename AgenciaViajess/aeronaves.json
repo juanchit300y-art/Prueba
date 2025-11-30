@@ -23,5 +23,10 @@
     "aerolineaId": 5,
     "id": 5,
     "marca": "Bombardier"
+  },
+  {
+    "aerolineaId": 6,
+    "id": 6,
+    "marca": "nokia"
   }
 ]

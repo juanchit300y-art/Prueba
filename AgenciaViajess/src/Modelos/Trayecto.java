@@ -64,9 +64,9 @@ public class Trayecto {
     }
     @Override
     public String toString() {
-        return "=== Datos de Trayecto ===" +
-               "ID: " + id +
-               "ID Municipio Inicio: " + municipioInicioId +
-               "ID Municipio Destino: " + municipioDestinoId;
+        return "=== Datos de Trayecto ===\n" +
+               "ID: " + id + "\n" +
+               "ID Municipio Inicio: " + municipioInicioId + "\n" +
+               "ID Municipio Destino: " + municipioDestinoId+ "\n";
     }
 }
