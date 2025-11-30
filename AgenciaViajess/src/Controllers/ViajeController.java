@@ -189,6 +189,7 @@ public class ViajeController extends GeneralController<Viaje> {
     //Metodo C
     public int metodoC( String nombreActividad){
         int respuesta=0;
+<<<<<<< HEAD
         List<Viaje> todosViajes= getAllGeneral();
         Integer idActividad= controladorActividad.encontrarIDXNombre(nombreActividad);
         for(Viaje actual : todosViajes){
@@ -200,6 +201,13 @@ public class ViajeController extends GeneralController<Viaje> {
                 respuesta++;
             }
         }    
+=======
+        List<Viaje> viajesT= getAllGeneral();
+        for(Viaje actual: viajesT){
+            List<Entretenimiento> entretenimientoViaje=getEntretenimientosDeViaje(actual.getId());
+            
+        }
+>>>>>>> f8b1841c5205d7dea4d6232a485a61a0900150ed
         return respuesta;
     }
     public boolean verificacion1C(List<Entretenimiento> entretenimientosActual, Integer activiad){
