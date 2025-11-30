@@ -132,5 +132,23 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
         }
         return municipioData.findATById(actividadTuristica.getMunicipioId());
     }
+    
+    //Encontrar Id de Actividad por el nombre
+    
+    public Integer encontrarIDXNombre(String nombre){
+       Integer respuesta= null;
+       List<ActividadTuristica> actividades= getAllGeneral();
+       int i=0 ;
+       while(i< actividades.size() && respuesta== null ){
+           ActividadTuristica actual= actividades.get(i);
+           String nombreActual= actual.getNombre();
+           if(nombreActual.equalsIgnoreCase(nombre)){
+               respuesta= actual.getId();
+           }
+           
+           i++;
+       }
+       return respuesta;
+    }
 
 }

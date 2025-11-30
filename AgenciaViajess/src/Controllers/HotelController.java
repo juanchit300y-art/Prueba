@@ -137,7 +137,7 @@ public class HotelController extends GeneralController<Hotel> {
         return municipioData.findATById(hotel.getMunicipioId());
     }
     // Menor numero habitaciones 
-    public Hotel menorNumHabitaciones(){
+    public Integer menorNumHabitaciones(){
         List<Hotel> hoteles= getAllGeneral();
         Hotel respuesta= null;
         int menor= Integer.MAX_VALUE;
@@ -149,6 +149,9 @@ public class HotelController extends GeneralController<Hotel> {
                 respuesta= actual;
             }
         }
-        return respuesta;
+        Integer respuestaId= respuesta.getId();
+        return respuestaId;
     }
+    
+    
 }

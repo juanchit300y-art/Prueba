@@ -20,6 +20,10 @@ public class ViajeController extends GeneralController<Viaje> {
     private FacturaRepository facturaData;
     private TrayectoController controladorTrayecto; 
     private PlanController controladorPlan;
+    private ActividadTuristicaController controladorActividad;
+    private CarroController controladorCarro;
+    private HotelController controladorHotel;
+    private ServicioTransporteController controladorServicioTransporte;
     
     
     public ViajeController() {
@@ -30,6 +34,10 @@ public class ViajeController extends GeneralController<Viaje> {
         this.facturaData= new FacturaRepository();
         this.controladorTrayecto= new TrayectoController();
         this.controladorPlan= new PlanController();
+        this.controladorActividad= new ActividadTuristicaController();
+        this.controladorCarro= new CarroController();
+        this.controladorHotel= new HotelController();
+        this.controladorServicioTransporte= new ServicioTransporteController();
     }
     public ViajeController(ViajeRepository classData) {
         this.classData= classData;
@@ -39,6 +47,10 @@ public class ViajeController extends GeneralController<Viaje> {
         this.facturaData= new FacturaRepository();
         this.controladorTrayecto= new TrayectoController();
         this.controladorPlan= new PlanController();
+        this.controladorActividad= new ActividadTuristicaController();
+        this.controladorCarro= new CarroController();
+        this.controladorHotel= new HotelController();
+        this.controladorServicioTransporte= new ServicioTransporteController();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -175,9 +187,43 @@ public class ViajeController extends GeneralController<Viaje> {
         return respuesta;
     }
     //Metodo C
-    public int metodoC(){
+    public int metodoC( String nombreActividad){
         int respuesta=0;
-        
+        List<Viaje> todosViajes= getAllGeneral();
+        Integer idActividad= controladorActividad.encontrarIDXNombre(nombreActividad);
+        for(Viaje actual : todosViajes){
+            List<Entretenimiento> entretenimientosActual= getEntretenimientosDeViaje(actual.getId());
+            boolean resultado1= verificacion1C(entretenimientosActual, idActividad);
+            List<ItinerarioTransporte> itinerariosTransporteViaje= getItinerariosTransporteDeViaje(actual.getId());
+            boolean resultado2= verificacion2C(itinerariosTransporteViaje);
+            if(resultado1 && resultado2){
+                respuesta++;
+            }
+        }    
         return respuesta;
+    }
+    public boolean verificacion1C(List<Entretenimiento> entretenimientosActual, Integer activiad){
+        for(Entretenimiento actual2: entretenimientosActual){
+            Integer idPlan= actual2.getPlanId();
+            boolean resultadoV1C= controladorPlan.tieneActividad(activiad, idPlan);
+            if (resultadoV1C){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean verificacion2C( List<ItinerarioTransporte> itinerariosTransporteViaje){
+        Integer idHotel= controladorHotel.menorNumHabitaciones();
+        for(ItinerarioTransporte actual2: itinerariosTransporteViaje){
+            Integer idTrayecto= actual2.getTrayectoId();
+            List<Integer> idCarrosTrayecto= controladorServicioTransporte.verificadorVehiculoHotelMenosH(idTrayecto);
+            for(Integer idActualCarro: idCarrosTrayecto ){
+                boolean resultado= controladorCarro.PertenecAUnHotel(idHotel, idActualCarro);
+                if(resultado){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

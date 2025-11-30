@@ -110,4 +110,17 @@ public class PlanController extends GeneralController<Plan> {
         numActividades= elementosDelPlan.size();
         return numActividades;
     }
+    // ActividadXId
+    public boolean tieneActividad(Integer idActividad, Integer idPlan){
+        Plan plan= getGeneralById(idPlan);
+        List<ElementoPlan> elementosPlan= getElementosPlanDePlan(idPlan);
+        for(ElementoPlan actual: elementosPlan){
+            Integer idActividadElemento= actual.getActividadTuristicaId();
+            if(idActividadElemento.equals(idActividad)){
+                return true;    
+            }
+        }
+        return false;
+    }
+        
 }

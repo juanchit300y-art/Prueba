@@ -101,4 +101,15 @@ public class CarroController extends GeneralController<Carro> {
         servicioTransporteData.saveT(servicioTransporte);
         return true;
     }
+    // Verificador de Pertenencia
+    public boolean PertenecAUnHotel(Integer idHotel, Integer idCarro){
+        Carro carro= carroData.findATById(idCarro);
+        Integer idHotelCarro= carro.getHotelId();
+        if (idHotelCarro.equals(idHotel)){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

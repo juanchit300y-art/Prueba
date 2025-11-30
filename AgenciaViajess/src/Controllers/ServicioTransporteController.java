@@ -154,5 +154,14 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
         }
         return null;
     }
-    
+    // vehiculos servicio transporte
+    public List<Integer> verificadorVehiculoHotelMenosH(Integer idTrayecto){
+        List<ServicioTransporte> serviciosTransporteT= getServiciosTransporteByTrayecto(idTrayecto);
+        List<Integer> idVehiculos= new ArrayList<>();
+        for(ServicioTransporte actual: serviciosTransporteT){
+            Integer idVehiculoS= actual.getVehiculoId();
+            idVehiculos.add(idVehiculoS);
+        }
+        return idVehiculos;
+    }
 }

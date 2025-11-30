@@ -107,6 +107,8 @@ public class MenuMetodos {
         String nombreActividad;
         System.out.println("Ingrese el nombre de la actividad especifica : ");
         nombreActividad= scanner.nextLine();
+        int resultado= viajeController.metodoC(nombreActividad);
+        System.out.println(resultado);
                 
     }
     public void MetodoD(){
