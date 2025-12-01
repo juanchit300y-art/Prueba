@@ -148,6 +148,8 @@ public class MenuMetodos {
         System.out.println("Ingrese el id del Municipio: ");
         idMunicipio= scanner.nextInt();
         scanner.nextLine();
+        int respuesta= facturaController.metodoH(idAerolinea, idMunicipio);
+        System.out.println("Total de clientes : " + respuesta);
     }
     public void MetodoI(){
         System.out.println("======== Metodo I======== ");

@@ -17,17 +17,20 @@ public class ElementoPlanController extends GeneralController<ElementoPlan> {
     private ActividadTuristicaRepository actividadTuristicaData;
     private PlanRepository planData;
     private ElementoPlanRepository elementoPlanData;
+    private MunicipioController controladorMunicipio;
     public ElementoPlanController() {
         this.classData= new ElementoPlanRepository();
         this.actividadTuristicaData= new ActividadTuristicaRepository();
         this.planData= new PlanRepository();
         this.elementoPlanData= new ElementoPlanRepository();
+        this.controladorMunicipio= new MunicipioController();
     }
     public ElementoPlanController(ElementoPlanRepository classData) {
         this.classData= classData;
         this.actividadTuristicaData= new ActividadTuristicaRepository();
         this.planData= new PlanRepository();
         this.elementoPlanData= new ElementoPlanRepository();
+        this.controladorMunicipio= new MunicipioController();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -97,17 +100,16 @@ public class ElementoPlanController extends GeneralController<ElementoPlan> {
         return actividadTuristicaData.findATById(elementoPlan.getActividadTuristicaId());
     }
     //Verificacion MunicipioId
-    public boolean verificacionActividadMunicipioH(Integer ){
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    public boolean verificacionActividadMunicipioH(Integer idPlan, Integer idMunicipio){
+        List<ElementoPlan> elementosPlanPlan= getElementosPlanByPlan(idPlan);
+        for(ElementoPlan actual: elementosPlanPlan){
+            Integer actividadTuristicaId= actual.getActividadTuristicaId();
+            boolean resultado = controladorMunicipio.verificadorSiTengoActividad(idMunicipio, actividadTuristicaId);
+            if(resultado){
+                return true;
+            }
+        }
+        return false;        
     }
     
     
