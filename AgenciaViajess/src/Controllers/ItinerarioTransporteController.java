@@ -18,6 +18,7 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
     private ViajeRepository viajeData;
     private ReservaRepository reservaData;
     private ItinerarioTransporteRepository itinerarioTransporteData;
+    private ServicioTransporteController controladorServicioTransporte;
     
     public ItinerarioTransporteController() {
         this.classData= new ItinerarioTransporteRepository();
@@ -25,6 +26,7 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         this.viajeData= new ViajeRepository();
         this.reservaData= new ReservaRepository();
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
+        this.controladorServicioTransporte= new ServicioTransporteController();
     }
     public ItinerarioTransporteController(ItinerarioTransporteRepository classData) {
         this.classData= classData;
@@ -32,6 +34,7 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         this.viajeData= new ViajeRepository();
         this.reservaData= new ReservaRepository();
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
+        this.controladorServicioTransporte= new ServicioTransporteController();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -134,6 +137,17 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         reserva.setItinerarioTransporteId(itinerarioTransporteId);
         reservaData.saveT(reserva);
         return true;
+    }
+    //Metodo trayecto segun viaje id
+    public Double costoTrayectoXViaje(Integer viajeId){
+        Double respuesta=0.0;
+        List<ItinerarioTransporte> itinerariosXViaje= getItinerariosTransporteByViaje(viajeId);
+        for(ItinerarioTransporte actual : itinerariosXViaje){
+            Integer idTrayecto= actual.getTrayectoId();
+            Double aSumar= controladorServicioTransporte.costoXTrayecto(idTrayecto);
+            respuesta= aSumar + respuesta;
+        }
+        return respuesta;
     }
     
 }

@@ -17,17 +17,20 @@ public class FacturaController extends GeneralController<Factura> {
     private ViajeRepository viajeData;
     private ClienteRepository clienteData;
     private FacturaRepository facturaData;
+    private ItinerarioTransporteController controladorItinerario;
     public FacturaController() {
         this.classData= new FacturaRepository();
         this.viajeData= new ViajeRepository();
         this.clienteData= new ClienteRepository();
         this.facturaData= new FacturaRepository();
+        this.controladorItinerario= new ItinerarioTransporteController();
     }
     public FacturaController(FacturaRepository classData) {
         this.classData= classData;
         this.viajeData= new ViajeRepository();
         this.clienteData= new ClienteRepository();
         this.facturaData= new FacturaRepository();
+        this.controladorItinerario= new ItinerarioTransporteController();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -103,4 +106,16 @@ public class FacturaController extends GeneralController<Factura> {
         }
         return viajeData.findATById(factura.getViajeId());
     }
+    //Metodo D
+    public Double metodoD(Integer idCliente){
+        Double respuesta=0.0;
+        List<Factura> facturasXCliente= getFacturasByCliente(idCliente);
+        for(Factura actual : facturasXCliente){
+            Integer viajeId= actual.getViajeId();
+            Double sumar= controladorItinerario.costoTrayectoXViaje(viajeId);
+            respuesta= sumar + respuesta;
+        }
+        return respuesta;
+    }
+    
 }

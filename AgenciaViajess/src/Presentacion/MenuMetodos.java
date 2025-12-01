@@ -15,13 +15,13 @@ public class MenuMetodos {
     Scanner scanner;
     private ViajeController viajeController;
     private AerolineaController aerolineaController;
-    public MenuMetodos() {
-    }
+    private FacturaController facturaController;
 
     public MenuMetodos(Scanner scanner) {
         this.scanner = scanner;
         this.viajeController= new ViajeController();
         this.aerolineaController= new AerolineaController();
+        this.facturaController= new FacturaController();
     }
     public void verMenu(){
         int opcion= 1;
@@ -118,7 +118,8 @@ public class MenuMetodos {
         System.out.println("Ingrse el id del cliente del cual lo quiere ver: ");
         clienteId= scanner.nextInt();
         scanner.nextLine();
-        
+        Double resultado= facturaController.metodoD(clienteId);
+        System.out.println("Costo de todos sus trayectos aereos: " + resultado);
     
     }
     public void MetodoE(){

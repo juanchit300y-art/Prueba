@@ -164,4 +164,25 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
         }
         return idVehiculos;
     }
+    // Costo segun trayecto
+    public Double costoXTrayecto(Integer idTrayecto){
+        Double respuesta=0.0;
+        List<ServicioTransporte> serviciosTransporteXTrayecto= getServiciosTransporteByTrayecto(idTrayecto);
+        for(ServicioTransporte actual :serviciosTransporteXTrayecto){
+            if(servicioAereo(actual)){
+                respuesta= actual.getCosto() + respuesta;
+            }
+        }
+        return respuesta;
+    }
+    //Verificacion Aereo
+    public boolean servicioAereo(ServicioTransporte actual){
+        List<Aeronave> aeronaves = aeronaveData.getAllT();
+        for(Aeronave actual3: aeronaves){
+            if(actual.getVehiculoId().equals(actual3.getId())){
+                return true;
+            }
+        }
+        return false;
+    }
 }
