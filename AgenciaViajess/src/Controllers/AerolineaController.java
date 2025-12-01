@@ -103,6 +103,17 @@ public class AerolineaController extends GeneralController<Aerolinea> {
         }        
         return respuesta;
     }
+    // Verificador Aeronave pertenece a Aerolinea
+    public  boolean verificadorAerolineaH(Integer idAeronave, Integer idAerolinea ){
+        List<Aeronave> aeronavesAerolinea= getAeronavesDeAerolinea(idAerolinea);
+        for(Aeronave actual: aeronavesAerolinea){
+            Integer idAeronaveActual= actual.getId();
+            if(idAeronaveActual.equals(idAeronave)){
+                return true;
+            }
+        }
+        return false;
+    }
     
     
 }

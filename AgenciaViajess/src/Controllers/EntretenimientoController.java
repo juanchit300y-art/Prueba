@@ -96,4 +96,13 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
         }
         return viajeData.findATById(entretenimiento.getViajeId());
     }
+    // Interconexion Viaje-Plan
+    public boolean verificadorIdMunicipioH(Integer viajeId, Integer municipioId){
+        List<Entretenimiento> entretenimientosViaje= getEntrenimientosByViaje(viajeId);
+        for(Entretenimiento actual : entretenimientosViaje){
+            Integer idPlan= actual.getPlanId();
+            
+        }
+    
+    }
 }

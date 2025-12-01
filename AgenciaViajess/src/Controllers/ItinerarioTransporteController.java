@@ -159,4 +159,16 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         }
         return respuesta;
     }
+    //Verificacion Aerolinea 
+    public boolean revisionViajeAerolinea(Integer viajeId, Integer aerolineaId){
+        List<ItinerarioTransporte> itinerariosXViaje= getItinerariosTransporteByViaje(viajeId);
+        for(ItinerarioTransporte actual : itinerariosXViaje){
+            Integer idTrayecto= actual.getTrayectoId();
+            boolean verificacion= controladorServicioTransporte.verificacionIdVehiculoXAerolinea(idTrayecto, aerolineaId);
+            if(verificacion){
+                return true;
+            }
+        }
+        return false;
+    }
 }
