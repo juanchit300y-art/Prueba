@@ -6,6 +6,7 @@
 package Controllers;
 import Persistencia.*;
 import Modelos.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -110,5 +111,29 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
             }
         }
         return false;
+    }
+    
+    public List<Plan> planesMin3ActividadesE(){
+        List<Plan> respuesta = new ArrayList<>();
+        List<Plan> planes = planData.getAllT();
+        for(Plan actual:planes){
+            if(elementoPlanController.getElementosPlanByPlan(actual.getId()).size()>=3){
+                respuesta.add(actual);
+            }
+        }
+        return respuesta;
+    }
+    
+    public List<Viaje> viajesPlan3ActE(){
+        List<Viaje> respuesta = new ArrayList<>();
+        List<Viaje> viajes = viajeData.getAllT();
+        
+        for(Viaje actual:viajes){
+            if(actual.)
+            
+        }
+        
+        
+        return respuesta;
     }
 }

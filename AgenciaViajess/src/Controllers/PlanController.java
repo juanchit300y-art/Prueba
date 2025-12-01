@@ -124,14 +124,5 @@ public class PlanController extends GeneralController<Plan> {
         return false;
     }
         
-    public List<Plan> planesMin3ActividadesE(){
-        List<Plan> respuesta = new ArrayList<>();
-        List<Plan> planes = classData.getAllT();
-        for(Plan actual:planes){
-            if(getElementosPlanDePlan(actual.getId()).size()>=3){
-                respuesta.add(actual);
-            }
-        }
-        return respuesta;
-    }
+
 }
