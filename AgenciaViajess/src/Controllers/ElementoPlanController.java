@@ -97,16 +97,15 @@ public class ElementoPlanController extends GeneralController<ElementoPlan> {
         return actividadTuristicaData.findATById(elementoPlan.getActividadTuristicaId());
     }
     //Verificacion MunicipioId
-    public boolean verificacionActividadMunicipioH(Integer ){
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    public boolean verificacionActividadMunicipioH(Integer idPlan, Integer idMunicipio){
+        List<ElementoPlan> elementosPlanPlan= getElementosPlanByPlan(idPlan);
+        for(ElementoPlan actual: elementosPlanPlan){
+            Integer actividadTuristicaId= actual.getActividadTuristicaId();
+            boolean resultado = metodoX();
+            if(resultado){
+                return true;
+            }
+        }
+        return false;        
     }
 }
