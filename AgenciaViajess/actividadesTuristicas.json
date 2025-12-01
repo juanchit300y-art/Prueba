@@ -5,6 +5,16 @@
     "MunicipioId": 1
   },
   {
+    "id": 6,
+    "nombre": "corridas de toros",
+    "MunicipioId": 1
+  },
+  {
+    "id": 7,
+    "nombre": "escondite",
+    "MunicipioId": 1
+  },
+  {
     "id": 2,
     "nombre": "tira chinas",
     "MunicipioId": 2

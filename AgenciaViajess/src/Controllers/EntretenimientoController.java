@@ -19,12 +19,14 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
     private PlanRepository planData;
     private EntretenimientoRepository entretenimientoData;
     private ElementoPlanController elementoPlanController;
+    private ItinerarioTransporteController itinerarioTransporteController;
     public EntretenimientoController() {
         this.classData= new EntretenimientoRepository();
         this.viajeData= new ViajeRepository();
         this.planData= new PlanRepository();
         this.entretenimientoData= new EntretenimientoRepository();
         this.elementoPlanController= new ElementoPlanController();
+        this.itinerarioTransporteController = new ItinerarioTransporteController();
     }
     public EntretenimientoController(EntretenimientoRepository classData) {
         this.classData= classData;
@@ -32,6 +34,7 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
         this.planData= new PlanRepository();
         this.entretenimientoData= new EntretenimientoRepository();
         this.elementoPlanController= new ElementoPlanController();
+        this.itinerarioTransporteController = new ItinerarioTransporteController();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -127,13 +130,27 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
     public List<Viaje> viajesPlan3ActE(){
         List<Viaje> respuesta = new ArrayList<>();
         List<Viaje> viajes = viajeData.getAllT();
-        
         for(Viaje actual:viajes){
-            if(actual.)
-            
+            List<Entretenimiento> entretenimientos = getEntrenimientosByViaje(actual.getId());
+            for(Entretenimiento actual2:entretenimientos){
+                Plan planViajeActual = getPlanDeEntretenimiento(actual2.getId());
+                List<Plan> plan3Act = planesMin3ActividadesE();
+                for(Plan actual3:plan3Act){
+                    if(planViajeActual.equals(actual3)){
+                        respuesta.add(actual);
+                    }
+                }  
+            }
         }
-        
-        
+        return respuesta;
+    }
+    
+    public List<ItinerarioTransporte> itinerariosViajeMin3E(){
+        List<ItinerarioTransporte> respuesta = new ArrayList<>();
+        List<Viaje> viajesMin3 = viajesPlan3ActE();
+        for(Viaje actual:viajesMin3){
+            respuesta = itinerarioTransporteController.getItinerariosTransporteByViaje(actual.getId());
+        }
         return respuesta;
     }
 }

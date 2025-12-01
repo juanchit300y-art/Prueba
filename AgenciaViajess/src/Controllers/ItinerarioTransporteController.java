@@ -21,6 +21,7 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
     private ItinerarioTransporteRepository itinerarioTransporteData;
     private ServicioTransporteController controladorServicioTransporte;
     private EntretenimientoController entretenimientoController;
+    private PlanController planController;
     
     public ItinerarioTransporteController() {
         this.classData= new ItinerarioTransporteRepository();
@@ -30,6 +31,7 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
         this.controladorServicioTransporte= new ServicioTransporteController();
         this.entretenimientoController = new EntretenimientoController();
+        this.planController = new PlanController();
     }
     public ItinerarioTransporteController(ItinerarioTransporteRepository classData) {
         this.classData= classData;
@@ -39,6 +41,7 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
         this.controladorServicioTransporte= new ServicioTransporteController();
         this.entretenimientoController = new EntretenimientoController();
+        this.planController = new PlanController();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -182,21 +185,5 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         return respuesta;
     }
     
-        public List<Viaje> viajesPlan3ActE(){
-        List<Viaje> respuesta = new ArrayList<>();
-        List<Viaje> viajes = viajeData.getAllT();
-        for(Viaje actual:viajes){
-            List<Entretenimiento> entretenimientos = entretenimientoController.getEntrenimientosByViaje(actual.getId());
-            for(Entretenimiento actual2:entretenimientos){
-                if()
-                
-            }
-        }
-        
-        
-        
-        
-        return respuesta;
-    }
-    
+
 }

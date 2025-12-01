@@ -14,25 +14,25 @@ import java.util.List;
  * @author DELL
  */
 public class AerolineaController extends GeneralController<Aerolinea> {
-    private AeronaveController aeronaveData;
-    private TrayectoController trayectoData;
-    private ServicioTransporteController servicioTransporteData;
+    private AeronaveRepository aeronaveData;
+    private TrayectoRepository trayectoData;
+    private ServicioTransporteRepository servicioTransporteData;
  
     public AerolineaController() {
         this.classData= new AerolineaRepository();
-        this.aeronaveData= new AeronaveController();
-        this.trayectoData = new TrayectoController();
-        this.servicioTransporteData = new ServicioTransporteController();
+        this.aeronaveData= new AeronaveRepository();
+        this.trayectoData = new TrayectoRepository();
+        this.servicioTransporteData = new ServicioTransporteRepository();
     }
     public AerolineaController(AerolineaRepository classData) {
         this.classData= classData;
-        this.aeronaveData= new AeronaveController();
-        this.trayectoData = new TrayectoController();
-        this.servicioTransporteData = new ServicioTransporteController();
+        this.aeronaveData= new AeronaveRepository();
+        this.trayectoData = new TrayectoRepository();
+        this.servicioTransporteData = new ServicioTransporteRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
-        List<Aeronave> aeronavesAerolinea= aeronaveData.getAeronavesByAerolinea(id);        
+        List<Aeronave> aeronavesAerolinea= aeronaveData.findAAeronavesByAerolineaId(id);        
         if (!aeronavesAerolinea.isEmpty()) {
             return false; 
         }
@@ -71,18 +71,18 @@ public class AerolineaController extends GeneralController<Aerolinea> {
     }
     // Aeronave Relacionm (caso profesor)
     public List<Aeronave> getAeronavesDeAerolinea(Integer aerolineaId){ 
-        return aeronaveData.getAeronavesByAerolinea(aerolineaId);
+        return aeronaveData.findAAeronavesByAerolineaId(aerolineaId);
     }
     public boolean assignAeronaveToAerolinea(Integer aerolineaId, Integer aeronaveId) {
         Aerolinea aerolinea = classData.findATById(aerolineaId);
-        Aeronave aeronave = aeronaveData.getGeneralById(aeronaveId);
+        Aeronave aeronave = aeronaveData.findATById(aeronaveId);
         
         if (aerolinea == null || aeronave == null) {
             return false;
         }
         
         aeronave.setAerolineaId(aerolineaId);
-        aeronaveData.guardarT(aeronave);
+        aeronaveData.saveT(aeronave);
         return true;
     }
     
@@ -93,7 +93,7 @@ public class AerolineaController extends GeneralController<Aerolinea> {
         List<Aeronave> aeronaves = getAeronavesDeAerolinea(aerolineaId);
         Double menor = Double.MAX_VALUE;
         for(Aeronave actual:aeronaves){
-            List<ServicioTransporte> serviciosTransporte = servicioTransporteData.getServiciosTransporteByVehiculo(actual.getId());
+            List<ServicioTransporte> serviciosTransporte = servicioTransporteData.findServicioTransporteByVehiculoId(aerolineaId);
             for(ServicioTransporte actual2:serviciosTransporte){
                 if(actual2.getCosto()<menor){
                     menor = actual2.getCosto();
