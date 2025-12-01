@@ -142,9 +142,9 @@ public class HotelController extends GeneralController<Hotel> {
         Hotel respuesta= null;
         int menor= Integer.MAX_VALUE;
         for (Hotel actual: hoteles ){
-            int numHabitaciones;
             List<Habitacion> habitaciones=  getHabitacionesDeHotel(actual.getId());
-            if(habitaciones.size()< menor){
+            int numHabitaciones= habitaciones.size();
+            if(numHabitaciones< menor){
                 menor= habitaciones.size();
                 respuesta= actual;
             }

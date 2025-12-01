@@ -7,7 +7,7 @@
   {
     "Id": 2,
     "capacidad": 11,
-    "HotelId": 1
+    "HotelId": 2
   },
   {
     "Id": 3,
@@ -48,5 +48,55 @@
     "Id": 10,
     "capacidad": 3,
     "HotelId": 5
+  },
+  {
+    "Id": 11,
+    "capacidad": 4,
+    "HotelId": 6
+  },
+  {
+    "Id": 12,
+    "capacidad": 5,
+    "HotelId": 6
+  },
+  {
+    "Id": 14,
+    "capacidad": 7,
+    "HotelId": 11
+  },
+  {
+    "Id": 15,
+    "capacidad": 45,
+    "HotelId": 11
+  },
+  {
+    "Id": 16,
+    "capacidad": 34,
+    "HotelId": 8
+  },
+  {
+    "Id": 17,
+    "capacidad": 12,
+    "HotelId": 8
+  },
+  {
+    "Id": 18,
+    "capacidad": 12,
+    "HotelId": 9
+  },
+  {
+    "Id": 19,
+    "capacidad": 65,
+    "HotelId": 9
+  },
+  {
+    "Id": 20,
+    "capacidad": 9,
+    "HotelId": 10
+  },
+  {
+    "Id": 9,
+    "capacidad": 89,
+    "HotelId": 10
   }
 ]
