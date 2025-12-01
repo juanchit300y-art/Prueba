@@ -17,17 +17,20 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
     private ViajeRepository viajeData;
     private PlanRepository planData;
     private EntretenimientoRepository entretenimientoData;
+    private ElementoPlanController elementoPlanController;
     public EntretenimientoController() {
         this.classData= new EntretenimientoRepository();
         this.viajeData= new ViajeRepository();
         this.planData= new PlanRepository();
         this.entretenimientoData= new EntretenimientoRepository();
+        this.elementoPlanController= new ElementoPlanController();
     }
     public EntretenimientoController(EntretenimientoRepository classData) {
         this.classData= classData;
         this.viajeData= new ViajeRepository();
         this.planData= new PlanRepository();
         this.entretenimientoData= new EntretenimientoRepository();
+        this.elementoPlanController= new ElementoPlanController();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -101,8 +104,11 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
         List<Entretenimiento> entretenimientosViaje= getEntrenimientosByViaje(viajeId);
         for(Entretenimiento actual : entretenimientosViaje){
             Integer idPlan= actual.getPlanId();
-            
+            boolean resultado = elementoPlanController.verificacionActividadMunicipioH(idPlan, municipioId) ;
+            if (resultado){
+                return true;
+            }
         }
-    
+        return false;
     }
 }
