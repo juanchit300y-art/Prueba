@@ -145,7 +145,7 @@ public class MenuMetodos {
         idAerolinea= scanner.nextInt();
         scanner.nextLine();
         Integer idMunicipio;
-        System.out.println("Conteo de clientes que han utilizado una aerolínea específica y han realizado al menos una actividad en un municipio específico. ");
+        System.out.println("Ingrese el id del Municipio: ");
         idMunicipio= scanner.nextInt();
         scanner.nextLine();
     }

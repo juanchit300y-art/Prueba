@@ -18,12 +18,14 @@ public class FacturaController extends GeneralController<Factura> {
     private ClienteRepository clienteData;
     private FacturaRepository facturaData;
     private ItinerarioTransporteController controladorItinerario;
+    private EntretenimientoController controladorEntretenimiento;
     public FacturaController() {
         this.classData= new FacturaRepository();
         this.viajeData= new ViajeRepository();
         this.clienteData= new ClienteRepository();
         this.facturaData= new FacturaRepository();
         this.controladorItinerario= new ItinerarioTransporteController();
+        this.controladorEntretenimiento= new EntretenimientoController();
     }
     public FacturaController(FacturaRepository classData) {
         this.classData= classData;
@@ -117,5 +119,22 @@ public class FacturaController extends GeneralController<Factura> {
         }
         return respuesta;
     }
-    
+    // Metodo H
+    public int metodoH(Integer idAerolinea, Integer idMunicipio){
+        int respuesta=0;
+        List<Cliente> clientes= clienteData.getAllT();
+        for(Cliente actual2 : clientes){ 
+            Integer idCliente= actual2.getId();
+            List<Factura> facturasXCliente= getFacturasByCliente(idCliente);
+            for(Factura actual : facturasXCliente){
+                Integer viajeId= actual.getViajeId();
+                boolean resultado1= controladorItinerario.revisionViajeAerolinea(viajeId, idAerolinea);
+                boolean resultado2= metodox();
+                if(resultado1 && resultado2 ){
+                    respuesta++;
+                }
+            }
+        }
+        return respuesta;
+    }
 }

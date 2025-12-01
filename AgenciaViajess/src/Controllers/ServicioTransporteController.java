@@ -19,12 +19,14 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
     private AeronaveRepository aeronaveData;
     private TrayectoRepository trayectoData;
     private ServicioTransporteRepository servicioTransporteData;
+    private AerolineaController aerolineaController;
     public ServicioTransporteController() {
         this.classData= new ServicioTransporteRepository();
         this.carroData= new CarroRepository();
         this.aeronaveData= new AeronaveRepository();
         this.trayectoData= new TrayectoRepository();
         this.servicioTransporteData = new ServicioTransporteRepository();
+        this.aerolineaController= new AerolineaController();
     }
     public ServicioTransporteController(ServicioTransporteRepository classData) {
         this.classData= classData;
@@ -32,6 +34,7 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
         this.aeronaveData= new AeronaveRepository();
         this.trayectoData= new TrayectoRepository();
         this.servicioTransporteData = new ServicioTransporteRepository();
+        this.aerolineaController= new AerolineaController();
     }
    
     @Override
@@ -193,5 +196,19 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
                 respuesta= actual.getCosto() + respuesta;
         }
         return respuesta;
+    }
+    // Verificacion Aerolinea
+    public boolean verificacionIdVehiculoXAerolinea(Integer idTrayecto, Integer idAerolinea){
+        List<ServicioTransporte> serviciosTransporteXTrayecto= getServiciosTransporteByTrayecto(idTrayecto);
+        for(ServicioTransporte actual : serviciosTransporteXTrayecto){
+            if(servicioAereo(actual)){
+                Integer idVehiculo= actual.getVehiculoId();
+                boolean resultado= aerolineaController.verificadorAerolineaH(idVehiculo, idAerolinea);
+                if (resultado){
+                    return true;
+                } 
+            }
+        }
+        return false; 
     }
 }
