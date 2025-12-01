@@ -17,16 +17,19 @@ import java.util.List;
 public class PlanController extends GeneralController<Plan> {
     private ElementoPlanRepository elementoPlanData;
     private EntretenimientoRepository entretenimientoData;
+    private PlanRepository planData;
     
     public PlanController() {
         this.classData= new PlanRepository();
         this.elementoPlanData= new ElementoPlanRepository();
         this.entretenimientoData= new EntretenimientoRepository();
+        this.planData = new PlanRepository();
     }
     public PlanController(PlanRepository classData) {
         this.classData= classData;
         this.elementoPlanData= new ElementoPlanRepository();
         this.entretenimientoData= new EntretenimientoRepository();
+        this.planData = new PlanRepository();
     }
     
     @Override
@@ -123,6 +126,6 @@ public class PlanController extends GeneralController<Plan> {
         }
         return false;
     }
-        
+
 
 }

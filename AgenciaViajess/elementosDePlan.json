@@ -15,6 +15,11 @@
     "PlanId": 1
   },
   {
+    "id": 8,
+    "ActividadTuristicaId": 8,
+    "PlanId": 1
+  },
+  {
     "id": 2,
     "ActividadTuristicaId": 2,
     "PlanId": 2

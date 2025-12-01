@@ -20,8 +20,8 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
     private ReservaRepository reservaData;
     private ItinerarioTransporteRepository itinerarioTransporteData;
     private ServicioTransporteController controladorServicioTransporte;
-    private EntretenimientoController entretenimientoController;
     private PlanController planController;
+    private EntretenimientoController entretenimientoController;
     
     public ItinerarioTransporteController() {
         this.classData= new ItinerarioTransporteRepository();
@@ -30,8 +30,8 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         this.reservaData= new ReservaRepository();
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
         this.controladorServicioTransporte= new ServicioTransporteController();
-        this.entretenimientoController = new EntretenimientoController();
         this.planController = new PlanController();
+        this.entretenimientoController = new EntretenimientoController();
     }
     public ItinerarioTransporteController(ItinerarioTransporteRepository classData) {
         this.classData= classData;
@@ -40,8 +40,9 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         this.reservaData= new ReservaRepository();
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
         this.controladorServicioTransporte= new ServicioTransporteController();
-        this.entretenimientoController = new EntretenimientoController();
         this.planController = new PlanController();
+        this.entretenimientoController = new EntretenimientoController();
+
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -185,5 +186,4 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         return respuesta;
     }
     
-
 }

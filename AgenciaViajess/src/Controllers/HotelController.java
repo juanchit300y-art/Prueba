@@ -6,6 +6,7 @@
 package Controllers;
 import Persistencia.*;
 import Modelos.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -25,6 +26,7 @@ public class HotelController extends GeneralController<Hotel> {
         this.carroData= new CarroRepository();
         this.municipioData= new MunicipioRepository();
         this.hotelData = new HotelRepository();
+ 
     }
     public HotelController(HotelRepository classData) {
         this.classData= classData;
@@ -32,6 +34,7 @@ public class HotelController extends GeneralController<Hotel> {
         this.carroData= new CarroRepository();
         this.municipioData= new MunicipioRepository();
         this.hotelData = new HotelRepository();
+     
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -152,6 +155,6 @@ public class HotelController extends GeneralController<Hotel> {
         Integer respuestaId= respuesta.getId();
         return respuestaId;
     }
-    
+
     
 }

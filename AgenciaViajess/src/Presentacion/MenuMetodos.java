@@ -5,7 +5,9 @@
  */
 package Presentacion;
 import Controllers.*;
+import java.util.List;
 import java.util.Scanner;
+import Modelos.*;
 
 /**
  *
@@ -17,6 +19,7 @@ public class MenuMetodos {
     private AerolineaController aerolineaController;
     private FacturaController facturaController;
     private ItinerarioTransporteController itinerarioTransporteController;
+    private HotelController hotelController;
 
     public MenuMetodos(Scanner scanner) {
         this.scanner = scanner;
@@ -24,6 +27,7 @@ public class MenuMetodos {
         this.aerolineaController= new AerolineaController();
         this.facturaController= new FacturaController();
         this.itinerarioTransporteController= new ItinerarioTransporteController();
+        this.hotelController = new HotelController();
     }
     public void verMenu(){
         int opcion= 1;
@@ -127,6 +131,7 @@ public class MenuMetodos {
     public void MetodoE(){
         System.out.println("======== Metodo E======== ");
         System.out.println("Retornar en una lista de todos los hoteles que tienen habitaciones reservadas en viajes que incluyen un plan con al menos 3 actividades. ");
+        
     }
     public void MetodoF(){
         System.out.println("======== Metodo F======== ");

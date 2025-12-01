@@ -20,6 +20,7 @@ public class ReservaController extends GeneralController<Reserva> {
     private ReservaRepository reservaData;
     private EntretenimientoController entretenimientoController;
     private HotelController hotelController;
+    private ItinerarioTransporteController itinerarioTransporteController;
     public ReservaController() {
         this.classData= new ReservaRepository();
         this.habitacionData= new HabitacionRepository();
@@ -27,6 +28,7 @@ public class ReservaController extends GeneralController<Reserva> {
         this.reservaData= new ReservaRepository();
         this.entretenimientoController = new EntretenimientoController();
         this.hotelController = new HotelController();
+        this.itinerarioTransporteController = new ItinerarioTransporteController();
     }
     public ReservaController(ReservaRepository classData) {
         this.classData= classData;
@@ -35,6 +37,7 @@ public class ReservaController extends GeneralController<Reserva> {
         this.reservaData= new ReservaRepository();
         this.entretenimientoController = new EntretenimientoController();
         this.hotelController = new HotelController();
+        this.itinerarioTransporteController = new ItinerarioTransporteController();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -116,36 +119,6 @@ public class ReservaController extends GeneralController<Reserva> {
         return itinerarioTransporteData.findATById(reserva.getItinerarioTransporteId());
     }
     
-    public List<Habitacion> habitacionesViajesPlanE(){
-        List<Habitacion> respuesta = new ArrayList<>();
-        List<Reserva> reservas = classData.getAllT();
-        for(Reserva actual:reservas){
-            ItinerarioTransporte itinerarioTransporte = getItinerarioTransporteDeReserva(actual.getId());
-            List<ItinerarioTransporte> itinerariosRequisito = entretenimientoController.itinerariosViajeMin3E();
-            for(ItinerarioTransporte actual2:itinerariosRequisito){
-                if(itinerarioTransporte.equals(actual2)){
-                    respuesta.add(getHabitacionDeReserva(actual.getId()));
-                }
-            }
-        }
-        return respuesta;
-    }
-    
-    public List<Hotel> MetodoE(){
-        List<Hotel> respuesta = new ArrayList<>();
-        List<Hotel> hoteles = hotelController.getAllGeneral();
-        for(Hotel actual:hoteles){
-            List<Habitacion> habitacionesHotel = hotelController.getHabitacionesDeHotel(actual.getId());
-            for(Habitacion actual2:habitacionesHotel){
-                List<Habitacion> habitacionesCondicion = habitacionesViajesPlanE();
-                for(Habitacion actual3:habitacionesCondicion){
-                    if(actual2.equals(actual3)){
-                        respuesta.add(actual);
-                    }
-                }
-            }
-        }
-        return respuesta;
-    }
+
     
 }

@@ -19,14 +19,15 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
     private PlanRepository planData;
     private EntretenimientoRepository entretenimientoData;
     private ElementoPlanController elementoPlanController;
-    private ItinerarioTransporteController itinerarioTransporteController;
+
+    private PlanController planController;
     public EntretenimientoController() {
         this.classData= new EntretenimientoRepository();
         this.viajeData= new ViajeRepository();
         this.planData= new PlanRepository();
         this.entretenimientoData= new EntretenimientoRepository();
         this.elementoPlanController= new ElementoPlanController();
-        this.itinerarioTransporteController = new ItinerarioTransporteController();
+        this.planController = new PlanController();
     }
     public EntretenimientoController(EntretenimientoRepository classData) {
         this.classData= classData;
@@ -34,7 +35,7 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
         this.planData= new PlanRepository();
         this.entretenimientoData= new EntretenimientoRepository();
         this.elementoPlanController= new ElementoPlanController();
-        this.itinerarioTransporteController = new ItinerarioTransporteController();
+        this.planController = new PlanController();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -117,40 +118,17 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
     }
     
     public List<Plan> planesMin3ActividadesE(){
-        List<Plan> respuesta = new ArrayList<>();
-        List<Plan> planes = planData.getAllT();
-        for(Plan actual:planes){
-            if(elementoPlanController.getElementosPlanByPlan(actual.getId()).size()>=3){
-                respuesta.add(actual);
-            }
+    List<Plan> respuesta = new ArrayList<>();
+    List<Plan> planes = planData.getAllT();
+    if (planes == null) return respuesta;
+    for (Plan actual : planes) {
+        List<?> elementos = elementoPlanController.getElementosPlanByPlan(actual.getId());
+        if (elementos != null && elementos.size() >= 3) {
+            respuesta.add(actual);
         }
-        return respuesta;
     }
+    return respuesta;
+}
     
-    public List<Viaje> viajesPlan3ActE(){
-        List<Viaje> respuesta = new ArrayList<>();
-        List<Viaje> viajes = viajeData.getAllT();
-        for(Viaje actual:viajes){
-            List<Entretenimiento> entretenimientos = getEntrenimientosByViaje(actual.getId());
-            for(Entretenimiento actual2:entretenimientos){
-                Plan planViajeActual = getPlanDeEntretenimiento(actual2.getId());
-                List<Plan> plan3Act = planesMin3ActividadesE();
-                for(Plan actual3:plan3Act){
-                    if(planViajeActual.equals(actual3)){
-                        respuesta.add(actual);
-                    }
-                }  
-            }
-        }
-        return respuesta;
-    }
-    
-    public List<ItinerarioTransporte> itinerariosViajeMin3E(){
-        List<ItinerarioTransporte> respuesta = new ArrayList<>();
-        List<Viaje> viajesMin3 = viajesPlan3ActE();
-        for(Viaje actual:viajesMin3){
-            respuesta = itinerarioTransporteController.getItinerariosTransporteByViaje(actual.getId());
-        }
-        return respuesta;
-    }
+
 }
