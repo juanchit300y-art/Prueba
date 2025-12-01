@@ -60,7 +60,7 @@ public class MenuMetodos {
                     MetodoD();//cliente 2 da 382273
                     break;
                 case 5:
-                    MetodoE();
+                    MetodoE();//hotel id:1
                     break;
                 case 6:
                     MetodoF();
