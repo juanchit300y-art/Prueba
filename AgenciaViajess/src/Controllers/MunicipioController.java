@@ -147,4 +147,16 @@ public class MunicipioController extends GeneralController<Municipio> {
         trayectoData.saveT(trayecto);
         return true;
     }
+    //Verificador si tiene Actividad
+    public boolean verificadorSiTengoActividad(Integer idMunicipio, Integer idActividad){
+        List<ActividadTuristica> actividadesTuristicas= getActividadesTuristicasDeMunicipio(idMunicipio);
+        for(ActividadTuristica actual : actividadesTuristicas ){
+            Integer idActual= actual.getId();
+            if(idActual.equals(idActividad)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }

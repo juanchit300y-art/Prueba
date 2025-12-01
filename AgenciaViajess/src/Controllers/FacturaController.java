@@ -129,7 +129,7 @@ public class FacturaController extends GeneralController<Factura> {
             for(Factura actual : facturasXCliente){
                 Integer viajeId= actual.getViajeId();
                 boolean resultado1= controladorItinerario.revisionViajeAerolinea(viajeId, idAerolinea);
-                boolean resultado2= metodox();
+                boolean resultado2= controladorEntretenimiento.verificadorIdMunicipioH(viajeId, idMunicipio);
                 if(resultado1 && resultado2 ){
                     respuesta++;
                 }
