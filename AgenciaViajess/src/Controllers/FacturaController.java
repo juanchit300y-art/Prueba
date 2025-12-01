@@ -137,4 +137,27 @@ public class FacturaController extends GeneralController<Factura> {
         }
         return respuesta;
     }
+    //Metodo F
+    public Double metodoF(){
+        Double respuesta;
+        double numClientes=0;
+        double numTrayectos=0;
+        List<Cliente> clientes= clienteData.getAllT();
+        for(Cliente actual: clientes){
+            Integer idClienteActual= actual.getId();
+            List<Factura> facturasCliente= getFacturasByCliente(idClienteActual);
+            int cantiViajes= facturasCliente.size();
+            if(cantiViajes > 1){
+                numClientes++;
+                for(Factura actual2 : facturasCliente){
+                    Integer idViaje= actual2.getViajeId();
+                    int promedio= controladorItinerario.numTrayectosF(idViaje);
+                    numTrayectos= promedio + numTrayectos;
+                }
+                
+            }
+        }
+        respuesta= numTrayectos/numClientes;
+        return respuesta;
+    }
 }

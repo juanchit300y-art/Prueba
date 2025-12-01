@@ -171,4 +171,11 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         }
         return false;
     }
+    //PromedioTrayectos F
+    public int numTrayectosF(Integer idViaje){
+        List<ItinerarioTransporte> itinerariosViaje= getItinerariosTransporteByViaje(idViaje);
+        int respuesta= itinerariosViaje.size();    
+        return respuesta;
+    }
+    
 }
