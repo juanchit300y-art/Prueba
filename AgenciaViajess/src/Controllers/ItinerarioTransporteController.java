@@ -6,6 +6,7 @@
 package Controllers;
 import Persistencia.*;
 import Modelos.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,6 +20,7 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
     private ReservaRepository reservaData;
     private ItinerarioTransporteRepository itinerarioTransporteData;
     private ServicioTransporteController controladorServicioTransporte;
+    private EntretenimientoController entretenimientoController;
     
     public ItinerarioTransporteController() {
         this.classData= new ItinerarioTransporteRepository();
@@ -27,6 +29,7 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         this.reservaData= new ReservaRepository();
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
         this.controladorServicioTransporte= new ServicioTransporteController();
+        this.entretenimientoController = new EntretenimientoController();
     }
     public ItinerarioTransporteController(ItinerarioTransporteRepository classData) {
         this.classData= classData;
@@ -35,6 +38,7 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         this.reservaData= new ReservaRepository();
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
         this.controladorServicioTransporte= new ServicioTransporteController();
+        this.entretenimientoController = new EntretenimientoController();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -175,6 +179,23 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
     public int numTrayectosF(Integer idViaje){
         List<ItinerarioTransporte> itinerariosViaje= getItinerariosTransporteByViaje(idViaje);
         int respuesta= itinerariosViaje.size();    
+        return respuesta;
+    }
+    
+        public List<Viaje> viajesPlan3ActE(){
+        List<Viaje> respuesta = new ArrayList<>();
+        List<Viaje> viajes = viajeData.getAllT();
+        for(Viaje actual:viajes){
+            List<Entretenimiento> entretenimientos = entretenimientoController.getEntrenimientosByViaje(actual.getId());
+            for(Entretenimiento actual2:entretenimientos){
+                if()
+                
+            }
+        }
+        
+        
+        
+        
         return respuesta;
     }
     
