@@ -48,16 +48,16 @@ public class MenuMetodos {
                 case 0:
                     break;
                 case 1:
-                    MetodoA();
+                    MetodoA();//1.0
                     break;
                 case 2:
-                    MetodoB();
+                    MetodoB();//id 1 = 88878.0
                     break;
                 case 3:
-                    MetodoC();
+                    MetodoC();//da 1
                     break;
                 case 4:
-                    MetodoD();
+                    MetodoD();//cliente 2 da 382273
                     break;
                 case 5:
                     MetodoE();
@@ -72,7 +72,7 @@ public class MenuMetodos {
                     MetodoH();
                     break;
                 case 9:
-                    MetodoI();
+                    MetodoI();//viaje 1 da 667878
                     break;
                 case 10:
                     MetodoJ();
