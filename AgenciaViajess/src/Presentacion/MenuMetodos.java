@@ -16,12 +16,14 @@ public class MenuMetodos {
     private ViajeController viajeController;
     private AerolineaController aerolineaController;
     private FacturaController facturaController;
+    private ItinerarioTransporteController itinerarioTransporteController;
 
     public MenuMetodos(Scanner scanner) {
         this.scanner = scanner;
         this.viajeController= new ViajeController();
         this.aerolineaController= new AerolineaController();
         this.facturaController= new FacturaController();
+        this.itinerarioTransporteController= new ItinerarioTransporteController();
     }
     public void verMenu(){
         int opcion= 1;
@@ -138,11 +140,25 @@ public class MenuMetodos {
     public void MetodoH(){
         System.out.println("======== Metodo H======== ");
         System.out.println("Conteo de clientes que han utilizado una aerolínea específica y han realizado al menos una actividad en un municipio específico. ");
-    
+        Integer idAerolinea;
+        System.out.println("Ingrese el id de la Aerolinea");
+        idAerolinea= scanner.nextInt();
+        scanner.nextLine();
+        Integer idMunicipio;
+        System.out.println("Conteo de clientes que han utilizado una aerolínea específica y han realizado al menos una actividad en un municipio específico. ");
+        idMunicipio= scanner.nextInt();
+        scanner.nextLine();
     }
     public void MetodoI(){
         System.out.println("======== Metodo I======== ");
         System.out.println("Suma total de costos de todos los servicios de transporte (trayectos) para un viaje específico. ");
+        Integer idViaje;
+        System.out.println("Ingrese el id del viaje: ");
+        idViaje= scanner.nextInt();
+        scanner.nextLine();
+        Double respuesta= itinerarioTransporteController.MetodoI(idViaje);
+        System.out.println("El costo total de los trayectos es " + respuesta );
+        
     }
     public void MetodoJ(){
         System.out.println("======== Metodo J======== ");

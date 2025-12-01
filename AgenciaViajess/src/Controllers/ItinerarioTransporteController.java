@@ -144,10 +144,19 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         List<ItinerarioTransporte> itinerariosXViaje= getItinerariosTransporteByViaje(viajeId);
         for(ItinerarioTransporte actual : itinerariosXViaje){
             Integer idTrayecto= actual.getTrayectoId();
+            Double aSumar= controladorServicioTransporte.costoXTrayectoAereo(idTrayecto);
+            respuesta= aSumar + respuesta;
+        }
+        return respuesta;
+    }
+    public Double MetodoI(Integer viajeId){
+        Double respuesta=0.0;
+        List<ItinerarioTransporte> itinerariosXViaje= getItinerariosTransporteByViaje(viajeId);
+        for(ItinerarioTransporte actual : itinerariosXViaje){
+            Integer idTrayecto= actual.getTrayectoId();
             Double aSumar= controladorServicioTransporte.costoXTrayecto(idTrayecto);
             respuesta= aSumar + respuesta;
         }
         return respuesta;
     }
-    
 }

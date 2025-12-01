@@ -165,7 +165,7 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
         return idVehiculos;
     }
     // Costo segun trayecto
-    public Double costoXTrayecto(Integer idTrayecto){
+    public Double costoXTrayectoAereo(Integer idTrayecto){
         Double respuesta=0.0;
         List<ServicioTransporte> serviciosTransporteXTrayecto= getServiciosTransporteByTrayecto(idTrayecto);
         for(ServicioTransporte actual :serviciosTransporteXTrayecto){
@@ -184,5 +184,14 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
             }
         }
         return false;
+    }
+    //Suma costos MetodoI
+    public Double costoXTrayecto(Integer idTrayecto){
+        Double respuesta=0.0;
+        List<ServicioTransporte> serviciosTransporteXTrayecto= getServiciosTransporteByTrayecto(idTrayecto);
+        for(ServicioTransporte actual :serviciosTransporteXTrayecto){
+                respuesta= actual.getCosto() + respuesta;
+        }
+        return respuesta;
     }
 }
