@@ -131,6 +131,8 @@ public class MenuMetodos {
     public void MetodoF(){
         System.out.println("======== Metodo F======== ");
         System.out.println("Promedio de trayectos por viaje para clientes que han realizado más de un viaje. ");
+        Double respuesta= facturaController.metodoF();
+        System.out.println(respuesta);
     }
     public void MetodoG(){
         System.out.println("======== Metodo G======== ");
