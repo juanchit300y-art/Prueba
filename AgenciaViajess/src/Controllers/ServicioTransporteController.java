@@ -19,14 +19,13 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
     private AeronaveRepository aeronaveData;
     private TrayectoRepository trayectoData;
     private ServicioTransporteRepository servicioTransporteData;
-    private AerolineaController aerolineaController;
+    
     public ServicioTransporteController() {
         this.classData= new ServicioTransporteRepository();
         this.carroData= new CarroRepository();
         this.aeronaveData= new AeronaveRepository();
         this.trayectoData= new TrayectoRepository();
         this.servicioTransporteData = new ServicioTransporteRepository();
-        this.aerolineaController= new AerolineaController();
     }
     public ServicioTransporteController(ServicioTransporteRepository classData) {
         this.classData= classData;
@@ -34,7 +33,6 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
         this.aeronaveData= new AeronaveRepository();
         this.trayectoData= new TrayectoRepository();
         this.servicioTransporteData = new ServicioTransporteRepository();
-        this.aerolineaController= new AerolineaController();
     }
    
     @Override
@@ -203,8 +201,9 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
         for(ServicioTransporte actual : serviciosTransporteXTrayecto){
             if(servicioAereo(actual)){
                 Integer idVehiculo= actual.getVehiculoId();
-                boolean resultado= aerolineaController.verificadorAerolineaH(idVehiculo, idAerolinea);
-                if (resultado){
+                Aeronave aeronave= aeronaveData.findATById(idVehiculo);
+                Integer idAerolineaActual= aeronave.getAerolineaId();
+                if ( idAerolineaActual.equals(idAerolinea)){
                     return true;
                 } 
             }
