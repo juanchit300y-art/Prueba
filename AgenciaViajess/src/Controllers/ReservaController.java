@@ -21,6 +21,7 @@ public class ReservaController extends GeneralController<Reserva> {
     private EntretenimientoController entretenimientoController;
     private HotelController hotelController;
     private ItinerarioTransporteController itinerarioTransporteController;
+    private HotelRepository hotelData;
     public ReservaController() {
         this.classData= new ReservaRepository();
         this.habitacionData= new HabitacionRepository();
@@ -29,6 +30,7 @@ public class ReservaController extends GeneralController<Reserva> {
         this.entretenimientoController = new EntretenimientoController();
         this.hotelController = new HotelController();
         this.itinerarioTransporteController = new ItinerarioTransporteController();
+        this.hotelData = new HotelRepository();
     }
     public ReservaController(ReservaRepository classData) {
         this.classData= classData;
@@ -38,6 +40,7 @@ public class ReservaController extends GeneralController<Reserva> {
         this.entretenimientoController = new EntretenimientoController();
         this.hotelController = new HotelController();
         this.itinerarioTransporteController = new ItinerarioTransporteController();
+        this.hotelData = new HotelRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -119,6 +122,45 @@ public class ReservaController extends GeneralController<Reserva> {
         return itinerarioTransporteData.findATById(reserva.getItinerarioTransporteId());
     }
     
-
+    public List<Habitacion> habitacionesCondicion(){
+        List<Habitacion> respuesta = new ArrayList<>();
+        List<Viaje> viajesCondicion = itinerarioTransporteController.viajesAerTerr();
+        for(Viaje actual:viajesCondicion){
+            List<ItinerarioTransporte> itinerariosViaje = itinerarioTransporteController.getItinerariosTransporteByViaje(actual.getId());
+            for(ItinerarioTransporte actual2:itinerariosViaje){
+                List<Reserva> reservas = getReservasByItinerarioTransporte(actual2.getId());
+                for(Reserva actual3:reservas){
+                    Habitacion habitacion = getHabitacionDeReserva(actual3.getId());
+                    if(!respuesta.contains(actual)){
+                        respuesta.add(habitacion);
+                    }
+                }
+            }
+        }
+        return respuesta;
+    }
     
+    public List<Hotel> hotelesCondicion(){
+        List<Hotel> respuesta = new ArrayList<>();
+        List<Habitacion> habitacionesCondicion = habitacionesCondicion();
+        List<Hotel> hoteles = hotelData.getAllT();
+        for(Hotel actual:hoteles){
+            for(Habitacion actual2:habitacionesCondicion){
+                if(actual2.getHotelId().equals(actual.getId())){
+                    if (!respuesta.contains(actual)) {
+                        respuesta.add(actual);
+                    }
+                }
+            }
+        }
+        return respuesta;
+    }
+    
+    public Double metodoK(){
+        Double promedio = null;
+        int hoteles = hotelesCondicion().size();
+        int habitaciones = habitacionesCondicion().size();
+        promedio = (double)habitaciones / (double)hoteles;
+        return promedio;
+    }
 }

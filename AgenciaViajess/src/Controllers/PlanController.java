@@ -18,18 +18,21 @@ public class PlanController extends GeneralController<Plan> {
     private ElementoPlanRepository elementoPlanData;
     private EntretenimientoRepository entretenimientoData;
     private PlanRepository planData;
+    private ActividadTuristicaRepository actividadTuristicaData;
     
     public PlanController() {
         this.classData= new PlanRepository();
         this.elementoPlanData= new ElementoPlanRepository();
         this.entretenimientoData= new EntretenimientoRepository();
         this.planData = new PlanRepository();
+        this.actividadTuristicaData = new ActividadTuristicaRepository();
     }
     public PlanController(PlanRepository classData) {
         this.classData= classData;
         this.elementoPlanData= new ElementoPlanRepository();
         this.entretenimientoData= new EntretenimientoRepository();
         this.planData = new PlanRepository();
+        this.actividadTuristicaData = new ActividadTuristicaRepository();
     }
     
     @Override
@@ -126,6 +129,7 @@ public class PlanController extends GeneralController<Plan> {
         }
         return false;
     }
-
+    
+  
 
 }

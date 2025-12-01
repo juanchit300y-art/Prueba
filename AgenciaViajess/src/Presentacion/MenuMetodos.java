@@ -19,7 +19,9 @@ public class MenuMetodos {
     private AerolineaController aerolineaController;
     private FacturaController facturaController;
     private ItinerarioTransporteController itinerarioTransporteController;
-    private HotelController hotelController;
+    private EntretenimientoController entretenimientoController;
+    private ActividadTuristicaController actividadTuristicaController;
+    private ReservaController reservaController;
 
     public MenuMetodos(Scanner scanner) {
         this.scanner = scanner;
@@ -27,7 +29,9 @@ public class MenuMetodos {
         this.aerolineaController= new AerolineaController();
         this.facturaController= new FacturaController();
         this.itinerarioTransporteController= new ItinerarioTransporteController();
-        this.hotelController = new HotelController();
+        this.entretenimientoController = new EntretenimientoController();
+        this.actividadTuristicaController = new ActividadTuristicaController();
+        this.reservaController = new ReservaController();
     }
     public void verMenu(){
         int opcion= 1;
@@ -79,7 +83,7 @@ public class MenuMetodos {
                     MetodoI();//viaje 1 da 667878
                     break;
                 case 10:
-                    MetodoJ();
+                    MetodoJ();//"baile" da plan 1 maravillas
                     break;
                 case 11:
                     MetodoK();
@@ -142,7 +146,8 @@ public class MenuMetodos {
     public void MetodoG(){
         System.out.println("======== Metodo G======== ");
         System.out.println("Máximo número de actividades en un plan para viajes que tienen al menos un trayecto terrestre.");
-    
+        int resultado = entretenimientoController.metodoG();
+        System.out.println(resultado);
     }
     public void MetodoH(){
         System.out.println("======== Metodo H======== ");
@@ -172,12 +177,33 @@ public class MenuMetodos {
     public void MetodoJ(){
         System.out.println("======== Metodo J======== ");
         System.out.println("Retornar en una nueva lista todos los planes que incluyen una actividad con nombre específico y que han sido contratados por clientes con más de un viaje.");
-    
+        String nombreActividad;
+        System.out.println("Ingrese el nombre de la Actividad:");
+        nombreActividad = scanner.nextLine();
+        Integer idActividad = actividadTuristicaController.getActividadIdByNombre(nombreActividad);
+        System.out.println(idActividad);
+        if(idActividad == null){
+            System.out.println("No existe actividad con ese nombre");
+            return;
+        }
+        List<Plan> planes = facturaController.metodoJ(idActividad);
+        if(planes == null){
+            System.out.println("La lista está null");
+            return;
+        }
+        if(planes.isEmpty()){
+            System.out.println("La lista está vacía");
+            return;
+        }
+        for(Plan actual : planes){
+            System.out.println(actual.toString());
+        }
+        scanner.nextLine();
     }
     public void MetodoK(){
         System.out.println("======== Metodo K======== ");
         System.out.println("Promedio de habitaciones reservadas por hotel en viajes que incluyen al menos un trayecto aéreo y un trayecto terrestre.");
-    
+        System.out.println(reservaController.metodoK());
     }
     
 }

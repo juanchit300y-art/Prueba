@@ -19,7 +19,10 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
     private PlanRepository planData;
     private EntretenimientoRepository entretenimientoData;
     private ElementoPlanController elementoPlanController;
-
+    private TrayectoController trayectoController;
+    private ItinerarioTransporteController itinerarioTransporteController;
+    private ActividadTuristicaRepository actividadTuristicaRepository;
+    private ElementoPlanRepository elementoPlanRepository;
     private PlanController planController;
     public EntretenimientoController() {
         this.classData= new EntretenimientoRepository();
@@ -28,6 +31,10 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
         this.entretenimientoData= new EntretenimientoRepository();
         this.elementoPlanController= new ElementoPlanController();
         this.planController = new PlanController();
+        this.trayectoController = new TrayectoController();
+        this.itinerarioTransporteController = new ItinerarioTransporteController();
+        this.actividadTuristicaRepository = new ActividadTuristicaRepository();
+        this.elementoPlanRepository = new ElementoPlanRepository();
     }
     public EntretenimientoController(EntretenimientoRepository classData) {
         this.classData= classData;
@@ -36,6 +43,10 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
         this.entretenimientoData= new EntretenimientoRepository();
         this.elementoPlanController= new ElementoPlanController();
         this.planController = new PlanController();
+        this.trayectoController = new TrayectoController();
+        this.itinerarioTransporteController = new ItinerarioTransporteController();
+        this.actividadTuristicaRepository = new ActividadTuristicaRepository();
+        this.elementoPlanRepository = new ElementoPlanRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -117,18 +128,40 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
         return false;
     }
     
-    public List<Plan> planesMin3ActividadesE(){
-    List<Plan> respuesta = new ArrayList<>();
-    List<Plan> planes = planData.getAllT();
-    if (planes == null) return respuesta;
-    for (Plan actual : planes) {
-        List<?> elementos = elementoPlanController.getElementosPlanByPlan(actual.getId());
-        if (elementos != null && elementos.size() >= 3) {
-            respuesta.add(actual);
+    public List<Viaje> viajesTerrestresG(){
+        List<Viaje> viajes = viajeData.getAllT();
+        List<Viaje> respuesta = new ArrayList<>();
+        for(Viaje actual:viajes){
+            List<ItinerarioTransporte> itinerariosViaje = itinerarioTransporteController.getItinerariosTransporteByViaje(actual.getId());
+            for(ItinerarioTransporte actual2:itinerariosViaje){
+                Trayecto trayectoViaje = itinerarioTransporteController.getTrayectoDeItinerarioTransporte(actual2.getId());
+                if(trayectoController.verificadorTerrestre(trayectoViaje.getId())){
+                    if(!respuesta.contains(actual)){
+                        respuesta.add(actual);
+                }
+                }
+            }
         }
+        return respuesta;
     }
-    return respuesta;
-}
     
+    public int metodoG(){
+        List<Viaje> viajesTerrestres = viajesTerrestresG();
+        int respuesta = 0;
+        int mayor = Integer.MIN_VALUE;
+        for(Viaje actual:viajesTerrestres){
+            List<Entretenimiento> entretenimientoDeViaje = getEntrenimientosByViaje(actual.getId());
+            for(Entretenimiento actual2:entretenimientoDeViaje){
+                Plan planDelEntretenimiento = getPlanDeEntretenimiento(actual2.getId());
+                List<ElementoPlan> elementosDelPlan = planController.getElementosPlanDePlan(planDelEntretenimiento.getId());
+                if(elementosDelPlan.size()>mayor){
+                    mayor=elementosDelPlan.size();
+                    respuesta=elementosDelPlan.size();
+                }
+            }
+            
+        }
+        return respuesta;
+    }
 
 }

@@ -21,7 +21,7 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
     private ItinerarioTransporteRepository itinerarioTransporteData;
     private ServicioTransporteController controladorServicioTransporte;
     private PlanController planController;
-    private EntretenimientoController entretenimientoController;
+    private TrayectoController trayectoController;
     
     public ItinerarioTransporteController() {
         this.classData= new ItinerarioTransporteRepository();
@@ -31,7 +31,7 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
         this.controladorServicioTransporte= new ServicioTransporteController();
         this.planController = new PlanController();
-        this.entretenimientoController = new EntretenimientoController();
+        this.trayectoController = new TrayectoController();
     }
     public ItinerarioTransporteController(ItinerarioTransporteRepository classData) {
         this.classData= classData;
@@ -41,8 +41,7 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         this.itinerarioTransporteData= new ItinerarioTransporteRepository();
         this.controladorServicioTransporte= new ServicioTransporteController();
         this.planController = new PlanController();
-        this.entretenimientoController = new EntretenimientoController();
-
+        this.trayectoController = new TrayectoController();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -185,5 +184,33 @@ public class ItinerarioTransporteController extends GeneralController<Itinerario
         int respuesta= itinerariosViaje.size();    
         return respuesta;
     }
+    
+public List<Viaje> viajesAerTerr() {
+    List<Viaje> respuesta = new ArrayList<>();
+    List<Viaje> viajes = viajeData.getAllT();
+    for (Viaje actual : viajes) {
+        boolean tieneAereo = false;
+        boolean tieneTerr = false;
+        List<ItinerarioTransporte> itinerarios = 
+                getItinerariosTransporteByViaje(actual.getId());
+        for (ItinerarioTransporte iti : itinerarios) {
+            Trayecto trayecto = getTrayectoDeItinerarioTransporte(iti.getId());
+            if (trayectoController.verificadorAereo(trayecto.getId())) {
+                tieneAereo = true;
+            }
+            if (trayectoController.verificadorTerrestre(trayecto.getId())) {
+                tieneTerr = true;
+            }
+            if (tieneAereo && tieneTerr) {
+                respuesta.add(actual);
+                break;
+            }
+        }
+    }
+
+    return respuesta;
+}
+
+    
     
 }

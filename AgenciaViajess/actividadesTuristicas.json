@@ -38,5 +38,10 @@
     "id": 5,
     "nombre": "caminata",
     "MunicipioId": 5
+  },
+  {
+    "id": 9,
+    "nombre": "actividadx",
+    "MunicipioId": 5
   }
 ]

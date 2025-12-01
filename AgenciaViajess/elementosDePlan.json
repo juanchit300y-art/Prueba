@@ -38,5 +38,10 @@
     "id": 5,
     "ActividadTuristicaId": 5,
     "PlanId": 5
+  },
+  {
+    "id": 9,
+    "ActividadTuristicaId": 9,
+    "PlanId": 6
   }
 ]

@@ -6,7 +6,12 @@
 package Controllers;
 import Persistencia.*;
 import Modelos.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -19,6 +24,11 @@ public class FacturaController extends GeneralController<Factura> {
     private FacturaRepository facturaData;
     private ItinerarioTransporteController controladorItinerario;
     private EntretenimientoController controladorEntretenimiento;
+    private PlanRepository planRepository;
+    private ActividadTuristicaRepository actividadTuristicaRepository;
+    private PlanController planController;
+    private ElementoPlanRepository elementoPlanData;
+    private EntretenimientoRepository entretenimientoData;
     public FacturaController() {
         this.classData= new FacturaRepository();
         this.viajeData= new ViajeRepository();
@@ -26,6 +36,11 @@ public class FacturaController extends GeneralController<Factura> {
         this.facturaData= new FacturaRepository();
         this.controladorItinerario= new ItinerarioTransporteController();
         this.controladorEntretenimiento= new EntretenimientoController();
+        this.planRepository = new PlanRepository();
+        this.actividadTuristicaRepository = new ActividadTuristicaRepository();
+        this.planController = new PlanController();
+        this.elementoPlanData = new ElementoPlanRepository();
+        this.entretenimientoData = new EntretenimientoRepository();
     }
     public FacturaController(FacturaRepository classData) {
         this.classData= classData;
@@ -33,6 +48,11 @@ public class FacturaController extends GeneralController<Factura> {
         this.clienteData= new ClienteRepository();
         this.facturaData= new FacturaRepository();
         this.controladorItinerario= new ItinerarioTransporteController();
+        this.planRepository = new PlanRepository();
+        this.actividadTuristicaRepository = new ActividadTuristicaRepository();
+        this.planController = new PlanController();
+        this.elementoPlanData = new ElementoPlanRepository();
+        this.entretenimientoData = new EntretenimientoRepository();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -137,7 +157,7 @@ public class FacturaController extends GeneralController<Factura> {
         }
         return respuesta;
     }
-    //Metodo F
+    //Metodo F LO HIZO CHAT
     public Double metodoF(){
         Double respuesta;
         double numClientes=0;
@@ -160,4 +180,74 @@ public class FacturaController extends GeneralController<Factura> {
         respuesta= numTrayectos/numClientes;
         return respuesta;
     }
+    
+
+    
+    // En FacturaController o en ConsultaService (donde tengas acceso a todos los repositorios)
+public List<Plan> metodoJ(Integer actividadId) {
+    List<Plan> resultado = new ArrayList<>();
+
+    if (actividadId == null) return resultado;
+
+    // Cargar todos los datos que necesitamos (usar repositorios compartidos)
+    List<Factura> facturas = facturaData.getAllT();
+    List<Entretenimiento> entretenimientos = entretenimientoData.getAllT();
+    List<ElementoPlan> elementosPlan = elementoPlanData.getAllT();
+    List<Plan> planes = planRepository.getAllT();
+
+    // 1) Identificar clientes con >1 viajes (por facturas)
+    // Mapa clienteId -> set de viajeIds
+    Map<Integer, Set<Integer>> viajesPorCliente = new HashMap<>();
+    for (Factura f : facturas) {
+        Integer cId = f.getClienteId();
+        Integer vId = f.getViajeId();
+        if (cId == null || vId == null) continue;
+        Set<Integer> s = viajesPorCliente.get(cId);
+        if (s == null) {
+            s = new HashSet<>();
+            viajesPorCliente.put(cId, s);
+        }
+        s.add(vId);
+    }
+
+    // 2) Construir set de viajes contratados por clientes con >1 viaje
+    Set<Integer> viajesClientesMas1 = new HashSet<>();
+    for (Map.Entry<Integer, Set<Integer>> e : viajesPorCliente.entrySet()) {
+        if (e.getValue().size() > 1) {
+            viajesClientesMas1.addAll(e.getValue());
+        }
+    }
+
+    if (viajesClientesMas1.isEmpty()) return resultado; // no hay clientes con >1 viaje
+
+    // 3) Para cada entretenimiento de esos viajes, obtener el plan
+    Set<Integer> planesEncontrados = new HashSet<>();
+    for (Entretenimiento ent : entretenimientos) {
+        if (ent == null) continue;
+        Integer viajeId = ent.getViajeId();
+        Integer planId = ent.getPlanId();
+        if (viajesClientesMas1.contains(viajeId) && planId != null) {
+            // comprobamos si ese plan incluye la actividadId
+            // buscamos elementos del plan en elementosPlan
+            for (ElementoPlan ep : elementosPlan) {
+                if (ep != null && ep.getPlanId() != null && ep.getActividadTuristicaId() != null) {
+                    if (ep.getPlanId().equals(planId) && ep.getActividadTuristicaId().equals(actividadId)) {
+                        planesEncontrados.add(planId);
+                        break; // ya sabemos que ese plan incluye la actividad
+                    }
+                }
+            }
+        }
+    }
+
+    // 4) Convertir planIds a Plan objects
+    for (Plan p : planes) {
+        if (p != null && p.getId() != null && planesEncontrados.contains(p.getId())) {
+            resultado.add(p);
+        }
+    }
+
+    return resultado;
+}
+
 }

@@ -150,5 +150,16 @@ public class ActividadTuristicaController extends GeneralController<ActividadTur
        }
        return respuesta;
     }
+    
+    // En ActividadTuristicaController o ConsultaController
+    public Integer getActividadIdByNombre(String nombre) {
+    List<ActividadTuristica> actividades = classData.getAllT();
+    for (ActividadTuristica at : actividades) {
+        if (at.getNombre() != null && at.getNombre().equalsIgnoreCase(nombre.trim())) {
+            return at.getId();
+        }
+    }
+    return null; // no encontrada
+}
 
 }

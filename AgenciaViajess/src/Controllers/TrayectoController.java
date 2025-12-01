@@ -13,7 +13,7 @@ public class TrayectoController extends GeneralController<Trayecto> {
     private ServicioTransporteRepository servicioData;
     private CarroRepository carroData;
     private AeronaveRepository aeronaveData;
-
+    private ViajeRepository viajeData;
     public TrayectoController() {
         this.classData = new TrayectoRepository();
         this.municipioData = new MunicipioRepository();
@@ -21,6 +21,7 @@ public class TrayectoController extends GeneralController<Trayecto> {
         this.servicioData = new ServicioTransporteRepository();
         this.carroData = new CarroRepository();
         this.aeronaveData = new AeronaveRepository();
+        this.viajeData = new ViajeRepository();
     }
 
     public TrayectoController(TrayectoRepository classData) {
@@ -30,6 +31,7 @@ public class TrayectoController extends GeneralController<Trayecto> {
         this.servicioData = new ServicioTransporteRepository();
         this.carroData = new CarroRepository();
         this.aeronaveData = new AeronaveRepository();
+        this.viajeData = new ViajeRepository();
     }
 
     @Override
@@ -171,7 +173,7 @@ public class TrayectoController extends GeneralController<Trayecto> {
         return false;
     } 
     
-        public boolean verificadorAereo(Integer trayectoId){
+    public boolean verificadorAereo(Integer trayectoId){
         Trayecto trayecto = classData.findATById(trayectoId);
         List<Trayecto> trayectosAereos = getTrayectosAereos();
         for(Trayecto actual:trayectosAereos){
@@ -181,5 +183,5 @@ public class TrayectoController extends GeneralController<Trayecto> {
         }
         return false;
     }
-
+    
 }

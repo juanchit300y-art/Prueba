@@ -23,5 +23,15 @@
     "id": 5,
     "PlanId": 5,
     "ViajeId": 5
+  },
+  {
+    "id": 6,
+    "PlanId": 6,
+    "ViajeId": 6
+  },
+  {
+    "id": 7,
+    "PlanId": 1,
+    "ViajeId": 6
   }
 ]
