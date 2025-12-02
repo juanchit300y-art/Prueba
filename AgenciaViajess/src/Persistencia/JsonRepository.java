@@ -48,17 +48,20 @@ public class JsonRepository<T> implements IDataAccess<T>{
         }
     }
     private Integer getNextIdSeleccion(List<T> items) {
-       int i= 0;
-       Integer respuesta;
-       T actual= items.get(i);
-        if( actual instanceof Carro ){
-             respuesta= getNextIdCarro( items);
+    if (items.isEmpty()) {
+        if (Carro.class.isAssignableFrom(this.clazz)) { 
+            return 1001; 
         }
-        else{
-            respuesta= getNextId(items);
-        }
-        return respuesta;
+        return 1;
     }
+    T actual = items.get(0);
+    if (actual instanceof Carro) {
+        return getNextIdCarro(items); 
+    } else {
+        return getNextId(items);
+    }
+    }
+
     private Integer getNextIdCarro(List<T> items) {
         Integer maxId = 1000;
         for (T item : items) {
