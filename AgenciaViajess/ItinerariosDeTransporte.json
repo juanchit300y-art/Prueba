@@ -9,24 +9,18 @@
     "id": 2,
     "orden": 2,
     "TrayectoId": 2,
-    "ViajeId": 2
+    "ViajeId": 1
   },
   {
     "id": 3,
     "orden": 3,
     "TrayectoId": 3,
-    "ViajeId": 3
+    "ViajeId": 2
   },
   {
     "id": 4,
     "orden": 4,
     "TrayectoId": 4,
-    "ViajeId": 4
-  },
-  {
-    "id": 5,
-    "orden": 5,
-    "TrayectoId": 5,
-    "ViajeId": 5
+    "ViajeId": 3
   }
 ]

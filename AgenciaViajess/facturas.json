@@ -16,23 +16,5 @@
     "costo": 200000,
     "ViajeId": 3,
     "ClienteId": 3
-  },
-  {
-    "id": 4,
-    "costo": 450000,
-    "ViajeId": 4,
-    "ClienteId": 4
-  },
-  {
-    "id": 5,
-    "costo": 302000,
-    "ViajeId": 5,
-    "ClienteId": 5
-  },
-  {
-    "id": 6,
-    "costo": 2000,
-    "ViajeId": 6,
-    "ClienteId": 1
   }
 ]

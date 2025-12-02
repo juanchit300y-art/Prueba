@@ -52,11 +52,5 @@
     "nombre": "Grand Royale",
     "correo": "Grand_Royale@gmail.com",
     "MunicipioId": 5
-  },
-  {
-    "id": 11,
-    "nombre": "Mark Hotel",
-    "correo": "Mark_Hotel@gmail.com",
-    "MunicipioId": 5
   }
 ]
