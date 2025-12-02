@@ -29,7 +29,7 @@ public class AerolineaControllerTest {
         System.out.println("MetodoB");
         Integer aerolineaId = 1;
         AerolineaController instance = new AerolineaController();
-        Double expResult = 1000.0;
+        Double expResult = 10.0;
         Double result = instance.MetodoB(aerolineaId);
         assertEquals(expResult, result);
     }

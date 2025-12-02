@@ -127,61 +127,65 @@ public class TrayectoController extends GeneralController<Trayecto> {
     }
     
     //lista trayectos terrestre
-    public List<Trayecto> getTrayectosTerrestres(){
-        List<Trayecto> trayectos = classData.getAllT();
-        List<Trayecto> trayectosTerrestres = new ArrayList<>();
-        for(Trayecto actual : trayectos){
-            List<ServicioTransporte> serviciosTransporte = getServiciosTransporteDeTrayecto(actual.getId());
-            for(ServicioTransporte actual2 : serviciosTransporte){
-                List<Carro> carros = carroData.getAllT();
-                for(Carro actual3:carros){
-                    if(actual2.getVehiculoId().equals(actual3.getId())){
-                        trayectosTerrestres.add(actual);
-                    }
+    public List<Trayecto> getTrayectosTerrestres() {
+    List<Trayecto> trayectos = classData.getAllT();
+    List<Trayecto> resultado = new ArrayList<>();
+
+    List<Carro> carros = carroData.getAllT();  // traerlos una sola vez
+
+    for (Trayecto t : trayectos) {
+        List<ServicioTransporte> servicios = getServiciosTransporteDeTrayecto(t.getId());
+
+        for (ServicioTransporte s : servicios) {
+            for (Carro c : carros) {
+                if (s.getVehiculoId().equals(c.getId())) {
+                    resultado.add(t);
+                    break; // ya es terrestre, no necesitamos seguir
                 }
             }
         }
-        return trayectosTerrestres;
     }
+    return resultado;
+}
+
     
     //lista trayectos Aereos
-    public List<Trayecto> getTrayectosAereos(){
-        List<Trayecto> trayectos = classData.getAllT();
-        List<Trayecto> trayectosAereos = new ArrayList<>();
-        for(Trayecto actual : trayectos){
-            List<ServicioTransporte> serviciosTransporte = getServiciosTransporteDeTrayecto(actual.getId());
-            for(ServicioTransporte actual2 : serviciosTransporte){
-                List<Aeronave> aeronaves = aeronaveData.getAllT();
-                for(Aeronave actual3:aeronaves){
-                    if(actual2.getVehiculoId().equals(actual3.getId())){
-                        trayectosAereos.add(actual);
-                    }
+    public List<Trayecto> getTrayectosAereos() {
+    List<Trayecto> trayectos = classData.getAllT();
+    List<Trayecto> resultado = new ArrayList<>();
+
+    List<Aeronave> aeronaves = aeronaveData.getAllT(); // traerlos una sola vez
+
+    for (Trayecto t : trayectos) {
+        List<ServicioTransporte> servicios = getServiciosTransporteDeTrayecto(t.getId());
+
+        for (ServicioTransporte s : servicios) {
+            for (Aeronave a : aeronaves) {
+                if (s.getVehiculoId().equals(a.getId())) {
+                    resultado.add(t);
+                    break; 
                 }
             }
         }
-        return trayectosAereos;
     }
+    return resultado;
+}
+
     
-    public boolean verificadorTerrestre(Integer trayectoId){
-        Trayecto trayecto = classData.findATById(trayectoId);
-        List<Trayecto> trayectosTerrestres = getTrayectosTerrestres();
-        for(Trayecto actual:trayectosTerrestres){
-            if(actual.getId().equals(trayecto.getId())){
-                return true;
-            }
-        }
-        return false;
-    } 
-    
-    public boolean verificadorAereo(Integer trayectoId){
-        Trayecto trayecto = classData.findATById(trayectoId);
-        List<Trayecto> trayectosAereos = getTrayectosAereos();
-        for(Trayecto actual:trayectosAereos){
-            if(actual.getId().equals(trayecto.getId())){
-                return true;
-            }
-        }
-        return false;
+    public boolean verificadorTerrestre(Integer trayectoId) {
+    List<Trayecto> lista = getTrayectosTerrestres();
+    for (Trayecto t : lista) {
+        if (t.getId().equals(trayectoId)) return true;
     }
+    return false;
+}
+
+public boolean verificadorAereo(Integer trayectoId) {
+    List<Trayecto> lista = getTrayectosAereos();
+    for (Trayecto t : lista) {
+        if (t.getId().equals(trayectoId)) return true;
+    }
+    return false;
+}
     
 }

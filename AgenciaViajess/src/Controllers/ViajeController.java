@@ -175,7 +175,7 @@ public class ViajeController extends GeneralController<Viaje> {
             boolean verificacionTerrestre= false;
             List<ItinerarioTransporte> itinerariosTransporte= getItinerariosTransporteDeViaje(idActual);
             int i=0;
-            while(i< itinerariosTransporte.size() && (!verificacionAereo && !verificacionTerrestre) ){
+            while(i< itinerariosTransporte.size() && (!verificacionAereo || !verificacionTerrestre) ){
                 ItinerarioTransporte actual2= itinerariosTransporte.get(i);
                 Integer idTrayecto= actual2.getTrayectoId();
                 if(!verificacionAereo){

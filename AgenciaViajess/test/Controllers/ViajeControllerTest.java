@@ -31,7 +31,7 @@ public class ViajeControllerTest {
     public void testMetodoA() {
         System.out.println("metodoA");
         ViajeController instance = new ViajeController();
-        Double expResult = 2.0;
+        Double expResult = 4.0;
         Double result = instance.metodoA();
         assertEquals(expResult, result);
     }
@@ -39,12 +39,11 @@ public class ViajeControllerTest {
     @Test
     public void testMetodoC() {
         System.out.println("metodoC");
-        String nombreActividad = "";
+        String nombreActividad = "baile";
         ViajeController instance = new ViajeController();
-        int expResult = 0;
+        int expResult = 1;
         int result = instance.metodoC(nombreActividad);
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
     
 }
