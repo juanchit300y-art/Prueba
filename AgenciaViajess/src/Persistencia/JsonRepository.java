@@ -143,7 +143,8 @@ public class JsonRepository<T> implements IDataAccess<T>{
             }
             writeToFile(items);
         } catch (Exception e) {
-            System.err.println("Horror guardando objeto: " + e.getMessage());
+            System.err.println("Clase que falló: " + item.getClass().getName());
+            e.printStackTrace();
         }
     }
     
