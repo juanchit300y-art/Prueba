@@ -18,6 +18,7 @@ public class SubMenuSesionUsuario {
     private SubMenuGuia submenuGuia;
     private ClienteController clienteController;
     private GuiaController guiaController;
+    private MenuExperienciaUsuarioCliente menuExperienciaUsuario;
     Scanner scanner;
             
     public SubMenuSesionUsuario() {
@@ -29,6 +30,7 @@ public class SubMenuSesionUsuario {
         this.scanner = scanner;
         this.clienteController = new ClienteController();
         this.guiaController = new GuiaController();
+        this.menuExperienciaUsuario= new MenuExperienciaUsuarioCliente(scanner);
     }
 
     
@@ -119,7 +121,7 @@ public class SubMenuSesionUsuario {
             
             if(cliente.getContraseña().equals(contraseña)){
                 System.out.println("===== INICIO DE SESION EXITOSO =====");
-                System.out.println("--------------------INTERFAZ INICIO DE SESION----------------------");;
+                menuExperienciaUsuario.verMenuExperienciaUsuario(id);
                 inicio=0;
             }else{
                 System.out.println("Contraseña incorrecta, presione 0 para volver");
