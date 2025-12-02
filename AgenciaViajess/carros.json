@@ -1,52 +1,52 @@
 [
   {
     "HotelId": 1,
-    "id": 1,
+    "id": 1001,
     "marca": "Honda"
   },
   {
     "HotelId": 1,
-    "id": 2,
+    "id": 1002,
     "marca": "Mercedes"
   },
   {
     "HotelId": 2,
-    "id": 3,
+    "id": 1003,
     "marca": "Toyota"
   },
   {
     "HotelId": 2,
-    "id": 4,
+    "id": 1004,
     "marca": "Volkswagen"
   },
   {
     "HotelId": 3,
-    "id": 5,
+    "id": 1005,
     "marca": "Chevrolet"
   },
   {
     "HotelId": 3,
-    "id": 6,
+    "id": 1006,
     "marca": "Hyundai"
   },
   {
     "HotelId": 4,
-    "id": 7,
+    "id": 1007,
     "marca": "Mazda"
   },
   {
     "HotelId": 4,
-    "id": 8,
+    "id": 1008,
     "marca": "Kia"
   },
   {
     "HotelId": 5,
-    "id": 9,
+    "id": 1009,
     "marca": "General Motors"
   },
   {
     "HotelId": 5,
-    "id": 10,
+    "id": 1010,
     "marca": "Fiat"
   }
 ]

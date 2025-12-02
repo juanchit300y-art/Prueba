@@ -100,7 +100,7 @@ public class SubMenuServicioTransporte {
         System.out.print("Opción: ");
         Integer opcionVehiculo = scanner.nextInt();
         scanner.nextLine();
-        while(opcionVehiculo>2 || opcionVehiculo >1){
+        while(opcionVehiculo>2 || opcionVehiculo <1){
             System.out.print("Opcion incorrecta, re ingrese el dato");
             opcionVehiculo = scanner.nextInt();
             scanner.nextLine();
@@ -149,6 +149,11 @@ public class SubMenuServicioTransporte {
         System.out.print("Opción: ");
         Integer opcionVehiculo = scanner.nextInt();
         scanner.nextLine();
+        while(opcionVehiculo>2 || opcionVehiculo <0){
+            System.out.print("Opcion incorrecta, re ingrese el dato");
+            opcionVehiculo = scanner.nextInt();
+            scanner.nextLine();
+        }
         if (opcionVehiculo == 0) opcionVehiculo = null;
 
         System.out.print("Nuevo ID del Vehículo (0 para no cambiar): ");
