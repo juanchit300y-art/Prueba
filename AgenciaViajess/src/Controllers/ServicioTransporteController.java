@@ -84,7 +84,7 @@ public class ServicioTransporteController extends GeneralController<ServicioTran
         return true;
     }
 
-    public boolean añadirServicioTransporte(Integer id, Double costo, String fecha_inicio, String fecha_fin, Integer opcion, Integer vehiculoId, Integer trayectoId) {
+    public boolean añadirServicioTransporte( Double costo, String fecha_inicio, String fecha_fin, Integer opcion, Integer vehiculoId, Integer trayectoId) {
         if (fecha_inicio == null || fecha_inicio.trim().isEmpty()) {
             return false;
         }

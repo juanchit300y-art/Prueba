@@ -100,6 +100,11 @@ public class SubMenuServicioTransporte {
         System.out.print("Opción: ");
         Integer opcionVehiculo = scanner.nextInt();
         scanner.nextLine();
+        while(opcionVehiculo>2 || opcionVehiculo >1){
+            System.out.print("Opcion incorrecta, re ingrese el dato");
+            opcionVehiculo = scanner.nextInt();
+            scanner.nextLine();
+        }
 
         System.out.print("Ingrese ID del Vehículo: ");
         Integer vehiculoId = scanner.nextInt();
@@ -113,7 +118,7 @@ public class SubMenuServicioTransporte {
         Double costo = scanner.nextDouble();
         scanner.nextLine();
 
-        boolean resultado = controller.añadirServicioTransporte(trayectoId, costo, fechaInicio, fechaFin, trayectoId, vehiculoId, trayectoId);
+        boolean resultado = controller.añadirServicioTransporte( costo, fechaInicio, fechaFin, opcionVehiculo, vehiculoId, trayectoId);
 
         if (resultado) {
             System.out.println("Servicio Transporte creado correctamente.");

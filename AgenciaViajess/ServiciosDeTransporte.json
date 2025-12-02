@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "fecha_inicio": "23/63/8237",
+    "fecha_fin": "87/82/2376",
+    "costo": 2000.0,
+    "VehiculoId": 1,
+    "TrayectoId": 1
+  },
+  {
+    "id": 2,
+    "fecha_inicio": "123",
+    "fecha_fin": "1231",
+    "costo": 2131.0,
+    "VehiculoId": 2,
+    "TrayectoId": 2
+  }
+]
