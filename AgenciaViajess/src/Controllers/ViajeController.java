@@ -171,16 +171,27 @@ public class ViajeController extends GeneralController<Viaje> {
         List<Viaje> viajes= getAllGeneral();
         for(Viaje actual : viajes){
             Integer idActual= actual.getId();
+            boolean verificacionAereo= false;
+            boolean verificacionTerrestre= false;
             List<ItinerarioTransporte> itinerariosTransporte= getItinerariosTransporteDeViaje(idActual);
-            for(ItinerarioTransporte actual2: itinerariosTransporte){
+            int i=0;
+            while(i< itinerariosTransporte.size() && (!verificacionAereo && !verificacionTerrestre) ){
+                ItinerarioTransporte actual2= itinerariosTransporte.get(i);
                 Integer idTrayecto= actual2.getTrayectoId();
-                if(this.controladorTrayecto.verificadorAereo(idTrayecto) && this.controladorTrayecto.verificadorTerrestre(idTrayecto)){
-                  List<Entretenimiento> entretenimientoViaje= getEntretenimientosDeViaje(idActual);
-                  numPlanes= entretenimientoViaje.size()+ numPlanes;
-                  for (Entretenimiento actual3 : entretenimientoViaje){
-                      Integer idPlan= actual3.getPlanId();
-                      numActividades= this.controladorPlan.numActividadesXPlan(idPlan)+ numActividades;
-                    }
+                if(!verificacionAereo){
+                    verificacionAereo= this.controladorTrayecto.verificadorAereo(idTrayecto);
+                }
+                if(!verificacionTerrestre){
+                    verificacionTerrestre= controladorTrayecto.verificadorTerrestre(idTrayecto);
+                }
+                i++;
+            }
+            if(verificacionTerrestre && verificacionAereo){
+                List<Entretenimiento> entretenimientoViaje= getEntretenimientosDeViaje(idActual);
+                numPlanes= entretenimientoViaje.size()+ numPlanes;
+                for (Entretenimiento actual3 : entretenimientoViaje){
+                    Integer idPlan= actual3.getPlanId();
+                    numActividades= this.controladorPlan.numActividadesXPlan(idPlan)+ numActividades;
                 }
             }
         }
