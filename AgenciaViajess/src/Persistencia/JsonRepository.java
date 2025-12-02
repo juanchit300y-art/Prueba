@@ -14,7 +14,7 @@ import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-
+import Modelos.Carro;
 public class JsonRepository<T> implements IDataAccess<T>{
     private String filename;
     private Gson gson;
@@ -47,7 +47,33 @@ public class JsonRepository<T> implements IDataAccess<T>{
             System.err.println("Horror escribiendo archivo: " + e.getMessage());
         }
     }
-    
+    private Integer getNextIdSeleccion(List<T> items) {
+       int i= 0;
+       Integer respuesta;
+       T actual= items.get(i);
+        if( actual instanceof Carro ){
+             respuesta= getNextIdCarro( items);
+        }
+        else{
+            respuesta= getNextId(items);
+        }
+        return respuesta;
+    }
+    private Integer getNextIdCarro(List<T> items) {
+        Integer maxId = 1000;
+        for (T item : items) {
+            try {
+                java.lang.reflect.Method getIdMethod = item.getClass().getMethod("getId");
+                Integer currentId = (Integer) getIdMethod.invoke(item);
+                if (currentId != null && currentId > maxId) {
+                    maxId = currentId;
+                }
+            } catch (Exception e) {
+                System.err.println("Horror obteniendo ID: " + e.getMessage());
+            }
+        }
+        return maxId + 1;
+    }
     private Integer getNextId(List<T> items) {
         Integer maxId = 0;
         for (T item : items) {
@@ -95,7 +121,7 @@ public class JsonRepository<T> implements IDataAccess<T>{
             
             if (id == null) {
                 // New item - assign ID
-                id = getNextId(items);
+                id = getNextIdSeleccion(items);
                 java.lang.reflect.Method setIdMethod = item.getClass().getMethod("setId", Integer.class);
                 setIdMethod.invoke(item, id);
                 items.add(item);
