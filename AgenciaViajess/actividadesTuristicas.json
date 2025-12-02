@@ -5,21 +5,6 @@
     "MunicipioId": 1
   },
   {
-    "id": 6,
-    "nombre": "corridas de toros",
-    "MunicipioId": 1
-  },
-  {
-    "id": 7,
-    "nombre": "escondite",
-    "MunicipioId": 1
-  },
-  {
-    "id": 8,
-    "nombre": "uwu",
-    "MunicipioId": 1
-  },
-  {
     "id": 2,
     "nombre": "tira chinas",
     "MunicipioId": 2
@@ -37,11 +22,6 @@
   {
     "id": 5,
     "nombre": "caminata",
-    "MunicipioId": 5
-  },
-  {
-    "id": 9,
-    "nombre": "actividadx",
     "MunicipioId": 5
   }
 ]
