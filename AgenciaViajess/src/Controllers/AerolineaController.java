@@ -93,7 +93,7 @@ public class AerolineaController extends GeneralController<Aerolinea> {
         List<Aeronave> aeronaves = getAeronavesDeAerolinea(aerolineaId);
         Double menor = Double.MAX_VALUE;
         for(Aeronave actual:aeronaves){
-            List<ServicioTransporte> serviciosTransporte = servicioTransporteData.findServicioTransporteByVehiculoId(aerolineaId);
+            List<ServicioTransporte> serviciosTransporte = servicioTransporteData.findServicioTransporteByVehiculoId(actual.getId());
             for(ServicioTransporte actual2:serviciosTransporte){
                 if(actual2.getCosto()<menor){
                     menor = actual2.getCosto();

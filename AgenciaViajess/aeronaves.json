@@ -5,28 +5,23 @@
     "marca": "Airbus"
   },
   {
-    "aerolineaId": 2,
+    "aerolineaId": 1,
     "id": 2,
     "marca": "Boeing"
   },
   {
-    "aerolineaId": 3,
+    "aerolineaId": 2,
     "id": 3,
     "marca": "Embraer"
   },
   {
-    "aerolineaId": 4,
+    "aerolineaId": 3,
     "id": 4,
     "marca": "Lockheed Martin"
   },
   {
-    "aerolineaId": 5,
+    "aerolineaId": 4,
     "id": 5,
-    "marca": "Bombardier"
-  },
-  {
-    "aerolineaId": 6,
-    "id": 6,
     "marca": "nokia"
   }
 ]
