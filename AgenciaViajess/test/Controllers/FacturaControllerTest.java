@@ -9,6 +9,7 @@ import Modelos.Cliente;
 import Modelos.Factura;
 import Modelos.Plan;
 import Modelos.Viaje;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,13 +42,12 @@ public class FacturaControllerTest {
     @Test
     public void testMetodoH() {
         System.out.println("metodoH");
-        Integer idAerolinea = null;
-        Integer idMunicipio = null;
+        Integer idAerolinea = 1;
+        Integer idMunicipio = 1;
         FacturaController instance = new FacturaController();
-        int expResult = 0;
+        int expResult = 1;
         int result = instance.metodoH(idAerolinea, idMunicipio);
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
 
     @Test
@@ -57,17 +57,6 @@ public class FacturaControllerTest {
         Double expResult = 1.5;
         Double result = instance.metodoF();
         assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testMetodoJ() {
-        System.out.println("metodoJ");
-        Integer actividadId = null;
-        FacturaController instance = new FacturaController();
-        List<Plan> expResult = null;
-        List<Plan> result = instance.metodoJ(actividadId);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
     
 }

@@ -199,7 +199,7 @@ public class ViajeController extends GeneralController<Viaje> {
         return respuesta;
     }
     //Metodo C
-    public int metodoC( String nombreActividad){
+    public int metodoC(String nombreActividad){
         int respuesta=0;
         List<Viaje> todosViajes= getAllGeneral();
         Integer idActividad= controladorActividad.encontrarIDXNombre(nombreActividad);
@@ -219,6 +219,10 @@ public class ViajeController extends GeneralController<Viaje> {
         }
         return respuesta;
     }
+    
+    
+    
+    
     public boolean verificacion1C(List<Entretenimiento> entretenimientosActual, Integer activiad){
         for(Entretenimiento actual2: entretenimientosActual){
             Integer idPlan= actual2.getPlanId();

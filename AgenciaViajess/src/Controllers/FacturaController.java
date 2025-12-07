@@ -157,97 +157,73 @@ public class FacturaController extends GeneralController<Factura> {
         }
         return respuesta;
     }
-    //Metodo F LO HIZO CHAT
-    public Double metodoF(){
-        Double respuesta;
-        double cantViajes1=0;
-        double numTrayectos=0;
-        List<Cliente> clientes= clienteData.getAllT();
-        for(Cliente actual: clientes){
-            Integer idClienteActual= actual.getId();
-            List<Factura> facturasCliente= getFacturasByCliente(idClienteActual);
-            int cantiViajes= facturasCliente.size();
-            cantViajes1 = (double)cantiViajes;
-            if(cantiViajes > 1){
-                for(Factura actual2 : facturasCliente){
-                    Integer idViaje= actual2.getViajeId();
-                    int promedio= controladorItinerario.numTrayectosF(idViaje);
-                    numTrayectos= promedio + numTrayectos;
-                }
-                
+    
+    public List<Cliente> clientesMas2Viajes(){
+        List<Cliente> respuesta = new ArrayList<>();
+        List<Cliente> clientes = clienteData.getAllT();
+        for(Cliente actual:clientes){
+            List<Factura> facturasCliente = getFacturasByCliente(actual.getId());
+            if(facturasCliente.size()>=2){
+                respuesta.add(actual);
             }
         }
-        respuesta= numTrayectos/cantViajes1;
+        return respuesta;
+    }
+    
+    public Double cantViajesClientes2Viajes(){
+        int respuesta1=0;
+        List<Cliente> clientes = clientesMas2Viajes();
+        for(Cliente actual : clientes){
+            List<Factura> facturasCliente = getFacturasByCliente(actual.getId());
+            respuesta1 += facturasCliente.size();
+        }
+        Double respuesta = (double)respuesta1;
+        return respuesta;
+    }
+    //metodo J
+    public List<Viaje> viajesClientes2Viajes(){
+        List<Viaje> respuesta = new ArrayList<>();
+        List<Cliente> clientes = clientesMas2Viajes();
+        for(Cliente actual:clientes){
+            List<Viaje> viajesCliente = new ArrayList<>();    
+            List<Factura> facturasCliente = getFacturasByCliente(actual.getId());
+            for(Factura actual2:facturasCliente){
+                Viaje viajeCliente = getViajeDeFactura(actual2.getId());
+                respuesta.add(viajeCliente);
+            }
+        }
+        return respuesta;
+    }
+    
+    public Double cantTrayectosviajesClientes2Viajes(){
+        Double respuesta = 0.0;
+        List<Cliente> clientes = clientesMas2Viajes();
+        for(Cliente actual:clientes){
+            List<Viaje> viajesCliente = new ArrayList<>();    
+            List<Factura> facturasCliente = getFacturasByCliente(actual.getId());
+            for(Factura actual2:facturasCliente){
+                Viaje viajeCliente = getViajeDeFactura(actual2.getId());
+                viajesCliente.add(viajeCliente);
+            }
+            for(Viaje actual3:viajesCliente){
+                List<ItinerarioTransporte> itinerariosTransporteViaje = controladorItinerario.getItinerariosTransporteByViaje(actual3.getId());
+                int respuesta1 = itinerariosTransporteViaje.size();
+                respuesta+=(double)respuesta1;                    
+            }
+        }
+        return respuesta;
+    }
+    
+    public Double metodoF(){
+        Double respuesta = 0.0;
+        Double cantViajes = cantViajesClientes2Viajes();
+        Double cantTrayectos = cantTrayectosviajesClientes2Viajes(); 
+        respuesta = cantTrayectos/cantViajes;
         return respuesta;
     }
     
 
     
-    // En FacturaController o en ConsultaService (donde tengas acceso a todos los repositorios)
-public List<Plan> metodoJ(Integer actividadId) {
-    List<Plan> resultado = new ArrayList<>();
-
-    if (actividadId == null) return resultado;
-
-    // Cargar todos los datos que necesitamos (usar repositorios compartidos)
-    List<Factura> facturas = facturaData.getAllT();
-    List<Entretenimiento> entretenimientos = entretenimientoData.getAllT();
-    List<ElementoPlan> elementosPlan = elementoPlanData.getAllT();
-    List<Plan> planes = planRepository.getAllT();
-
-    // 1) Identificar clientes con >1 viajes (por facturas)
-    // Mapa clienteId -> set de viajeIds
-    Map<Integer, Set<Integer>> viajesPorCliente = new HashMap<>();
-    for (Factura f : facturas) {
-        Integer cId = f.getClienteId();
-        Integer vId = f.getViajeId();
-        if (cId == null || vId == null) continue;
-        Set<Integer> s = viajesPorCliente.get(cId);
-        if (s == null) {
-            s = new HashSet<>();
-            viajesPorCliente.put(cId, s);
-        }
-        s.add(vId);
-    }
-
-    // 2) Construir set de viajes contratados por clientes con >1 viaje
-    Set<Integer> viajesClientesMas1 = new HashSet<>();
-    for (Map.Entry<Integer, Set<Integer>> e : viajesPorCliente.entrySet()) {
-        if (e.getValue().size() > 1) {
-            viajesClientesMas1.addAll(e.getValue());
-        }
-    }
-
-    if (viajesClientesMas1.isEmpty()) return resultado; // no hay clientes con >1 viaje
-
-    // 3) Para cada entretenimiento de esos viajes, obtener el plan
-    Set<Integer> planesEncontrados = new HashSet<>();
-    for (Entretenimiento ent : entretenimientos) {
-        if (ent == null) continue;
-        Integer viajeId = ent.getViajeId();
-        Integer planId = ent.getPlanId();
-        if (viajesClientesMas1.contains(viajeId) && planId != null) {
-            // comprobamos si ese plan incluye la actividadId
-            // buscamos elementos del plan en elementosPlan
-            for (ElementoPlan ep : elementosPlan) {
-                if (ep != null && ep.getPlanId() != null && ep.getActividadTuristicaId() != null) {
-                    if (ep.getPlanId().equals(planId) && ep.getActividadTuristicaId().equals(actividadId)) {
-                        planesEncontrados.add(planId);
-                        break; // ya sabemos que ese plan incluye la actividad
-                    }
-                }
-            }
-        }
-    }
-
-    // 4) Convertir planIds a Plan objects
-    for (Plan p : planes) {
-        if (p != null && p.getId() != null && planesEncontrados.contains(p.getId())) {
-            resultado.add(p);
-        }
-    }
-
-    return resultado;
-}
+    
 
 }

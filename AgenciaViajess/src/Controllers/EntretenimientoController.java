@@ -24,6 +24,7 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
     private ActividadTuristicaRepository actividadTuristicaRepository;
     private ElementoPlanRepository elementoPlanRepository;
     private PlanController planController;
+    private ActividadTuristicaController actividadTuristicaController;
     public EntretenimientoController() {
         this.classData= new EntretenimientoRepository();
         this.viajeData= new ViajeRepository();
@@ -35,6 +36,8 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
         this.itinerarioTransporteController = new ItinerarioTransporteController();
         this.actividadTuristicaRepository = new ActividadTuristicaRepository();
         this.elementoPlanRepository = new ElementoPlanRepository();
+        this.actividadTuristicaController = new ActividadTuristicaController();
+        
     }
     public EntretenimientoController(EntretenimientoRepository classData) {
         this.classData= classData;
@@ -47,6 +50,7 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
         this.itinerarioTransporteController = new ItinerarioTransporteController();
         this.actividadTuristicaRepository = new ActividadTuristicaRepository();
         this.elementoPlanRepository = new ElementoPlanRepository();
+        this.actividadTuristicaController = new ActividadTuristicaController();
     }
     @Override
     public boolean eliminarObjeto(Integer id) {
@@ -163,5 +167,22 @@ public class EntretenimientoController extends GeneralController<Entretenimiento
         }
         return respuesta;
     }
+        public List<Plan> planesActId(){
+        Integer actividadId2 = actividadTuristicaController.encontrarIDXNombre("baile");
+        List<Plan> respuesta = new ArrayList<>();
+        List<Plan> planes = planData.getAllT();
+        for(Plan actual:planes  ){
+            List<ElementoPlan> elementosPlanDePlan = elementoPlanController.getElementosPlanByPlan(actual.getId());
+            for(ElementoPlan actual2 : elementosPlanDePlan){
+                if(actual2.getActividadTuristicaId().equals(actividadId2)){
+                    respuesta.add(actual);
+                    break;
+                }
+            }
+        }
+        return respuesta;
+    }
+    
 
+            
 }
