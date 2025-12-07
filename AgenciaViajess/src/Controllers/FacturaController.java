@@ -222,6 +222,32 @@ public class FacturaController extends GeneralController<Factura> {
         return respuesta;
     }
     
+    public List<Plan> metodoJ(Integer idActividad){
+        List<Plan> respuesta = new ArrayList<>();   
+        List<Plan> planesActId = controladorEntretenimiento.planesActId(idActividad);
+        List<Viaje> viajesCondicion = viajesClientes2Viajes();
+        for(Viaje actual:viajesCondicion){
+            List<Entretenimiento> entretenimientosDeViaje = controladorEntretenimiento.getEntrenimientosByViaje(actual.getId());
+            List<Plan> planesViaje = new ArrayList<>();
+            for(Entretenimiento actual2:entretenimientosDeViaje){
+                Plan planEntretenimiento = controladorEntretenimiento.getPlanDeEntretenimiento(actual2.getId());
+                planesViaje.add(planEntretenimiento);
+            }
+            for(Plan planAct : planesActId){
+                for(Plan planViaje:planesViaje){
+                    if(planAct.getId().equals(planViaje.getId())){
+                        if (!respuesta.contains(planAct)) {
+                        respuesta.add(planAct);
+                    }
+                        break;
+                    }
+                }
+            }
+            
+        }
+        
+        return respuesta;
+    }
 
     
     

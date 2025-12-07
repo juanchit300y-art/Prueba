@@ -163,4 +163,35 @@ public class ReservaController extends GeneralController<Reserva> {
         promedio = (double)habitaciones / (double)hoteles;
         return promedio;
     }
+    
+    public List<Habitacion> habitacionesReservadasByViaje(Integer viajeId){
+        List<Habitacion> respuesta = new ArrayList<>();
+        List<ItinerarioTransporte> itinerariosTransporte = itinerarioTransporteController.getItinerariosTransporteByViaje(viajeId);
+        for(ItinerarioTransporte actual:itinerariosTransporte){
+            List<Reserva> reservaItinerario = getReservasByItinerarioTransporte(actual.getId());
+            for(Reserva actual2:reservaItinerario){
+                Habitacion habitacionDeReserva = getHabitacionDeReserva(actual2.getId());
+                if (!respuesta.contains(habitacionDeReserva)) {
+                    respuesta.add(habitacionDeReserva);
+                }
+            }
+        
+        }
+    return respuesta;   
+    }
+    
+    public List<Hotel> metodoE() {
+        List<Hotel> respuesta = new ArrayList<>();
+        List<Viaje> viajes = entretenimientoController.viajesByPlan3Act();
+        for (Viaje actual : viajes) {
+            List<Habitacion> habitacionesViaje = habitacionesReservadasByViaje(actual.getId());
+            for (Habitacion actual2 : habitacionesViaje) {
+                Hotel hotel = hotelData.findATById(actual2.getHotelId());
+                if (!respuesta.contains(hotel)) {
+                    respuesta.add(hotel);
+                }
+            }
+        }
+        return respuesta;
+    }
 }

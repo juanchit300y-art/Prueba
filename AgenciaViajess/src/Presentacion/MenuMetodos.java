@@ -56,19 +56,19 @@ public class MenuMetodos {
                 case 0:
                     break;
                 case 1:
-                    MetodoA();//1.0
+                    MetodoA();
                     break;
                 case 2:
-                    MetodoB();//id 1 = 88878.0
+                    MetodoB();
                     break;
                 case 3:
-                    MetodoC();//da 1
+                    MetodoC();
                     break;
                 case 4:
-                    MetodoD();//cliente 2 da 382273
+                    MetodoD();
                     break;
                 case 5:
-                    MetodoE();//hotel id:1
+                    MetodoE();
                     break;
                 case 6:
                     MetodoF();
@@ -80,10 +80,10 @@ public class MenuMetodos {
                     MetodoH();
                     break;
                 case 9:
-                    MetodoI();//viaje 1 da 667878
+                    MetodoI();
                     break;
                 case 10:
-                    MetodoJ();//"baile" da plan 1 maravillas
+                    MetodoJ();
                     break;
                 case 11:
                     MetodoK();
@@ -135,7 +135,18 @@ public class MenuMetodos {
     public void MetodoE(){
         System.out.println("======== Metodo E======== ");
         System.out.println("Retornar en una lista de todos los hoteles que tienen habitaciones reservadas en viajes que incluyen un plan con al menos 3 actividades. ");
-        
+        List<Hotel> hoteles = reservaController.metodoE();
+        if(hoteles == null){
+            System.out.println("La lista está null");
+            return;
+        }
+        if(hoteles.isEmpty()){
+            System.out.println("La lista está vacía");
+            return;
+        }
+        for(Hotel actual : hoteles){
+            System.out.println(actual.toString());
+        }
     }
     public void MetodoF(){
         System.out.println("======== Metodo F======== ");
@@ -198,7 +209,6 @@ public class MenuMetodos {
         for(Plan actual : planes){
             System.out.println(actual.toString());
         }
-        scanner.nextLine();
     }
     public void MetodoK(){
         System.out.println("======== Metodo K======== ");

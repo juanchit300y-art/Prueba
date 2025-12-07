@@ -28,7 +28,6 @@ public class FacturaControllerTest {
     public void setUp() {
     }
 
-
     @Test
     public void testMetodoD() {
         System.out.println("metodoD");
@@ -58,5 +57,30 @@ public class FacturaControllerTest {
         Double result = instance.metodoF();
         assertEquals(expResult, result);
     }
+
+
+    @Test
+    public void testMetodoJ() {
+        System.out.println("metodoF");
+        String nombreActividad = "baile";
+        ActividadTuristicaController actividadTuristicaController = new ActividadTuristicaController();
+        Integer idActividad = actividadTuristicaController.encontrarIDXNombre(nombreActividad);
+        FacturaController facturaController = new FacturaController();
+        PlanController planController = new PlanController();
+
+        List<Plan> expected = new ArrayList<>();
+        expected.add(planController.getGeneralById(1)); //sé que el plan 1 tiene "baile"
+
+        List<Plan> result = facturaController.metodoJ(idActividad);
+
+        assertEquals(expected.size(), result.size());
+
+        for (int i = 0; i < expected.size(); i++) {
+            assertEquals(expected.get(i).getId(), result.get(i).getId());
+        }
+    }
+
+
+
     
 }
