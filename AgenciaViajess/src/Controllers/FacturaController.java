@@ -160,15 +160,15 @@ public class FacturaController extends GeneralController<Factura> {
     //Metodo F LO HIZO CHAT
     public Double metodoF(){
         Double respuesta;
-        double numClientes=0;
+        double cantViajes1=0;
         double numTrayectos=0;
         List<Cliente> clientes= clienteData.getAllT();
         for(Cliente actual: clientes){
             Integer idClienteActual= actual.getId();
             List<Factura> facturasCliente= getFacturasByCliente(idClienteActual);
             int cantiViajes= facturasCliente.size();
+            cantViajes1 = (double)cantiViajes;
             if(cantiViajes > 1){
-                numClientes++;
                 for(Factura actual2 : facturasCliente){
                     Integer idViaje= actual2.getViajeId();
                     int promedio= controladorItinerario.numTrayectosF(idViaje);
@@ -177,7 +177,7 @@ public class FacturaController extends GeneralController<Factura> {
                 
             }
         }
-        respuesta= numTrayectos/numClientes;
+        respuesta= numTrayectos/cantViajes1;
         return respuesta;
     }
     

@@ -45,7 +45,7 @@ public class MenuExperienciaUsuarioCliente {
                     mostrarMenuFactura(idUsuario);
                     break;
                 case 2:
-                    verMenuViajeExperiencia();
+                    //verMenuViajeExperiencia(); QUITAR LA COMENTACION
                     break;
                 default:
                     System.out.println("Dato invalido");
@@ -191,8 +191,9 @@ public class MenuExperienciaUsuarioCliente {
             System.out.println("No se encontro dentro de tus facturas");
         }
     }
+}//quitar esto
     //------------------ viajeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-    public void verMenuViajeExperiencia() {
+    /*public void verMenuViajeExperiencia() {
         int opcion = 1;
         while (opcion != 0) {
 
@@ -458,5 +459,5 @@ public class MenuExperienciaUsuarioCliente {
     }
 }
 
-          
-}
+  
+}*/ 

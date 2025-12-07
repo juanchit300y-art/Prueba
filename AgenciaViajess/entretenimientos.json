@@ -13,5 +13,10 @@
     "id": 3,
     "PlanId": 3,
     "ViajeId": 3
+  },
+  {
+    "id": 4,
+    "PlanId": 4,
+    "ViajeId": 4
   }
 ]

@@ -22,5 +22,11 @@
     "orden": 4,
     "TrayectoId": 4,
     "ViajeId": 3
+  },
+  {
+    "id": 5,
+    "orden": 5,
+    "TrayectoId": 5,
+    "ViajeId": 4
   }
 ]

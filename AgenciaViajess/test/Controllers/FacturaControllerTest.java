@@ -54,10 +54,9 @@ public class FacturaControllerTest {
     public void testMetodoF() {
         System.out.println("metodoF");
         FacturaController instance = new FacturaController();
-        Double expResult = null;
+        Double expResult = 1.5;
         Double result = instance.metodoF();
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
 
     @Test

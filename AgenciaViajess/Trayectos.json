@@ -18,5 +18,10 @@
     "id": 4,
     "municipioInicioId": 3,
     "municipioDestinoId": 4
+  },
+  {
+    "id": 5,
+    "municipioInicioId": 4,
+    "municipioDestinoId": 5
   }
 ]

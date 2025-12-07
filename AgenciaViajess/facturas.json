@@ -16,5 +16,11 @@
     "costo": 200000,
     "ViajeId": 3,
     "ClienteId": 3
+  },
+  {
+    "id": 4,
+    "costo": 25000,
+    "ViajeId": 4,
+    "ClienteId": 1
   }
 ]
