@@ -1,460 +1,933 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Presentacion;
 
 import Controllers.*;
-import java.util.Scanner;
 import Modelos.*;
 import java.util.List;
+import java.util.Scanner;
 
-/**
- *
- * @author Juanes
- */
 public class MenuExperienciaUsuarioCliente {
-    Scanner scanner;
-    ClienteController controladorCliente;
-    FacturaController facturaController;
+
+    private final ViajeController viajeController;
+    private final FacturaController facturaController;
+    private final EntretenimientoController entretenimientoController;
+    private final ItinerarioTransporteController itinerarioController;
+    private final PlanController planController;
+    private final ActividadTuristicaController actividadController;
+    private final CuotaController cuotaController;
+    private final TrayectoController trayectoController;
+    private final ReservaController reservaController;
+    
+    private Scanner scanner;
 
     public MenuExperienciaUsuarioCliente(Scanner scanner) {
+        this.viajeController = new ViajeController();
+        this.facturaController = new FacturaController();
+        this.entretenimientoController = new EntretenimientoController();
+        this.itinerarioController = new ItinerarioTransporteController();
+        this.planController = new PlanController();
+        this.actividadController = new ActividadTuristicaController();
+        this.cuotaController = new CuotaController();
+        this.trayectoController = new TrayectoController();
+        this.reservaController = new ReservaController();
         this.scanner = scanner;
-        this.controladorCliente= new ClienteController();
-        this.facturaController= new FacturaController();
-        
     }
-  
-    public void verMenuExperienciaUsuario(Integer idUsuario ){
-        Cliente cliente= controladorCliente.getGeneralById(idUsuario);
-        String nombre= cliente.getNombre();
-        int inicio= 1;
-        while(inicio!=0 ){
-            System.out.println("======== Bienvenid@ " + nombre + " a nuestro sistema ========");
-            System.out.println("Seleeciona lo que deseas Gestionar:  ");
-            System.out.println(" 1. Gestionar Facturas  ");
-            System.out.println(" 2. Gestionar Viajes ");
-            System.out.println("========  Presiona 0 para salir ========");
-            inicio= scanner.nextInt();
-            scanner.nextLine();
-            switch(inicio){
-                case 0:
-                    break;
-                case 1:
-                    mostrarMenuFactura(idUsuario);
-                    break;
-                case 2:
-                    //verMenuViajeExperiencia(); QUITAR LA COMENTACION
-                    break;
-                default:
-                    System.out.println("Dato invalido");
-            }
-        } 
-    }
-    //facturaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaas
-     public void mostrarMenuFactura(Integer idCliente) {
-        Integer opcion = -1;
-        while (opcion != 0) {
-            System.out.println("====== Mis Facturas======");
-            System.out.println("1. Añadir Factura");
-            System.out.println("2. Actualizar Factura");
-            System.out.println("3. Eliminar Factura");
-            System.out.println("4. Ver Factura por ID");
-            System.out.println("5. Ver Todas mis Facturas");
-            System.out.println("6. Ver Viaje asociado a una Factura");
-            System.out.println("====== Presione 0 para Salir ======");
-            System.out.print("Digite una opcion: ");
-            opcion = scanner.nextInt();
 
-            switch (opcion) {
+    public void mostrarMenuCliente(Integer clienteId) {
+
+        int opcion;
+
+        do {
+            System.out.println("\n========= MENÚ CLIENTE =========");
+            System.out.println("Cliente ID: " + clienteId);
+            System.out.println("--- Gestión de Viajes ---");
+            System.out.println("1. Ver mis viajes");
+            System.out.println("2. Crear un nuevo viaje");
+            System.out.println("3. Eliminar un viaje");
+            System.out.println("4. Ver detalles de un viaje");
+            System.out.println("5. Ver factura de un viaje");
+            System.out.println("\n--- Gestión de Componentes ---");
+            System.out.println("6. Gestionar entretenimientos de mis viajes");
+            System.out.println("7. Gestionar itinerarios de transporte");
+            System.out.println("8. Gestionar cuotas de pago");
+            System.out.println("\n--- Consultas ---");
+            System.out.println("9. Ver planes disponibles");
+            System.out.println("10. Ver actividades turísticas disponibles");
+            System.out.println("0. Volver");
+            System.out.print("Seleccione opción: ");
+
+            opcion = scanner.nextInt();
+            scanner.nextLine();
+
+            switch(opcion) {
+
                 case 1:
-                    añadirFactura(idCliente); //Hecho
+                    mostrarViajesCliente(clienteId);
                     break;
+
                 case 2:
-                    actualizarFactura(idCliente);  //Hecho
+                    crearNuevoViaje(clienteId);
                     break;
+
                 case 3:
-                    eliminarFactura(idCliente); //Hecho 
+                    eliminarViajeCliente(clienteId);
                     break;
+
                 case 4:
-                    verFacturaPorId(idCliente); //Hecho
+                    verDetallesViaje(clienteId);
                     break;
+
                 case 5:
-                    verFacturasPorCliente(idCliente); //Hecho
+                    verFacturaViaje(clienteId);
                     break;
+
                 case 6:
-                    verViajeDeFactura(idCliente);//Hecho
+                    gestionarEntretenimientos(clienteId);
                     break;
+
+                case 7:
+                    gestionarItinerarios(clienteId);
+                    break;
+
+                case 8:
+                    gestionarCuotas(clienteId);
+                    break;
+
+                case 9:
+                    verPlanesDisponibles();
+                    break;
+
+                case 10:
+                    verActividadesDisponibles();
+                    break;
+
                 case 0:
+                    System.out.println("Regresando...");
                     break;
-                default:
-                    System.out.println("Opcion incorrecta.");
-            }
-        }
-    }
-
-    private void añadirFactura(Integer idCliente) {
-        System.out.println("=== Añadir Factura ===");
-        System.out.print("Costo: ");
-        Integer costo = scanner.nextInt();
-        System.out.print("ID Viaje: ");
-        Integer viajeId = scanner.nextInt();
-        Integer clienteId = idCliente;
-
-        boolean resultado = facturaController.añadirFactura(costo, viajeId, clienteId);
-
-        if (resultado) System.out.println("Factura añadida correctamente.");
-        else System.out.println("No se pudo añadir la factura (verifique ID de Viaje).");
-    }
-
-    private void actualizarFactura(Integer idCliente) {
-        System.out.println("=== Actualizar Factura ===");
-        System.out.print("ID de la factura: (Deja el espacio vacio si no va  haber cambios)");
-        Integer id = scanner.nextInt();
-
-        System.out.print("Nuevo costo:  (Deja el espacio vacio si no va  haber cambios)");
-        Integer costo = scanner.nextInt();
-
-        System.out.print("Nuevo ID Viaje:      (Deja el espacio vacio si no va  haber cambios)");
-        Integer viajeId = scanner.nextInt();
-
-        Integer clienteId = idCliente;
-
-        boolean resultado = facturaController.actualizarFactura(id, costo, viajeId, clienteId);
-
-        if (resultado) System.out.println("Factura actualizada con exito.");
-        else System.out.println("No se pudo actualizar la factura (verifique IDs).");
-    }
-
-    private void eliminarFactura(Integer idCliente) {
-        System.out.println("=== Eliminar Factura ===");
-        System.out.print("ID: ");
-        Integer id = scanner.nextInt();
-        scanner.nextLine();
-        Cliente actual= facturaController.getClienteDeFactura(id);
-        Integer idActual= actual.getId();
-        boolean resultado= false;
-        if(idActual.equals(idCliente)){
-            resultado= facturaController.eliminarObjeto(id);
-        }
-        
-
-        if (resultado) System.out.println("Factura eliminada.");
-        else System.out.println("No se pudo eliminar la factura, revise su id");
-    }
-
-    private void verFacturaPorId(Integer idCliente) {
-        System.out.println("=== Ver Factura por ID ===");
-        System.out.print("ID: ");
-        Integer id = scanner.nextInt();
-        Cliente actual= facturaController.getClienteDeFactura(id);
-        Integer idActual= actual.getId();
-        if(idActual.equals(idCliente)){
-            Factura factura = facturaController.getGeneralById(id);
-            if (factura != null) {
-                System.out.println(factura);
-            } else {
-                System.out.println("Factura no encontrada.");
-            }
-        }
-        else{
-            System.out.println("Factura no encontrada.");
-        }
-
-    }
-
-
-    private void verFacturasPorCliente(Integer idCliente) {
-        System.out.println("=== Tus Facturas ===");
-
-        List<Factura> lista = facturaController.getFacturasByCliente(idCliente);
-
-        if (lista.isEmpty()) System.out.println("No tienes facturas asociadas a este cliente.");
-        else lista.forEach(f -> System.out.println(f));
-    }
-
-
-    private void verViajeDeFactura(Integer idCliente) {
-        System.out.println("=== Viaje de Factura ===");
-        System.out.print("ID Factura: ");
-        Integer id = scanner.nextInt();
-        Cliente actual= facturaController.getClienteDeFactura(id);
-        Integer idActual= actual.getId();
-        if(idActual.equals(idCliente)){
-            Viaje viaje = facturaController.getViajeDeFactura(id);
-
-            if (viaje == null) System.out.println("No se encontró viaje relacionado.");
-            else System.out.println(viaje);
-        }
-        else{
-            System.out.println("No se encontro dentro de tus facturas");
-        }
-    }
-
-    //------------------ viajeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-    public void verMenuViajeExperiencia() {
-        int opcion = 1;
-        while (opcion != 0) {
-
-            System.out.println("======== Gestión de mis Viajes ========");
-            System.out.println("1. Añadir Viaje");
-            System.out.println("2. Modificar Viaje");
-            System.out.println("3. Eliminar Viaje");
-            System.out.println("4. Ver todas los Viajes");
-            System.out.println("5. Buscar Viaje");
-            System.out.println("--------- Opciones Extra ---------");
-            System.out.println("6. Ver Entretenimientos de un Viaje");
-            System.out.println("7. Asignar Entretenimiento a un Viaje");
-            System.out.println("8. Ver Facturas de un Viaje");
-            System.out.println("9. Asignar Factura a un Viaje");
-            System.out.println("10. Ver Cuotas de un Viaje");
-            System.out.println("11. Asignar Cuota a un Viaje");
-            System.out.println("12. Ver Itinerarios de un Viaje");
-            System.out.println("13. Asignar Itinerario a un Viaje");
-            System.out.println("Gestionar: ");
-            System.out.println("14. Gestionar Cuotas");
-            System.out.println("15. Gestionar Facturas");
-            System.out.println("16. Gestionar Itinerarios de Transporte");
-            System.out.println("17. Gestionar Entretenimientos ");
-            System.out.println("====== Presione 0 para Salir =======");
-
-            opcion = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (opcion) {
-                case 0: break;
-
-                case 1: añadirViaje(); break;
-                case 2: modificarViaje(); break;
-                case 3: eliminarViaje(); break;
-                case 4: verTodosViajes(); break;
-                case 5: buscarViaje(); break;
-
-                case 6: verEntretenimientos(); break;
-                case 7: asignarEntretenimiento(); break;
-                case 8: verFacturas(); break;
-                case 9: asignarFactura(); break;
-                case 10: verCuotas(); break;
-                case 11: asignarCuota(); break;
-                case 12: verItinerarios(); break;
-                case 13: asignarItinerario(); break;
-                case 14: submenuCuota.mostrarMenu(); break;
-                case 15: submenuFactura.mostrarMenu();break;
-                case 16: submenuItinerarioTransporte.mostrarMenu();break;
-                case 17: submenuEntretenimiento.mostrarMenu();break;
 
                 default:
-                    System.out.println("===== Opción inválida =====");
+                    System.out.println("Opción inválida.");
             }
-        }
+
+        } while(opcion != 0);
+
     }
 
-    // --------------------- CRUD -------------------------
+    // ============================================================
+    // MÉTODOS DE GESTIÓN DE VIAJES
+    // ============================================================
 
-    public void añadirViaje() {
-        if (controlador.añadirViaje()) {
-            System.out.println("===== Viaje registrado con éxito =====");
-        } else {
-            System.out.println("===== No se pudo registrar el Viaje =====");
-        }
-    }
+    private void mostrarViajesCliente(Integer clienteId) {
+        List<Factura> facturas = facturaController.getFacturasByCliente(clienteId);
 
-    public void modificarViaje() {
-        System.out.println("Ingrese el ID del Viaje a modificar:");
-        Integer id = scanner.nextInt();
-        scanner.nextLine();
-
-        // en el controlador actualizarViaje solo recibe id (no hay campos editables)
-        if (controlador.actualizarViaje(id)) {
-            System.out.println("===== Viaje modificado =====");
-        } else {
-            System.out.println("===== No se pudo modificar (ID inválido) =====");
-        }
-    }
-
-    public void eliminarViaje() {
-        System.out.println("Ingrese el ID del Viaje a eliminar:");
-        Integer id = scanner.nextInt();
-        scanner.nextLine();
-
-        Viaje viaje = controlador.getGeneralById(id);
-
-        if (viaje == null) {
-            System.out.println("===== ID no encontrado =====");
+        if (facturas.isEmpty()) {
+            System.out.println("Este cliente no tiene viajes.");
             return;
         }
 
-        System.out.println("Viaje encontrado:");
-        System.out.println(viaje);
-        System.out.println("¿Confirmar eliminación? (1=Sí / 2=No)");
-        int confirm = scanner.nextInt();
+        System.out.println("\n--- LISTA DE VIAJES ---");
+        for (Factura f : facturas) {
+            Viaje v = viajeController.getGeneralById(f.getViajeId());
+            System.out.println("ID Viaje: " + v.getId() + " | Factura: " + f.getId() + " | Costo: $" + f.getCosto());
+        }
+    }
+
+    private void crearNuevoViaje(Integer clienteId) {
+
+        // Crear el viaje vacío
+        viajeController.añadirViaje();
+
+        // Obtenemos el ID del nuevo viaje
+        List<Viaje> viajes = viajeController.getAllGeneral();
+        Integer nuevoViajeId = viajes.get(viajes.size() - 1).getId();
+
+        // Creamos su factura asociada
+        System.out.print("Costo inicial del viaje: ");
+        int costo = scanner.nextInt();
         scanner.nextLine();
 
-        if (confirm == 1) {
-            if (controlador.eliminarObjeto(id)) {
-                System.out.println("===== Viaje eliminado =====");
-            } else {
-                System.out.println("===== No se puede eliminar: tiene relaciones activas =====");
+        facturaController.añadirFactura(costo, nuevoViajeId, clienteId);
+
+        System.out.println("✔ Viaje creado con éxito. ID: " + nuevoViajeId);
+    }
+
+    private void eliminarViajeCliente(Integer clienteId) {
+
+        mostrarViajesCliente(clienteId);
+
+        System.out.print("ID del viaje que desea eliminar: ");
+        int viajeId = scanner.nextInt();
+        scanner.nextLine();
+
+        // Verificar que ese viaje pertenece al cliente
+        if (!verificarPertenencia(clienteId, viajeId)) {
+            System.out.println("❌ Ese viaje no pertenece al cliente.");
+            return;
+        }
+
+        boolean eliminado = viajeController.eliminarObjeto(viajeId);
+
+        if (!eliminado) {
+            System.out.println("❌ No se puede eliminar el viaje: tiene dependencias activas.");
+        } else {
+            System.out.println("✔ Viaje eliminado con éxito.");
+        }
+    }
+
+    private void verDetallesViaje(Integer clienteId) {
+
+        mostrarViajesCliente(clienteId);
+
+        System.out.print("Ingrese el ID del viaje: ");
+        int viajeId = scanner.nextInt();
+        scanner.nextLine();
+
+        // Validar pertenencia
+        if (!verificarPertenencia(clienteId, viajeId)) {
+            System.out.println("❌ Ese viaje no pertenece al cliente.");
+            return;
+        }
+
+        System.out.println("\n===== Detalles completos del viaje =====");
+        System.out.println(viajeController.getGeneralById(viajeId));
+
+        System.out.println("\n--- Entretenimientos ---");
+        List<Entretenimiento> entretenimientos = viajeController.getEntretenimientosDeViaje(viajeId);
+        if (entretenimientos.isEmpty()) {
+            System.out.println("Sin entretenimientos registrados.");
+        } else {
+            entretenimientos.forEach(System.out::println);
+        }
+
+        System.out.println("\n--- Itinerarios de Transporte ---");
+        List<ItinerarioTransporte> itinerarios = viajeController.getItinerariosTransporteDeViaje(viajeId);
+        if (itinerarios.isEmpty()) {
+            System.out.println("Sin itinerarios registrados.");
+        } else {
+            itinerarios.forEach(System.out::println);
+        }
+
+        System.out.println("\n--- Cuotas de Pago ---");
+        List<Cuota> cuotas = viajeController.getCuotasDeViaje(viajeId);
+        if (cuotas.isEmpty()) {
+            System.out.println("Sin cuotas registradas.");
+        } else {
+            cuotas.forEach(System.out::println);
+        }
+    }
+
+    private void verFacturaViaje(Integer clienteId) {
+
+        mostrarViajesCliente(clienteId);
+
+        System.out.print("Ingrese el ID del viaje: ");
+        int viajeId = scanner.nextInt();
+        scanner.nextLine();
+
+        List<Factura> facturas = facturaController.getFacturasByCliente(clienteId);
+
+        Factura factura = facturas.stream()
+                .filter(f -> f.getViajeId().equals(viajeId))
+                .findFirst()
+                .orElse(null);
+
+        if (factura == null) {
+            System.out.println("❌ No existe factura asignada a ese viaje para este cliente.");
+            return;
+        }
+
+        System.out.println("\n=== FACTURA ===");
+        System.out.println("ID: " + factura.getId());
+        System.out.println("Costo: $" + factura.getCosto());
+        System.out.println("Cliente: " + factura.getClienteId());
+        System.out.println("Viaje: " + factura.getViajeId());
+    }
+
+    // ============================================================
+    // GESTIÓN DE ENTRETENIMIENTOS
+    // ============================================================
+
+    private void gestionarEntretenimientos(Integer clienteId) {
+        int opcion;
+
+        do {
+            System.out.println("\n=== GESTIÓN DE ENTRETENIMIENTOS ===");
+            System.out.println("1. Ver entretenimientos de un viaje");
+            System.out.println("2. Agregar entretenimiento a un viaje");
+            System.out.println("3. Eliminar entretenimiento");
+            System.out.println("4. Ver detalles de un entretenimiento");
+            System.out.println("5. Ver plan asociado a un entretenimiento");
+            System.out.println("0. Volver");
+            System.out.print("Seleccione opción: ");
+
+            opcion = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcion) {
+                case 1:
+                    verEntretenimientosDeViaje(clienteId);
+                    break;
+                case 2:
+                    agregarEntretenimiento(clienteId);
+                    break;
+                case 3:
+                    eliminarEntretenimiento(clienteId);
+                    break;
+                case 4:
+                    verDetalleEntretenimiento(clienteId);
+                    break;
+                case 5:
+                    verPlanDeEntretenimiento(clienteId);
+                    break;
+                case 0:
+                    System.out.println("Regresando...");
+                    break;
+                default:
+                    System.out.println("Opción inválida.");
             }
-        } else {
-            System.out.println("===== Cancelado =====");
-        }
+
+        } while (opcion != 0);
     }
 
-    public void verTodosViajes() {
-        List<Viaje> lista = controlador.getAllGeneral();
+    private void verEntretenimientosDeViaje(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
 
-        if (lista.isEmpty()) {
-            System.out.println("===== No hay Viajes registrados =====");
+        List<Entretenimiento> entretenimientos = entretenimientoController.getEntrenimientosByViaje(viajeId);
+
+        if (entretenimientos.isEmpty()) {
+            System.out.println("Este viaje no tiene entretenimientos.");
         } else {
-            for (Viaje v : lista) {
-                System.out.println(v);
-            }
-        }
-    }
-
-    public void buscarViaje() {
-        System.out.println("Ingrese el ID del Viaje:");
-        Integer id = scanner.nextInt();
-        scanner.nextLine();
-
-        Viaje viaje = controlador.getGeneralById(id);
-
-        if (viaje == null) {
-            System.out.println("===== Viaje no encontrado =====");
-        } else {
-            System.out.println(viaje);
-        }
-    }
-
-    // ------------------------ EXTRAS -----------------------
-
-    public void verEntretenimientos() {
-        System.out.println("Ingrese el ID del Viaje:");
-        Integer id = scanner.nextInt();
-        scanner.nextLine();
-
-        List<Entretenimiento> lista = controlador.getEntretenimientosDeViaje(id);
-
-        if (lista.isEmpty()) {
-            System.out.println("===== No tiene Entretenimientos asignados =====");
-        } else {
-            for (Entretenimiento e : lista) {
+            System.out.println("\n--- ENTRETENIMIENTOS DEL VIAJE ---");
+            for (Entretenimiento e : entretenimientos) {
                 System.out.println(e);
             }
         }
     }
 
-    public void asignarEntretenimiento() {
-        System.out.println("ID del Viaje:");
-        Integer viajeId = scanner.nextInt();
+    private void agregarEntretenimiento(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
+
+        System.out.println("\n--- PLANES DISPONIBLES ---");
+        List<Plan> planes = planController.getAllGeneral();
+        if (planes.isEmpty()) {
+            System.out.println("No hay planes disponibles.");
+            return;
+        }
+        planes.forEach(System.out::println);
+
+        System.out.print("\nIngrese el ID del Plan: ");
+        Integer planId = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("ID del Entretenimiento:");
-        Integer entretenimientoId = scanner.nextInt();
-        scanner.nextLine();
+        boolean resultado = entretenimientoController.añadirEntretenimiento(viajeId, planId);
 
-        if (controlador.assignEntretenimientoToViaje(viajeId, entretenimientoId)) {
-            System.out.println("===== Entretenimiento asignado =====");
+        if (resultado) {
+            System.out.println("✔ Entretenimiento agregado correctamente.");
         } else {
-            System.out.println("===== No se pudo asignar =====");
+            System.out.println("❌ Error: Verifique los IDs ingresados.");
         }
     }
 
-    public void verFacturas() {
-        System.out.println("Ingrese el ID del Viaje:");
-        Integer id = scanner.nextInt();
+    private void eliminarEntretenimiento(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
+
+        List<Entretenimiento> entretenimientos = entretenimientoController.getEntrenimientosByViaje(viajeId);
+        if (entretenimientos.isEmpty()) {
+            System.out.println("Este viaje no tiene entretenimientos.");
+            return;
+        }
+
+        System.out.println("\n--- ENTRETENIMIENTOS DEL VIAJE ---");
+        entretenimientos.forEach(System.out::println);
+
+        System.out.print("\nIngrese el ID del Entretenimiento a eliminar: ");
+        Integer entId = scanner.nextInt();
         scanner.nextLine();
 
-        List<Factura> lista = controlador.getFacturasDeViaje(id);
+        boolean resultado = entretenimientoController.eliminarObjeto(entId);
 
-        if (lista.isEmpty()) {
-            System.out.println("===== No tiene Facturas asignadas =====");
+        if (resultado) {
+            System.out.println("✔ Entretenimiento eliminado correctamente.");
         } else {
-            for (Factura f : lista) {
-                System.out.println(f);
+            System.out.println("❌ No se pudo eliminar el entretenimiento.");
+        }
+    }
+
+    private void verDetalleEntretenimiento(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
+
+        List<Entretenimiento> entretenimientos = entretenimientoController.getEntrenimientosByViaje(viajeId);
+        if (entretenimientos.isEmpty()) {
+            System.out.println("Este viaje no tiene entretenimientos.");
+            return;
+        }
+
+        System.out.println("\n--- ENTRETENIMIENTOS DEL VIAJE ---");
+        entretenimientos.forEach(System.out::println);
+
+        System.out.print("\nIngrese el ID del Entretenimiento: ");
+        Integer entId = scanner.nextInt();
+        scanner.nextLine();
+
+        Entretenimiento ent = entretenimientoController.getGeneralById(entId);
+        if (ent != null) {
+            System.out.println("\n=== DETALLES DEL ENTRETENIMIENTO ===");
+            System.out.println(ent);
+        } else {
+            System.out.println("❌ No se encontró el entretenimiento.");
+        }
+    }
+
+    private void verPlanDeEntretenimiento(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
+
+        List<Entretenimiento> entretenimientos = entretenimientoController.getEntrenimientosByViaje(viajeId);
+        if (entretenimientos.isEmpty()) {
+            System.out.println("Este viaje no tiene entretenimientos.");
+            return;
+        }
+
+        System.out.println("\n--- ENTRETENIMIENTOS DEL VIAJE ---");
+        entretenimientos.forEach(System.out::println);
+
+        System.out.print("\nIngrese el ID del Entretenimiento: ");
+        Integer entId = scanner.nextInt();
+        scanner.nextLine();
+
+        Plan plan = entretenimientoController.getPlanDeEntretenimiento(entId);
+
+        if (plan != null) {
+            System.out.println("\n=== PLAN ASOCIADO ===");
+            System.out.println(plan);
+            
+            // Mostrar elementos del plan
+            System.out.println("\n--- Elementos del Plan ---");
+            List<ElementoPlan> elementos = planController.getElementosPlanDePlan(plan.getId());
+            if (elementos.isEmpty()) {
+                System.out.println("Sin elementos registrados.");
+            } else {
+                elementos.forEach(System.out::println);
             }
+        } else {
+            System.out.println("❌ No se encontró el plan asociado.");
         }
     }
 
-    public void asignarFactura() {
-        System.out.println("ID del Viaje:");
-        Integer viajeId = scanner.nextInt();
-        scanner.nextLine();
+    // ============================================================
+    // GESTIÓN DE ITINERARIOS DE TRANSPORTE
+    // ============================================================
 
-        System.out.println("ID de la Factura:");
-        Integer facturaId = scanner.nextInt();
-        scanner.nextLine();
+    private void gestionarItinerarios(Integer clienteId) {
+        int opcion;
 
-        if (controlador.assignFacturatoToViaje(viajeId, facturaId)) {
-            System.out.println("===== Factura asignada =====");
-        } else {
-            System.out.println("===== No se pudo asignar =====");
-        }
-    }
+        do {
+            System.out.println("\n=== GESTIÓN DE ITINERARIOS DE TRANSPORTE ===");
+            System.out.println("1. Ver itinerarios de un viaje");
+            System.out.println("2. Agregar itinerario a un viaje");
+            System.out.println("3. Actualizar itinerario");
+            System.out.println("4. Eliminar itinerario");
+            System.out.println("5. Ver detalles de un itinerario");
+            System.out.println("6. Ver reservas de un itinerario");
+            System.out.println("7. Agregar reserva a un itinerario");
+            System.out.println("0. Volver");
+            System.out.print("Seleccione opción: ");
 
-    public void verCuotas() {
-        System.out.println("Ingrese el ID del Viaje:");
-        Integer id = scanner.nextInt();
-        scanner.nextLine();
+            opcion = scanner.nextInt();
+            scanner.nextLine();
 
-        List<Cuota> lista = controlador.getCuotasDeViaje(id);
-
-        if (lista.isEmpty()) {
-            System.out.println("===== No tiene Cuotas asignadas =====");
-        } else {
-            for (Cuota c : lista) {
-                System.out.println(c);
+            switch (opcion) {
+                case 1:
+                    verItinerariosDeViaje(clienteId);
+                    break;
+                case 2:
+                    agregarItinerario(clienteId);
+                    break;
+                case 3:
+                    actualizarItinerario(clienteId);
+                    break;
+                case 4:
+                    eliminarItinerario(clienteId);
+                    break;
+                case 5:
+                    verDetalleItinerario(clienteId);
+                    break;
+                case 6:
+                    verReservasItinerario(clienteId);
+                    break;
+                case 7:
+                    agregarReservaItinerario(clienteId);
+                    break;
+                case 0:
+                    System.out.println("Regresando...");
+                    break;
+                default:
+                    System.out.println("Opción inválida.");
             }
-        }
+
+        } while (opcion != 0);
     }
 
-    public void asignarCuota() {
-        System.out.println("ID del Viaje:");
-        Integer viajeId = scanner.nextInt();
-        scanner.nextLine();
+    private void verItinerariosDeViaje(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
 
-        System.out.println("ID de la Cuota:");
-        Integer cuotaId = scanner.nextInt();
-        scanner.nextLine();
+        List<ItinerarioTransporte> itinerarios = itinerarioController.getItinerariosTransporteByViaje(viajeId);
 
-        if (controlador.assignCuotaToViaje(viajeId, cuotaId)) {
-            System.out.println("===== Cuota asignada =====");
+        if (itinerarios.isEmpty()) {
+            System.out.println("Este viaje no tiene itinerarios de transporte.");
         } else {
-            System.out.println("===== No se pudo asignar =====");
-        }
-    }
-
-    public void verItinerarios() {
-        System.out.println("Ingrese el ID del Viaje:");
-        Integer id = scanner.nextInt();
-        scanner.nextLine();
-
-        List<ItinerarioTransporte> lista = controlador.getItinerariosTransporteDeViaje(id);
-
-        if (lista.isEmpty()) {
-            System.out.println("===== No tiene Itinerarios asignados =====");
-        } else {
-            for (ItinerarioTransporte it : lista) {
+            System.out.println("\n--- ITINERARIOS DEL VIAJE ---");
+            for (ItinerarioTransporte it : itinerarios) {
                 System.out.println(it);
             }
         }
     }
 
-    public void asignarItinerario() {
-        System.out.println("ID del Viaje:");
+    private void agregarItinerario(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
+
+        System.out.println("\n--- TRAYECTOS DISPONIBLES ---");
+        List<Trayecto> trayectos = trayectoController.getAllGeneral();
+        if (trayectos.isEmpty()) {
+            System.out.println("No hay trayectos disponibles.");
+            return;
+        }
+        trayectos.forEach(System.out::println);
+
+        System.out.print("\nIngrese el orden del itinerario: ");
+        Integer orden = scanner.nextInt();
+
+        System.out.print("Ingrese el ID del Trayecto: ");
+        Integer trayectoId = scanner.nextInt();
+        scanner.nextLine();
+
+        boolean resultado = itinerarioController.añadirItinerarioTransporte(orden, trayectoId, viajeId);
+
+        if (resultado) {
+            System.out.println("✔ Itinerario agregado correctamente.");
+        } else {
+            System.out.println("❌ Error: Verifique los datos ingresados.");
+        }
+    }
+
+    private void actualizarItinerario(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
+
+        List<ItinerarioTransporte> itinerarios = itinerarioController.getItinerariosTransporteByViaje(viajeId);
+        if (itinerarios.isEmpty()) {
+            System.out.println("Este viaje no tiene itinerarios.");
+            return;
+        }
+
+        System.out.println("\n--- ITINERARIOS DEL VIAJE ---");
+        itinerarios.forEach(System.out::println);
+
+        System.out.print("\nIngrese el ID del Itinerario a actualizar: ");
+        Integer itId = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Nuevo orden (0 para no cambiar): ");
+        Integer orden = scanner.nextInt();
+        if (orden == 0) orden = null;
+
+        System.out.print("Nuevo ID de Trayecto (0 para no cambiar): ");
+        Integer trayectoId = scanner.nextInt();
+        if (trayectoId == 0) trayectoId = null;
+        scanner.nextLine();
+
+        boolean resultado = itinerarioController.actualizarItinerarioTransporte(itId, orden, trayectoId, null);
+
+        if (resultado) {
+            System.out.println("✔ Itinerario actualizado correctamente.");
+        } else {
+            System.out.println("❌ No se pudo actualizar el itinerario.");
+        }
+    }
+
+    private void eliminarItinerario(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
+
+        List<ItinerarioTransporte> itinerarios = itinerarioController.getItinerariosTransporteByViaje(viajeId);
+        if (itinerarios.isEmpty()) {
+            System.out.println("Este viaje no tiene itinerarios.");
+            return;
+        }
+
+        System.out.println("\n--- ITINERARIOS DEL VIAJE ---");
+        itinerarios.forEach(System.out::println);
+
+        System.out.print("\nIngrese el ID del Itinerario a eliminar: ");
+        Integer itId = scanner.nextInt();
+        scanner.nextLine();
+
+        boolean resultado = itinerarioController.eliminarObjeto(itId);
+
+        if (resultado) {
+            System.out.println("✔ Itinerario eliminado correctamente.");
+        } else {
+            System.out.println("❌ No se pudo eliminar. Puede tener reservas asociadas.");
+        }
+    }
+
+    private void verDetalleItinerario(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
+
+        List<ItinerarioTransporte> itinerarios = itinerarioController.getItinerariosTransporteByViaje(viajeId);
+        if (itinerarios.isEmpty()) {
+            System.out.println("Este viaje no tiene itinerarios.");
+            return;
+        }
+
+        System.out.println("\n--- ITINERARIOS DEL VIAJE ---");
+        itinerarios.forEach(System.out::println);
+
+        System.out.print("\nIngrese el ID del Itinerario: ");
+        Integer itId = scanner.nextInt();
+        scanner.nextLine();
+
+        ItinerarioTransporte it = itinerarioController.getGeneralById(itId);
+        if (it != null) {
+            System.out.println("\n=== DETALLES DEL ITINERARIO ===");
+            System.out.println(it);
+
+            Trayecto trayecto = itinerarioController.getTrayectoDeItinerarioTransporte(itId);
+            if (trayecto != null) {
+                System.out.println("\n--- Trayecto ---");
+                System.out.println(trayecto);
+            }
+        } else {
+            System.out.println("❌ No se encontró el itinerario.");
+        }
+    }
+
+    private void verReservasItinerario(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
+
+        List<ItinerarioTransporte> itinerarios = itinerarioController.getItinerariosTransporteByViaje(viajeId);
+        if (itinerarios.isEmpty()) {
+            System.out.println("Este viaje no tiene itinerarios.");
+            return;
+        }
+
+        System.out.println("\n--- ITINERARIOS DEL VIAJE ---");
+        itinerarios.forEach(System.out::println);
+
+        System.out.print("\nIngrese el ID del Itinerario: ");
+        Integer itId = scanner.nextInt();
+        scanner.nextLine();
+
+        List<Reserva> reservas = itinerarioController.getReservasDeItinerarioTransporte(itId);
+
+        if (reservas.isEmpty()) {
+            System.out.println("Este itinerario no tiene reservas.");
+        } else {
+            System.out.println("\n--- RESERVAS DEL ITINERARIO ---");
+            reservas.forEach(System.out::println);
+        }
+    }
+
+    private void agregarReservaItinerario(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
+
+        List<ItinerarioTransporte> itinerarios = itinerarioController.getItinerariosTransporteByViaje(viajeId);
+        if (itinerarios.isEmpty()) {
+            System.out.println("Este viaje no tiene itinerarios.");
+            return;
+        }
+
+        System.out.println("\n--- ITINERARIOS DEL VIAJE ---");
+        itinerarios.forEach(System.out::println);
+
+        System.out.print("\nIngrese el ID del Itinerario: ");
+        Integer itId = scanner.nextInt();
+
+        System.out.print("Ingrese el número de personas: ");
+        Integer numPersonas = scanner.nextInt();
+        scanner.nextLine();
+        
+        System.out.print("Ingrese el Id de la habitacion: ");
+        Integer idHabitacion = scanner.nextInt();
+        scanner.nextLine();
+
+        // Crear primero la reserva
+        boolean reservaCreada = reservaController.añadirReserva(numPersonas, idHabitacion,itId  );
+        if (!reservaCreada) {
+            System.out.println("❌ No se pudo crear la reserva.");
+            return;
+        }
+
+        // Obtener el ID de la reserva recién creada
+        List<Reserva> reservas = reservaController.getAllGeneral();
+        Integer reservaId = reservas.get(reservas.size() - 1).getId();
+
+        // Asignar reserva al itinerario
+        boolean resultado = itinerarioController.assignReservaToItinerarioTransporte(itId, reservaId);
+
+        if (resultado) {
+            System.out.println("✔ Reserva creada y asignada correctamente. ID: " + reservaId);
+        } else {
+            System.out.println("❌ No se pudo asignar la reserva al itinerario.");
+        }
+    }
+
+    // ============================================================
+    // GESTIÓN DE CUOTAS
+    // ============================================================
+
+    private void gestionarCuotas(Integer clienteId) {
+        int opcion;
+
+        do {
+            System.out.println("\n=== GESTIÓN DE CUOTAS DE PAGO ===");
+            System.out.println("1. Ver cuotas de un viaje");
+            System.out.println("2. Registrar pago de cuota");
+            System.out.println("3. Actualizar cuota");
+            System.out.println("4. Eliminar cuota");
+            System.out.println("5. Ver resumen de pagos");
+            System.out.println("0. Volver");
+            System.out.print("Seleccione opción: ");
+
+            opcion = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcion) {
+                case 1:
+                    verCuotasDeViaje(clienteId);
+                    break;
+                case 2:
+                    registrarCuota(clienteId);
+                    break;
+                case 3:
+                    actualizarCuota(clienteId);
+                    break;
+                case 4:
+                    eliminarCuota(clienteId);
+                    break;
+                case 5:
+                    verResumenPagos(clienteId);
+                    break;
+                case 0:
+                    System.out.println("Regresando...");
+                    break;
+                default:
+                    System.out.println("Opción inválida.");
+            }
+
+        } while (opcion != 0);
+    }
+
+    private void verCuotasDeViaje(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
+
+        List<Cuota> cuotas = cuotaController.getCuotasByViaje(viajeId);
+
+        if (cuotas.isEmpty()) {
+            System.out.println("Este viaje no tiene cuotas registradas.");
+        } else {
+            System.out.println("\n--- CUOTAS DEL VIAJE ---");
+            int totalPagado = 0;
+            for (Cuota c : cuotas) {
+                System.out.println(c);
+                totalPagado += c.getMonto();
+            }
+            System.out.println("\nTotal pagado: $" + totalPagado);
+        }
+    }
+
+    private void registrarCuota(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
+
+        System.out.print("Monto de la cuota: $");
+        Integer monto = scanner.nextInt();
+        scanner.nextLine();
+
+        boolean resultado = cuotaController.añadirCuota(monto, viajeId);
+
+        if (resultado) {
+            System.out.println("✔ Cuota registrada correctamente.");
+        } else {
+            System.out.println("❌ No se pudo registrar la cuota.");
+        }
+    }
+
+    private void actualizarCuota(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
+
+        List<Cuota> cuotas = cuotaController.getCuotasByViaje(viajeId);
+        if (cuotas.isEmpty()) {
+            System.out.println("Este viaje no tiene cuotas.");
+            return;
+        }
+
+        System.out.println("\n--- CUOTAS DEL VIAJE ---");
+        cuotas.forEach(System.out::println);
+
+        System.out.print("\nIngrese el ID de la Cuota a actualizar: ");
+        Integer cuotaId = scanner.nextInt();
+
+        System.out.print("Nuevo monto (0 para no cambiar): ");
+        Integer monto = scanner.nextInt();
+        if (monto == 0) monto = null;
+        scanner.nextLine();
+
+        boolean resultado = cuotaController.actualizarCuota(cuotaId, monto, null);
+
+        if (resultado) {
+            System.out.println("✔ Cuota actualizada correctamente.");
+        } else {
+            System.out.println("❌ No se pudo actualizar la cuota.");
+        }
+    }
+
+    private void eliminarCuota(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
+
+        List<Cuota> cuotas = cuotaController.getCuotasByViaje(viajeId);
+        if (cuotas.isEmpty()) {
+            System.out.println("Este viaje no tiene cuotas.");
+            return;
+        }
+
+        System.out.println("\n--- CUOTAS DEL VIAJE ---");
+        cuotas.forEach(System.out::println);
+
+        System.out.print("\nIngrese el ID de la Cuota a eliminar: ");
+        Integer cuotaId = scanner.nextInt();
+        scanner.nextLine();
+
+        boolean resultado = cuotaController.eliminarObjeto(cuotaId);
+
+        if (resultado) {
+            System.out.println("✔ Cuota eliminada correctamente.");
+        } else {
+            System.out.println("❌ No se pudo eliminar la cuota.");
+        }
+    }
+
+    private void verResumenPagos(Integer clienteId) {
+        Integer viajeId = seleccionarViaje(clienteId);
+        if (viajeId == null) return;
+
+        // Obtener factura del viaje
+        List<Factura> facturas = facturaController.getFacturasByCliente(clienteId);
+        Factura factura = facturas.stream()
+                .filter(f -> f.getViajeId().equals(viajeId))
+                .findFirst()
+                .orElse(null);
+
+        if (factura == null) {
+            System.out.println("❌ No se encontró factura para este viaje.");
+            return;
+        }
+
+        // Obtener cuotas del viaje
+        List<Cuota> cuotas = cuotaController.getCuotasByViaje(viajeId);
+
+        int costoTotal = factura.getCosto();
+        int totalPagado = 0;
+
+        for (Cuota c : cuotas) {
+            totalPagado += c.getMonto();
+        }
+
+        int saldo = costoTotal - totalPagado;
+
+        System.out.println("\n=== RESUMEN DE PAGOS ===");
+        System.out.println("Costo total del viaje: $" + costoTotal);
+        System.out.println("Total pagado: $" + totalPagado);
+        System.out.println("Saldo pendiente: $" + saldo);
+        System.out.println("\nNúmero de cuotas: " + cuotas.size());
+
+        if (saldo > 0) {
+            System.out.println("\n⚠ Tiene pagos pendientes.");
+        } else if (saldo == 0) {
+            System.out.println("\n✔ Viaje totalmente pagado.");
+        } else {
+            System.out.println("\n⚠ Tiene un sobrepago de: $" + Math.abs(saldo));
+        }
+    }
+
+    // ============================================================
+    // MÉTODOS DE CONSULTA
+    // ============================================================
+
+    private void verPlanesDisponibles() {
+        System.out.println("\n=== PLANES DISPONIBLES ===");
+
+        List<Plan> planes = planController.getAllGeneral();
+
+        if (planes.isEmpty()) {
+            System.out.println("No hay planes disponibles en este momento.");
+            return;
+        }
+
+        for (Plan p : planes) {
+            System.out.println("\n" + p);
+            
+            // Mostrar elementos de cada plan
+            List<ElementoPlan> elementos = planController.getElementosPlanDePlan(p.getId());
+            if (!elementos.isEmpty()) {
+                System.out.println("  Elementos incluidos:");
+                for (ElementoPlan ep : elementos) {
+                    System.out.println("    - " + ep);
+                }
+            }
+        }
+    }
+
+    private void verActividadesDisponibles() {
+        System.out.println("\n=== ACTIVIDADES TURÍSTICAS DISPONIBLES ===");
+
+        List<ActividadTuristica> actividades = actividadController.getAllGeneral();
+
+        if (actividades.isEmpty()) {
+            System.out.println("No hay actividades turísticas disponibles.");
+            return;
+        }
+
+        actividades.forEach(System.out::println);
+    }
+
+    // ============================================================
+    // MÉTODOS AUXILIARES
+    // ============================================================
+
+    private boolean verificarPertenencia(Integer clienteId, Integer viajeId) {
+        List<Factura> facturas = facturaController.getFacturasByCliente(clienteId);
+        return facturas.stream().anyMatch(f -> f.getViajeId().equals(viajeId));
+    }
+
+    private Integer seleccionarViaje(Integer clienteId) {
+        mostrarViajesCliente(clienteId);
+
+        if (facturaController.getFacturasByCliente(clienteId).isEmpty()) {
+            return null;
+        }
+
+        System.out.print("\nIngrese el ID del viaje: ");
         Integer viajeId = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("ID del Itinerario:");
-        Integer itinerarioId = scanner.nextInt();
-        scanner.nextLine();
-
-        if (controlador.assignItinerarioTransporteToViaje(viajeId, itinerarioId)) {
-            System.out.println("===== Itinerario asignado =====");
-        } else {
-            System.out.println("===== No se pudo asignar =====");
+        if (!verificarPertenencia(clienteId, viajeId)) {
+            System.out.println("❌ Ese viaje no pertenece al cliente.");
+            return null;
         }
+
+        return viajeId;
     }
+
 }

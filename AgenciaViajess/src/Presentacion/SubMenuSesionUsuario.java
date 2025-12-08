@@ -121,7 +121,7 @@ public class SubMenuSesionUsuario {
             
             if(cliente.getContraseña().equals(contraseña)){
                 System.out.println("===== INICIO DE SESION EXITOSO =====");
-                menuExperienciaUsuario.verMenuExperienciaUsuario(id);
+                menuExperienciaUsuario.mostrarMenuCliente(id);
                 inicio=0;
             }else{
                 System.out.println("Contraseña incorrecta, presione 0 para volver");
