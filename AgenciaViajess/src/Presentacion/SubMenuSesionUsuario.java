@@ -70,8 +70,12 @@ public class SubMenuSesionUsuario {
             switch(inicio){
                 case 1:
                     submenuCliente.registrarCliente();
+                    break;
                 case 2:
                     submenuGuia.crear();
+                    break;
+                default:
+                    System.out.println("Numero invalido");
             }
         }
         
